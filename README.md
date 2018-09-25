@@ -1,4 +1,4 @@
-<b>Instructions to setup</b> :fire::fire::pow:
+<b>Instructions to setup</b> :fire::fire::boom:
 
 install composer/laravel/node if you haven't already
 
