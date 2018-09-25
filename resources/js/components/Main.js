@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from './Navbar/Navbar';
  
 /* Main Component */
 class Main extends Component {
@@ -19,7 +20,6 @@ class Main extends Component {
     /* fetch API in action */
     fetch('/api/student')
         .then(response => {
-            console.log("this is a json response from our backend api check the network tab")
             return response.json();
         })
         .then(students => {
@@ -41,9 +41,9 @@ class Main extends Component {
   }
    
   render() {
-   /* Some css code has been removed for brevity */
     return (
         <div>
+            <Navbar />
             <ul>
             { this.renderStudents() }
             </ul> 
