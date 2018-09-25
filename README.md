@@ -1,4 +1,4 @@
-Instructions to setup 
+<b>Instructions to setup</b> :fire::fire 
 
 install composer/laravel/node if you haven't already
 
@@ -7,6 +7,8 @@ pull this code into your local machine
 go to your db admin page and create new db, I named mine "SP-Performers"
 
 go to your .env file and make sure everything matches with your db 
+
+php artisan migrate
 
 php artisan db:seed --class=StudentsTableSeeder
 
