@@ -52,6 +52,7 @@ nav a {
 
 nav a:hover {
   color: #061E45;
+  width: 10px;
 }
 
 nav a::before {
@@ -68,7 +69,7 @@ nav a::before {
 }
 
 nav a:hover::before {
-  width: 100%;
+  width: 10px;
 }
 
 @media (max-width : 320px) {
