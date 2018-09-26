@@ -13,6 +13,8 @@ export default () => {
                   <div>
                     <nav>
                       <OldSchoolMenuLink to="/home" label="Home" />
+                      <OldSchoolMenuLink to="/classes" label="Classes" />
+                      <OldSchoolMenuLink to="/student" label="Students" />
                     </nav>
                   </div>
               </div>
@@ -22,7 +24,6 @@ export default () => {
       </Router>
   )
 }
-
 
 const OldSchoolMenuLink = ({ to, label }) => (
   <Route
