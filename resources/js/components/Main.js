@@ -1,102 +1,156 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Navbar from './Navbar/Navbar';
-import Student from '../components/Student'
-import AddStudent from '../components/AddStudent'
+import React, { Component } from "react";
+import ReactDom from "react-dom";
+import Student from "./Student";
+import AddStudent from "./AddStudent";
+import EditStudent from "./EditStudent";
 
-/* Main Component */
-class Main extends Component {
-    
+export default class Main extends Component {
   constructor() {
-   
     super();
-    //Initialize the state in the constructor
     this.state = {
-        students: [],
-        currentStudent: null
-    }
+      students: [],
+      currentStudent: null,
+      editButtonClicked: false
+    };
+
     this.handleAddStudent = this.handleAddStudent.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleDeleteConfirmation = this.handleDeleteConfirmation.bind(this);
   }
-  /*componentDidMount() is a lifecycle method
-   * that gets called after the component is rendered
-   */
+
   componentDidMount() {
     /* fetch API in action */
-    fetch('/api/student')
-        .then(response => {
-            return response.json();
-        })
-        .then(students => {
-            this.setState({ students });
-        });
+    fetch("/api/students")
+      .then(response => {
+        return response.json();
+      })
+      .then(students => {
+        //Fetched student is stored in the state
+        this.setState({ students });
+      });
   }
- 
- renderStudents() {
+
+  renderStudents() {
     return this.state.students.map(student => {
-        return (
-            /* When using list you need to specify a key
-             * attribute that is unique for each list item
-            */
-            <li onClick={() =>this.handleClick(student)} key={student.id} >
-                { student.firstName } 
-            </li>      
-        );
-    })
+      return (
+        /* When using list you need to specify a key
+        * attribute that is unique for each list item
+        */
+        <li key={student.id} onClick={() => this.handleClick(student)}>
+          {student.title}
+        </li>
+      );
+    });
   }
 
   handleClick(student) {
-    //handleClick is used to set the state
-    this.setState({currentStudent:student});
-   
+    this.state.editButtonClicked = false;
+    this.setState({ currentStudent: student });
   }
 
-  
-  
   handleAddStudent(student) {
-     
-    student.age = Number(student.age);
-    /*Fetch API for post request */
-    fetch( 'api/students/', {
-        method:'post',
-        /* headers are important*/
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-         
-        body: JSON.stringify(student)
+    student.price = Number(student.price);
+
+    fetch("api/students", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(student)
     })
-    .then(response => {
+      .then(response => {
         return response.json();
-    })
-    .then( data => {
-        //update the state of students and currentStudent
-        this.setState((prevState)=> ({
-            students: prevState.students.concat(data),
-            currentStudent : data
-        }))
-    })
-  
+      })
+      .then(data => {
+        this.setState(prevState => ({
+          students: prevState.students.concat(data),
+          currentStudent: data
+        }));
+      });
   }
+
+  handleDelete() {
+    const currentStudent = this.state.currentStudent;
+    fetch("api/students/" + this.state.currentStudent.id, {
+      method: "delete"
+    }).then(response => {
+      /* Duplicate the array and filter out the item to be deleted */
+      var newStudents = this.state.students.filter(function(item) {
+        return item !== currentStudent;
+      });
+
+      this.setState({ students: newStudents, currentStudent: null });
+    });
+  }
+
+  handleDeleteConfirmation(event) {
+    if (confirm("Are you sure you want to delete it?")) {
+      this.handleDelete();
+    }
+  }
+
+  handleEdit() {
+    this.setState({ editButtonClicked: true });
+  }
+
+  handleUpdate(student) {
+    const currentStudent = this.state.currentStudent;
+    fetch("api/students/" + currentStudent.id, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(student)
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        /** updating the state */
+        var newStudents = this.state.students.filter(function(item) {
+          return item !== currentStudent;
+        });
+        this.setState(prevState => ({
+          students: newStudents.concat(student),
+          currentStudent: student
+        }));
+      });
+  }
+
   render() {
     return (
-        <div>
-            <div>
-                <Navbar />
-                <h3>All Students</h3>
-                <ul>
-                { this.renderStudents() }
-                </ul> 
-            </div>
-            <Student student={this.state.currentStudent} />
-            <AddStudent onAdd={this.handleAddStudent} />
+      <div>
+        <div className="col-md-6">
+          <h3>All Students ({this.state.students.length})</h3>
+          <ul>{this.renderStudents()}</ul>
         </div>
+        <div className="col-md-6">
+          {this.state.editButtonClicked === true ? (
+            <EditStudent
+              student={this.state.currentStudent}
+              update={this.handleUpdate}
+            />
+          ) : (
+            <React.Fragment>
+              <Student
+                handleDeleteConfirmation={this.handleDeleteConfirmation}
+                student={this.state.currentStudent}
+                deleteStudent={this.handleDelete}
+                handleEdit={this.handleEdit}
+              />
+              <AddStudent onAdd={this.handleAddStudent} />
+            </React.Fragment>
+          )}
+        </div>
+      </div>
     );
   }
 }
 
-export default Main;
-
-if (document.getElementById('root')) {
-    ReactDOM.render(<Main />, document.getElementById('root'));
+if (document.getElementById("root")) {
+  ReactDom.render(<Main />, document.getElementById("root"));
 }

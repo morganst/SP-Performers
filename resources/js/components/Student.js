@@ -3,8 +3,14 @@ import React, { Component } from 'react';
 /* Stateless component or pure component
  * { student } syntax is the object destructing
  */
-const Student = ({student}) => {
-    
+const Student = props => {
+  const {
+    student,
+    deleteStudent,
+    handleDeleteConfirmation,
+    handleEdit,
+    update
+  } = props;
 
  
   //if the props student is null, return Student doesn't exist
@@ -17,6 +23,8 @@ const Student = ({student}) => {
     <div> 
       <h2> {student.firstName} {student.lastName}</h2>
       <h2>Age: {student.age} </h2>
+      <input type="button" value="edit" onClick={e => handleEdit()} />
+      <input type="button" value="delete" onClick={e => handleDeleteConfirmation()} />
     </div>
   )
 }
