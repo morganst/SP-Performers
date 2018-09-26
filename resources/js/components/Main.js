@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './Navbar/Navbar';
 import Student from '../components/Student'
+import AddStudent from '../components/AddStudent'
 
 /* Main Component */
 class Main extends Component {
@@ -14,6 +15,7 @@ class Main extends Component {
         students: [],
         currentStudent: null
     }
+    this.handleAddStudent = this.handleAddStudent.bind(this);
   }
   /*componentDidMount() is a lifecycle method
    * that gets called after the component is rendered
@@ -48,6 +50,34 @@ class Main extends Component {
    
   }
 
+  
+  
+  handleAddStudent(student) {
+     
+    student.age = Number(student.age);
+    /*Fetch API for post request */
+    fetch( 'api/students/', {
+        method:'post',
+        /* headers are important*/
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+         
+        body: JSON.stringify(student)
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then( data => {
+        //update the state of students and currentStudent
+        this.setState((prevState)=> ({
+            students: prevState.students.concat(data),
+            currentStudent : data
+        }))
+    })
+  
+  }
   render() {
     return (
         <div>
@@ -58,8 +88,8 @@ class Main extends Component {
                 { this.renderStudents() }
                 </ul> 
             </div>
-
             <Student student={this.state.currentStudent} />
+            <AddStudent onAdd={this.handleAddStudent} />
         </div>
     );
   }
