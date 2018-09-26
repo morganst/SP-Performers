@@ -30,7 +30,7 @@ class EditStudent extends Component {
    /* This method is invoked when submit button is pressed */
     handleSubmit(e) {   
       e.preventDefault();
-      this.props.onAdd(this.state.student);
+      this.props.update(this.state.student);
       this.editForm.reset();
     }
    

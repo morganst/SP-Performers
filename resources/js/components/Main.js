@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import ReactDom from "react-dom";
-import Student from "./Student";
-import AddStudent from "./AddStudent";
-import EditStudent from "./EditStudent";
+import Student from "./Student/Student";
+import AddStudent from "./Student/AddStudent";
+import EditStudent from "./Student/EditStudent";
+import Navbar from './Navbar/Navbar';
 
 export default class Main extends Component {
   constructor() {
@@ -10,7 +11,7 @@ export default class Main extends Component {
     this.state = {
       students: [],
       currentStudent: null,
-      editButtonClicked: false
+      editButtonClicked: false,
     };
 
     this.handleAddStudent = this.handleAddStudent.bind(this);
@@ -22,7 +23,7 @@ export default class Main extends Component {
 
   componentDidMount() {
     /* fetch API in action */
-    fetch("/api/students")
+    fetch('/api/student')
       .then(response => {
         return response.json();
       })
@@ -39,7 +40,7 @@ export default class Main extends Component {
         * attribute that is unique for each list item
         */
         <li key={student.id} onClick={() => this.handleClick(student)}>
-          {student.title}
+          {student.firstName}
         </li>
       );
     });
@@ -51,9 +52,9 @@ export default class Main extends Component {
   }
 
   handleAddStudent(student) {
-    student.price = Number(student.price);
+    student.age = Number(student.age);
 
-    fetch("api/students", {
+    fetch('/api/student', {
       method: "post",
       headers: {
         Accept: "application/json",
@@ -74,7 +75,7 @@ export default class Main extends Component {
 
   handleDelete() {
     const currentStudent = this.state.currentStudent;
-    fetch("api/students/" + this.state.currentStudent.id, {
+    fetch('/api/student' + this.state.currentStudent.id, {
       method: "delete"
     }).then(response => {
       /* Duplicate the array and filter out the item to be deleted */
@@ -98,7 +99,7 @@ export default class Main extends Component {
 
   handleUpdate(student) {
     const currentStudent = this.state.currentStudent;
-    fetch("api/students/" + currentStudent.id, {
+    fetch('api/student' + currentStudent.id, {
       method: "put",
       headers: {
         Accept: "application/json",
@@ -124,11 +125,12 @@ export default class Main extends Component {
   render() {
     return (
       <div>
-        <div className="col-md-6">
+          <Navbar />
+        <div>
           <h3>All Students ({this.state.students.length})</h3>
           <ul>{this.renderStudents()}</ul>
         </div>
-        <div className="col-md-6">
+        <div>
           {this.state.editButtonClicked === true ? (
             <EditStudent
               student={this.state.currentStudent}
