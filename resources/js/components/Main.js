@@ -54,7 +54,7 @@ export default class Main extends Component {
   handleAddStudent(student) {
     student.age = Number(student.age);
 
-    fetch('/api/student', {
+    fetch('api/student', {
       method: "post",
       headers: {
         Accept: "application/json",
@@ -75,7 +75,7 @@ export default class Main extends Component {
 
   handleDelete() {
     const currentStudent = this.state.currentStudent;
-    fetch('api/student' + this.state.currentStudent.id, 
+    fetch('api/student/' + this.state.currentStudent.id, 
     {method: "delete"}).then(response => {
       /* Duplicate the array and filter out the item to be deleted */
       var newStudents = this.state.students.filter(function(item) {
@@ -98,7 +98,7 @@ export default class Main extends Component {
 
   handleUpdate(student) {
     const currentStudent = this.state.currentStudent;
-    fetch('api/student' + currentStudent.id, {
+    fetch('api/student/' + currentStudent.id, {
       method: "put",
       headers: {
         Accept: "application/json",
@@ -136,7 +136,7 @@ export default class Main extends Component {
               update={this.handleUpdate}
             />
           ) : (
-            <React.Fragment>
+            <div>
               <Student
                 handleDeleteConfirmation={this.handleDeleteConfirmation}
                 student={this.state.currentStudent}
@@ -144,7 +144,7 @@ export default class Main extends Component {
                 handleEdit={this.handleEdit}
               />
               <AddStudent onAdd={this.handleAddStudent} />
-            </React.Fragment>
+            </div>
           )}
         </div>
       </div>

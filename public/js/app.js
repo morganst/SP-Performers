@@ -36251,7 +36251,7 @@ var Main = function (_Component) {
 
       student.age = Number(student.age);
 
-      fetch('/api/student', {
+      fetch('api/student', {
         method: "post",
         headers: {
           Accept: "application/json",
@@ -36275,7 +36275,7 @@ var Main = function (_Component) {
       var _this5 = this;
 
       var currentStudent = this.state.currentStudent;
-      fetch('api/student' + this.state.currentStudent.id, { method: "delete" }).then(function (response) {
+      fetch('api/student/' + this.state.currentStudent.id, { method: "delete" }).then(function (response) {
         /* Duplicate the array and filter out the item to be deleted */
         var newStudents = _this5.state.students.filter(function (item) {
           return item !== currentStudent;
@@ -36302,7 +36302,7 @@ var Main = function (_Component) {
       var _this6 = this;
 
       var currentStudent = this.state.currentStudent;
-      fetch('api/student' + currentStudent.id, {
+      fetch('api/student/' + currentStudent.id, {
         method: "put",
         headers: {
           Accept: "application/json",
@@ -36354,7 +36354,7 @@ var Main = function (_Component) {
             student: this.state.currentStudent,
             update: this.handleUpdate
           }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.Fragment,
+            "div",
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Student_Student__["a" /* default */], {
               handleDeleteConfirmation: this.handleDeleteConfirmation,
