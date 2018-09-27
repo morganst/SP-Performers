@@ -75,9 +75,8 @@ export default class Main extends Component {
 
   handleDelete() {
     const currentStudent = this.state.currentStudent;
-    fetch('/api/student' + this.state.currentStudent.id, {
-      method: "delete"
-    }).then(response => {
+    fetch('api/student' + this.state.currentStudent.id, 
+    {method: "delete"}).then(response => {
       /* Duplicate the array and filter out the item to be deleted */
       var newStudents = this.state.students.filter(function(item) {
         return item !== currentStudent;
@@ -115,7 +114,7 @@ export default class Main extends Component {
         var newStudents = this.state.students.filter(function(item) {
           return item !== currentStudent;
         });
-        this.setState(prevState => ({
+        this.setState((prevState)=> ({
           students: newStudents.concat(student),
           currentStudent: student
         }));

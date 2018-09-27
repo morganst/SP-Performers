@@ -23,7 +23,7 @@ class EditStudent extends Component {
     handleInput(key, e) {
        
       /*Duplicating and updating the state */
-      var state = Object.assign({}, this.state.newStudent); 
+      var state = Object.assign({}, this.state.student); 
       state[key] = e.target.value;
       this.setState({student: state });
     }
@@ -38,20 +38,20 @@ class EditStudent extends Component {
         const student = this.state.student;
       return(
         <div> 
-          <h2> Edit student </h2>
+          <h2> Edit Student </h2>
           <div> 
           <form onSubmit={this.handleSubmit} ref={input => (this.editForm = input)}>
             <label> First Name: 
              { /*On every keystroke, the handeInput method is invoked */ }
-              <input type="text" onChange={(e)=>this.handleInput('firstName',e)} />
+              <input value={student.firstName} type="text" onChange={(e)=>this.handleInput('firstName',e)} />
             </label>
              
             <label> Last Name: 
-              <input type="text" onChange={(e)=>this.handleInput('lastName',e)} />
+              <input value={student.lastName} type="text" onChange={(e)=>this.handleInput('lastName',e)} />
             </label>
 
             <label> Age: 
-              <input type="text" onChange={(e)=>this.handleInput('age',e)} />
+              <input value={student.age} type="text" onChange={(e)=>this.handleInput('age',e)} />
             </label>
                 
             <input type="submit" value="Submit" />

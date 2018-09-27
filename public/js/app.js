@@ -36164,10 +36164,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Student_Student__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Student_AddStudent__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Student_EditStudent__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Navbar_Navbar__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Student_Student__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Student_AddStudent__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Student_EditStudent__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Navbar_Navbar__ = __webpack_require__(51);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36275,9 +36275,7 @@ var Main = function (_Component) {
       var _this5 = this;
 
       var currentStudent = this.state.currentStudent;
-      fetch('/api/student' + this.state.currentStudent.id, {
-        method: "delete"
-      }).then(function (response) {
+      fetch('api/student' + this.state.currentStudent.id, { method: "delete" }).then(function (response) {
         /* Duplicate the array and filter out the item to be deleted */
         var newStudents = _this5.state.students.filter(function (item) {
           return item !== currentStudent;
@@ -57342,7 +57340,303 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_navbar_css__ = __webpack_require__(49);
+
+
+/* Stateless component or pure component
+ * { student } syntax is the object destructing
+ */
+var Student = function Student(props) {
+  var student = props.student,
+      deleteStudent = props.deleteStudent,
+      handleDeleteConfirmation = props.handleDeleteConfirmation,
+      handleEdit = props.handleEdit,
+      update = props.update;
+
+  //if the props student is null, return Student doesn't exist
+
+  if (!student) {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "div",
+      null,
+      "  Student Doesnt exist "
+    );
+  }
+
+  //Else, display the student data
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    "div",
+    null,
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "h2",
+      null,
+      " ",
+      student.firstName,
+      " ",
+      student.lastName
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "h2",
+      null,
+      "Age: ",
+      student.age,
+      " "
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "button", value: "edit", onClick: function onClick(e) {
+        return handleEdit();
+      } }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "button", value: "delete", onClick: function onClick(e) {
+        return handleDeleteConfirmation();
+      } })
+  );
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Student);
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var AddStudent = function (_Component) {
+  _inherits(AddStudent, _Component);
+
+  function AddStudent(props) {
+    _classCallCheck(this, AddStudent);
+
+    /* Initialize the state. */
+    var _this = _possibleConstructorReturn(this, (AddStudent.__proto__ || Object.getPrototypeOf(AddStudent)).call(this, props));
+
+    _this.state = {
+      newStudent: {
+        firstName: '',
+        lastName: '',
+        age: 0
+      }
+
+      //Boilerplate code for binding methods with `this`
+    };_this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.handleInput = _this.handleInput.bind(_this);
+    return _this;
+  }
+
+  /* This method dynamically accepts inputs and stores it in the state */
+
+
+  _createClass(AddStudent, [{
+    key: 'handleInput',
+    value: function handleInput(key, e) {
+
+      /*Duplicating and updating the state */
+      var state = Object.assign({}, this.state.newStudent);
+      state[key] = e.target.value;
+      this.setState({ newStudent: state });
+    }
+    /* This method is invoked when submit button is pressed */
+
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      //preventDefault prevents page reload   
+      e.preventDefault();
+      /*A call back to the onAdd props. The current
+       *state is passed as a param
+       */
+      this.props.onAdd(this.state.newStudent);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h2',
+          null,
+          ' Add new student '
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'form',
+            { onSubmit: this.handleSubmit },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              null,
+              ' First Name:',
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
+                  return _this2.handleInput('firstName', e);
+                } })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              null,
+              ' Last Name:',
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
+                  return _this2.handleInput('lastName', e);
+                } })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              null,
+              ' Age:',
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
+                  return _this2.handleInput('age', e);
+                } })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return AddStudent;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (AddStudent);
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var EditStudent = function (_Component) {
+  _inherits(EditStudent, _Component);
+
+  function EditStudent(props) {
+    _classCallCheck(this, EditStudent);
+
+    /* Initialize the state. */
+    var _this = _possibleConstructorReturn(this, (EditStudent.__proto__ || Object.getPrototypeOf(EditStudent)).call(this, props));
+
+    _this.state = {
+      student: null
+
+      //boilerplate code for binding methods with `this`
+    };_this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.handleInput = _this.handleInput.bind(_this);
+    return _this;
+  }
+
+  _createClass(EditStudent, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.setState({ student: this.props.student });
+    }
+
+    /* This method dynamically accepts inputs and stores it in the state */
+
+  }, {
+    key: 'handleInput',
+    value: function handleInput(key, e) {
+
+      /*Duplicating and updating the state */
+      var state = Object.assign({}, this.state.student);
+      state[key] = e.target.value;
+      this.setState({ student: state });
+    }
+    /* This method is invoked when submit button is pressed */
+
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.update(this.state.student);
+      this.editForm.reset();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var student = this.state.student;
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h2',
+          null,
+          ' Edit Student '
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'form',
+            { onSubmit: this.handleSubmit, ref: function ref(input) {
+                return _this2.editForm = input;
+              } },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              null,
+              ' First Name:',
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { value: student.firstName, type: 'text', onChange: function onChange(e) {
+                  return _this2.handleInput('firstName', e);
+                } })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              null,
+              ' Last Name:',
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { value: student.lastName, type: 'text', onChange: function onChange(e) {
+                  return _this2.handleInput('lastName', e);
+                } })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              null,
+              ' Age:',
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { value: student.age, type: 'text', onChange: function onChange(e) {
+                  return _this2.handleInput('age', e);
+                } })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return EditStudent;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (EditStudent);
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_navbar_css__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_navbar_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__css_navbar_css__);
 
 
@@ -57400,13 +57694,13 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 });
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(50);
+var content = __webpack_require__(53);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -57414,7 +57708,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(52)(content, options);
+var update = __webpack_require__(55)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -57431,10 +57725,10 @@ if(false) {
 }
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(51)(false);
+exports = module.exports = __webpack_require__(54)(false);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,600);", ""]);
 
@@ -57445,7 +57739,7 @@ exports.push([module.i, "body {\r\n\tmargin: 0;\r\n\tbackground: white;\r\n\tfon
 
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, exports) {
 
 /*
@@ -57527,7 +57821,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -57573,7 +57867,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(53);
+var	fixUrls = __webpack_require__(56);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -57886,7 +58180,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, exports) {
 
 
@@ -57981,310 +58275,10 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 54 */,
-/* 55 */,
-/* 56 */,
 /* 57 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 58 */,
-/* 59 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var AddStudent = function (_Component) {
-  _inherits(AddStudent, _Component);
-
-  function AddStudent(props) {
-    _classCallCheck(this, AddStudent);
-
-    /* Initialize the state. */
-    var _this = _possibleConstructorReturn(this, (AddStudent.__proto__ || Object.getPrototypeOf(AddStudent)).call(this, props));
-
-    _this.state = {
-      newStudent: {
-        firstName: '',
-        lastName: '',
-        age: 0
-      }
-
-      //Boilerplate code for binding methods with `this`
-    };_this.handleSubmit = _this.handleSubmit.bind(_this);
-    _this.handleInput = _this.handleInput.bind(_this);
-    return _this;
-  }
-
-  /* This method dynamically accepts inputs and stores it in the state */
-
-
-  _createClass(AddStudent, [{
-    key: 'handleInput',
-    value: function handleInput(key, e) {
-
-      /*Duplicating and updating the state */
-      var state = Object.assign({}, this.state.newStudent);
-      state[key] = e.target.value;
-      this.setState({ newStudent: state });
-    }
-    /* This method is invoked when submit button is pressed */
-
-  }, {
-    key: 'handleSubmit',
-    value: function handleSubmit(e) {
-      //preventDefault prevents page reload   
-      e.preventDefault();
-      /*A call back to the onAdd props. The current
-       *state is passed as a param
-       */
-      this.props.onAdd(this.state.newStudent);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'h2',
-          null,
-          ' Add new student '
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'form',
-            { onSubmit: this.handleSubmit },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              null,
-              ' First Name:',
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
-                  return _this2.handleInput('firstName', e);
-                } })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              null,
-              ' Last Name:',
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
-                  return _this2.handleInput('lastName', e);
-                } })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              null,
-              ' Age:',
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
-                  return _this2.handleInput('age', e);
-                } })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit' })
-          )
-        )
-      );
-    }
-  }]);
-
-  return AddStudent;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (AddStudent);
-
-/***/ }),
-/* 60 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var EditStudent = function (_Component) {
-  _inherits(EditStudent, _Component);
-
-  function EditStudent(props) {
-    _classCallCheck(this, EditStudent);
-
-    /* Initialize the state. */
-    var _this = _possibleConstructorReturn(this, (EditStudent.__proto__ || Object.getPrototypeOf(EditStudent)).call(this, props));
-
-    _this.state = {
-      student: null
-
-      //boilerplate code for binding methods with `this`
-    };_this.handleSubmit = _this.handleSubmit.bind(_this);
-    _this.handleInput = _this.handleInput.bind(_this);
-    return _this;
-  }
-
-  _createClass(EditStudent, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.setState({ student: this.props.student });
-    }
-
-    /* This method dynamically accepts inputs and stores it in the state */
-
-  }, {
-    key: 'handleInput',
-    value: function handleInput(key, e) {
-
-      /*Duplicating and updating the state */
-      var state = Object.assign({}, this.state.newStudent);
-      state[key] = e.target.value;
-      this.setState({ student: state });
-    }
-    /* This method is invoked when submit button is pressed */
-
-  }, {
-    key: 'handleSubmit',
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      this.props.update(this.state.student);
-      this.editForm.reset();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var student = this.state.student;
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'h2',
-          null,
-          ' Edit student '
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'form',
-            { onSubmit: this.handleSubmit, ref: function ref(input) {
-                return _this2.editForm = input;
-              } },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              null,
-              ' First Name:',
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
-                  return _this2.handleInput('firstName', e);
-                } })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              null,
-              ' Last Name:',
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
-                  return _this2.handleInput('lastName', e);
-                } })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'label',
-              null,
-              ' Age:',
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', onChange: function onChange(e) {
-                  return _this2.handleInput('age', e);
-                } })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Submit' })
-          )
-        )
-      );
-    }
-  }]);
-
-  return EditStudent;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (EditStudent);
-
-/***/ }),
-/* 61 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-
-
-/* Stateless component or pure component
- * { student } syntax is the object destructing
- */
-var Student = function Student(props) {
-  var student = props.student,
-      deleteStudent = props.deleteStudent,
-      handleDeleteConfirmation = props.handleDeleteConfirmation,
-      handleEdit = props.handleEdit,
-      update = props.update;
-
-  //if the props student is null, return Student doesn't exist
-
-  if (!student) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "div",
-      null,
-      "  Student Doesnt exist "
-    );
-  }
-
-  //Else, display the student data
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    "div",
-    null,
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "h2",
-      null,
-      " ",
-      student.firstName,
-      " ",
-      student.lastName
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "h2",
-      null,
-      "Age: ",
-      student.age,
-      " "
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "button", value: "edit", onClick: function onClick(e) {
-        return handleEdit();
-      } }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "button", value: "delete", onClick: function onClick(e) {
-        return handleDeleteConfirmation();
-      } })
-  );
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (Student);
 
 /***/ })
 /******/ ]);
