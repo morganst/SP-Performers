@@ -18,3 +18,14 @@ Route::get('/', function () {
 Route::get('/students', function () {
     return view('students/index');
 });
+
+Auth::routes();
+
+Route::get('/', [
+    'middleware' => 'auth',
+    'uses' => 'HomeController@index'
+]);
+Route::get('/students', [
+    'middleware' => 'auth',
+    'uses' => 'HomeController@index'
+]);
