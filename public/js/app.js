@@ -57355,11 +57355,7 @@ var Student = function Student(props) {
   //if the props student is null, return Student doesn't exist
 
   if (!student) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "div",
-      null,
-      "  Student Doesnt exist "
-    );
+    return null;
   }
 
   //Else, display the student data

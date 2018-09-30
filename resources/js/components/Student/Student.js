@@ -15,7 +15,7 @@ const Student = props => {
  
   //if the props student is null, return Student doesn't exist
   if(!student) {
-    return(<div>  Student Doesnt exist </div>);
+    return null;
   }
      
   //Else, display the student data
