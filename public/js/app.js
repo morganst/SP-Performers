@@ -36164,10 +36164,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Student_Student__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Student_AddStudent__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Student_EditStudent__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Navbar_Navbar__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Navbar_Navbar__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Student_StudentList__ = __webpack_require__(59);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36181,190 +36179,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-
 var Main = function (_Component) {
   _inherits(Main, _Component);
 
   function Main() {
     _classCallCheck(this, Main);
 
-    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
-
-    _this.state = {
-      students: [],
-      currentStudent: null,
-      editButtonClicked: false
-    };
-
-    _this.handleAddStudent = _this.handleAddStudent.bind(_this);
-    _this.handleUpdate = _this.handleUpdate.bind(_this);
-    _this.handleEdit = _this.handleEdit.bind(_this);
-    _this.handleDelete = _this.handleDelete.bind(_this);
-    _this.handleDeleteConfirmation = _this.handleDeleteConfirmation.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
   }
 
   _createClass(Main, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      /* fetch API in action */
-      fetch('/api/student').then(function (response) {
-        return response.json();
-      }).then(function (students) {
-        //Fetched student is stored in the state
-        _this2.setState({ students: students });
-      });
-    }
-  }, {
-    key: "renderStudents",
-    value: function renderStudents() {
-      var _this3 = this;
-
-      return this.state.students.map(function (student) {
-        return (
-          /* When using list you need to specify a key
-          * attribute that is unique for each list item
-          */
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "li",
-            { key: student.id, onClick: function onClick() {
-                return _this3.handleClick(student);
-              } },
-            student.firstName
-          )
-        );
-      });
-    }
-  }, {
-    key: "handleClick",
-    value: function handleClick(student) {
-      this.state.editButtonClicked = false;
-      this.setState({ currentStudent: student });
-    }
-  }, {
-    key: "handleAddStudent",
-    value: function handleAddStudent(student) {
-      var _this4 = this;
-
-      student.age = Number(student.age);
-
-      fetch('api/student', {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(student)
-      }).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this4.setState(function (prevState) {
-          return {
-            students: prevState.students.concat(data),
-            currentStudent: data
-          };
-        });
-      });
-    }
-  }, {
-    key: "handleDelete",
-    value: function handleDelete() {
-      var _this5 = this;
-
-      var currentStudent = this.state.currentStudent;
-      fetch('api/student/' + this.state.currentStudent.id, { method: "delete" }).then(function (response) {
-        /* Duplicate the array and filter out the item to be deleted */
-        var newStudents = _this5.state.students.filter(function (item) {
-          return item !== currentStudent;
-        });
-
-        _this5.setState({ students: newStudents, currentStudent: null });
-      });
-    }
-  }, {
-    key: "handleDeleteConfirmation",
-    value: function handleDeleteConfirmation(event) {
-      if (confirm("Are you sure you want to delete it?")) {
-        this.handleDelete();
-      }
-    }
-  }, {
-    key: "handleEdit",
-    value: function handleEdit() {
-      this.setState({ editButtonClicked: true });
-    }
-  }, {
-    key: "handleUpdate",
-    value: function handleUpdate(student) {
-      var _this6 = this;
-
-      var currentStudent = this.state.currentStudent;
-      fetch('api/student/' + currentStudent.id, {
-        method: "put",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(student)
-      }).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        /** updating the state */
-        var newStudents = _this6.state.students.filter(function (item) {
-          return item !== currentStudent;
-        });
-        _this6.setState(function (prevState) {
-          return {
-            students: newStudents.concat(student),
-            currentStudent: student
-          };
-        });
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         "div",
         null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Navbar_Navbar__["a" /* default */], null),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "div",
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "h3",
-            null,
-            "All Students (",
-            this.state.students.length,
-            ")"
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "ul",
-            null,
-            this.renderStudents()
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "div",
-          null,
-          this.state.editButtonClicked === true ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Student_EditStudent__["a" /* default */], {
-            student: this.state.currentStudent,
-            update: this.handleUpdate
-          }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Student_Student__["a" /* default */], {
-              handleDeleteConfirmation: this.handleDeleteConfirmation,
-              student: this.state.currentStudent,
-              deleteStudent: this.handleDelete,
-              handleEdit: this.handleEdit
-            }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Student_AddStudent__["a" /* default */], { onAdd: this.handleAddStudent })
-          )
-        )
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Navbar_Navbar__["a" /* default */], null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Student_StudentList__["a" /* default */], null)
       );
     }
   }]);
@@ -57632,62 +57463,88 @@ var EditStudent = function (_Component) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_navbar_css__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_navbar_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__css_navbar_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Student_StudentList__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__css_navbar_css__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__css_navbar_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__css_navbar_css__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        { className: 'navbar' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'container' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+
+var Navbar = function (_React$Component) {
+    _inherits(Navbar, _React$Component);
+
+    function Navbar() {
+        _classCallCheck(this, Navbar);
+
+        return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).apply(this, arguments));
+    }
+
+    _createClass(Navbar, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { className: 'logo' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '/images/logo.png', width: '90px' })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'nav',
-                null,
+                { className: 'navbar' },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'ul',
-                    null,
+                    'div',
+                    { className: 'container' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'a',
-                            { href: '/' },
-                            'Home'
-                        )
+                        'div',
+                        { className: 'logo' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '/images/logo.png', width: '90px' })
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
+                        'nav',
                         null,
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'a',
-                            { href: '#' },
-                            'Classes'
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'li',
-                        null,
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'a',
-                            { href: '/students' },
-                            'Students'
+                            'ul',
+                            null,
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'li',
+                                null,
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { href: '/' },
+                                    'Home'
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'li',
+                                null,
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { href: '/' },
+                                    'Classes'
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'li',
+                                null,
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'a',
+                                    { href: '/' },
+                                    'Students'
+                                )
+                            )
                         )
                     )
                 )
-            )
-        )
-    );
-});
+            );
+        }
+    }]);
+
+    return Navbar;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (Navbar);
 
 /***/ }),
 /* 52 */
@@ -58275,6 +58132,225 @@ module.exports = function (css) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 58 */,
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Student__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__AddStudent__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__EditStudent__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Navbar_Navbar__ = __webpack_require__(51);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+
+var StudentList = function (_Component) {
+  _inherits(StudentList, _Component);
+
+  function StudentList() {
+    _classCallCheck(this, StudentList);
+
+    var _this = _possibleConstructorReturn(this, (StudentList.__proto__ || Object.getPrototypeOf(StudentList)).call(this));
+
+    _this.state = {
+      students: [],
+      currentStudent: null,
+      editButtonClicked: false
+    };
+
+    _this.handleAddStudent = _this.handleAddStudent.bind(_this);
+    _this.handleUpdate = _this.handleUpdate.bind(_this);
+    _this.handleEdit = _this.handleEdit.bind(_this);
+    _this.handleDelete = _this.handleDelete.bind(_this);
+    _this.handleDeleteConfirmation = _this.handleDeleteConfirmation.bind(_this);
+    return _this;
+  }
+
+  _createClass(StudentList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      /* fetch API in action */
+      fetch('/api/student').then(function (response) {
+        return response.json();
+      }).then(function (students) {
+        //Fetched student is stored in the state
+        _this2.setState({ students: students });
+      });
+    }
+  }, {
+    key: "renderStudents",
+    value: function renderStudents() {
+      var _this3 = this;
+
+      return this.state.students.map(function (student) {
+        return (
+          /* When using list you need to specify a key
+          * attribute that is unique for each list item
+          */
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "li",
+            { key: student.id, onClick: function onClick() {
+                return _this3.handleClick(student);
+              } },
+            student.firstName
+          )
+        );
+      });
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(student) {
+      this.state.editButtonClicked = false;
+      this.setState({ currentStudent: student });
+    }
+  }, {
+    key: "handleAddStudent",
+    value: function handleAddStudent(student) {
+      var _this4 = this;
+
+      student.age = Number(student.age);
+
+      fetch('api/student', {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(student)
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this4.setState(function (prevState) {
+          return {
+            students: prevState.students.concat(data),
+            currentStudent: data
+          };
+        });
+      });
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete() {
+      var _this5 = this;
+
+      var currentStudent = this.state.currentStudent;
+      fetch('api/student/' + this.state.currentStudent.id, { method: "delete" }).then(function (response) {
+        /* Duplicate the array and filter out the item to be deleted */
+        var newStudents = _this5.state.students.filter(function (item) {
+          return item !== currentStudent;
+        });
+
+        _this5.setState({ students: newStudents, currentStudent: null });
+      });
+    }
+  }, {
+    key: "handleDeleteConfirmation",
+    value: function handleDeleteConfirmation(event) {
+      if (confirm("Are you sure you want to delete it?")) {
+        this.handleDelete();
+      }
+    }
+  }, {
+    key: "handleEdit",
+    value: function handleEdit() {
+      this.setState({ editButtonClicked: true });
+    }
+  }, {
+    key: "handleUpdate",
+    value: function handleUpdate(student) {
+      var _this6 = this;
+
+      var currentStudent = this.state.currentStudent;
+      fetch('api/student/' + currentStudent.id, {
+        method: "put",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(student)
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        /** updating the state */
+        var newStudents = _this6.state.students.filter(function (item) {
+          return item !== currentStudent;
+        });
+        _this6.setState(function (prevState) {
+          return {
+            students: newStudents.concat(student),
+            currentStudent: student
+          };
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "h3",
+            null,
+            "All Students (",
+            this.state.students.length,
+            ")"
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "ul",
+            null,
+            this.renderStudents()
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "div",
+          null,
+          this.state.editButtonClicked === true ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__EditStudent__["a" /* default */], {
+            student: this.state.currentStudent,
+            update: this.handleUpdate
+          }) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            null,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Student__["a" /* default */], {
+              handleDeleteConfirmation: this.handleDeleteConfirmation,
+              student: this.state.currentStudent,
+              deleteStudent: this.handleDelete,
+              handleEdit: this.handleEdit
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__AddStudent__["a" /* default */], { onAdd: this.handleAddStudent })
+          )
+        )
+      );
+    }
+  }]);
+
+  return StudentList;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (StudentList);
 
 /***/ })
 /******/ ]);
