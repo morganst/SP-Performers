@@ -5,10 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 
-class Student extends Model
+class Instructor extends Model
 {
-    protected $fillable = ['firstName', 'lastName','DOB'];
-    protected $table = 'Students';
+    protected $table = 'Instructors';
 
     public $primaryKey = 'id';
 
