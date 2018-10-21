@@ -28,12 +28,12 @@ class StudentController extends Controller
         $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
-            'DOB' => 'required',
-            'class' => 'required',
-            'notes',
-            'gender' => 'required',
-            'primaryClass' => 'required',
-            'reference',
+            'center' => 'required',
+            'guitar' => 'nullable',
+            'piano' => 'nullable',
+            'dance' => 'nullable',
+            'summerCamp' => 'nullable',
+            'proProject' => 'nullable',
         ]);
 
         $instructor = new Instructor;
@@ -74,12 +74,12 @@ class StudentController extends Controller
         $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
-            'DOB' => 'required',
-            'class' => 'required',
-            'notes',
-            'gender' => 'required',
-            'primaryClass' => 'required',
-            'reference',
+            'center' => 'required',
+            'guitar' => 'nullable',
+            'piano' => 'nullable',
+            'dance' => 'nullable',
+            'summerCamp' => 'nullable',
+            'proProject' => 'nullable',
         ]);
 
         $instructor = Instructor::find($id);
