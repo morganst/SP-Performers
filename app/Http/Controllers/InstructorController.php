@@ -1,11 +1,10 @@
 <?php
-/* 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Instructor;
 
-class StudentController extends Controller
+class InstructorController extends Controller
 {
     public function __construct()
     {
@@ -39,14 +38,9 @@ class StudentController extends Controller
         $instructor = new Instructor;
         $instructor->firstName = $request->input('firstName');
         $instructor->lastName = $request->input('lastName');
-        $instructor->DOB = $request->input('DOB');
-        $instructor->class = $request->input('class');
-        $instructor->notes = $request->input('notes');
-        $instructor->gender = $request->input('gender');
-        $instructor->primaryClass = $request->input('primaryClass');
-        $instructor->reference = $request->input('reference');
+        $instructor->center = $request->input('center');
        
-        $instructor->user_id = auth()->user()->id;
+        //$instructor->user_id = auth()->user()->id;
         $instructor->save();
 
         return redirect('/instructors')->with('success', 'Instructor Created!');
@@ -62,10 +56,10 @@ class StudentController extends Controller
     {
         $ins = Instructor::find($id);
 
-        if(auth()->user()->id !== $ins->user_id) {
+        /*if(auth()->user()->id !== $ins->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
         }
-
+        */
         return view('instructors.edit')->with('ins', $ins);
     }
 
@@ -85,12 +79,7 @@ class StudentController extends Controller
         $instructor = Instructor::find($id);
         $instructor->firstName = $request->input('firstName');
         $instructor->lastName = $request->input('lastName');
-        $instructor->DOB = $request->input('DOB');
-        $instructor->class = $request->input('class');
-        $instructor->notes = $request->input('notes');
-        $instructor->gender = $request->input('gender');
-        $instructor->primaryClass = $request->input('primaryClass');
-        $instructor->reference = $request->input('reference');
+        $instructor->center = $request->input('center');
        
         $instructor->save();
 
@@ -101,13 +90,12 @@ class StudentController extends Controller
     {
         $ins = Instructor::find($id);
 
-        if(auth()->user()->id !== $ins->user_id) {
+        /*if(auth()->user()->id !== $ins->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
         }
-
+        */
         $ins->delete();
 
         return redirect('/instructors')->with('success', 'Instructor Deleted!');
     }
 }
- */
