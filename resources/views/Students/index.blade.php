@@ -34,17 +34,11 @@
                      <div class="btn-group">
                          <a class="btn btn-secondary" href="/students/{{$student->id}}" role="button">View</a>
                          
-                         @if(Auth::user()->id == $student->user_id)
                              <a class="btn btn-primary active" href="/students/{{$student->id}}/edit" role="button">Edit</a>
-                             {!!Form::open(['action' => ['VolunteersController@destroy', $student->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
+                             {!!Form::open(['action' => ['StudentController@destroy', $student->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
                                  {{Form::hidden('_method', 'DELETE')}}
                                  {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                              {!!Form::close()!!}
-                         @else
-                             <a class="btn btn-primary disabled" style="color: white" role="button" aria-disabled="true">Edit</a>
-                             <a class="btn btn-danger disabled" style="color: white" role="button" aria-disabled="true">Delete</a>
-                         @endif
- 
                      </div>
                  </div>
              </div>

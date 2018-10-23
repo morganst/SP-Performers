@@ -24,10 +24,10 @@ class CreateStudentsTable extends Migration
             $table->boolean('dance')->default(false);
             $table->boolean('summerCamp')->default(false);
             $table->boolean('proProject')->default(false);
-            $table->mediumText('notes');
+            $table->mediumText('notes')->nullable();
             $table->string('gender');
             $table->string('primaryClass');
-            $table->string('reference');
+            $table->string('reference')->nullable();
         });
     }
 

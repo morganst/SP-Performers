@@ -103,9 +103,9 @@ class StudentController extends Controller
     {
         $stu = Student::find($id);
 
-        if(auth()->user()->id !== $stu->user_id) {
+        /*if(auth()->user()->id !== $stu->user_id) {
             return redirect('students')->with('error', 'Unauthorized page');
-        }
+        }*/
 
         return view('students.edit')->with('stu', $stu);
     }
@@ -145,9 +145,9 @@ class StudentController extends Controller
     {
         $stu = Student::find($id);
 
-        if(auth()->user()->id !== $stu->user_id) {
+        /*if(auth()->user()->id !== $stu->user_id) {
             return redirect('students')->with('error', 'Unauthorized page');
-        }
+        }*/
 
         $stu->delete();
 
