@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Pretest;
+
 
 class StudentController extends Controller
 {
@@ -108,6 +110,66 @@ class StudentController extends Controller
         }*/
 
         return view('students.edit')->with('stu', $stu);
+    }
+
+    public function pretest($id)
+    {
+        $stu = Student::find($id);
+
+        return view('students.pretest')->with('stu', $stu);
+    }
+
+    public function pretestUpdate($id)
+    {
+        $this->validate($request, [
+            'Q1' => 'required',
+            'Q2' => 'required',
+            'Q3' => 'required',
+            'Q4' => 'required',
+            'Q5' => 'required',
+            'Q6' => 'required',
+            'Q7' => 'required',
+            'Q8' => 'required',
+            'Q9' => 'required',
+            'Q10' => 'required',
+            'Q11' => 'required',
+            'Q12' => 'required',
+            'Q13' => 'required',
+            'Q14' => 'required',
+            'Q15' => 'required',
+            'Q16' => 'required',
+            'Q17' => 'required',
+            'Q18' => 'required',
+            'Q19' => 'required',
+            'Q20' => 'required'
+        ]);
+
+        $pretest = Pretest::find($id);
+        $pretest->Q1 = $request->input('Q1');
+        $pretest->Q2 = $request->input('Q1');
+        $pretest->Q3 = $request->input('Q1');
+        $pretest->Q4 = $request->input('Q1');
+        $pretest->Q5 = $request->input('Q1');
+        $pretest->Q6 = $request->input('Q1');
+        $pretest->Q7 = $request->input('Q1');
+        $pretest->Q8 = $request->input('Q1');
+        $pretest->Q9 = $request->input('Q1');
+        $pretest->Q10 = $request->input('Q1');
+        $pretest->Q11 = $request->input('Q1');
+        $pretest->Q12 = $request->input('Q1');
+        $pretest->Q13 = $request->input('Q1');
+        $pretest->Q14 = $request->input('Q1');
+        $pretest->Q15 = $request->input('Q1');
+        $pretest->Q16 = $request->input('Q1');
+        $pretest->Q17 = $request->input('Q1');
+        $pretest->Q18 = $request->input('Q1');
+        $pretest->Q19 = $request->input('Q1');
+        $pretest->Q20 = $request->input('Q1');
+
+       
+        $pretest->save();
+
+        return redirect('/students')->with('success', 'Student Updated!');
     }
 
     public function update(Request $request, $id)

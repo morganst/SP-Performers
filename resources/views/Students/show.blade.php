@@ -15,14 +15,17 @@
         </div>
 
         <hr>
-        <div>First Name: {{$stu->firstName}}</div>
-        <div>Last Name: {{$stu->lastName}}</div>
-        <div>Date of Birth: {{$stu->DOB}}</div>
-        <div>Gender: {{$stu->gender}}</div>
-        <div>Primary Class: {{$stu->primaryClass}}</div>
-        <div>Notes: {{$stu->notes}}</div>
-        <div>Refernce: {{$stu->reference}}</div>
-    <hr>
+            <div>First Name: {{$stu->firstName}}</div>
+            <div>Last Name: {{$stu->lastName}}</div>
+            <div>Date of Birth: {{$stu->DOB}}</div>
+            <div>Gender: {{$stu->gender}}</div>
+            <div>Primary Class: {{$stu->primaryClass}}</div>
+            <div>Notes: {{$stu->notes}}</div>
+            <div>Reference: {{$stu->reference}}</div>
+        <hr>
+        <p>
+        <a href ="/students/{{$stu->id}}/pretest" class="" role="button">Complete Pre-Test</a>
+        </p>
 <small>Created: {{$stu->created_at}}</small>
         <div class="text-right">
             <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
