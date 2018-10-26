@@ -15,17 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/students', function () {
-    return view('students/index');
-});
+Route::resource('students', 'StudentController');
+Route::resource('instructors', 'InstructorController');
 
 Auth::routes();
 
-Route::get('/', [
-    'middleware' => 'auth',
-    'uses' => 'HomeController@index'
-]);
-Route::get('/students', [
-    'middleware' => 'auth',
-    'uses' => 'HomeController@index'
-]);
+Route::get('/home', 'HomeController@index')->name('home');
