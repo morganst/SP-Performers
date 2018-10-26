@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
+Route::resource('pretest', 'PretestController');
 
 Auth::routes();
 

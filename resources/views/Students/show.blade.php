@@ -24,7 +24,7 @@
             <div>Reference: {{$stu->reference}}</div>
         <hr>
         <p>
-        <a href ="/students/{{$stu->id}}/pretest" class="" role="button">Complete Pre-Test</a>
+        <a href ="/pretest/{{$stu->id}}" class="" role="button">Complete Pre-Test</a>
         </p>
 <small>Created: {{$stu->created_at}}</small>
         <div class="text-right">
