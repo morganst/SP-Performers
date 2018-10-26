@@ -18,6 +18,8 @@ class StudentsTableSeeder extends Seeder
             Student::create([
                 'firstName' => $faker->firstName,
                 'lastName' => $faker->lastName,
+                'DOB' => $faker->date,
+                'primaryClass' => $faker->realText(20)
             ]);
         }
     }
