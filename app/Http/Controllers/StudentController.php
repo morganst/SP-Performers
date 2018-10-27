@@ -71,11 +71,6 @@ class StudentController extends Controller
             'gender' => 'required',
             'primaryClass' => 'required',
             'reference' => 'nullable',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
         ]);
 
         $student = new Student;
@@ -120,11 +115,6 @@ class StudentController extends Controller
             'gender' => 'required',
             'primaryClass' => 'required',
             'reference' => 'nullable',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
         ]);
 
         $student = Student::find($id);

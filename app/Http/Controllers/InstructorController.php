@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Instructor;
+use App\User;
 
 class InstructorController extends Controller
 {
@@ -13,10 +13,10 @@ class InstructorController extends Controller
 
     public function index()
     {
-        $instructors = Instructor::orderBy('created_at', 'des')->paginate(10);
-        return view('instructors.index')->with('instructors', $instructors);
+        $users = User::orderBy('created_at', 'des')->paginate(10);
+        return view('instructors.index')->with('users', $users);
     }
-
+    /*
     public function create()
     {
         return view('instructors.create');
@@ -28,33 +28,28 @@ class InstructorController extends Controller
             'firstName' => 'required',
             'lastName' => 'required',
             'center' => 'required',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
         ]);
 
-        $instructor = new Instructor;
-        $instructor->firstName = $request->input('firstName');
-        $instructor->lastName = $request->input('lastName');
-        $instructor->center = $request->input('center');
+        $user = new User;
+        $user->firstName = $request->input('firstName');
+        $user->lastName = $request->input('lastName');
+        $user->center = $request->input('center');
        
-        //$instructor->user_id = auth()->user()->id;
-        $instructor->save();
+        //$user->user_id = auth()->user()->id;
+        $user->save();
 
-        return redirect('/instructors')->with('success', 'Instructor Created!');
+        return redirect('/instructors')->with('success', 'User Created!');
     }
-
+    */
     public function show($id)
     {
-        $ins = Instructor::find($id);
+        $ins = User::find($id);
         return view('instructors.show')->with('ins', $ins);
     }
 
     public function edit($id)
     {
-        $ins = Instructor::find($id);
+        $ins = User::find($id);
 
         /*if(auth()->user()->id !== $ins->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
@@ -69,26 +64,21 @@ class InstructorController extends Controller
             'firstName' => 'required',
             'lastName' => 'required',
             'center' => 'required',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
         ]);
 
-        $instructor = Instructor::find($id);
-        $instructor->firstName = $request->input('firstName');
-        $instructor->lastName = $request->input('lastName');
-        $instructor->center = $request->input('center');
+        $user = User::find($id);
+        $user->firstName = $request->input('firstName');
+        $user->lastName = $request->input('lastName');
+        $user->center = $request->input('center');
        
-        $instructor->save();
+        $user->save();
 
-        return redirect('/instructors')->with('success', 'Instructor Updated!');
+        return redirect('/instructors')->with('success', 'User Updated!');
     }
 
     public function destroy($id)
     {
-        $ins = Instructor::find($id);
+        $ins = User::find($id);
 
         /*if(auth()->user()->id !== $ins->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
@@ -96,6 +86,6 @@ class InstructorController extends Controller
         */
         $ins->delete();
 
-        return redirect('/instructors')->with('success', 'Instructor Deleted!');
+        return redirect('/instructors')->with('success', 'User Deleted!');
     }
 }

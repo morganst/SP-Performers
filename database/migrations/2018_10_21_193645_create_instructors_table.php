@@ -18,11 +18,6 @@ class CreateInstructorsTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('center');
-            $table->boolean('guitar')->default(false);
-            $table->boolean('piano')->default(false);
-            $table->boolean('dance')->default(false);
-            $table->boolean('summerCamp')->default(false);
-            $table->boolean('proProject')->default(false);
             $table->timestamps();
         });
     }
