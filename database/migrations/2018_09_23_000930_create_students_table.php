@@ -25,7 +25,7 @@ class CreateStudentsTable extends Migration
             $table->boolean('summerCamp')->default(false);
             $table->boolean('proProject')->default(false);
             $table->mediumText('notes')->nullable();
-            $table->string('gender');
+            $table->string('gender')->default('Male');
             $table->string('primaryClass');
             $table->string('reference')->nullable();
         });
