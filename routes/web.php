@@ -21,3 +21,8 @@ Route::resource('instructors', 'InstructorController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+{
+Route::match(['get', 'post'], '/register', 'HomeController@admin');
+});
