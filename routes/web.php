@@ -23,8 +23,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/register', ['middleware' => 'admin', function () {
-
-}]);
+Route::group(['middleware'=>['auth','admin']], function() {
+    Route::get('/create', function(){
+        return view('instructors/create');
+    });
+});
 
 Route::get('/logout', 'HomeController@logout');

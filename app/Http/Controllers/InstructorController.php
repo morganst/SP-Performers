@@ -16,31 +16,7 @@ class InstructorController extends Controller
         $users = User::orderBy('created_at', 'des')->paginate(10);
         return view('instructors.index')->with('users', $users);
     }
-    /*
-    public function create()
-    {
-        return view('instructors.create');
-    }
-
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'center' => 'required',
-        ]);
-
-        $user = new User;
-        $user->firstName = $request->input('firstName');
-        $user->lastName = $request->input('lastName');
-        $user->center = $request->input('center');
-       
-        //$user->user_id = auth()->user()->id;
-        $user->save();
-
-        return redirect('/instructors')->with('success', 'User Created!');
-    }
-    */
+    
     public function show($id)
     {
         $ins = User::find($id);
@@ -54,8 +30,8 @@ class InstructorController extends Controller
         /*if(auth()->user()->id !== $ins->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
         }
-        */
-        return view('instructors.edit')->with('ins', $ins);
+        
+        return view('instructors.edit')->with('ins', $ins);*/
     }
 
     public function update(Request $request, $id)
