@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/unauthorized', function () {
+    return view('unauthorized');
+});
+
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 
@@ -22,7 +26,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
-{
-Route::match(['get', 'post'], '/register', 'HomeController@admin');
-});
+Route::get('/register', ['middleware' => 'admin', function () {
+
+}]);
+
+Route::get('/logout', 'HomeController@logout');

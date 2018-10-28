@@ -26,8 +26,9 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function admin(Request $req)
+    public function logout () 
     {
-        return view('middleware')->withMessage('Admin');
+        auth()->logout();
+        return redirect('/login');
     }
 }

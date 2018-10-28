@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class AdminMiddleware
 {
@@ -15,10 +16,10 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->role != 'admin')
+        if (Auth::user() && Auth::user()->role == 1) 
         {
-        return new Response(view('unauthorized')->with('role', 'ADMIN'));
+            return $next($request);
         }
-        return $next($request);
+    return redirect('/unauthorized');
     }
 }
