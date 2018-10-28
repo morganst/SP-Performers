@@ -19,34 +19,38 @@ class InstructorController extends Controller
     
     public function show($id)
     {
-        $ins = User::find($id);
-        return view('instructors.show')->with('ins', $ins);
+        $user = User::find($id);
+        return view('instructors.show')->with('ins', $user);
     }
 
     public function edit($id)
     {
-        $ins = User::find($id);
+        $user = User::find($id);
 
-        /*if(auth()->user()->id !== $ins->user_id) {
+        /*if(auth()->user()->id !== $user->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
         }
-        
-        return view('instructors.edit')->with('ins', $ins);*/
+        */
+        return view('instructors.edit')->with('user', $user);
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'center' => 'required',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'center' => 'nullable',
+            'email' => 'required|string|email|max:255|unique:users',
+            'role' => 'required',
         ]);
 
         $user = User::find($id);
         $user->firstName = $request->input('firstName');
         $user->lastName = $request->input('lastName');
         $user->center = $request->input('center');
-       
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+
         $user->save();
 
         return redirect('/instructors')->with('success', 'User Updated!');
@@ -54,13 +58,13 @@ class InstructorController extends Controller
 
     public function destroy($id)
     {
-        $ins = User::find($id);
+        $user = User::find($id);
 
-        /*if(auth()->user()->id !== $ins->user_id) {
+        /*if(auth()->user()->id !== $user->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
         }
         */
-        $ins->delete();
+        $user->delete();
 
         return redirect('/instructors')->with('success', 'User Deleted!');
     }
