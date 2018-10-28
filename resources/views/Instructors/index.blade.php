@@ -5,7 +5,7 @@
     <div style="padding-bottom: 1em">Here you can view and edit instructors</div> 
     <br>
     @if(Auth::user()->role==1)
-        <div class="text-right"><a href="/register/" class="btn btn-md btn-primary">Add New</a></div>
+        <div class="text-right"><a href="/create/" class="btn btn-md btn-primary">Add New</a></div>
     @endif
     <hr>
     @if(count($users) > 0)
