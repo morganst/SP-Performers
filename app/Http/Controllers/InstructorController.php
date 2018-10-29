@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Instructor;
+use App\User;
 
 class InstructorController extends Controller
 {
@@ -13,89 +13,59 @@ class InstructorController extends Controller
 
     public function index()
     {
-        $instructors = Instructor::orderBy('created_at', 'des')->paginate(10);
-        return view('instructors.index')->with('instructors', $instructors);
+        $users = User::orderBy('created_at', 'des')->paginate(10);
+        return view('instructors.index')->with('users', $users);
     }
-
-    public function create()
-    {
-        return view('instructors.create');
-    }
-
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'center' => 'required',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
-        ]);
-
-        $instructor = new Instructor;
-        $instructor->firstName = $request->input('firstName');
-        $instructor->lastName = $request->input('lastName');
-        $instructor->center = $request->input('center');
-       
-        //$instructor->user_id = auth()->user()->id;
-        $instructor->save();
-
-        return redirect('/instructors')->with('success', 'Instructor Created!');
-    }
-
+    
     public function show($id)
     {
-        $ins = Instructor::find($id);
-        return view('instructors.show')->with('ins', $ins);
+        $user = User::find($id);
+        return view('instructors.show')->with('ins', $user);
     }
 
     public function edit($id)
     {
-        $ins = Instructor::find($id);
+        $user = User::find($id);
 
-        /*if(auth()->user()->id !== $ins->user_id) {
+        /*if(auth()->user()->id !== $user->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
         }
         */
-        return view('instructors.edit')->with('ins', $ins);
+        return view('instructors.edit')->with('user', $user);
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'center' => 'required',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
+            'center' => 'nullable',
+            'email' => 'required|string|email|max:255|unique:users',
+            'role' => 'required',
         ]);
 
-        $instructor = Instructor::find($id);
-        $instructor->firstName = $request->input('firstName');
-        $instructor->lastName = $request->input('lastName');
-        $instructor->center = $request->input('center');
-       
-        $instructor->save();
+        $user = User::find($id);
+        $user->firstName = $request->input('firstName');
+        $user->lastName = $request->input('lastName');
+        $user->center = $request->input('center');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
 
-        return redirect('/instructors')->with('success', 'Instructor Updated!');
+        $user->save();
+
+        return redirect('/instructors')->with('success', 'User Updated!');
     }
 
     public function destroy($id)
     {
-        $ins = Instructor::find($id);
+        $user = User::find($id);
 
-        /*if(auth()->user()->id !== $ins->user_id) {
+        /*if(auth()->user()->id !== $user->user_id) {
             return redirect('instructors')->with('error', 'Unauthorized page');
         }
         */
-        $ins->delete();
+        $user->delete();
 
-        return redirect('/instructors')->with('success', 'Instructor Deleted!');
+        return redirect('/instructors')->with('success', 'User Deleted!');
     }
 }
