@@ -32,3 +32,4 @@ Route::group(['middleware'=>['auth','admin']], function() {
 
 Route::get('/logout', 'HomeController@logout');
 
+Route::resource('/dailysurvey','DailySurveyController');
