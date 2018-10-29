@@ -21,3 +21,5 @@ Route::resource('instructors', 'InstructorController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/dailysurvey','DailySurveyController');
