@@ -18,6 +18,7 @@ Route::get('/unauthorized', function () {
 Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
+Route::resource('classes', 'ClassController');
 
 Auth::routes();
 
