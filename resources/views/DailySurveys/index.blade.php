@@ -1,14 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>THis is the Class page</h1>
+    <h1 class="page-title">This is the Class page</h1>
 
-    <a href="/dailysurvey/create">To Survey page</a>
+    <div class="inner-nav">
+
+        <button><a href="/dailysurvey/create">Start Surveys</a></button>
+    </div>
+
+    <div>
+        <h2>dropdown here</h2>
+        <select name="class-selector">
+            <option value="dance">dance</option>
+            <option value="art">art</option>
+            <option value="music">music</option>
+        </select>
+        {{$data['class'] ='bob'}}
+
+        {{$data['class']}}
+    </div>
+
+    <div class="class-layout">
+
+        <div class="class-layout-left">
+            <h2>Student Name</h2>
+        </div>
+
+        <div class="class-layout-right">
+            <div class="class-layout-right-inner">
+                <button>Present</button>
+                <button>Absent</button>
+                <button>Individual Survey</button>
+            </div>
+
+        </div>
+
+    </div>
 
     <hr>
-    <h2>All Surveys in DB</h2>
+    <div class="all-surveys">
+    <h2 >All Surveys in DB</h2>
     @foreach($dailySurveys as $row)
-        <div>
+        <div >
             <ul>
                 <li>Daily survey ID: {{$row['id']}}</li>
                 <li>StudentID: {{$row['StudentID']}}</li>
@@ -24,5 +57,5 @@
             </ul>
         </div>
         @endforeach
-
+    </div>
 @endsection

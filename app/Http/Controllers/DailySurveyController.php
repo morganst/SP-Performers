@@ -21,6 +21,8 @@ class DailySurveyController extends Controller
     {
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         return view('DailySurveys.index',compact('dailySurveys'));
+
+
     }
 
     /**
@@ -30,6 +32,7 @@ class DailySurveyController extends Controller
      */
     public function create()
     {
+        //
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         return view('DailySurveys.create',compact('dailySurveys'));
     }
