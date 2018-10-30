@@ -19,6 +19,7 @@ Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
+Route::get('classes/{id}/add', 'ClassController@add');
 
 Auth::routes();
 
@@ -31,5 +32,6 @@ Route::group(['middleware'=>['auth','admin']], function() {
 });
 
 Route::get('/logout', 'HomeController@logout');
+Route::post('/attach/{id}', 'ClassController@attach');
 
 Route::resource('/dailysurvey','DailySurveyController');

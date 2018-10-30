@@ -4,47 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Classes;
+use App\User;
 
 class ClassController extends Controller
 {
-    /*
-    public function index()
-    {
-        return Class::all();
-    }
- 
-    public function show(Class $class)
-    {
-        return $class;
-    }
- 
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-        'firstName' => 'required',
-        'lastName' => 'required',
-        'age' => 'integer'
-    ]);
-        $class = Class::create($request->all());
- 
-        return response()->json($class, 201);
-    }
- 
-    public function update(Request $request, Class $class)
-    {
-        $class->update($request->all());
- 
-        return response()->json($class, 200);
-    }
- 
-    public function delete(Class $class)
-    {
-        $class->delete();
- 
-        return response()->json(null, 204);
-    }
-    */
-    
     public function __construct()
     {
         $this->middleware('auth');
@@ -120,6 +83,20 @@ class ClassController extends Controller
 
         $cla->delete();
 
+        return redirect('/classes')->with('success', 'Class Deleted!');
+    }
+
+    public function add($id)
+    {
+        $cla = Classes::find($id);
+        $users = User::all();
+        return view('classes.add', compact(['cla', 'users']));    
+    }
+
+    public function attach($id)
+    {
+        $cla = Classes::find($id);
+        $cla->user()->attach($user_id);
         return redirect('/classes')->with('success', 'Class Deleted!');
     }
 }
