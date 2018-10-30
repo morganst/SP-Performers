@@ -19,11 +19,6 @@ class CreateStudentsTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->date('DOB');
-            $table->boolean('guitar')->default(false);
-            $table->boolean('piano')->default(false);
-            $table->boolean('dance')->default(false);
-            $table->boolean('summerCamp')->default(false);
-            $table->boolean('proProject')->default(false);
             $table->mediumText('notes')->nullable();
             $table->string('gender')->default('Male');
             $table->string('primaryClass');

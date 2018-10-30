@@ -7,44 +7,6 @@ use App\Student;
 
 class StudentController extends Controller
 {
-    /*
-    public function index()
-    {
-        return Student::all();
-    }
- 
-    public function show(Student $student)
-    {
-        return $student;
-    }
- 
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-        'firstName' => 'required',
-        'lastName' => 'required',
-        'age' => 'integer'
-    ]);
-        $student = Student::create($request->all());
- 
-        return response()->json($student, 201);
-    }
- 
-    public function update(Request $request, Student $student)
-    {
-        $student->update($request->all());
- 
-        return response()->json($student, 200);
-    }
- 
-    public function delete(Student $student)
-    {
-        $student->delete();
- 
-        return response()->json(null, 204);
-    }
-    */
-    
     public function __construct()
     {
         $this->middleware('auth');
@@ -71,11 +33,6 @@ class StudentController extends Controller
             'gender' => 'required',
             'primaryClass' => 'required',
             'reference' => 'nullable',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
         ]);
 
         $student = new Student;
@@ -120,11 +77,6 @@ class StudentController extends Controller
             'gender' => 'required',
             'primaryClass' => 'required',
             'reference' => 'nullable',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
         ]);
 
         $student = Student::find($id);
