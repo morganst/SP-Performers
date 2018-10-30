@@ -19,7 +19,7 @@ Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
-
+Route::resource('notes', 'NotesController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
