@@ -30,6 +30,7 @@ class User extends Authenticatable
     ];
 
     public function classes() {
+
         return $this->belongsToMany('App\Classes');
     }
 }

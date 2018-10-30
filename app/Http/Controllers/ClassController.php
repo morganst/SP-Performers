@@ -93,10 +93,17 @@ class ClassController extends Controller
         return view('classes.add', compact(['cla', 'users']));    
     }
 
-    public function attach($id)
+    public function attach($class_id,$user_id)
     {
-        $cla = Classes::find($id);
+        $cla = Classes::find($class_id);
         $cla->user()->attach($user_id);
+        return redirect('/classes')->with('success', 'Class Deleted!');
+    }
+
+    public function detach($class_id,$user_id)
+    {
+        $cla = Classes::find($class_id);
+        $cla->user()->detach($user_id);
         return redirect('/classes')->with('success', 'Class Deleted!');
     }
 }

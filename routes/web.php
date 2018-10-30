@@ -32,6 +32,8 @@ Route::group(['middleware'=>['auth','admin']], function() {
 });
 
 Route::get('/logout', 'HomeController@logout');
-Route::post('/attach/{id}', 'ClassController@attach');
+
+Route::post('/attach/{user_id}/{classes_id}', 'ClassController@attach');
+Route::post('/detach/{user_id}/{classes_id}', 'ClassController@detach');
 
 Route::resource('/dailysurvey','DailySurveyController');
