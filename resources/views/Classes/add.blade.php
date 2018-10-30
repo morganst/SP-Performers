@@ -39,7 +39,7 @@
                     </div>
                 </div>
             @endforeach
-            
+
     <hr>
         <div class="text-right">
             <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>

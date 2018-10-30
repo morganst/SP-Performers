@@ -97,13 +97,14 @@ class ClassController extends Controller
     {
         $cla = Classes::find($class_id);
         $cla->user()->attach($user_id);
-        return redirect('/classes')->with('success', 'Class Deleted!');
+        return back()->with('success', 'Class Deleted!');
     }
 
     public function detach($class_id,$user_id)
     {
         $cla = Classes::find($class_id);
         $cla->user()->detach($user_id);
-        return redirect('/classes')->with('success', 'Class Deleted!');
+        return back()->with('success', 'Class Deleted!');
     }
+
 }
