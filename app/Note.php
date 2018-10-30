@@ -9,7 +9,7 @@ class Note extends Model
    // protected $fillable = ['firstName', 'lastName','DOB'];
     protected $table = 'notes';
 
-    public $primaryKey = 'Nid';
+    public $primaryKey = 'SID';
 
     public $timestamps = true;
 }

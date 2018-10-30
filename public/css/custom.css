@@ -29,3 +29,15 @@ input[type=radio]:checked ~ .check {
     border: 5px solid #0DFF92;
   }
 /* END DAILY SURVEY*/
+/* Hika's stuff*/
+
+.hika-container {
+    background-color: aquamarine;
+    width: 70%;
+    padding: 4em;
+    margin: auto;
+}
+
+
+
+/* End Hika's stuff*/

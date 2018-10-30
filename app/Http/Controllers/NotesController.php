@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+//use App\User;
 use App\Note;
 class NotesController extends Controller
 {
@@ -14,7 +14,10 @@ class NotesController extends Controller
      */
     public function index()
     {
-        return view('instructors.index')->with('users', $users);
+        //$users = User::orderBy('created_at', 'des')->paginate(10);
+        $notes = Note::all();
+    //   return $notes;
+        return view('Notes.index')-> with('notes', $notes);
     }
 
     /**
@@ -44,9 +47,10 @@ class NotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($SID)
     {
-        //
+        $notes = Note::findMany($SID);
+        return view('Notes.show')->with('notes', $notes);
     }
 
     /**
