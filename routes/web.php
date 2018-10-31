@@ -29,6 +29,9 @@ Route::group(['middleware'=>['auth','admin']], function() {
     Route::get('/create', function(){
         return view('instructors/create');
     });
+    Route::get('classes/{classes_id}/add', function(){
+        return view('classes/{id}/add');
+    });
 });
 
 Route::get('/logout', 'HomeController@logout');
