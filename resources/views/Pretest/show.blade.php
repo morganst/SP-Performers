@@ -2,7 +2,7 @@
 
 @section('content')
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
-    <div class="">Students Information:</div>
+    <div class="">Pretest Information:</div>
 
         <div class="text-right">
              

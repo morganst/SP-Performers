@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Pretest;
 
 
 class StudentController extends Controller
@@ -97,7 +98,9 @@ class StudentController extends Controller
     public function show($id)
     {
         $stu = Student::find($id);
-        return view('students.show')->with('stu', $stu);
+        //query to find the pretest 
+        $pretest = Pretest::where('student_id', '=', $id) ->get();
+        return view('students.show')->with('stu', $stu)->with('pretest', $pretest);
     }
 
     public function edit($id)
