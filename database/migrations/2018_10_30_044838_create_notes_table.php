@@ -22,6 +22,7 @@ class CreateNotesTable extends Migration
             $table->integer('SID');
             $table->mediumText('Text');
         });
+       
     }
 
     /**

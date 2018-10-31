@@ -10,6 +10,7 @@ class Note extends Model
     protected $table = 'notes';
 
     public $primaryKey = 'SID';
+    //public $primaryKey = 'NId';
 
     public $timestamps = true;
 }

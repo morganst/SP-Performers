@@ -59,9 +59,11 @@ class NotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($NId)
+    
     {
-        //
+        $notes = Note::find($NId);
+        return view('Notes.edit')->with('notes', $notes);
     }
 
     /**
@@ -71,9 +73,23 @@ class NotesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $NId)
+    { 
+        $this->validate($request, [
+        'Class' => 'required',
+        'Instructor' => 'required',
+        'I/B' => 'nullable',
+        'Text' => 'required',
+       
+    ]);
+    $var="I/B";
+    $notes = Note::find($NId);
+    $notes->Class = $request->input('Class');
+    $notes->Instructor= $request->input('Instructor');
+    $notes->$var= $request->input('I/B');
+    $notes->Text= $request->input('Text');
+    $notes->save();
+  return redirect('/notes')->with('success', 'User Updated!');
     }
 
     /**
