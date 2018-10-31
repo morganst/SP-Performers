@@ -24,7 +24,7 @@ class CreateClassesUserTable extends Migration
             $table->foreign('user_id')->references('id')
             ->on('users')->onDelete('cascade');
 
-            $table->timestamps();
+            $table->primary(['classes_id', 'user_id']);
         });
     }
 

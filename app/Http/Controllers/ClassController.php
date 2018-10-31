@@ -96,7 +96,7 @@ class ClassController extends Controller
     public function attach($class_id,$user_id)
     {
         $cla = Classes::find($class_id);
-        $cla->user()->attach($user_id);
+        $cla->user()->sync($user_id, false);
         return back()->with('success', 'Class Deleted!');
     }
 
