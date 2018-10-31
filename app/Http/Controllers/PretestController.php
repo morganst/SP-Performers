@@ -13,6 +13,11 @@ class PretestController extends Controller
         $this->middleware('auth');
     }
 
+    public function student() 
+    {
+       return $this->belongsTo('App\Student');
+    }
+
     public function show($id)
     {
         $stu = Student::find($id);
@@ -22,33 +27,55 @@ class PretestController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'DOB' => 'required',
-            'notes' => 'nullable',
-            'gender' => 'required',
-            'primaryClass' => 'required',
-            'reference' => 'nullable',
-            'guitar' => 'nullable',
-            'piano' => 'nullable',
-            'dance' => 'nullable',
-            'summerCamp' => 'nullable',
-            'proProject' => 'nullable',
+            'Q1' => 'required',
+            'Q2' => 'required',
+            'Q3' => 'required',
+            'Q4' => 'required',
+            'Q5' => 'required',
+            'Q6' => 'required',
+            'Q7' => 'required',
+            'Q8' => 'required',
+            'Q9' => 'required',
+            'Q10' => 'required',
+            'Q11' => 'required',
+            'Q12' => 'required',
+            'Q13' => 'required',
+            'Q14' => 'required',
+            'Q15' => 'required',
+            'Q16' => 'required',
+            'Q17' => 'required',
+            'Q18' => 'required',
+            'Q19' => 'required',
+            'Q20' => 'required'
         ]);
 
-        $student = new Student;
-        $student->firstName = $request->input('firstName');
-        $student->lastName = $request->input('lastName');
-        $student->DOB = $request->input('DOB');
-        $student->notes = $request->input('notes');
-        $student->gender = $request->input('gender');
-        $student->primaryClass = $request->input('primaryClass');
-        $student->reference = $request->input('reference');
-       
-        //$student->user_id = auth()->user()->id;
-        $student->save();
+        $pretest = new Pretest;
 
-        return redirect('/students')->with('success', 'Student Created!');
+        $pretest->q1 = $request->input('Q1');
+        $pretest->q2 = (int)$request->input('Q2');
+        $pretest->q3 = (int)$request->input('Q3');
+        $pretest->q4 = (int)$request->input('Q4');
+        $pretest->q5 = (int)$request->input('Q5');
+        $pretest->q6 = (int)$request->input('Q6');
+        $pretest->q7 = (int)$request->input('Q7');
+        $pretest->q8 = (int)$request->input('Q8');
+        $pretest->q9 = (int)$request->input('Q9');
+        $pretest->q10 = (int)$request->input('Q10');
+        $pretest->q11 = $request->input('Q11');
+        $pretest->q12 = (int)$request->input('Q12');
+        $pretest->q13 = (int)$request->input('Q13');
+        $pretest->q14 = (int)$request->input('Q14');
+        $pretest->q15 = (int)$request->input('Q15');
+        $pretest->q16 = (int)$request->input('Q16');
+        $pretest->q17 = (int)$request->input('Q17');
+        $pretest->q18 = (int)$request->input('Q18');
+        $pretest->q19 = (int)$request->input('Q19');
+        $pretest->q20 = (int)$request->input('Q20');
+       
+        $pretest->save();
+
+
+        return redirect('/students')->with('success', 'Pretest completed!');
     }
 
     public function update(Request $request, $id)
