@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePretestTable extends Migration
+class pretest extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class CreatePretestTable extends Migration
     {
         Schema::create('pretest', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('student_id');
             $table->timestamps();
             $table->string('Q1');
             $table->string('Q2');

@@ -13,20 +13,16 @@ class PretestController extends Controller
         $this->middleware('auth');
     }
 
-    public function student() 
-    {
-       return $this->belongsTo('App\Student');
-    }
-
     public function show($id)
     {
-        $stu = Student::find($id);
-        return view('pretest.create')->with('stu', $stu);
+        $student = Student::find($id);
+        return view('pretest.create')->with('student', $student);
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
+            'student_id' => 'required',
             'Q1' => 'required',
             'Q2' => 'required',
             'Q3' => 'required',
@@ -51,6 +47,10 @@ class PretestController extends Controller
 
         $pretest = new Pretest;
 
+        $pretest->student_id = $request->input('student_id');
+
+        $student = Student::find($pretest->student_id);
+        
         $pretest->q1 = $request->input('Q1');
         $pretest->q2 = (int)$request->input('Q2');
         $pretest->q3 = (int)$request->input('Q3');
@@ -71,8 +71,8 @@ class PretestController extends Controller
         $pretest->q18 = (int)$request->input('Q18');
         $pretest->q19 = (int)$request->input('Q19');
         $pretest->q20 = (int)$request->input('Q20');
-       
-        $pretest->save();
+
+        $student->pretest()->save($pretest);
 
 
         return redirect('/students')->with('success', 'Pretest completed!');

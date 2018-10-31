@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>{{$stu->firstName}} {{$stu->lastName}}</h1>
+    <h1>{{$student->firstName}} {{$student->lastName}}</h1>
     <p>Please complete the pretest form</p>
 
 
-    {!! Form::open(['action' => 'PretestController@store', 'method' => 'POST']->with($stu->id) !!}
+    {!! Form::open(['action' => 'PretestController@store', 'method' => 'POST']) !!}
         <form>
+        {{!! Form::hidden('student_id', $student->id) !!}}
             <div class="form-row">
                 {!! Form::label('Q1', "Here's question 1", ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
