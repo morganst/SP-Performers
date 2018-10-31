@@ -1,11 +1,34 @@
+@php
+use App\ClassAndStudents;
+use App\Student;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="page-title">This is the Class page</h1>
+    <h1 class="page-title">This is the Class page for: {{$class = 'music'}} </h1>
 
     <div class="inner-nav">
 
         <button><a href="/dailysurvey/create">Start Surveys</a></button>
+    </div>
+
+    {{$classandstudents = ClassAndStudents::orderBy('created_at','des')->paginate(10)}}
+    {{$students = Student::orderBy('created_at','des')->paginate(10)}}
+    <div>
+        <h2>All Students in Class: {{$classIDLookup = 1}}</h2>
+        @foreach ($classandstudents as $row)
+        <div>
+            <ul>
+                <li>class and students ID: </li>
+                <li>Class ID: {{DB::table('classandstudents')->where('classID', $classIDLookup)->value('classID')}}</li>
+                <li>Student ID: {{$lookupID = $row['studentID']}}</li>
+                <li>Students: {{DB::table('students')->where('id', $lookupID)->value('firstName')}}</li>
+            </ul>
+        </div>
+
+        @endforeach
+
     </div>
 
     <div>
@@ -15,9 +38,7 @@
             <option value="art">art</option>
             <option value="music">music</option>
         </select>
-        {{$data['class'] ='bob'}}
 
-        {{$data['class']}}
     </div>
 
     <div class="class-layout">

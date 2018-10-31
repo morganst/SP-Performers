@@ -1,16 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>THis is the Student Survey Page for the {{$data['class']}} class</h1>
+    <h1>THis is the Student Survey Page for the  class</h1>
     <a href="/dailysurvey">back</a>
     <div class="daily-survey-container">
+        <!--GET STUDENTID -->
+    <h1>id input: {{$id = 6}}</h1>
+
 
         {!! Form::open(['action' => 'DailySurveyController@store', 'method' => 'POST']) !!}
         <form>
 
             <div class="form-row">
                 {!! Form::label('StudentID', 'StudentID')  !!}
-                {!! Form::text('StudentID', '4')  !!}
+                {!! Form::text('StudentID', DB::table('students')->where('id', $id)->value('firstName'))  !!}
             </div>
             &nbsp;
             <div class="form-row">
