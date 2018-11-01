@@ -12,4 +12,8 @@ class Classes extends Model
     public $primaryKey = 'id';
 
     public $timestamps = true;
+
+    public function user(){
+        return $this->belongsToMany('App\User');
+    }
 }
