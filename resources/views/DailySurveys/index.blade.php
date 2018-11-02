@@ -1,14 +1,60 @@
+@php
+use App\ClassAndStudents;
+use App\Student;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
-    <h1>THis is the Class page</h1>
 
-    <a href="/dailysurvey/create">To Survey page</a>
+    <h1 class="page-title">This is the Class page for: {{$cla->name}} </h1>
+
+    <div class="inner-nav">
+
+        <button><a href="/dailysurvey/create">Start Surveys</a></button>
+    </div>
+
+    @php
+    $classandstudents = ClassAndStudents::all();
+    $students = Student::all();
+    @endphp
+    <div>
+        <h2>All Students in Class: {{$cla->id}}</h2>
+        @foreach ($classandstudents as $row)
+            @if ($row['classID'] == $cla->id)
+            <div>
+                <ul>
+                    <li>Student ID: {{$lookupID = $row['studentID']}}</li>
+                    <li>Student: {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
+                        {{DB::table('students')->where('id', $lookupID)->value('lastName')}}</li>
+                </ul>
+            </div>
+            @endif
+        @endforeach
+    </div>
+
+    <div class="class-layout">
+
+        <div class="class-layout-left">
+            <h2>Student Name</h2>
+        </div>
+
+        <div class="class-layout-right">
+            <div class="class-layout-right-inner">
+                <button>Present</button>
+                <button>Absent</button>
+                <button>Individual Survey</button>
+            </div>
+
+        </div>
+
+    </div>
 
     <hr>
-    <h2>All Surveys in DB</h2>
+    <div class="all-surveys">
+    <h2 >All Surveys in DB</h2>
     @foreach($dailySurveys as $row)
-        <div>
+        <div >
             <ul>
                 <li>Daily survey ID: {{$row['id']}}</li>
                 <li>StudentID: {{$row['StudentID']}}</li>
@@ -24,5 +70,5 @@
             </ul>
         </div>
         @endforeach
-
+    </div>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Classes;
 use App\User;
+use App\DailySurvey;
 
 class ClassController extends Controller
 {
@@ -42,8 +43,10 @@ class ClassController extends Controller
 
     public function show($id)
     {
+        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         $cla = Classes::find($id);
-        return view('classes.show')->with('cla', $cla);
+        //return view('classes.show')->with('cla', $cla);
+        return view('DailySurveys.index')->with('cla', $cla)->with('dailySurveys',$dailySurveys);
     }
 
     public function edit($id)
@@ -67,7 +70,7 @@ class ClassController extends Controller
         $class = Classes::find($id);
         $class->name = $request->input('name');
         $class->limit = $request->input('limit');
-       
+
         $class->save();
 
         return redirect('/classes')->with('success', 'Class Updated!');
@@ -90,7 +93,7 @@ class ClassController extends Controller
     {
         $cla = Classes::find($id);
         $users = User::all();
-        return view('classes.add', compact(['cla', 'users']));    
+        return view('classes.add', compact(['cla', 'users']));
     }
 
     public function attach($class_id,$user_id)
