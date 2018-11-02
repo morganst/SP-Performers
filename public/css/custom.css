@@ -38,7 +38,24 @@ input[type=radio]:checked ~ .check {
     padding: 25px;
     margin: 0px;
 }
-
+.hika-input1 {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgb(223, 9, 9);
+    color: white;
+}
+.hika-input2 {
+    width: 12%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgb(61, 116, 235);
+    color: white;
+}
 h1.hidden {
     display: none;
 }

@@ -16,17 +16,23 @@
         </div>
 
         <hr>
+        <h1 class="hidden">  {{$var=$stu->notes}}</h1> 
+     
         <div>First Name: {{$stu->firstName}}</div>
         <div>Last Name: {{$stu->lastName}}</div>
         <div>Date of Birth: {{$stu->DOB}}</div>
         <div>Gender: {{$stu->gender}}</div>
         <div>Primary Class: {{$stu->primaryClass}}</div>
-        <div>Notes: {{$stu->notes}}</div>
+        @if($var->isEmpty())
+        <div>Notes:no </div>
+        @else
+        <div>Notes:yes </div>
+        @endif
         <div>Refernce: {{$stu->reference}}</div>
     <hr>
 <small>Created: {{$stu->created_at}}</small>
         <div class="text-right">
-            <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            <a href="/students" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
         </div>
 
 @endsection
