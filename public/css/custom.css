@@ -54,8 +54,14 @@ input[type=radio]:checked ~ .check {
     width: 60vw;
     margin: auto;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+}
+.class-layout-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 4px;
 }
 
 .class-layout-left{
@@ -74,11 +80,10 @@ input[type=radio]:checked ~ .check {
 }
 
 .class-layout-right-inner{
-    display: flex;
+    display: inline-block;
     width: 100%;
 
-    flex-direction: row;
-    justify-content: flex-end;
+
 }
 
 .page-title{

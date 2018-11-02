@@ -18,10 +18,15 @@ class DailySurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
-        return view('DailySurveys.index',compact('dailySurveys'));
+        //$dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
+        //return view('DailySurveys.index',compact('dailySurveys'));
+
+        // $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
+        // $cla = Classes::find($id);
+        // //return view('classes.show')->with('cla', $cla);
+        // return view('DailySurveys.index')->with('cla', $cla)->with('dailySurveys',$dailySurveys);
 
 
     }
@@ -31,11 +36,12 @@ class DailySurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id, $lookupID)
     {
         //
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
-        return view('DailySurveys.create',compact('dailySurveys'));
+        $cla = Classes::find($id);
+        return view('DailySurveys.create')->with('cla', $cla)->with('lookupID',$lookupID)->with('dailySurveys',$dailySurveys);
     }
 
     /**
@@ -71,7 +77,14 @@ class DailySurveyController extends Controller
 
         $dailySurvey->save();
 
-        return redirect('/dailysurvey')->with('success','Daily Survey was completed!');
+        $dailySurvey->cla = $request->input('cla');
+        $dailySurvey->id = $request->input('ClassID');
+
+        $id = $dailySurvey->id;
+        $cla = Classes::find($id);
+        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
+        return view('DailySurveys.index')->with('cla',$cla)->with('dailySurveys',$dailySurveys);
+
 
     }
 

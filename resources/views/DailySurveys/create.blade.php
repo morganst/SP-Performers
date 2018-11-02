@@ -1,25 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>THis is the Student Survey Page for the  class</h1>
-    <a href="/dailysurvey">back</a>
+<h1>THis is the Student Survey Page for the {{$cla->name}}class</h1>
+    <a href="/classes/show/{{$cla->id}}">back</a>
     <div class="daily-survey-container">
         <!--GET STUDENTID -->
-    <h1>id input: {{$id = 6}}</h1>
-
+    <h1>{{DB::table('students')->where('id', $lookupID)->value('firstName')}}
+        {{DB::table('students')->where('id', $lookupID)->value('lastName')}}
+    </h1>
+    <h1>Student ID: {{$lookupID}}</h1>
 
         {!! Form::open(['action' => 'DailySurveyController@store', 'method' => 'POST']) !!}
         <form>
+            {{ Form::hidden('ClassID', $cla->id) }}
+            {{ Form::hidden('cla', $cla) }}
+            {{ Form::hidden('StudentID', DB::table('students')->where('id', $lookupID)->value('firstName'))}}
 
-            <div class="form-row">
-                {!! Form::label('StudentID', 'StudentID')  !!}
-                {!! Form::text('StudentID', DB::table('students')->where('id', $id)->value('firstName'))  !!}
-            </div>
-            &nbsp;
-            <div class="form-row">
-                {!! Form::label('ClassID', 'ClassID')  !!}
-                {!! Form::text('ClassID', '4')  !!}
-            </div>
+
+
             &nbsp;
             <div class="form-row">
                 {!! Form::label('Q1', 'Q1')  !!}
