@@ -5,7 +5,6 @@
 
 }
 
-
 /*END LAYOUT PAGE*/
 /*DAILY SURVEY*/
 .daily-survey-container{
@@ -36,6 +35,39 @@
 input[type=radio]:checked ~ .check {
     border: 5px solid #0DFF92;
   }
+
+.form-row{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+.mood-row{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 4px;
+    padding: 5px;
+}
+.radio-btn-spread{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.radio-btn-spread-mood{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.div-center{
+    margin: auto;
+}
 /* END DAILY SURVEY*/
 
 /*CLASS PAGE*/

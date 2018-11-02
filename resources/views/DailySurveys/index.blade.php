@@ -12,7 +12,7 @@ use App\Classes;
 
     <div class="inner-nav">
 
-    <button><a href="/dailysurvey/create/{{$cla->id}}/1">Start Surveys</a></button>
+    <!--<button><a href="/dailysurvey/create/{{$cla->id}}/1">Start Surveys</a></button>-->
     </div>
 
     @php
@@ -40,8 +40,6 @@ use App\Classes;
         @endforeach
 
     </div>
-
-    <h1>lookupID: {{$lookupID}}</h1>
 
     <hr>
     <div class="all-surveys"><!--
