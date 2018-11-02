@@ -27,7 +27,7 @@
         @if($pretest->isEmpty())
             <a href ="/pretest/{{$stu->id}}" class="" role="button">Complete Pre-Test</a>
         @else
-        <a href ="/students/{{$stu->id}}" class="" role="button">View Pre-Test results</a>
+        <a href ="/students/pretest/{{$stu->id}}" class="" role="button">View Pre-Test results</a>
         @endif
         
         </p>

@@ -52,8 +52,8 @@ class PretestController extends Controller
         $student = Student::find($pretest->student_id);
         
         $pretest->q1 = $request->input('Q1');
-        $pretest->q2 = (int)$request->input('Q2');
-        $pretest->q3 = (int)$request->input('Q3');
+        $pretest->q2 = $request->input('Q2');
+        $pretest->q3 = $request->input('Q3');
         $pretest->q4 = (int)$request->input('Q4');
         $pretest->q5 = (int)$request->input('Q5');
         $pretest->q6 = (int)$request->input('Q6');

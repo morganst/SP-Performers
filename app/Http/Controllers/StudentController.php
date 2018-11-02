@@ -103,6 +103,14 @@ class StudentController extends Controller
         return view('students.show')->with('stu', $stu)->with('pretest', $pretest);
     }
 
+    public function pretest($id) 
+    {
+        $stu = Student::find($id);
+        //query to find the pretest 
+        $pretest = Pretest::where('student_id', '=', $id) ->get();
+        return view('students.pretest')->with('stu', $stu)->with('pretest', $pretest);
+    }
+
     public function edit($id)
     {
         $stu = Student::find($id);
