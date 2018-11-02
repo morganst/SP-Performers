@@ -41,6 +41,8 @@ use App\Classes;
 
     </div>
 
+    <h1>lookupID: {{$lookupID}}</h1>
+
     <hr>
     <div class="all-surveys"><!--
     <h2 >All Surveys in DB (for demo only)</h2>

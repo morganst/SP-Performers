@@ -5,7 +5,8 @@
     <a href="/classes/show/{{$cla->id}}">back</a>
     <div class="daily-survey-container">
         <!--GET STUDENTID -->
-    <h1>{{DB::table('students')->where('id', $lookupID)->value('firstName')}}
+    <h1>
+        {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
         {{DB::table('students')->where('id', $lookupID)->value('lastName')}}
     </h1>
     <h1>Student ID: {{$lookupID}}</h1>
@@ -14,10 +15,8 @@
         <form>
             {{ Form::hidden('ClassID', $cla->id) }}
             {{ Form::hidden('cla', $cla) }}
-            {{ Form::hidden('StudentID', DB::table('students')->where('id', $lookupID)->value('firstName'))}}
-
-
-
+            {{ Form::hidden('StudentID', $lookupID)}}
+            <h1>Student ID: {{$lookupID}}</h1>
             &nbsp;
             <div class="form-row">
                 {!! Form::label('Q1', 'Q1')  !!}

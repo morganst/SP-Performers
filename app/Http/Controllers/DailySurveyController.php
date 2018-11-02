@@ -84,8 +84,6 @@ class DailySurveyController extends Controller
         $cla = Classes::find($id);
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         return view('DailySurveys.index')->with('cla',$cla)->with('dailySurveys',$dailySurveys);
-
-
     }
 
     /**
