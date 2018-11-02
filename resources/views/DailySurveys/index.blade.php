@@ -14,8 +14,10 @@ use App\Student;
         <button><a href="/dailysurvey/create">Start Surveys</a></button>
     </div>
 
-    {{$classandstudents = ClassAndStudents::orderBy('created_at','des')->paginate(10)}}
-    {{$students = Student::orderBy('created_at','des')->paginate(10)}}
+    @php
+    $classandstudents = ClassAndStudents::all();
+    $students = Student::all();
+    @endphp
     <div>
         <h2>All Students in Class: {{$cla->id}}</h2>
         @foreach ($classandstudents as $row)
@@ -29,17 +31,6 @@ use App\Student;
             </div>
             @endif
         @endforeach
-
-    </div>
-
-    <div>
-        <h2>dropdown here</h2>
-        <select name="class-selector">
-            <option value="dance">dance</option>
-            <option value="art">art</option>
-            <option value="music">music</option>
-        </select>
-
     </div>
 
     <div class="class-layout">
