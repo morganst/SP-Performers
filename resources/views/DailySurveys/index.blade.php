@@ -6,7 +6,8 @@ use App\Student;
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="page-title">This is the Class page for: {{$class = 'music'}} </h1>
+
+    <h1 class="page-title">This is the Class page for: {{$cla->name}} </h1>
 
     <div class="inner-nav">
 

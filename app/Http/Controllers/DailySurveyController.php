@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Classes;
 use App\DailySurvey;
 class DailySurveyController extends Controller
 {
