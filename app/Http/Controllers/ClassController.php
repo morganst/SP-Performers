@@ -4,47 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Classes;
+use App\User;
+use App\DailySurvey;
 
 class ClassController extends Controller
 {
-    /*
-    public function index()
-    {
-        return Class::all();
-    }
- 
-    public function show(Class $class)
-    {
-        return $class;
-    }
- 
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-        'firstName' => 'required',
-        'lastName' => 'required',
-        'age' => 'integer'
-    ]);
-        $class = Class::create($request->all());
- 
-        return response()->json($class, 201);
-    }
- 
-    public function update(Request $request, Class $class)
-    {
-        $class->update($request->all());
- 
-        return response()->json($class, 200);
-    }
- 
-    public function delete(Class $class)
-    {
-        $class->delete();
- 
-        return response()->json(null, 204);
-    }
-    */
-    
     public function __construct()
     {
         $this->middleware('auth');
@@ -79,8 +43,10 @@ class ClassController extends Controller
 
     public function show($id)
     {
+        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         $cla = Classes::find($id);
-        return view('classes.show')->with('cla', $cla);
+        //return view('classes.show')->with('cla', $cla);
+        return view('DailySurveys.index')->with('cla', $cla)->with('dailySurveys',$dailySurveys);
     }
 
     public function edit($id)
@@ -104,7 +70,7 @@ class ClassController extends Controller
         $class = Classes::find($id);
         $class->name = $request->input('name');
         $class->limit = $request->input('limit');
-       
+
         $class->save();
 
         return redirect('/classes')->with('success', 'Class Updated!');
@@ -122,4 +88,26 @@ class ClassController extends Controller
 
         return redirect('/classes')->with('success', 'Class Deleted!');
     }
+
+    public function add($id)
+    {
+        $cla = Classes::find($id);
+        $users = User::all();
+        return view('classes.add', compact(['cla', 'users']));
+    }
+
+    public function attach($class_id,$user_id)
+    {
+        $cla = Classes::find($class_id);
+        $cla->user()->sync($user_id, false);
+        return back()->with('success', 'Class Deleted!');
+    }
+
+    public function detach($class_id,$user_id)
+    {
+        $cla = Classes::find($class_id);
+        $cla->user()->detach($user_id);
+        return back()->with('success', 'Class Deleted!');
+    }
+
 }

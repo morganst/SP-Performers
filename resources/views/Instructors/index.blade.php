@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Instructor Index {{ Auth::user()->firstName }}</h1>
-    <div style="padding-bottom: 1em">Here you can view and edit instructors</div> 
+    <div style="padding-bottom: 1em">Here you can view and edit instructors</div>
     <br>
     @if(Auth::user()->role==1)
         <div class="text-right"><a href="/create/" class="btn btn-md btn-primary">Add New</a></div>
@@ -21,12 +21,14 @@
                 <div class="col-3 col-lg-3">{{$user->firstName}} {{$user->lastName}}</div>
                     <div class="btn-group">
                         <a class="btn btn-secondary" href="/instructors/{{$user->id}}" role="button">View</a>
-                        
+
+                        @if(Auth::user()->role==1)
                             <a class="btn btn-primary active" href="/instructors/{{$user->id}}/edit" role="button">Edit</a>
                             {!!Form::open(['action' => ['InstructorController@destroy', $user->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}
                                 {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                             {!!Form::close()!!}
+                        @endif
                     </div>
                 </div>
             </div>
