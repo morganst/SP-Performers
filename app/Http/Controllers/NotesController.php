@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\User;
+use App\Student;
 use App\Note;
 class NotesController extends Controller
 {
@@ -16,6 +16,7 @@ class NotesController extends Controller
     {
         //$users = User::orderBy('created_at', 'des')->paginate(10);
         $notes = Note::all();
+        
     //   return $notes;
         return view('Notes.index')-> with('notes', $notes);
     }
@@ -49,7 +50,7 @@ class NotesController extends Controller
      */
     public function show($SID)
     {
-        $notes = Note::findMany($SID);
+        $notes = Note::where('SID', '=', $SID)->get();
         return view('Notes.show')->with('notes', $notes);
     }
 
@@ -100,6 +101,14 @@ class NotesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Note::find($id);
+
+        /*if(auth()->user()->id !== $user->user_id) {
+            return redirect('instructors')->with('error', 'Unauthorized page');
+        }
+        */
+        $post->delete();
+
+        return redirect('/students')->with('success', 'User Deleted!');
     }
 }
