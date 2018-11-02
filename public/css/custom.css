@@ -32,12 +32,15 @@ input[type=radio]:checked ~ .check {
 /* Hika's stuff*/
 
 .hika-container {
-    background-color: aquamarine;
-    width: 70%;
-    padding: 4em;
-    margin: auto;
+    background-color: lightgrey;
+    width: 500px;
+    border: 25px solid rgb(0, 128, 128);
+    padding: 25px;
+    margin: 0px;
 }
 
-
+h1.hidden {
+    display: none;
+}
 
 /* End Hika's stuff*/

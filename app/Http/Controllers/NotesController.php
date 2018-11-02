@@ -90,7 +90,7 @@ class NotesController extends Controller
     $notes->$var= $request->input('I/B');
     $notes->Text= $request->input('Text');
     $notes->save();
-  return redirect('/notes')->with('success', 'User Updated!');
+  return redirect('/students')->with('success', 'notes updated!');
     }
 
     /**

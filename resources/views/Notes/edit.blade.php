@@ -1,10 +1,9 @@
+<h1 class="hidden">{{$var="I/B"}}</h1> 
 @extends('layouts.app')
-{{$var="I/B"}}
-@section('content')
-    <h1> {{$notes->Class}}</h1>
 
-    <h1> {{$notes->$var}}</h1>
-<p>Please enter information for creating a new student</p>
+@section('content')
+<h2>Edit Notes</h2>
+<p>Feel free to make any edits</p>
     {!! Form::open(['action' => ['NotesController@update',  $notes->NId ],'method' => 'POST']) !!}
         <form>
            
@@ -42,7 +41,9 @@
             <div style="padding-top: 10px">
                     {{Form::hidden('_method', 'PUT')}}
                     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-              
+                    <div class="text-right">
+                            <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+                        </div>
             </div>
         </form>
     {!! Form::close() !!}
