@@ -17,17 +17,17 @@ use App\Student;
     {{$classandstudents = ClassAndStudents::orderBy('created_at','des')->paginate(10)}}
     {{$students = Student::orderBy('created_at','des')->paginate(10)}}
     <div>
-        <h2>All Students in Class: {{$classIDLookup = 1}}</h2>
+        <h2>All Students in Class: {{$cla->id}}</h2>
         @foreach ($classandstudents as $row)
-        <div>
-            <ul>
-                <li>class and students ID: </li>
-                <li>Class ID: {{DB::table('classandstudents')->where('classID', $classIDLookup)->value('classID')}}</li>
-                <li>Student ID: {{$lookupID = $row['studentID']}}</li>
-                <li>Students: {{DB::table('students')->where('id', $lookupID)->value('firstName')}}</li>
-            </ul>
-        </div>
-
+            @if ($row['classID'] == $cla->id)
+            <div>
+                <ul>
+                    <li>Student ID: {{$lookupID = $row['studentID']}}</li>
+                    <li>Student: {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
+                        {{DB::table('students')->where('id', $lookupID)->value('lastName')}}</li>
+                </ul>
+            </div>
+            @endif
         @endforeach
 
     </div>
