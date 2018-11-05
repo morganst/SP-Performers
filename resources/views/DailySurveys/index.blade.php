@@ -1,6 +1,7 @@
 @php
 use App\ClassAndStudents;
 use App\Student;
+use App\Classes;
 @endphp
 
 @extends('layouts.app')
@@ -11,48 +12,38 @@ use App\Student;
 
     <div class="inner-nav">
 
-        <button><a href="/dailysurvey/create">Start Surveys</a></button>
+    <!--<button><a href="/dailysurvey/create/{{$cla->id}}/1">Start Surveys</a></button>-->
     </div>
 
     @php
     $classandstudents = ClassAndStudents::all();
     $students = Student::all();
     @endphp
-    <div>
-        <h2>All Students in Class: {{$cla->id}}</h2>
-        @foreach ($classandstudents as $row)
-            @if ($row['classID'] == $cla->id)
-            <div>
-                <ul>
-                    <li>Student ID: {{$lookupID = $row['studentID']}}</li>
-                    <li>Student: {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
-                        {{DB::table('students')->where('id', $lookupID)->value('lastName')}}</li>
-                </ul>
-            </div>
-            @endif
-        @endforeach
-    </div>
 
+    <h2>All Students in Class: {{$cla->id}}</h2>
     <div class="class-layout">
-
-        <div class="class-layout-left">
-            <h2>Student Name</h2>
-        </div>
-
-        <div class="class-layout-right">
-            <div class="class-layout-right-inner">
-                <button>Present</button>
-                <button>Absent</button>
-                <button>Individual Survey</button>
+        @foreach ($classandstudents as $row)
+        @if ($row['classID'] == $cla->id)
+        <div class="class-layout-row">
+            <div >
+                ID: {{$lookupID = $row['studentID']}}
+                Student: {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
+                    {{DB::table('students')->where('id', $lookupID)->value('lastName')}}
+                <div style="float:right;">
+                    <button>Present</button>
+                    <button>Absent</button>
+                <button><a href="/dailysurvey/create/{{$cla->id}}/{{$lookupID}}">Start Survey</a></button>
+                </div>
             </div>
-
         </div>
+        @endif
+        @endforeach
 
     </div>
 
     <hr>
-    <div class="all-surveys">
-    <h2 >All Surveys in DB</h2>
+    <div class="all-surveys"><!--
+    <h2 >All Surveys in DB (for demo only)</h2>
     @foreach($dailySurveys as $row)
         <div >
             <ul>
@@ -71,4 +62,5 @@ use App\Student;
         </div>
         @endforeach
     </div>
+    -->
 @endsection
