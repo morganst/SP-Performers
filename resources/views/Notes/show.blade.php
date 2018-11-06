@@ -24,6 +24,7 @@
        @endif
        
        <a href="/notes/{{$row->NId}}/edit" class="btn btn-secondary" style="color: #F2F2F2" role="button">Edit</a>
+      
        {!!Form::open(['action' => ['NotesController@destroy', $row->NId], 'method' => 'POST', 'class' => 'btn btn-danger', 'style' => 'padding: 0'])!!}
        {{Form::hidden('_method', 'DELETE')}}
        {{Form::submit('Delete', ['class' => 'btn btn-danger', 'role' => 'button'])}}
@@ -34,11 +35,13 @@
 </div>
 @endforeach
 <div class="text-right">
+        <a href="/notes/create" class="btn btn-secondary" style="color: #F2F2F2" role="button">Create</a>
         <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
     </div>
 @else
         <p>No notes found</p>
         <div class="text-right">
+                <a href="/notes/create" class="btn btn-secondary" style="color: #F2F2F2" role="button">Create</a>
                 <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
             </div>
 @endif

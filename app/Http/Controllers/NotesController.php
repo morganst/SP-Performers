@@ -28,7 +28,8 @@ class NotesController extends Controller
      */
     public function create()
     {
-        //
+      
+        return view('Notes.create');
     }
 
     /**
@@ -39,7 +40,23 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'Class' => 'required',
+            'Instructor' => 'required',
+            'I/B' => 'nullable',
+            'Text' => 'required',
+            'SID'=>'required',
+           
+        ]);
+        $var="I/B";
+       $notes = new Note;
+        $notes->Class = $request->input('Class');
+        $notes->Instructor= $request->input('Instructor');
+        $notes->$var= $request->input('I/B');
+        $notes->Text= $request->input('Text');
+        $notes->SID= $request->input('SID');
+        $notes->save();
+      return redirect('/students')->with('success', 'notes updated!');
     }
 
     /**

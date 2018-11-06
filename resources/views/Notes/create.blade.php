@@ -1,62 +1,56 @@
+<h1 class="hidden">{{$var="I/B"}}</h1> 
 @extends('layouts.app')
 
 @section('content')
-    <h1>New Student</h1>
-    <p>Please enter information for creating a new student</p>
-    {!! Form::open(['action' => 'StudentController@store', 'method' => 'POST']) !!}
+<h2>Make Notes</h2>
+<p>Feel free to make any edits</p>
+    {!! Form::open(['action' => ['NotesController@store' ],'method' => 'POST']) !!}
         <form>
+           
+            
             <div class="form-row">
-                {!! Form::label('firstName', 'First Name', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('Class', 'Class', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::text('firstName', '', ['class' => 'form-control', 'placeholder' => 'First Name'])}}
+                    {!!  Form::select('Class', ['Music' => 'Music', 'Art' => 'Art', 'Dance' => 'Dance'],  '', ['class' => 'form-control' ]) !!}
                 </div>
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('lastName', 'Last Name', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('SID', 'StudentID', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::text('lastName', '', ['class' => 'form-control', 'placeholder' => 'Last Name'])}}
+                        {!!Form::number('SID', '');!!}
+                    </div> 
+        </div>
+        &nbsp;
+            <div class="form-row">
+                {!! Form::label('Instructor', 'Instructor', ['class' => 'col-lg-2 control-label'] )  !!}
+                <div class="col col-md-3">
+                    {{Form::text('Instructor', ' ' , ['class' => 'form-control'])}}
                 </div>
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('DOB', 'Date of Birth', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('I/B', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::date('DOB', \Carbon\Carbon::now())}}
+                    
+                    {!!  Form::select('I/B', ['Incident' => 'Incident', 'Breakthrough' => 'Breakthrough', 'None' => 'None'], '' , ['class' => 'form-control' ]) !!}
                 </div>
+            </div>
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('gender', 'Gender', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('Text', 'Text' )  !!}
                 <div class="col col-md-3">
-                    {!!  Form::select('gender', ['Male' => 'Male', 'Female' => 'Female', 'Other' => 'Other'],  '', ['class' => 'form-control' ]) !!}
-                </div>
-            </div>
-            &nbsp;
-            <div class="form-row">
-                {!! Form::label('primaryClass', 'Primary Class', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::text('primaryClass', '', ['class' => 'form-control', 'placeholder' => 'Primary Class'])}}
-                </div>
-            </div>
-            &nbsp;
-            <div class="form-row">
-                {!! Form::label('notes', 'Notes', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::text('notes', '', ['class' => 'form-control', 'placeholder' => 'Notes'])}}
-                </div>
-            </div>
-            &nbsp;
-            <div class="form-row">
-                {!! Form::label('reference', 'Refernce', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::text('reference', '', ['class' => 'form-control', 'placeholder' => 'Reference'])}}
+                    {{Form::textarea('Text', '', ['class' => 'form-control', 'placeholder' => 'Reference'])}}
                 </div>
             </div>
             &nbsp;
             <div style="padding-top: 10px">
-                {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-                <a class="btn btn-secondary" href="/students" role="button">Back</a>
+                 
+                    {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+                    <div class="text-right">
+                            <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+                        </div>
             </div>
         </form>
     {!! Form::close() !!}
