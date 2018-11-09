@@ -1,4 +1,11 @@
+/*LAYOUT PAGE*/
+#app{
+    width: 80%;
+    margin: auto;
 
+}
+
+/*END LAYOUT PAGE*/
 /*DAILY SURVEY*/
 .daily-survey-container{
     width: 80%;
@@ -13,13 +20,13 @@
 }
 .check{
     display: block;
-  position: absolute;
-  border: 5px solid aqua;
-  border-radius: 100%;
-  height: 25px;
-  width: 25px;
-  top: 30px;
-  left: 20px;
+    position: absolute;
+    border: 5px solid aqua;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    top: 30px;
+    left: 20px;
 	z-index: 5;
 	transition: border .25s linear;
 	-webkit-transition: border .25s linear;
@@ -28,6 +35,7 @@
 input[type=radio]:checked ~ .check {
     border: 5px solid #0DFF92;
   }
+
 /* END DAILY SURVEY*/
 /* Hika's stuff*/
 
@@ -65,4 +73,103 @@ h1.hidden {
     
 }
 
-/* End Hika's stuff*/
+
+
+.form-row{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+.mood-row{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 4px;
+    padding: 5px;
+}
+.radio-btn-spread{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.radio-btn-spread-mood{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.div-center{
+    margin: auto;
+}
+/* END DAILY SURVEY*/
+
+/*CLASS PAGE*/
+.all-surveys{
+    width: 60vw;
+    margin: auto;
+    background-color: rgb(235, 235, 235); /* COLOR */
+    box-shadow: 3px 3px 6px rgb(192, 192, 192);
+}
+
+.all-surveys ul{
+    list-style-type: none;
+}
+
+.class-layout{
+    width: 60vw;
+    margin: auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.class-layout-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.class-layout-left{
+
+    margin-left: 0%;
+    background-color: antiquewhite;
+}
+
+.class-layout-right{
+    display: inline-block;
+
+
+    background-color: rgb(235, 235, 235); /* COLOR */
+    box-shadow: 3px 3px 6px rgb(192, 192, 192);
+
+}
+
+.class-layout-right-inner{
+    display: inline-block;
+    width: 100%;
+
+
+}
+
+.page-title{
+    text-align: center;
+}
+
+.inner-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70vw;
+    margin: auto;
+    margin-bottom: 5vh;
+}
+
+
+/* END CLASS PAGE*/
+
