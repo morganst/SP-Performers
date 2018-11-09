@@ -4,7 +4,6 @@
     <h1>{{$student->firstName}} {{$student->lastName}}</h1>
     <p>Please complete the pretest form</p>
 
-
     {!! Form::open(['action' => 'PretestController@store', 'method' => 'POST']) !!}
         <form>
         {{ Form::hidden('student_id', $student->id) }}

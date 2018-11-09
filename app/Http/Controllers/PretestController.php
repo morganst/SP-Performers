@@ -15,8 +15,10 @@ class PretestController extends Controller
 
     public function show($id)
     {
+        $questions = ['this is one', 'this is two'];
         $student = Student::find($id);
-        return view('pretest.create')->with('student', $student);
+        return view('pretest.create')->with('student', $student)
+                                    ->with('questions', $questions);
     }
 
     public function store(Request $request)

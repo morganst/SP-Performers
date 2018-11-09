@@ -4,9 +4,7 @@
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
     <div class="">Students Pretest Information:</div>
 
-
         <hr>
-
             @foreach($pretest as $pretests)
             <table>
                 <tr>
@@ -91,11 +89,10 @@
                 </tr>
             <table>
 
+            <hr>
+            <small>Created : {{$pretests->created_at}}</small>
             @endforeach
-        <hr>
-        <p>
         
-        </p>
         <div class="text-right">
             <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
         </div>

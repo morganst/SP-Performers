@@ -28,6 +28,11 @@
             <a href ="/pretest/{{$stu->id}}" class="" role="button">Complete Pre-Test</a>
         @else
         <a href ="/students/pretest/{{$stu->id}}" class="" role="button">View Pre-Test results</a>
+        <br />
+            @if($posttest->isEmpty())
+                <a href ="/posttest/{{$stu->id}}" class="" role="button">Complete Post-Test</a>
+            @else
+            <a href ="/students/posttest/{{$stu->id}}" class="" role="button">View Post-Test results</a>
         @endif
         
         </p>
