@@ -5,7 +5,6 @@
 
 }
 
-
 /*END LAYOUT PAGE*/
 /*DAILY SURVEY*/
 .daily-survey-container{
@@ -36,6 +35,78 @@
 input[type=radio]:checked ~ .check {
     border: 5px solid #0DFF92;
   }
+
+/* END DAILY SURVEY*/
+/* Hika's stuff*/
+
+.hika-container {
+    background-color: lightgrey;
+    width: 500px;
+    border: 25px solid rgb(0, 128, 128);
+    padding: 25px;
+    margin: 0px;
+}
+.hika-input1 {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgb(223, 9, 9);
+    color: white;
+}
+.hika-input2 {
+    width: 12%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgb(61, 116, 235);
+    color: white;
+}
+h1.hidden {
+    display: none;
+}
+
+.center-this-div{
+    width: 40%;
+    
+}
+
+
+
+.form-row{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+.mood-row{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 4px;
+    padding: 5px;
+}
+.radio-btn-spread{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.radio-btn-spread-mood{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.div-center{
+    margin: auto;
+}
 /* END DAILY SURVEY*/
 
 /*CLASS PAGE*/
@@ -54,8 +125,14 @@ input[type=radio]:checked ~ .check {
     width: 60vw;
     margin: auto;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+}
+.class-layout-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 4px;
 }
 
 .class-layout-left{
@@ -74,11 +151,10 @@ input[type=radio]:checked ~ .check {
 }
 
 .class-layout-right-inner{
-    display: flex;
+    display: inline-block;
     width: 100%;
 
-    flex-direction: row;
-    justify-content: flex-end;
+
 }
 
 .page-title{
@@ -96,3 +172,4 @@ input[type=radio]:checked ~ .check {
 
 
 /* END CLASS PAGE*/
+
