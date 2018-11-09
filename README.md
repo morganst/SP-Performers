@@ -6,6 +6,14 @@ pull this code into your local machine
 
 go to your db admin page and create new db, I named mine "SP-Performers"
 
+'composer install' 
+
+'npm install'
+
+'copy/cp .env.example .env'
+
+php artisan key:generate
+
 go to your .env file and make sure everything matches with your db 
 
 php artisan migrate

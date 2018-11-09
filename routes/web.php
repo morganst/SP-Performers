@@ -11,21 +11,34 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/unauthorized', function () {
+    return view('unauthorized');
 });
 
-Route::get('/students', function () {
-    return view('students/index');
-});
+Route::resource('', 'HomeController');
+Route::resource('students', 'StudentController');
+Route::resource('instructors', 'InstructorController');
+Route::resource('classes', 'ClassController');
+Route::get('classes/{id}/add', 'ClassController@add');
+Route::get('classes/show/{id}', 'ClassController@show');
 
 Auth::routes();
 
-Route::get('/', [
-    'middleware' => 'auth',
-    'uses' => 'HomeController@index'
-]);
-Route::get('/students', [
-    'middleware' => 'auth',
-    'uses' => 'HomeController@index'
-]);
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware'=>['auth','admin']], function() {
+    Route::get('/create', function(){
+        return view('instructors/create');
+    });
+    Route::get('classes/{classes_id}/add', function(){
+        return view('classes/{id}/add');
+    });
+});
+
+Route::get('/logout', 'HomeController@logout');
+
+Route::post('/attach/{user_id}/{classes_id}', 'ClassController@attach');
+Route::post('/detach/{user_id}/{classes_id}', 'ClassController@detach');
+
+Route::resource('/dailysurvey','DailySurveyController');
+Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create');

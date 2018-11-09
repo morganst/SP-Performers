@@ -53,7 +53,7 @@ class AddStudent extends Component {
             </label>
 
             <label> Age: 
-              <input type="text" onChange={(e)=>this.handleInput('age',e)} />
+              <input type="text" onChange={(e)=>this.handleInput('DOB',e)} />
             </label>
                 
             <input type="submit" value="Submit" />

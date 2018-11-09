@@ -18,7 +18,11 @@ class CreateStudentsTable extends Migration
             $table->timestamps();
             $table->string('firstName');
             $table->string('lastName');
-            $table->integer('age');
+            $table->date('DOB');
+            $table->mediumText('notes')->nullable();
+            $table->string('gender')->default('Male');
+            $table->string('primaryClass');
+            $table->string('reference')->nullable();
         });
     }
 
