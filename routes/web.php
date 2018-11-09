@@ -11,6 +11,7 @@
 |
 */
 use App\Pretest;
+use App\Posttest;
 use App\Student;
 
 Route::get('/', function () {
@@ -20,22 +21,23 @@ Route::get('/', function () {
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('pretest', 'PretestController');
-Route::resource('posttest', 'PretestController');
+Route::resource('posttest', 'PosttestController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('students/pretest/{id?}', function($id = null)
+{
+
+    if ($id)
     {
+        $pretest = Pretest::where('student_id', '=', $id)->get();
+        $stu = Student::find($id);
+    }
 
-        if ($id)
-        {
-            $pretest = Pretest::where('student_id', '=', $id)->get();
-            $stu = Student::find($id);
-        }
+    return View::make('students.pretest')
+        ->with('pretest', $pretest)
+        ->with('stu', $stu);
+});
 
-        return View::make('students.pretest')
-            ->with('pretest', $pretest)
-            ->with('stu', $stu);
-    });

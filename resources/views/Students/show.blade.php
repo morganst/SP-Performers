@@ -33,12 +33,13 @@
                 <a href ="/posttest/{{$stu->id}}" class="" role="button">Complete Post-Test</a>
             @else
             <a href ="/students/posttest/{{$stu->id}}" class="" role="button">View Post-Test results</a>
+            @endif
         @endif
         
         </p>
 <small>Created: {{$stu->created_at}}</small>
         <div class="text-right">
-            <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            <a href="/students" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
         </div>
 
 @endsection
