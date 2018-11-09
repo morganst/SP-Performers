@@ -1,25 +1,31 @@
-<h1 class="hidden">{{$var="I/B"}} {{$var2=$notes->student()->first()}}</h1> 
+<h1 class="hidden">{{$var="I/B"}} {{$var2=$notes[0]->student()->first()}}</h1> 
 @extends('layouts.app')
 
 @section('content')
-
-<h2>Edit Notes</h2>
-<p>Feel free to make any edits for {{$var2['firstName']}}</p>
-    {!! Form::open(['action' => ['NotesController@update',  $notes->NId ],'method' => 'POST']) !!}
+<h2>Make Notes</h2>
+<p>Feel free to create note for {{$var2['firstName']}} {{$var2['lastName']}} </p>
+    {!! Form::open(['action' => ['NotesController@store' ],'method' => 'POST']) !!}
         <form>
            
             
             <div class="form-row">
                 {!! Form::label('Class', 'Class', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {!!  Form::select('Class', ['Music' => 'Music', 'Art' => 'Art', 'Dance' => 'Dance'],  $notes->Class, ['class' => 'form-control' ]) !!}
+                    {!!  Form::select('Class', ['Music' => 'Music', 'Art' => 'Art', 'Dance' => 'Dance'],  '', ['class' => 'form-control' ]) !!}
                 </div>
             </div>
             &nbsp;
             <div class="form-row">
+                {!! Form::label('SID', 'StudentID', ['class' => 'col-lg-2 control-label','readonly'] )  !!}
+                <div class="col col-md-3">
+                        {!!Form::number('SID', $notes[0]['SID'], ['readonly']);!!}
+                    </div> 
+        </div>
+        &nbsp;
+            <div class="form-row">
                 {!! Form::label('Instructor', 'Instructor', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::text('Instructor', $notes->Instructor, ['class' => 'form-control'])}}
+                    {{Form::text('Instructor', ' ' , ['class' => 'form-control'])}}
                 </div>
             </div>
             &nbsp;
@@ -27,20 +33,20 @@
                 {!! Form::label('I/B', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     
-                    {!!  Form::select('I/B', ['Incident' => 'Incident', 'Breakthrough' => 'Breakthrough', 'None' => 'None'], $notes->$var , ['class' => 'form-control' ]) !!}
+                    {!!  Form::select('I/B', ['Incident' => 'Incident', 'Breakthrough' => 'Breakthrough', 'None' => 'None'], '' , ['class' => 'form-control' ]) !!}
                 </div>
             </div>
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('Text', 'Text' )  !!}
+                {!! Form::label('Text', 'Note' )  !!}
                 <div class="col col-md-3">
-                    {{Form::textarea('Text', $notes->Text, ['class' => 'form-control', 'placeholder' => 'Reference'])}}
+                    {{Form::textarea('Text', '', ['class' => 'form-control', 'placeholder' => 'Notes'])}}
                 </div>
             </div>
             &nbsp;
             <div style="padding-top: 10px">
-                    {{Form::hidden('_method', 'PUT')}}
+                 
                     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
                     <div class="text-right">
                             <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>

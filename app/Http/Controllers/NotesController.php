@@ -26,11 +26,19 @@ class NotesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createfor($SID)
+    {
+        $notes = Note::where('SID', '=', $SID)->get();
+      //  return view('Notes.create');
+        return view('Notes.createfor')->with('notes', $notes);
+    }
+    public function create($SID)
     {
       
-        return view('Notes.create');
+        $notes = Note::where('SID', '=', $SID)->get();
+        return view('Notes.create')->with('notes', $notes);
     }
+    
 
     /**
      * Store a newly created resource in storage.

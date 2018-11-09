@@ -29,6 +29,7 @@
             <a href="/notes/create" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
             @else
             <div>Notes:yes </div>
+            
             @endif
             <div>Reference: {{$stu->reference}}</div>
         </div>
