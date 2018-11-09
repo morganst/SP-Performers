@@ -13,4 +13,8 @@ class Student extends Model
     public $primaryKey = 'id';
 
     public $timestamps = true;
+    public function Notes()
+    {
+        return $this->hasMany('App\Note','SID','id');
+    }
 }

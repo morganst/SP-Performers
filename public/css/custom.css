@@ -36,6 +36,45 @@ input[type=radio]:checked ~ .check {
     border: 5px solid #0DFF92;
   }
 
+/* END DAILY SURVEY*/
+/* Hika's stuff*/
+
+.hika-container {
+    background-color: lightgrey;
+    width: 500px;
+    border: 25px solid rgb(0, 128, 128);
+    padding: 25px;
+    margin: 0px;
+}
+.hika-input1 {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgb(223, 9, 9);
+    color: white;
+}
+.hika-input2 {
+    width: 12%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgb(61, 116, 235);
+    color: white;
+}
+h1.hidden {
+    display: none;
+}
+
+.center-this-div{
+    width: 40%;
+    
+}
+
+
+
 .form-row{
 
     display: flex;
@@ -133,3 +172,4 @@ input[type=radio]:checked ~ .check {
 
 
 /* END CLASS PAGE*/
+
