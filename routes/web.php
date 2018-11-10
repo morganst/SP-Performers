@@ -29,7 +29,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware'=>['auth','admin']], function() {
-    Route::get('/create', function(){
+    Route::get('instructors/create', function(){
         return view('instructors/create');
     });
     Route::get('classes/{classes_id}/add', function(){

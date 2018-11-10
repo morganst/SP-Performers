@@ -8,7 +8,8 @@ class InstructorController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth'); 
+        $this->middleware('admin', ['only' => ['create']]);
     }
 
     public function index()
@@ -20,7 +21,7 @@ class InstructorController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('instructors.show')->with('ins', $user);
+        return view('instructors.show')->with('user', $user);
     }
 
     public function edit($id)
@@ -67,5 +68,11 @@ class InstructorController extends Controller
         $user->delete();
 
         return redirect('/instructors')->with('success', 'User Deleted!');
+    }
+
+    public function create()
+    {
+       
+        return view('instructors.create');
     }
 }

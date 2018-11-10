@@ -24,13 +24,13 @@
             <div>Date of Birth: {{$stu->DOB}}</div>
             <div>Gender: {{$stu->gender}}</div>
             <div>Primary Class: {{$stu->primaryClass}}</div>
-            @if($var->isEmpty())
-            <div>Notes:no </div>
+            {{-- @if($var->isEmpty())
+            <div>Notes:no </div> --}}
             <a href="/notes/create" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
-            @else
-            <div>Notes:yes </div>
+            {{-- @else
+            <div>Notes:yes </div> 
             
-            @endif
+            @endif--}}
             <div>Reference: {{$stu->reference}}</div>
         </div>
     <hr>
