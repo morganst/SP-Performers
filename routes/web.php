@@ -24,7 +24,7 @@ Route::get('classes/{id}/add', 'ClassController@add');
 Route::get('classes/show/{id}', 'ClassController@show');
 
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
