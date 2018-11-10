@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
             'firstName' => $faker->firstName,
             'lastName' => $faker->lastName,
             'center' => $faker->state,
-            'email' => $faker->email,
+            'email' => 'admin@performers.com',
             'password' => 'qwerty',
             'role' => 1,
         ]);
