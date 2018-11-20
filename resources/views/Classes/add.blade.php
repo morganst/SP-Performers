@@ -36,7 +36,7 @@
         <p>No users found</p>
         @endif
         <div class="row">
-                <div class="col-3 col-lg-3">Students in class:</div>
+                <div class="col-3 col-lg-3">Instructors assigned to class:</div>
             </div>
             <br />
             @foreach($cla->user as $user)
