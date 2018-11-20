@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Classes;
 use App\User;
+use DB;
 use App\DailySurvey;
 
 class ClassController extends Controller

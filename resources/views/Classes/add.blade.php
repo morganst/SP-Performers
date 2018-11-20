@@ -10,18 +10,28 @@
                 <div class="col-3 col-lg-3">Name:</div>
             </div>
             <br />
-            @foreach($users as $user)
-                <div class="row">
-                    <div class="col-3 col-lg-3">{{$user->firstName}} {{$user->lastName}}</div>
-                        <div class="btn-group">
-                                {!!Form::open(['action' => ['ClassController@attach', $cla->id, $user->id], 'method' => 'POST', 'class' => ''])!!}
-                                        {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
-                                {!!Form::close()!!}
-                        </div>
-                    </div>
-                </div>
-                <br>
-            @endforeach
+            <?php
+            $array = array();
+            ?>
+            @for($i=0;$i<count($cla->user);$i++)
+                <?php
+                $array[$i] = $cla->user[$i]->pivot['user_id'];
+                ?>
+            @endfor
+                @foreach($users as $user)
+                        @if(!in_array($user->id,$array))
+                                <div class="row">
+                                    <div class="col-3 col-lg-3">{{$user->firstName}} {{$user->lastName}} </div>
+                                            <div class="btn-group">
+                                                    {!!Form::open(['action' => ['ClassController@attach', $cla->id, $user->id], 'method' => 'POST', 'class' => ''])!!}
+                                                            {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
+                                                    {!!Form::close()!!}
+                                            </div>
+                                    </div>
+                                </div>
+                            @endif
+                    <br>
+                @endforeach
         @else
         <p>No users found</p>
         @endif
