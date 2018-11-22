@@ -115,7 +115,7 @@ class ClassController extends Controller
     public function addStudent($id)
     {
         $cla = Classes::find($id);
-        $students = Student::all();
+        $students = Student::paginate(10);
         return view('classes.addStudent', compact(['cla', 'students']));
     }
 

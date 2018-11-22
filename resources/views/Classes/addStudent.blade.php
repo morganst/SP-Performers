@@ -7,7 +7,6 @@
         <div>Class Size Limit: {{$cla->limit}}</div>
         @if(count($students) > 0)
             <div class="row">
-                <div class="col-3 col-lg-3">Name:</div>
             </div>
             <br />
             <?php
@@ -18,42 +17,56 @@
                 $array[$i] = $cla->student[$i]->pivot['student_id'];
                 ?>
             @endfor
+                <table cellspacing="100">
+                    <thead>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </thead>
+                    <tbody>
                 @foreach($students as $student)
                         @if(!in_array($student->id,$array))
-                                <div class="row">
-                                    <div class="col-3 col-lg-3">{{$student->firstName}} {{$student->lastName}} </div>
-                                            @if(count($cla->student)<$cla->limit)
-                                                <div class="btn-group">
+                                    <tr>
+                                        <td>{{$student->firstName}}</td>
+                                        <td>{{$student->lastName}} </td>
+                                        @if(count($cla->student)<$cla->limit)
+                                            <td>
                                                         {!!Form::open(['action' => ['ClassController@attachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
                                                                 {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
                                                         {!!Form::close()!!}
-                                                </div>
-                                            @endif
-                                    </div>
-                                </div>
-                            @endif
-                    <br>
+                                            </td>
+                                        @endif
+                                    </tr>
+                        @endif
                 @endforeach
+                    </tbody>
+                </table>
+                <br>
+                {{ $students->links() }}
         @else
         <p>No students found</p>
         @endif
         <div class="row">
-                <div class="col-3 col-lg-3">Instructors assigned to class:</div>
+                <div class="col-3 col-lg-3">Students enrolled to class:</div>
             </div>
-            <br />
+            <br>
+            <table cellspacing="100">
+                    <thead>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </thead>
+                    <tbody>
             @foreach($cla->student as $student)
-                <div class="row">
-                    <div class="col-3 col-lg-3">{{$student->firstName}} {{$student->lastName}}</div>
-                        <div class="btn-group">
-                            {!!Form::open(['action' => ['ClassController@detachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
+                <tr>
+                        <td>{{$student->firstName}}</td>
+                        <td>{{$student->lastName}} </td>
+                        <td>{!!Form::open(['action' => ['ClassController@detachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
                                     {{Form::submit('Remove from Class', ['class' => 'btn btn-sm btn-danger'])}}
-                            {!!Form::close()!!}
-                        </div>
-                    </div>
-                </div>
-                <br>
-            @endforeach
+                            {!!Form::close()!!}</td>
+                </tr>
 
+            @endforeach
+        </tbody>
+    </table>
     <hr>
         <div class="text-right">
             <a href="/classes" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
