@@ -5,7 +5,7 @@
         <hr>
         <div>Name: {{$cla->name}}</div>
         <div>Class Size Limit: {{$cla->limit}}</div>
-        @if(count($users) > 0)
+        @if(count($students) > 0)
             <div class="row">
                 <div class="col-3 col-lg-3">Name:</div>
             </div>
@@ -13,17 +13,17 @@
             <?php
             $array = array();
             ?>
-            @for($i=0;$i<count($cla->user);$i++)
+            @for($i=0;$i<count($cla->student);$i++)
                 <?php
-                $array[$i] = $cla->user[$i]->pivot['user_id'];
+                $array[$i] = $cla->student[$i]->pivot['student_id'];
                 ?>
             @endfor
-                @foreach($users as $user)
-                        @if(!in_array($user->id,$array))
+                @foreach($students as $student)
+                        @if(!in_array($student->id,$array))
                                 <div class="row">
-                                    <div class="col-3 col-lg-3">{{$user->firstName}} {{$user->lastName}} </div>
+                                    <div class="col-3 col-lg-3">{{$student->firstName}} {{$student->lastName}} </div>
                                             <div class="btn-group">
-                                                    {!!Form::open(['action' => ['ClassController@attach', $cla->id, $user->id], 'method' => 'POST', 'class' => ''])!!}
+                                                    {!!Form::open(['action' => ['ClassController@attachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
                                                             {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
                                                     {!!Form::close()!!}
                                             </div>
@@ -33,17 +33,17 @@
                     <br>
                 @endforeach
         @else
-        <p>No users found</p>
+        <p>No students found</p>
         @endif
         <div class="row">
                 <div class="col-3 col-lg-3">Instructors assigned to class:</div>
             </div>
             <br />
-            @foreach($cla->user as $user)
+            @foreach($cla->student as $student)
                 <div class="row">
-                    <div class="col-3 col-lg-3">{{$user->firstName}} {{$user->lastName}}</div>
+                    <div class="col-3 col-lg-3">{{$student->firstName}} {{$student->lastName}}</div>
                         <div class="btn-group">
-                            {!!Form::open(['action' => ['ClassController@detach', $cla->id, $user->id], 'method' => 'POST', 'class' => ''])!!}
+                            {!!Form::open(['action' => ['ClassController@detachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
                                     {{Form::submit('Remove from Class', ['class' => 'btn btn-sm btn-danger'])}}
                             {!!Form::close()!!}
                         </div>

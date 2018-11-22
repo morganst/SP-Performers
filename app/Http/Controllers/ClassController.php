@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Classes;
 use App\User;
+use App\Student;
 use DB;
 use App\DailySurvey;
 
@@ -90,25 +91,46 @@ class ClassController extends Controller
         return redirect('/classes')->with('success', 'Class Deleted!');
     }
 
-    public function add($id)
+    public function addUser($id)
     {
         $cla = Classes::find($id);
         $users = User::all();
-        return view('classes.add', compact(['cla', 'users']));
+        return view('classes.addUser', compact(['cla', 'users']));
     }
 
-    public function attach($class_id,$user_id)
+    public function attachUser($class_id,$user_id)
     {
         $cla = Classes::find($class_id);
         $cla->user()->sync($user_id, false);
         return back()->with('success', 'Class Deleted!');
     }
 
-    public function detach($class_id,$user_id)
+    public function detachUser($class_id,$user_id)
     {
         $cla = Classes::find($class_id);
         $cla->user()->detach($user_id);
         return back()->with('success', 'Class Deleted!');
+    }
+
+    public function addStudent($id)
+    {
+        $cla = Classes::find($id);
+        $students = Student::all();
+        return view('classes.addStudent', compact(['cla', 'students']));
+    }
+
+    public function attachStudent($class_id,$student_id)
+    {
+        $cla = Classes::find($class_id);
+        $cla->student()->sync($student_id, false);
+        return back()->with('success', 'Student added to class!');
+    }
+
+    public function detachStudent($class_id,$student_id)
+    {
+        $cla = Classes::find($class_id);
+        $cla->student()->detach($student_id);
+        return back()->with('success', 'Student Removed!');
     }
 
 }
