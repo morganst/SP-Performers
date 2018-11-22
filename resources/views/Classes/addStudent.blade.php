@@ -22,11 +22,13 @@
                         @if(!in_array($student->id,$array))
                                 <div class="row">
                                     <div class="col-3 col-lg-3">{{$student->firstName}} {{$student->lastName}} </div>
-                                            <div class="btn-group">
-                                                    {!!Form::open(['action' => ['ClassController@attachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
-                                                            {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
-                                                    {!!Form::close()!!}
-                                            </div>
+                                            @if(count($cla->student)<$cla->limit)
+                                                <div class="btn-group">
+                                                        {!!Form::open(['action' => ['ClassController@attachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
+                                                                {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
+                                                        {!!Form::close()!!}
+                                                </div>
+                                            @endif
                                     </div>
                                 </div>
                             @endif
