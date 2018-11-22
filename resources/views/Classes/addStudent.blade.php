@@ -17,7 +17,7 @@
                 $array[$i] = $cla->student[$i]->pivot['student_id'];
                 ?>
             @endfor
-                <table cellspacing="100">
+                <table>
                     <thead>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -49,7 +49,7 @@
                 <div class="col-3 col-lg-3">Students enrolled to class:</div>
             </div>
             <br>
-            <table cellspacing="100">
+            <table>
                     <thead>
                         <th>First Name</th>
                         <th>Last Name</th>
