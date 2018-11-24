@@ -26,7 +26,7 @@
             <div>Primary Class: {{$stu->primaryClass}}</div>
             @if($var->isEmpty())
             <div>Notes:no </div>
-            <a href="/notes/create" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
+            <a href="/notes/createnew/{{$stu->id}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Crseate Note</a>
             @else
             <div>Notes:yes </div>
             
@@ -36,7 +36,7 @@
     <hr>
 <small>Created: {{$stu->created_at}}</small>
         <div class="text-right">
-            <a href="/students" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+        <a href="/students/{{$stu->id}}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
         </div>
 
 @endsection

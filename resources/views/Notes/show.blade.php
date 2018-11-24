@@ -3,13 +3,13 @@
 <h1 class="hidden">{{$var="I/B"}}</h1> 
 <h2>Notes</h2>
 
+       
 @if(count($notes) > 0)
 
 @foreach($notes as $row)
 <div>
-        
-        <br> <br> <h1 class="hidden"> {{$var2=$row->student()->first()}}</h1> 
-       
+    <br> <br> <h1 class="hidden"> {{$var2=$row->student()->first()}}</h1> 
+     
     <ul>
     <h5> Date:{{$row['created_at']}} Name:{{$var2['firstName']}}</h5>
         <h6>Instructor:{{$row['Instructor']}} Class:{{$row['Class']}}</h6>
