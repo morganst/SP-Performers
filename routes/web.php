@@ -40,7 +40,6 @@ Route::get('/logout', 'HomeController@logout');
 
 Route::get('/notes/createfor/{SID}', 'NotesController@createfor');
 
-Route::resource('/dailysurvey','DailySurveyController');
 Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');

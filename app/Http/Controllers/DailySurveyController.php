@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Classes;
+use App\Student;
 use App\DailySurvey;
 class DailySurveyController extends Controller
 {
@@ -27,7 +28,6 @@ class DailySurveyController extends Controller
         // $cla = Classes::find($id);
         // //return view('classes.show')->with('cla', $cla);
         // return view('DailySurveys.index')->with('cla', $cla)->with('dailySurveys',$dailySurveys);
-
 
     }
 
@@ -63,7 +63,7 @@ class DailySurveyController extends Controller
             'Q5'=>'required',
             'Mood'=>'required',
 
-        ]);
+        ]); 
 
         $dailySurvey = new DailySurvey;
         $dailySurvey->StudentID = $request->get('StudentID');

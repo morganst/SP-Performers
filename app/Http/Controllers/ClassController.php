@@ -13,7 +13,7 @@ class ClassController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth'); 
     }
 
     public function index()
@@ -47,8 +47,9 @@ class ClassController extends Controller
     {
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         $cla = Classes::find($id);
+        $students = Student::paginate(10);
+        return view('DailySurveys.index', compact(['cla', 'students', 'dailySurveys']));
         //return view('classes.show')->with('cla', $cla);
-        return view('DailySurveys.index')->with('cla', $cla)->with('dailySurveys',$dailySurveys);
     }
 
     public function edit($id)
