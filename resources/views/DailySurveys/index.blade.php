@@ -86,7 +86,7 @@ use App\Classes;
                 <div style="float:right;">
                     <button>Present</button>
                     <button>Absent</button>
-                <button><a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}">Start Survey</a></button>
+                    <button><a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}">Start Survey</a></button>
                 </div>
             </div>
         </div>

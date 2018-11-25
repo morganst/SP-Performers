@@ -1,5 +1,10 @@
 @extends('layouts.app')
+<?php
+$d1 = new DateTime($stu->DOB);
+$d2 = new DateTime(date("Y-m-d"));
 
+$age = $d2->diff($d1);
+?>
 @section('content')
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
     <div class="">Students Information:</div>
@@ -22,6 +27,7 @@
             <div>First Name: {{$stu->firstName}}</div>
             <div>Last Name: {{$stu->lastName}}</div>
             <div>Date of Birth: {{$stu->DOB}}</div>
+            <div>Age: {{$age->y}}</div>
             <div>Gender: {{$stu->gender}}</div>
             <div>Primary Class: {{$stu->primaryClass}}</div>
             {{-- @if($var->isEmpty())
