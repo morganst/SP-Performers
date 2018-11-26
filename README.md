@@ -18,7 +18,7 @@ go to your .env file and make sure everything matches with your db
 
 php artisan migrate
 
-php artisan db:seed --class=StudentsTableSeeder
+php artisan db:seed 
 
 ^^ this will put 50 student records into your db
 

@@ -20,7 +20,6 @@ Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
-Route::get('classes/{id}/add', 'ClassController@add');
 Route::get('classes/show/{id}', 'ClassController@show');
 
 
@@ -32,23 +31,28 @@ Route::group(['middleware'=>['auth','admin']], function() {
     Route::get('instructors/create', function(){
         return view('instructors/create');
     });
-    Route::get('classes/{classes_id}/add', function(){
-        return view('classes/{id}/add');
-    });
+
+
+
 });
 
 Route::get('/logout', 'HomeController@logout');
 
 Route::get('/notes/createfor/{SID}', 'NotesController@createfor');
 
-Route::resource('/dailysurvey','DailySurveyController');
 Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
 Route::resource('notes', 'NotesController');
-Route::post('/attach/{user_id}/{classes_id}', 'ClassController@attach');
-Route::post('/detach/{user_id}/{classes_id}', 'ClassController@detach');
+
+Route::post('/attachUser/{user_id}/{classes_id}', 'ClassController@attachUser');
+Route::post('/detachUser/{user_id}/{classes_id}', 'ClassController@detachUser');
+Route::get('classes/{id}/addUser', 'ClassController@addUser');
+
+Route::post('/attachStudent/{student_id}/{classes_id}', 'ClassController@attachStudent');
+Route::post('/detachStudent/{student_id}/{classes_id}', 'ClassController@detachStudent');
+Route::get('classes/{id}/addStudent', 'ClassController@addStudent');
 
 Route::resource('/dailysurvey','DailySurveyController');
 Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create');

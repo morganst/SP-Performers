@@ -17,4 +17,9 @@ class Student extends Model
     {
         return $this->hasMany('App\Note','SID','id');
     }
+
+    public function classes() {
+
+        return $this->belongsToMany('App\Classes');
+    }
 }

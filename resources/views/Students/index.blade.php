@@ -13,11 +13,11 @@
         <br />
         @foreach($students as $student)
             <div class="row">
-                <div class="col-3 col-lg-3">{{$student->firstName}} {{$student->lastName}}</div>
+                <div class="col-3 col-lg-3">{{$student->firstName}} {{$student->lastName}}
+                    <br>
                     <div class="btn-group">
                         <a class="btn btn-secondary" href="/students/{{$student->id}}" role="button">View</a>
-                        
-                            <a class="btn btn-primary active" href="/students/{{$student->id}}/edit" role="button">Edit</a>
+                        <a class="btn btn-primary active" href="/students/{{$student->id}}/edit" role="button">Edit</a>
                             {!!Form::open(['action' => ['StudentController@destroy', $student->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}
                                 {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
@@ -31,4 +31,7 @@
     @else
         <p>No students found</p>
     @endif
+    <div class="text-right">
+            <a href="/" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+    </div>
 @endsection

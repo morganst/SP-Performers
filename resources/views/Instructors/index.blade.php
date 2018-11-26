@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Instructor Index {{ Auth::user()->firstName }}</h1>
+    <h1>Instructor Index</h1>
     <div style="padding-bottom: 1em">Here you can view and edit instructors</div>
     <br>
     @if(Auth::user()->role==1)
@@ -12,16 +12,17 @@
         <div class="row">
             <div class="col-3 col-lg-3">Name</div>
         </div>
-        <br />
+        <br>
+
         @foreach($users as $user)
             @if($user->role==1)
                 @continue
             @endif
-            <div class="row">
-                <div class="col-3 col-lg-3">{{$user->firstName}} {{$user->lastName}}</div>
+            <div class="class-layout-row">
+                <div>{{$user->firstName}} {{$user->lastName}}
+                    <br>
                     <div class="btn-group">
                         <a class="btn btn-secondary" href="/instructors/{{$user->id}}" role="button">View</a>
-
                         @if(Auth::user()->role==1)
                             <a class="btn btn-primary active" href="/instructors/{{$user->id}}/edit" role="button">Edit</a>
                             {!!Form::open(['action' => ['InstructorController@destroy', $user->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
@@ -34,8 +35,12 @@
             </div>
             <div class="row">&nbsp;</div>
         @endforeach
+
     {{$users->links()}}
     @else
         <p>No instructors found</p>
     @endif
+    <div class="text-right">
+            <a href="/" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+    </div>
 @endsection
