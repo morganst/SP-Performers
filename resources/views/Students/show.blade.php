@@ -30,19 +30,19 @@ $age = $d2->diff($d1);
             <div>Age: {{$age->y}}</div>
             <div>Gender: {{$stu->gender}}</div>
             <div>Primary Class: {{$stu->primaryClass}}</div>
-            {{-- @if($var->isEmpty())
-            <div>Notes:no </div> --}}
-            <a href="/notes/create" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
-            {{-- @else
-            <div>Notes:yes </div> 
+            @if($var->isEmpty())
+            <div>Notes:no </div>
+            <a href="/notes/createnew/{{$stu->id}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Crseate Note</a>
+            @else
+            <div>Notes:yes </div>
             
-            @endif--}}
+            @endif
             <div>Reference: {{$stu->reference}}</div>
         </div>
     <hr>
 <small>Created: {{$stu->created_at}}</small>
         <div class="text-right">
-            <a href="/students" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+        <a href="/students" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
         </div>
 
 @endsection
