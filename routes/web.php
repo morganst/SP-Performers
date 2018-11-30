@@ -45,6 +45,7 @@ Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
 Route::resource('notes', 'NotesController');
+Route::resource('attendances', 'AttendanceController');
 
 Route::post('/attachUser/{user_id}/{classes_id}', 'ClassController@attachUser');
 Route::post('/detachUser/{user_id}/{classes_id}', 'ClassController@detachUser');

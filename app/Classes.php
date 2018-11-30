@@ -14,11 +14,18 @@ class Classes extends Model
 
     public $timestamps = true;
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsToMany('App\User');
     }
 
-    public function student(){
+    public function student()
+    {
         return $this->belongsToMany('App\Student');
+    }
+
+    public function attendance()
+    {
+        return $this->hasMany('App\Attendance');
     }
 }

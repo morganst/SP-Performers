@@ -22,4 +22,9 @@ class Student extends Model
 
         return $this->belongsToMany('App\Classes');
     }
+
+    public function attendance()
+    {
+        return $this->hasMany('App\Attendance');
+    }
 }
