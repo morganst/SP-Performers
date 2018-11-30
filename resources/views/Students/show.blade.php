@@ -36,7 +36,7 @@
     <hr>
 <small>Created: {{$stu->created_at}}</small>
         <div class="text-right">
-        <a href="/students/{{$stu->id}}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+        <a href="/students" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
         </div>
 
 @endsection

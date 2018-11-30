@@ -1,4 +1,4 @@
-<h1 class="hidden">{{$var="I/B"}} {{$var2=$notes->student()->first()}}</h1> 
+<?php $var="I/B"; $var2=$notes->student()->first(); ?>
 @extends('layouts.app')
 
 @section('content')
