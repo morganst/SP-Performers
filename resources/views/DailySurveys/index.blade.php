@@ -12,7 +12,6 @@ use App\Classes;
 
     <div class="inner-nav">
 
-    <!--<button><a href="/dailysurvey/create/{{$cla->id}}/1">Start Surveys</a></button>-->
     </div>
 
     @php
@@ -33,6 +32,7 @@ use App\Classes;
                     <button>Present</button>
                     <button>Absent</button>
                 <button><a href="/dailysurvey/create/{{$cla->id}}/{{$lookupID}}">Start Survey</a></button>
+              
                 </div>
             </div>
         </div>

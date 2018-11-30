@@ -31,12 +31,19 @@ class NotesController extends Controller
         $notes = Note::where('SID', '=', $SID)->get();
       //  return view('Notes.create');
         return view('Notes.createfor')->with('notes', $notes);
-    }
-    public function create($SID)
+    } // check with is not empty 
+    public function createnew($SID)
+    {
+        $stu = Student::find($SID);
+
+      //  return view('Notes.create');
+        return view('Notes.createnew')->with('stu', $stu);
+    } // check with is not empty 
+    public function create()
     {
       
-        $notes = Note::where('SID', '=', $SID)->get();
-        return view('Notes.create')->with('notes', $notes);
+        
+        return view('Notes.create');
     }
     
 

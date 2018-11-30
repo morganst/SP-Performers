@@ -16,7 +16,7 @@ class ClassesTableSeeder extends Seeder
  
         for ($i = 0; $i < 10; $i++) {
             Classes::create([
-                'name' => $faker->state,
+                'name' => $faker->randomElement(['Dance','Art', 'Music']),
                 'limit' => $faker->numberBetween(10,20),
             ]);
         }

@@ -39,6 +39,7 @@ Route::group(['middleware'=>['auth','admin']], function() {
 Route::get('/logout', 'HomeController@logout');
 
 Route::get('/notes/createfor/{SID}', 'NotesController@createfor');
+Route::get('/notes/createnew/{SID}', 'NotesController@createnew');
 
 Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
