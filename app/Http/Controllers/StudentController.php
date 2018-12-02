@@ -39,7 +39,6 @@ class StudentController extends Controller
         $student->firstName = $request->input('firstName');
         $student->lastName = $request->input('lastName');
         $student->DOB = $request->input('DOB');
-        $student->notes = $request->input('notes');
         $student->gender = $request->input('gender');
         $student->primaryClass = $request->input('primaryClass');
         $student->reference = $request->input('reference');
@@ -83,7 +82,6 @@ class StudentController extends Controller
         $student->firstName = $request->input('firstName');
         $student->lastName = $request->input('lastName');
         $student->DOB = $request->input('DOB');
-        $student->notes = $request->input('notes');
         $student->gender = $request->input('gender');
         $student->primaryClass = $request->input('primaryClass');
         $student->reference = $request->input('reference');

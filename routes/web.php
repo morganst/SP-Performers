@@ -17,10 +17,9 @@ Route::get('/unauthorized', function () {
 
 
 Route::resource('', 'HomeController');
-Route::resource('students', 'StudentController');
-Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
 Route::get('classes/show/{id}', 'ClassController@show');
+Route::get('attendances/{id}', 'AttendanceController@index');
 
 
 Auth::routes();
@@ -41,7 +40,6 @@ Route::get('/logout', 'HomeController@logout');
 Route::get('/notes/createfor/{SID}', 'NotesController@createfor');
 Route::get('/notes/createnew/{SID}', 'NotesController@createnew');
 
-Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');

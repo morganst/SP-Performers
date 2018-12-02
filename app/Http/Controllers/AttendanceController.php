@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Attendance;
-use App\Student; 
 use App\Classes;
 
 class AttendanceController extends Controller
@@ -14,9 +13,11 @@ class AttendanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $cla = Classes::find($id);
+        $attend = Attendance::orderBy('created_at', 'des')->paginate(10);
+        return view('attendances.index', compact(['cla', 'attend']));
     }
 
     /**

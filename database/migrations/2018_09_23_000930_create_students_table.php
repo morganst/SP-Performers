@@ -19,7 +19,6 @@ class CreateStudentsTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->date('DOB');
-            $table->mediumText('notes')->nullable();
             $table->string('gender')->default('Male');
             $table->string('primaryClass');
             $table->string('reference')->nullable();

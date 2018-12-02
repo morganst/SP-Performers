@@ -41,13 +41,6 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('notes', 'Notes', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::text('notes', $stu->notes, ['class' => 'form-control', 'placeholder' => 'Notes'])}}
-                </div>
-            </div>
-            &nbsp;
-            <div class="form-row">
                 {!! Form::label('reference', 'Refernce', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     {{Form::text('reference', $stu->reference, ['class' => 'form-control', 'placeholder' => 'Reference'])}}
