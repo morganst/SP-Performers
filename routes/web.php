@@ -17,11 +17,10 @@ Route::get('/unauthorized', function () {
 
 
 Route::resource('', 'HomeController');
-Route::resource('students', 'StudentController');
-Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
 Route::get('classes/show/{id}', 'ClassController@show');
-
+Route::get('attendances/{id}', 'AttendanceController@index');
+Route::post('/search', 'AttendanceController@search');
 
 Auth::routes();
 
@@ -41,11 +40,11 @@ Route::get('/logout', 'HomeController@logout');
 Route::get('/notes/createfor/{SID}', 'NotesController@createfor');
 Route::get('/notes/createnew/{SID}', 'NotesController@createnew');
 
-Route::resource('', 'HomeController');
 Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
 Route::resource('notes', 'NotesController');
+Route::resource('attendances', 'AttendanceController');
 
 Route::post('/attachUser/{user_id}/{classes_id}', 'ClassController@attachUser');
 Route::post('/detachUser/{user_id}/{classes_id}', 'ClassController@detachUser');
