@@ -2,7 +2,7 @@
 
 @section('content')
     {!! Form::open(['action' => 'AttendanceController@search', 'method' => 'POST']) !!}
-    <div align="right">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}} <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>Search Date</button></div><br>
+    <div align="right">{{Form::date('date', $searchDate)}} <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i>Search Date</button></div><br>
     <input type="hidden" name="cla" value="<?php echo $cla->id; ?>"/>
     {!! Form::close() !!}
     @if(count($attend) > 0)
@@ -10,8 +10,10 @@
         <div class="col-3 col-lg-3">Student Name:</div>
     </div>
     <br>
+    <div>
         @foreach($cla->attendance as $att)
-            <div class="class-layout-row">
+
+                @if($att->date == $searchDate)
                 <div>
                     {{$att->student['firstName']}} {{$att->student['lastName']}}:
                     <br>
@@ -21,9 +23,10 @@
                     Absent on {{date("m-d-Y", strtotime($att->date))}}
                     @endif
                 </div>
-            </div>
-            <div class="row">&nbsp;</div>
+                <br>
+                @endif
         @endforeach
+    </div>
     {{$attend->links()}}
     @else
     <p>No classes found</p>

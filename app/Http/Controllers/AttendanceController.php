@@ -20,6 +20,13 @@ class AttendanceController extends Controller
         return view('attendances.index', compact(['cla', 'attend']));
     }
 
+    public function search(Request $request){
+        $searchDate = $request->input('date');
+        $search;
+        $cla = Classes::find($request->input('cla'));
+        $attend = Attendance::orderBy('created_at', 'des')->paginate(10);
+        return view('attendances.search', compact(['cla', 'attend', 'searchDate']));
+    }
     /**
      * Show the form for creating a new resource.
      *

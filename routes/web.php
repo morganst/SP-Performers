@@ -20,7 +20,7 @@ Route::resource('', 'HomeController');
 Route::resource('classes', 'ClassController');
 Route::get('classes/show/{id}', 'ClassController@show');
 Route::get('attendances/{id}', 'AttendanceController@index');
-
+Route::post('/search', 'AttendanceController@search');
 
 Auth::routes();
 
