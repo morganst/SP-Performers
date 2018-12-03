@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
             'center' => $faker->state,
             'email' => 'admin@performers.com',
             'password' => 'qwerty',
-            'role' => 1,
+            'role' => 1
         ]);
     }
 }
