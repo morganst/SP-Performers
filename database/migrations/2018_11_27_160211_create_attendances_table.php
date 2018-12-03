@@ -14,7 +14,7 @@ class CreateAttendancesTable extends Migration
     public function up()
     {
         Schema::create('attendances', function (Blueprint $table) {
-            
+            $table->increments('id');
             $table->date('date');
             $table->integer('classes_id')->unsigned();
             $table->foreign('classes_id')->references('id')->on('classes')->onDelete('cascade');
@@ -22,7 +22,6 @@ class CreateAttendancesTable extends Migration
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->boolean('attend');
             $table->timestamps();
-            $table->primary(['classes_id', 'date', 'student_id']);
         });
     }
 

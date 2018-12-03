@@ -58,17 +58,17 @@ class AttendanceController extends Controller
         $stu = $request->input('stu');
         $attend = $request->input('attend');
         $i = 0;
-        foreach($stu as $student)
+        if($stu>0)
         {
-            $attendance = new Attendance;
-            $attendance->date = $request->input('date');
-            $attendance->attend = $attend[$i];
-            $attendance->student_id = $student;
-            $attendance->classes_id = $classes;
-            $attendance->save();
-            $i++;
+            foreach($stu as $student)
+            {
+                $attendance = Attendance::updateOrCreate(
+                    ['date' => $request->input('date'), 'student_id' => $student, 'classes_id' => $classes],
+                    ['attend' => $attend[$i]]
+                );
+                $i++;
+            }
         }
-        
         return redirect('/classes')->with('success', 'Student Created!');
     }
 
