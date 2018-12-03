@@ -8,7 +8,7 @@ use App\Student;
 
 class Classes extends Model
 {
-    protected $table = 'pgsql_production.Classes';
+    protected $table = 'postgresql-curly-75026.Classes';
 
     public $primaryKey = 'id';
 
