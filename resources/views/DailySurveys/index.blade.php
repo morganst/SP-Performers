@@ -16,7 +16,7 @@
         @foreach ($cla->student as $student)
         <div style="border:1px solid black;padding:8px;" class="class-layout-row">
             <div >
-                Student: {{$student->firstName}} {{$student->lastName}} {{$student->id}}
+                Student: {{$student->firstName}} {{$student->lastName}}
                 <div><a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a></div>
                 <div style="float:right;">
                 {{Form::select('attend[]', ['1' => 'Present', '0' => 'Absent'])}}
