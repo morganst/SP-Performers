@@ -57583,7 +57583,7 @@ var AddStudent = function (_Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(e) {
-      //preventDefault prevents page reload   
+      //preventDefault prevents page reload
       e.preventDefault();
       /*A call back to the onAdd props. The current
        *state is passed as a param
@@ -57801,10 +57801,10 @@ if(false) {
 
 exports = module.exports = __webpack_require__(55)(false);
 // imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,600);", ""]);
+//exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,600);", ""]);
 
 // module
-exports.push([module.i, "body {\r\n\tmargin: 0;\r\n\tbackground: white;\r\n\tfont-family: 'Work Sans', sans-serif;\r\n\tfont-weight: 800;\r\n}\r\n\r\n.container {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.navbar {\r\n  background: #677FA8;\r\n}\r\n\r\n.navbar::after {\r\n  content: '';\r\n  display: table;\r\n  clear: both;\r\n}\r\n\r\n.logo {\r\n  float: left;\r\n  padding: 10px 0;\r\n}\r\n\r\nnav {\r\n  float: right;\r\n}\r\n\r\nnav ul {\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style: none;\r\n}\r\n\r\nnav li {\r\n  display: inline-block;\r\n  margin-left: 50px;\r\n  padding-top: 20px;\r\n  position: relative;\r\n}\r\n\r\nnav a {\r\n  color: #061E45;\r\n  text-decoration: none;\r\n  text-transform: uppercase;\r\n  font-size: 14px;\r\n}\r\n\r\nnav a:hover {\r\n  color: #061E45;\r\n}\r\n\r\nnav a::before {\r\n  content: '';\r\n  display: block;\r\n  height: 5px;\r\n  background-color: #061E45;\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  width: 0%;\r\n\r\n  transition: all ease-in-out 250ms;\r\n}\r\n\r\nnav a:hover::before {\r\n  width: 100%;\r\n}\r\n\r\n@media (max-width : 320px) {\r\n    nav li {\r\n        display: flex;\r\n        float: right;\r\n        padding-top: 5px;\r\n      }\r\n}\r\n", ""]);
+//exports.push([module.i, "body {\r\n\tmargin: 0;\r\n\tbackground: white;\r\n\tfont-family: 'Work Sans', sans-serif;\r\n\tfont-weight: 800;\r\n}\r\n\r\n.container {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n}\r\n\r\n.navbar {\r\n  background: #677FA8;\r\n}\r\n\r\n.navbar::after {\r\n  content: '';\r\n  display: table;\r\n  clear: both;\r\n}\r\n\r\n.logo {\r\n  float: left;\r\n  padding: 10px 0;\r\n}\r\n\r\nnav {\r\n  float: right;\r\n}\r\n\r\nnav ul {\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style: none;\r\n}\r\n\r\nnav li {\r\n  display: inline-block;\r\n  margin-left: 50px;\r\n  padding-top: 20px;\r\n  position: relative;\r\n}\r\n\r\nnav a {\r\n  color: #061E45;\r\n  text-decoration: none;\r\n  text-transform: uppercase;\r\n  font-size: 14px;\r\n}\r\n\r\nnav a:hover {\r\n  color: #061E45;\r\n}\r\n\r\nnav a::before {\r\n  content: '';\r\n  display: block;\r\n  height: 5px;\r\n  background-color: #061E45;\r\n\r\n  position: absolute;\r\n  top: 0;\r\n  width: 0%;\r\n\r\n  transition: all ease-in-out 250ms;\r\n}\r\n\r\nnav a:hover::before {\r\n  width: 100%;\r\n}\r\n\r\n@media (max-width : 320px) {\r\n    nav li {\r\n        display: flex;\r\n        float: right;\r\n        padding-top: 5px;\r\n      }\r\n}\r\n", ""]);
 
 // exports
 
