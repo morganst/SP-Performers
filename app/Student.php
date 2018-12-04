@@ -8,7 +8,7 @@ use App\User;
 class Student extends Model
 {
     protected $fillable = ['firstName', 'lastName','DOB'];
-    protected $table = 'Students';
+    protected $table = 'students';
 
     public $primaryKey = 'id';
 
