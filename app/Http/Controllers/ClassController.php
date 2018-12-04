@@ -19,12 +19,12 @@ class ClassController extends Controller
     public function index()
     {
         $classes = Classes::orderBy('created_at', 'des')->paginate(10);
-        return view('classes.index')->with('classes', $classes);
+        return view('Classes.index')->with('classes', $classes);
     }
 
     public function create()
     {
-        return view('classes.create');
+        return view('Classes.create');
     }
 
     public function store(Request $request)
@@ -96,7 +96,7 @@ class ClassController extends Controller
     {
         $cla = Classes::find($id);
         $users = User::all();
-        return view('classes.addUser', compact(['cla', 'users']));
+        return view('Classes.addUser', compact(['cla', 'users']));
     }
 
     public function attachUser($class_id,$user_id)
@@ -117,7 +117,7 @@ class ClassController extends Controller
     {
         $cla = Classes::find($id);
         $students = Student::paginate(10);
-        return view('classes.addStudent', compact(['cla', 'students']));
+        return view('Classes.addStudent', compact(['cla', 'students']));
     }
 
     public function attachStudent($class_id,$student_id)

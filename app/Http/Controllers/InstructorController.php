@@ -15,13 +15,13 @@ class InstructorController extends Controller
     public function index()
     {
         $users = User::orderBy('created_at', 'des')->paginate(10);
-        return view('instructors.index')->with('users', $users);
+        return view('Instructors.index')->with('users', $users);
     }
     
     public function show($id)
     {
         $user = User::find($id);
-        return view('instructors.show')->with('user', $user);
+        return view('Instructors.show')->with('user', $user);
     }
 
     public function edit($id)
@@ -32,7 +32,7 @@ class InstructorController extends Controller
             return redirect('instructors')->with('error', 'Unauthorized page');
         }
         */
-        return view('instructors.edit')->with('user', $user);
+        return view('Instructors.edit')->with('user', $user);
     }
 
     public function update(Request $request, $id)
@@ -73,6 +73,6 @@ class InstructorController extends Controller
     public function create()
     {
        
-        return view('instructors.create');
+        return view('Instructors.create');
     }
 }

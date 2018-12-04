@@ -15,12 +15,12 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::orderBy('created_at', 'des')->paginate(10);
-        return view('students.index')->with('students', $students);
+        return view('Students.index')->with('students', $students);
     }
 
     public function create()
     {
-        return view('students.create');
+        return view('Students.create');
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $stu = Student::find($id);
-        return view('students.show')->with('stu', $stu);
+        return view('Students.show')->with('stu', $stu);
     }
 
     public function edit($id)
@@ -63,7 +63,7 @@ class StudentController extends Controller
             return redirect('students')->with('error', 'Unauthorized page');
         }*/
 
-        return view('students.edit')->with('stu', $stu);
+        return view('Students.edit')->with('stu', $stu);
     }
 
     public function update(Request $request, $id)

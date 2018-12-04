@@ -10,12 +10,12 @@ class NotescreateController extends Controller
     {
         $notes = Note::where('SID', '=', $SID)->get();
       //  return view('Notes.create');
-        return view('notes.createfor')->with('notes', $notes);
+        return view('Notes.createfor')->with('notes', $notes);
     }
     public function index()
     {
         $notes = Note::where('SID', '=', $SID)->get();
       //  return view('Notes.create');
-        return view('notes.createfor')->with('notes', $notes);
+        return view('Notes.createfor')->with('notes', $notes);
     }
 }
