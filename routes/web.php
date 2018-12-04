@@ -57,3 +57,5 @@ Route::get('classes/{id}/addStudent', 'ClassController@addStudent');
 Route::resource('/dailysurvey','DailySurveyController');
 Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create');
 
+Route::get('/sendemail', 'SendEmailController@index');
+Route::post('/sendemail/send', 'SendEmailController@send');

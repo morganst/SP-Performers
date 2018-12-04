@@ -13,6 +13,7 @@ $age = $d2->diff($d1);
              
             <a href="/students/{{$stu->id}}/edit" class="btn btn-secondary" style="color: #F2F2F2" role="button">Edit</a>
             <a href="/notes/{{$stu->id}}" class="btn btn-secondary" style="color: #F2F2F2" role="button">Instructor Notes</a>
+            <a href="/sendemail" class="btn btn-secondary" style="color: #F2F2F2" role="button">Send Report</a>
             
             {!!Form::open(['action' => ['StudentController@destroy', $stu->id], 'method' => 'POST', 'class' => 'btn btn-danger', 'style' => 'padding: 0'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
