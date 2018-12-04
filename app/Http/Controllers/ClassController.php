@@ -60,7 +60,7 @@ class ClassController extends Controller
             return redirect('classes')->with('error', 'Unauthorized page');
         }*/
 
-        return view('classes.edit')->with('cla', $cla);
+        return view('Classes.edit')->with('cla', $cla);
     }
 
     public function update(Request $request, $id)
