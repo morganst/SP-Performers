@@ -17,7 +17,7 @@ class AttendanceController extends Controller
     {
         $cla = Classes::find($id);
         $attend = Attendance::orderBy('created_at', 'des')->paginate(10);
-        return view('attendances.index', compact(['cla', 'attend']));
+        return view('Attendances.index', compact(['cla', 'attend']));
     }
 
     public function search(Request $request){
@@ -25,7 +25,7 @@ class AttendanceController extends Controller
         $search;
         $cla = Classes::find($request->input('cla'));
         $attend = Attendance::orderBy('created_at', 'des')->paginate(10);
-        return view('attendances.search', compact(['cla', 'attend', 'searchDate']));
+        return view('Attendances.search', compact(['cla', 'attend', 'searchDate']));
     }
     /**
      * Show the form for creating a new resource.
