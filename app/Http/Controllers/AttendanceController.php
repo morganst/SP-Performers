@@ -16,7 +16,7 @@ class AttendanceController extends Controller
     public function index($id)
     {
         $cla = Classes::find($id);
-        $attend = Attendance::orderBy('created_at', 'des');
+        $attend = Attendance::orderBy('created_at', 'des')->paginate(100);
         return view('Attendances.index', compact(['cla', 'attend']));
     }
 
@@ -24,7 +24,7 @@ class AttendanceController extends Controller
         $searchDate = $request->input('date');
         $search;
         $cla = Classes::find($request->input('cla'));
-        $attend = Attendance::orderBy('created_at', 'des');
+        $attend = Attendance::orderBy('created_at', 'des')->paginate(100);
         return view('Attendances.search', compact(['cla', 'attend', 'searchDate']));
     }
     /**
