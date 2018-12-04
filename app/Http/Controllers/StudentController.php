@@ -15,12 +15,12 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::orderBy('created_at', 'des')->paginate(10);
-        return view('Students.index')->with('students', $students);
+        return view('students.index')->with('students', $students);
     }
 
     public function create()
     {
-        return view('Students.create');
+        return view('students.create');
     }
 
     public function store(Request $request)
@@ -46,13 +46,13 @@ class StudentController extends Controller
         //$student->user_id = auth()->user()->id;
         $student->save();
 
-        return redirect('/Students')->with('success', 'Student Created!');
+        return redirect('/students')->with('success', 'Student Created!');
     }
 
     public function show($id)
     {
         $stu = Student::find($id);
-        return view('Students.show')->with('stu', $stu);
+        return view('students.show')->with('stu', $stu);
     }
 
     public function edit($id)
@@ -63,7 +63,7 @@ class StudentController extends Controller
             return redirect('students')->with('error', 'Unauthorized page');
         }*/
 
-        return view('Students.edit')->with('stu', $stu);
+        return view('students.edit')->with('stu', $stu);
     }
 
     public function update(Request $request, $id)
@@ -88,7 +88,7 @@ class StudentController extends Controller
        
         $student->save();
 
-        return redirect('/Students')->with('success', 'Student Updated!');
+        return redirect('/students')->with('success', 'Student Updated!');
     }
 
     public function destroy($id)
@@ -101,6 +101,6 @@ class StudentController extends Controller
 
         $stu->delete();
 
-        return redirect('/Students')->with('success', 'Student Deleted!');
+        return redirect('/students')->with('success', 'Student Deleted!');
     }
 }

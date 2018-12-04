@@ -19,12 +19,12 @@ class ClassController extends Controller
     public function index()
     {
         $classes = Classes::orderBy('created_at', 'des')->paginate(10);
-        return view('Classes.index')->with('classes', $classes);
+        return view('classes.index')->with('classes', $classes);
     }
 
     public function create()
     {
-        return view('Classes.create');
+        return view('classes.create');
     }
 
     public function store(Request $request)
@@ -40,7 +40,7 @@ class ClassController extends Controller
         //$class->user_id = auth()->user()->id;
         $class->save();
 
-        return redirect('/Classes')->with('success', 'Class Created!');
+        return redirect('/classes')->with('success', 'Class Created!');
     }
 
     public function show($id)
@@ -60,7 +60,7 @@ class ClassController extends Controller
             return redirect('classes')->with('error', 'Unauthorized page');
         }*/
 
-        return view('Classes.edit')->with('cla', $cla);
+        return view('classes.edit')->with('cla', $cla);
     }
 
     public function update(Request $request, $id)
@@ -76,7 +76,7 @@ class ClassController extends Controller
 
         $class->save();
 
-        return redirect('/Classes')->with('success', 'Class Updated!');
+        return redirect('/classes')->with('success', 'Class Updated!');
     }
 
     public function destroy($id)
@@ -89,14 +89,14 @@ class ClassController extends Controller
 
         $cla->delete();
 
-        return redirect('/Classes')->with('success', 'Class Deleted!');
+        return redirect('/classes')->with('success', 'Class Deleted!');
     }
 
     public function addUser($id)
     {
         $cla = Classes::find($id);
         $users = User::all();
-        return view('Classes.addUser', compact(['cla', 'users']));
+        return view('classes.addUser', compact(['cla', 'users']));
     }
 
     public function attachUser($class_id,$user_id)
@@ -117,7 +117,7 @@ class ClassController extends Controller
     {
         $cla = Classes::find($id);
         $students = Student::paginate(10);
-        return view('Classes.addStudent', compact(['cla', 'students']));
+        return view('classes.addStudent', compact(['cla', 'students']));
     }
 
     public function attachStudent($class_id,$student_id)
