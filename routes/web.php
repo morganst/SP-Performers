@@ -54,3 +54,5 @@ Route::post('/detach/{user_id}/{classes_id}', 'ClassController@detach');
 Route::resource('/dailysurvey','DailySurveyController');
 Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create');
 
+Route::get('/sendemail', 'SendEmailController@index');
+Route::post('/sendemail/send', 'SendEmailController@send');
