@@ -33,6 +33,69 @@
         {!! Form::close() !!}
     </div>
 
+    <hr>
+    <div id="chart">
+        <h2>Graph:</h2>
+     </div>
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script>
+                const options = {
+                chart: {
+                    height: 450,
+                    width: '100%',
+                    type: 'bar',
+                    background: '#f4f4f4',
+                    foreColor: '333'
+                },
+                series: [{
+                    name: 'Student Survey Score',
+                    data: [
+                        9, 7, 12,
+                        8, 16, 4,
+                        8, 11, 10,
+                        9
+                    ]
+                }],
+                xaxis: {
+                    categories: [
+                        'Student 1', 'Student 2', 'Student 3', 'Student 4', 'Student 5', 'Student 6', 'Student 7', 'Student 8', 'Student 9', 'Student 10'
+                    ]
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false
+                    }
+                },
+                fill: {
+                    colors: ['#f44336']
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                title: {
+                    text: "Student Survey",
+                    align: "center",
+                    margin: 20,
+                    offsetY: 20,
+                    style: {
+                        fontSize: "25px"
+                    }
+                }
+             };
+             // Initialize Chart
+            const chart = new ApexCharts(document.querySelector('#chart'), options);
+             //Render Chart
+            chart.render();
+             //Event Method Example
+            document.querySelector("button").addEventListener("click", () => chart.updateOptions({
+                plotOptions: {
+                    bar: {
+                        horizontal: true
+                    }
+                }
+            }))
+        </script>
+
     {{-- <hr>
     <div class="all-surveys">
     <h2 >All Surveys in DB (for demo only)</h2>
