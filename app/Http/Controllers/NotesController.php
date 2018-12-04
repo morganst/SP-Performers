@@ -18,7 +18,7 @@ class NotesController extends Controller
         $notes = Note::all();
         
     //   return $notes;
-        return view('notes.index')-> with('notes', $notes);
+        return view('Notes.index')-> with('notes', $notes);
     }
 
     /**
@@ -30,20 +30,20 @@ class NotesController extends Controller
     {
         $notes = Note::where('SID', '=', $SID)->get();
       //  return view('Notes.create');
-        return view('notes.createfor')->with('notes', $notes);
+        return view('Notes.createfor')->with('notes', $notes);
     } // check with is not empty 
     public function createnew($SID)
     {
         $stu = Student::find($SID);
 
       //  return view('Notes.create');
-        return view('notes.createnew')->with('stu', $stu);
+        return view('Notes.createnew')->with('stu', $stu);
     } // check with is not empty 
     public function create()
     {
       
         
-        return view('notes.create');
+        return view('Notes.create');
     }
     
 
@@ -83,7 +83,7 @@ class NotesController extends Controller
     public function show($SID)
     {
         $notes = Note::where('SID', '=', $SID)->get();
-        return view('notes.show')->with('notes', $notes);
+        return view('Notes.show')->with('notes', $notes);
     }
 
     /**
@@ -96,7 +96,7 @@ class NotesController extends Controller
     
     {
         $notes = Note::find($NId);
-        return view('notes.edit')->with('notes', $notes);
+        return view('Notes.edit')->with('notes', $notes);
     }
 
     /**
