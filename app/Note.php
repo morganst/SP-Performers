@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
    // protected $fillable = ['firstName', 'lastName','DOB'];
-    protected $table = 'notes';
+    protected $table = 'Notes';
 
   //  public $primaryKey = 'SID';
     public $primaryKey = 'NId';

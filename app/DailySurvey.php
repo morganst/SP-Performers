@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DailySurvey extends Model
 {
-    protected $table = "dailysurveys";
+    protected $table = "Dailysurveys";
 
     public $primaryKey = "id";
 

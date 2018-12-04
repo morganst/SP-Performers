@@ -8,7 +8,7 @@ use App\Student;
 
 class Classes extends Model
 {
-    protected $table = 'classes';
+    protected $table = 'Classes';
 
     public $primaryKey = 'id';
 
