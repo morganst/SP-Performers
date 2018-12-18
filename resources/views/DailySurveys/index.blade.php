@@ -13,18 +13,34 @@
     <div class="class-layout">
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
         <div align="right">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}}</div><br>
+        <?php
+        $i = 0;
+        ?>
         @foreach ($cla->student as $student)
         <div style="border:1px solid black;padding:8px;" class="class-layout-row">
             <div >
                 Student: {{$student->firstName}} {{$student->lastName}}
                 <div><a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a></div>
                 <div style="float:right;">
-                {{Form::select('attend[]', ['1' => 'Present', '0' => 'Absent'])}}
+                @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend))
+                {{Form::label('present'.$i.'', 'Present')}}
+                {{Form::radio('attend['.$i.']', '1',$student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend == 1, array('id'=>'present'.$i.''))}}
+                {{Form::label('absent'.$i.'', 'Absent')}}
+                {{Form::radio('attend['.$i.']', '0',$student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend == 0, array('id'=>'absent'.$i.''))}}
+                @else
+                {{Form::label('present'.$i.'', 'Present')}}
+                {{Form::radio('attend['.$i.']', '1', true, array('id'=>'present'.$i.''))}}
+                {{Form::label('absent'.$i.'', 'Absent')}}
+                {{Form::radio('attend['.$i.']', '0', false, array('id'=>'absent'.$i.''))}}
+                @endif
                 </div>
             </div>
         </div>
         <input type="hidden" name="stu[]" value="<?php echo $student->id; ?>"/>
         <input type="hidden" name="cla" value="<?php echo $cla->id; ?>"/>
+        <?php
+        $i++;
+        ?>
         @endforeach
         <div class="text-right">
                 {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
