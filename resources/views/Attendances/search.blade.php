@@ -11,7 +11,7 @@
     </div>
     <br>
     <div>
-        @foreach($cla->attendance as $att)
+        @foreach($attend as $att)
 
                 @if($att->date == $searchDate)
                 <div>
@@ -27,7 +27,6 @@
                 @endif
         @endforeach
     </div>
-    {{$attend->links()}}
     @else
     <p>No classes found</p>
     @endif

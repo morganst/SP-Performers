@@ -10,7 +10,7 @@
         <div class="col-3 col-lg-3">Student Name:</div>
     </div>
     <br>
-        @foreach($cla->attendance as $att)
+        @foreach($attend as $att)
             <div class="class-layout-row">
                 <div>
                     {{$att->student['firstName']}} {{$att->student['lastName']}}:

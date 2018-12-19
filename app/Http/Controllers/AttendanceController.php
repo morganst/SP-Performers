@@ -16,15 +16,14 @@ class AttendanceController extends Controller
     public function index($id)
     {
         $cla = Classes::find($id);
-        $attend = Attendance::orderBy('created_at', 'des')->paginate(100);
+        $attend = Attendance::orderBy('created_at', 'des')->paginate(6);
         return view('Attendances.index', compact(['cla', 'attend']));
     }
 
     public function search(Request $request){
         $searchDate = $request->input('date');
-        $search;
         $cla = Classes::find($request->input('cla'));
-        $attend = Attendance::orderBy('created_at', 'des')->paginate(100);
+        $attend = Attendance::orderBy('created_at', 'des')->get();
         return view('Attendances.search', compact(['cla', 'attend', 'searchDate']));
     }
     /**
