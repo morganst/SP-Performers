@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+    @endif
     <h1>Instructor Index</h1>
     <div style="padding-bottom: 1em">Here you can view and edit instructors</div>
     @if(Auth::user()->role==1)

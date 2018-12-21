@@ -4,6 +4,11 @@
 @section('content')
   <br />
   <div class="container box">
+      @if(session()->has('message'))
+      <div class="alert alert-success">
+          {{ session()->get('message') }}
+      </div>
+      @endif
    <div class="panel panel-default">
     <div class="panel-heading">Student Attendance</div>
     <div class="panel-body">
@@ -20,6 +25,7 @@
          <th>Attendance</th>
          <th>Class</th>
          <th>Date</th>
+         <th>Remove</th>
         </tr>
        </thead>
        <tbody>
@@ -29,8 +35,7 @@
      </div>
     </div> 
    </div>
-   <a href="{{ URL::previous() }}" style="float:right;" class="btn btn-primary" role="button" aria-pressed="true">Back</a><br>
-
+   <a href="/classes" style="float:right;" class="btn btn-primary" role="button" aria-pressed="true">Back</a><br>
   </div>
  </body>
 </html>

@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+    @endif
     <h1>Class Index</h1>
     <div style="padding-bottom: 1em">Here you can view and edit classes</div> 
     <br>

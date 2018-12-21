@@ -41,7 +41,7 @@ class InstructorController extends Controller
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'center' => 'nullable',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
             'role' => 'required',
         ]);
 

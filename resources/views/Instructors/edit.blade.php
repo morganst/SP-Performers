@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register Instructor') }}</div>
+                    <div class="card-header">{{ __('Edit Instructor') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{route('instructors.update', $user->id )}}">
@@ -110,8 +110,9 @@
                                 <div class="col-md-6 offset-md-4">
                                     {{Form::hidden('_method', 'PUT')}}
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('Update') }}
                                     </button>
+                                    <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true" style="float:right;">Back</a>
                                 </div>
                             </div>
                         </form>

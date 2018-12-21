@@ -113,6 +113,14 @@ class AttendanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $att = Attendance::find($id);
+
+        /*if(auth()->user()->id !== $stu->user_id) {
+            return redirect('students')->with('error', 'Unauthorized page');
+        }*/
+
+        $att->delete();
+
+        return redirect()->back()->with('message', 'Record deleted!');
     }
 }

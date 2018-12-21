@@ -51,6 +51,7 @@ class SearchController extends Controller
          $output .= '
          <td>'.$row->classes['name'].'</td>
          <td>'.date("m-d-Y", strtotime($row->date)).'</td>
+         <td><a href = "delete/'.$row->id.'">Delete</a></td>
         </tr>
         ';
        }
