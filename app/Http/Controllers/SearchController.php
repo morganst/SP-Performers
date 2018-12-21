@@ -24,6 +24,8 @@ class SearchController extends Controller
             $request->where('firstName', 'like', ''.$query.'%');
         })->orWhereHas('student', function ($request) use ($query) {
             $request->where('lastName', 'like', ''.$query.'%');
+        })->orWhereHas('classes', function ($request) use ($query) {
+            $request->where('name', 'like', ''.$query.'%');
         })->orWhere('date', 'like', '%'.$query.'%')
         ->orderBy('id', 'desc')->get();
       }
@@ -47,6 +49,7 @@ class SearchController extends Controller
             $output .= '<td bgcolor="FF3F3F">Absent</td>';
 
          $output .= '
+         <td>'.$row->classes['name'].'</td>
          <td>'.date("m-d-Y", strtotime($row->date)).'</td>
         </tr>
         ';

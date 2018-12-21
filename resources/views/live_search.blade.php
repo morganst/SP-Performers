@@ -18,6 +18,7 @@
          <th>First Name</th>
          <th>Last Name</th>
          <th>Attendance</th>
+         <th>Class</th>
          <th>Date</th>
         </tr>
        </thead>
@@ -28,7 +29,7 @@
      </div>
     </div> 
    </div>
-   <a href="{{ URL::previous() }}" style="float:right;" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+   <a href="{{ URL::previous() }}" style="float:right;" class="btn btn-primary" role="button" aria-pressed="true">Back</a><br>
 
   </div>
  </body>
