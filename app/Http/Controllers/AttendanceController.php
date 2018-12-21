@@ -12,7 +12,7 @@ class AttendanceController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function index($id)
     {
         $cla = Classes::find($id);
@@ -68,7 +68,7 @@ class AttendanceController extends Controller
                 $i++;
             }
         }
-        return redirect('/classes')->with('success', 'Student Created!');
+        return redirect()->back()->with('message', 'Attendance Submitted!');
     }
 
     /**

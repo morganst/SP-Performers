@@ -3,12 +3,13 @@
 
 @section('content')
 
-    <div class="inner-nav">
-
-    <!--<button><a href="/dailysurvey/create/{{$cla->id}}/1">Start Surveys</a></button>-->
-    </div>
+@if(session()->has('message'))
+<div class="alert alert-success">
+    {{ session()->get('message') }}
+</div>
+@endif
     <h2>All Students in Class: {{$cla->name}}</h2>
-    <div class="text-right"><a href="/attendances/{{$cla->id}}" class="btn btn-md btn-primary">Past Attendance</a></div><br>
+    <div class="text-right"><a href="/live_search" class="btn btn-md btn-primary">Past Attendance</a></div><br>
     <div class="class-layout">
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
         <div style="float:right;">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}}</div><br>
@@ -51,9 +52,8 @@
     </div>
 
     <hr>
+    <h2>Graph:</h2>
     <div id="chart">
-        <h2>Graph:</h2>
-     </div>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script>
                 const options = {
