@@ -50,7 +50,7 @@
             <div style="padding-top: 10px">
                 {{Form::hidden('_method', 'PUT')}}
                 {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-                <a href="{{ URL::previous() }}" class="btn btn-secondary">Go Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-secondary">Back</a>
             </div>
         </form>
     {!! Form::close() !!}

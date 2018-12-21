@@ -3,17 +3,16 @@
 @section('content')
     <h1>Student Index</h1>
     <div style="padding-bottom: 1em">Here you can view and edit students</div> 
-    <br>
     <div class="text-right"><a href="/students/create" class="btn btn-md btn-primary">Add New</a></div>
     <hr>
     @if(count($students) > 0)
         <div class="row">
-            <div class="col-3 col-lg-3">Name</div>
+            <div class="col-lg-3">Student Name:</div>
         </div>
-        <br />
+        <br>
         @foreach($students as $student)
             <div class="row">
-                <div class="col-3 col-lg-3">{{$student->firstName}} {{$student->lastName}}
+                <div class="col-lg-3">{{$student->firstName}} {{$student->lastName}}
                     <br>
                     <div class="btn-group">
                         <a class="btn btn-secondary" href="/students/{{$student->id}}" role="button">View</a>
@@ -25,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">&nbsp;</div>
+            <br>
         @endforeach
     {{$students->links()}}
     @else
