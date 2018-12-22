@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>THis is the Student Survey Page for the {{$cla->name}}class</h1>
+<h1>This is the Student Survey Page for {{$cla->name}}</h1>
     <a href="/classes/show/{{$cla->id}}">back</a>
     <div class="daily-survey-container">
         <!--GET STUDENTID -->
@@ -9,15 +9,14 @@
         {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
         {{DB::table('students')->where('id', $lookupID)->value('lastName')}}
     </h1>
-    <h1>Student ID: {{$lookupID}}</h1>
 
         {!! Form::open(['action' => 'DailySurveyController@store', 'method' => 'POST']) !!}
         <form>
             {{ Form::hidden('ClassID', $cla->id) }}
             {{ Form::hidden('cla', $cla) }}
             {{ Form::hidden('StudentID', $lookupID)}}
-            <a href="/notes/createfor/{{$lookupID}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">add Note</a>
-            &nbsp;
+{{--             <a href="/notes/createfor/{{$lookupID}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">add Note</a>
+ --}}            &nbsp;
             <div class="form-row">
                 {!! Form::label('Q1', 'Rate your experience about something question 1?')  !!}
                 <div class="radio-btn-spread">
