@@ -21,7 +21,7 @@
         <div style="border:1px solid black;padding:8px;" class="class-layout-row">
             <div>
                 <a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a>
-                <span style="float:right;">
+                <span style="float:right;"> 
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
                 @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend))
                 {{Form::label('present'.$i.'', 'Present')}}
@@ -45,7 +45,7 @@
         @endforeach
         <br>
         <div class="text-right">
-                {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+            {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
             <a href="/classes" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
         </div>
         {!! Form::close() !!}

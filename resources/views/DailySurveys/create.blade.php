@@ -1,5 +1,14 @@
 @extends('layouts.app')
-
+@for($i=0;$i<count($cla->student);$i++)
+    <?php 
+    $array[$i] = $cla->student[$i]->id;
+    ?>
+@endfor
+    <?php
+    $key = array_search($lookupID, $array);
+    $next = $key + 1;
+    $prev = $key - 1;
+    ?>
 @section('content')
 <h1>This is the Student Survey Page for {{$cla->name}}</h1>
     <a href="/classes/show/{{$cla->id}}">back</a>
@@ -104,7 +113,12 @@
         
             <div>
                 {{Form::submit('Submit')}}
-
+                @if($next < count($array))
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true">Next</a>
+                @endif
+                @if($prev > -1)
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true">Previous</a>
+                @endif
             </div>
         </form>
     {!! Form::close() !!}
