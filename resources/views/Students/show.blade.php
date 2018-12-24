@@ -9,14 +9,16 @@ $age = $d2->diff($d1);
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
         <div class="text-right">
              
-            <a href="/students/{{$stu->id}}/edit" class="btn btn-secondary" style="color: #F2F2F2" role="button">Edit</a>
+            
             <a href="/notes/{{$stu->id}}" class="btn btn-secondary" style="color: #F2F2F2" role="button">Instructor Notes</a>
             <a href="/sendemail" class="btn btn-secondary" style="color: #F2F2F2" role="button">Send Report</a>
-            
+            @if(Auth::user()->role==1)
+            <a href="/students/{{$stu->id}}/edit" class="btn btn-secondary" style="color: #F2F2F2" role="button">Edit</a>
             {!!Form::open(['action' => ['StudentController@destroy', $stu->id], 'method' => 'POST', 'class' => 'btn btn-danger', 'style' => 'padding: 0'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger', 'role' => 'button'])}}
             {!!Form::close()!!}
+            @endif
         </div>
         <div>Student's Information:</div>
         <hr>

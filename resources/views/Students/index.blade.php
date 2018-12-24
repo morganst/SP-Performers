@@ -21,11 +21,13 @@
                     <br>
                     <div class="btn-group">
                         <a class="btn btn-secondary" href="/students/{{$student->id}}" role="button">View</a>
+                        @if(Auth::user()->role==1)
                         <a class="btn btn-primary active" href="/students/{{$student->id}}/edit" role="button">Edit</a>
                             {!!Form::open(['action' => ['StudentController@destroy', $student->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger', 'onsubmit' => 'return ConfirmDelete()'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}
                                 {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                             {!!Form::close()!!}
+                        @endif
                     </div>
                 </div>
             </div>
