@@ -11,9 +11,12 @@
     ?>
 @section('content')
 <h1>This is the Student Survey Page for {{$cla->name}}</h1>
-    <a href="/classes/show/{{$cla->id}}">back</a>
     <div class="daily-survey-container">
-        <!--GET STUDENTID -->
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+        @endif
     <h1>
         {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
         {{DB::table('students')->where('id', $lookupID)->value('lastName')}}
@@ -114,11 +117,12 @@
             <div>
                 {{Form::submit('Submit')}}
                 @if($next < count($array))
-                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true">Next</a>
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Next</a>
                 @endif
                 @if($prev > -1)
-                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true">Previous</a>
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Previous</a>
                 @endif
+                <a href="/classes/show/{{$cla->id}}">back</a>
             </div>
         </form>
     {!! Form::close() !!}
@@ -145,4 +149,16 @@
 
     </div>
 
+    <script>
+
+        function Confirm()
+        {
+        var x = confirm("Continue without submitting?");
+        if (x)
+          return true;
+        else
+          return false;
+        }
+      
+      </script>
 @endsection

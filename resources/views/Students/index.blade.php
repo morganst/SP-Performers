@@ -22,7 +22,7 @@
                     <div class="btn-group">
                         <a class="btn btn-secondary" href="/students/{{$student->id}}" role="button">View</a>
                         <a class="btn btn-primary active" href="/students/{{$student->id}}/edit" role="button">Edit</a>
-                            {!!Form::open(['action' => ['StudentController@destroy', $student->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
+                            {!!Form::open(['action' => ['StudentController@destroy', $student->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger', 'onsubmit' => 'return ConfirmDelete()'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}
                                 {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                             {!!Form::close()!!}
@@ -38,4 +38,17 @@
     <div class="text-right">
             <a href="/" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
     </div>
+    <script>
+
+        function ConfirmDelete()
+        {
+        var del = confirm("Are you sure you want to delete?");
+        if (del)
+          return true;
+        else
+          return false;
+        }
+      
+      </script>
 @endsection
+
