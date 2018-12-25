@@ -1,8 +1,17 @@
 @extends('layouts.app')
+@for($i=0;$i<count($allNotes);$i++)
+    <?php 
+    $array[$i] = $allNotes[$i]->SID;
+    ?>
+@endfor
+    <?php
+    $key = array_search($SID, $array);
+    $next = $key + 1;
+    $prev = $key - 1;
+    ?>
 @section('content')
 <h1 class="hidden">{{$var="I/B"}}</h1> 
 <h2>Notes</h2>
-
        
 @if(count($notes) > 0)
 
@@ -34,6 +43,12 @@
       <br> <br> 
         <hr>
     </ul>
+    @if($next < count($array))
+    <a href="/notes/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true">Next</a>
+    @endif
+    @if($prev > -1)
+    <a href="/notes/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true">Previous</a>
+    @endif
 </div>
 @endforeach
 {{-- <div class="text-right">

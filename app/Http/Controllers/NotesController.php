@@ -71,7 +71,7 @@ class NotesController extends Controller
         $notes->Text= $request->input('Text');
         $notes->SID= $request->input('SID');
         $notes->save();
-      return redirect('/students')->with('success', 'notes updated!');
+      return redirect('/students')->with('success', 'Note Created!');
     }
 
     /**
@@ -83,7 +83,8 @@ class NotesController extends Controller
     public function show($SID)
     {
         $notes = Note::where('SID', '=', $SID)->get();
-        return view('Notes.show')->with('notes', $notes);
+        $allNotes = Note::get();
+        return view('Notes.show', compact(['notes', 'SID', 'allNotes']));
     }
 
     /**
@@ -122,7 +123,7 @@ class NotesController extends Controller
     $notes->$var= $request->input('I/B');
     $notes->Text= $request->input('Text');
     $notes->save();
-  return redirect('/students')->with('success', 'notes updated!');
+  return redirect('/students')->with('success', 'Note Updated!');
     }
 
     /**
@@ -141,6 +142,6 @@ class NotesController extends Controller
         */
         $post->delete();
 
-        return redirect('/students')->with('success', 'User Deleted!');
+        return redirect('/students')->with('success', 'Note Deleted!');
     }
 }
