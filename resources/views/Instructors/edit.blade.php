@@ -10,7 +10,7 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link href="{{mix('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

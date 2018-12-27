@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 col-xs-12">
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
@@ -29,13 +29,18 @@
                                     <a class="btn btn-secondary" href="/classes/{{$class->id}}" role="button">View</a>
                                     @if(Auth::user()->role==1)
                                         <a class="btn btn-primary active" href="/classes/{{$class->id}}/edit" role="button">Edit</a>
-                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/addUser" role="button">Assign Instructor</a>
-                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
                                         {!!Form::open(['action' => ['ClassController@destroy', $class->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
                                             {{Form::hidden('_method', 'DELETE')}}
                                             {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                                         {!!Form::close()!!}
                                     @endif
+                                </div>
+                                <br><br>
+                                <div class="btn-group">
+                                        @if(Auth::user()->role==1)
+                                            <a class="btn btn-primary active" href="/classes/{{$class->id}}/addUser" role="button">Assign Instructor</a>
+                                            <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
+                                        @endif
                                 </div>
                         </div>
                     </div>

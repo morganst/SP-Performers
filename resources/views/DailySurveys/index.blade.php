@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container-fluid">
 @if(session()->has('message'))
 <div class="alert alert-success">
     {{ session()->get('message') }}
@@ -10,7 +10,7 @@
 @endif
     <h2>All Students in Class: {{$cla->name}}</h2>
     <div class="text-right"><a href="/live_search" class="btn btn-md btn-primary">Past Attendance</a></div><br>
-    <div class="class-layout">
+    <div>
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
         <div style="float:right;">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}}</div><br>
         <?php
@@ -19,7 +19,6 @@
         Students:
         @foreach ($cla->student as $student)
         <div style="border:1px solid black;padding:8px;" class="class-layout-row">
-            <div>
                 <a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a>
                 <span style="float:right;"> 
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
@@ -35,7 +34,6 @@
                 {{Form::radio('attend['.$i.']', '0', false, array('id'=>'absent'.$i.''))}}
                 @endif 
                 </span>
-            </div>
         </div>
         <input type="hidden" name="stu[]" value="<?php echo $student->id; ?>"/>
         <input type="hidden" name="cla" value="<?php echo $cla->id; ?>"/>
@@ -112,4 +110,6 @@
                 }
             }))
         </script>
+    </div>
+</div>
 @endsection
