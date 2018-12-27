@@ -14,7 +14,7 @@
     <hr>
     @if(count($users) > 0)
         <div class="row">
-            <div class="col-3 col-lg-3">Instructor Name:</div>
+        Instructor Name:
         </div>
         <br>
 
