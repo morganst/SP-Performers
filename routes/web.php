@@ -23,7 +23,11 @@ Route::get('attendances/{id}', 'AttendanceController@index');
 Route::get('delete/{id}', 'AttendanceController@destroy');
 Route::post('/search', 'AttendanceController@search');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
+Route::get('profile', function () {
+
+})->middleware('verified');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
