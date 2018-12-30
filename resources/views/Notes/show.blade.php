@@ -1,7 +1,15 @@
 @extends('layouts.app')
+<?php
+$array=array();
+$k = 0;
+?>
 @for($i=0;$i<count($allNotes);$i++)
     <?php 
-    $array[$i] = $allNotes[$i]->SID;
+    if(!in_array($allNotes[$i]->SID, $array))
+    {
+        $array[$k] = $allNotes[$i]->SID;
+        $k++;
+    }
     ?>
 @endfor
     <?php
@@ -11,16 +19,16 @@
     ?>
 @section('content')
 <h1 class="hidden">{{$var="I/B"}}</h1> 
-<h2>Notes</h2>
+<h2>Notes for {{$notes[0]->student()->first()->firstName}} {{$notes[0]->student()->first()->lastName}}</h2><br>
        
 @if(count($notes) > 0)
 
 @foreach($notes as $row)
 <div>
-    <br> <br> <h1 class="hidden"> {{$var2=$row->student()->first()}}</h1> 
+    <h1 class="hidden"> {{$var2=$row->student()->first()}}</h1> 
      
     <ul>
-    <h5> Date:{{$row['created_at']}} Name:{{$var2['firstName']}}</h5>
+    <h5> Date:{{$row['created_at']}}</h5>
         <h6>Instructor:{{$row['Instructor']}} Class:{{$row['Class']}}</h6>
        
         
@@ -40,26 +48,25 @@
        {{Form::hidden('_method', 'DELETE')}}
        {{Form::submit('Delete', ['class' => 'btn btn-danger', 'role' => 'button'])}}
    {!!Form::close()!!}
-      <br> <br> 
         <hr>
     </ul>
-    @if($next < count($array))
-    <a href="/notes/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true">Next</a>
-    @endif
-    @if($prev > -1)
-    <a href="/notes/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true">Previous</a>
-    @endif
 </div>
 @endforeach
-{{-- <div class="text-right">
+@if($next < count($array))
+    <a href="/notes/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true">Next Student</a>
+    @endif
+    @if($prev > -1)
+    <a href="/notes/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true">Previous Student</a>
+    @endif
+<div class="text-right">
         <a href="/notes/createnew/{{$var2['id']}}" class="btn btn-secondary" style="color: #F2F2F2" role="button">Create</a>
         <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
-    </div> --}}
+    </div>
 @else
         <p>No notes found</p>
         <div class="text-right">
-{{--                 <a href="/notes/createfor/{{$var2['id']}}" class="btn btn-secondary" style="color: #F2F2F2" role="button">Create</a>
- --}}                <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+                <a href="/notes/createfor/{{$var2['id']}}" class="btn btn-secondary" style="color: #F2F2F2" role="button">Create</a>
+                <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
             </div>
 @endif
 

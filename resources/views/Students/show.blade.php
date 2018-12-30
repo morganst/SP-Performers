@@ -49,12 +49,7 @@ $age = $d2->diff($d1);
                                 <div class="btn-group">
                                     <a class="btn btn-secondary" href="/classes/{{$class->id}}" role="button">View</a>
                                     @if(Auth::user()->role==1)
-                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/edit" role="button">Edit</a>
-                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
-                                        {!!Form::open(['action' => ['ClassController@destroy', $class->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
-                                            {{Form::hidden('_method', 'DELETE')}}
-                                            {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
-                                        {!!Form::close()!!}
+                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Manage Student</a>
                                     @endif
                                 </div>
                         </div>

@@ -126,8 +126,7 @@
             </div>
         </form>
     {!! Form::close() !!}
-
-
+    <a href="/notes/createnew/{{$lookupID}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
 
         @foreach($dailySurveys as $row)
         <div>
