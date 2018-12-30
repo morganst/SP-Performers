@@ -46,7 +46,29 @@
                     </div>
                     <br>
                     @endforeach
+                    <hr>
+                    Recent Notes:
+                    <?php
+                    $i=0
+                    ?>
+                    @foreach($notes as $row)
+                    <div>
+                        {{$row->firstName}} {{$row->lastName}}
+                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
+                        @if($row['I/B'] == 'Incident')
+                            <div style="color:red; font-weight:normal">{{$row->Text}}</div>
+                        @elseif($row['I/B'] == 'Breakthrough')
+                            <div style="color:green; font-weight:normal">{{$row->Text}}</div>
+                        @else
+                            <div style="font-weight:normal">{{$row->Text}}</div>
+                        @endif
+                    </div>
+                    <?php
+                    if (++$i == 4) break;
+                    ?>
+                    @endforeach
                 </div>
+
             </div>
         </div>
     </div>

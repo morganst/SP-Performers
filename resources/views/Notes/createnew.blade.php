@@ -9,7 +9,7 @@
             <div class="form-row">
                 {!! Form::label('Class', 'Class', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {!!  Form::select('Class', ['Music' => 'Music', 'Art' => 'Art', 'Dance' => 'Dance'],  '', ['class' => 'form-control' ]) !!}
+                    {!!  Form::select('Class', ['Music' => 'Music', 'Art' => 'Art', 'Dance' => 'Dance', 'Rap' => 'Rap'],  $stu->classes->first()->name, ['class' => 'form-control' ]) !!}
                 </div>
             </div>
             &nbsp;
