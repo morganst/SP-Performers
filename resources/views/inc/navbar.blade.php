@@ -1,11 +1,11 @@
 <br>
 <div>
     <nav>
-        <a href="/">Home</a> |
+        <a href="/">Home</a> I
         @Auth
-        <a href="/classes">Classes</a> |
-        <a href="/students">Students</a> |
-        <a href="/instructors">instructors</a> |
+        <a href="/classes">Classes</a> I
+        <a href="/students">Students</a> I 
+        <a href="/instructors">Instructors</a> I
         <a href="/logout">Logout</a>
         @endAuth
     </nav>
