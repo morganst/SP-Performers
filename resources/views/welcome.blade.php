@@ -52,17 +52,25 @@
                     $i=0
                     ?>
                     @foreach($notes as $row)
-                    <div>
-                        {{$row->firstName}} {{$row->lastName}}
-                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
                         @if($row['I/B'] == 'Incident')
-                            <div style="color:red; font-weight:normal">{{$row->Text}}</div>
-                        @elseif($row['I/B'] == 'Breakthrough')
-                            <div style="color:green; font-weight:normal">{{$row->Text}}</div>
-                        @else
+                        <div style='background-color: #7CFF82; border: .1px solid'>
+                            {{$row->firstName}} {{$row->lastName}}
+                            <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
                             <div style="font-weight:normal">{{$row->Text}}</div>
+                        </div>
+                        @elseif($row['I/B'] == 'Breakthrough')
+                        <div style='background-color: #FF3F3F; border: .1px solid'>
+                            {{$row->firstName}} {{$row->lastName}}
+                            <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
+                            <div style="font-weight:normal">{{$row->Text}}</div>
+                        </div>
+                        @else
+                        <div style='background-color: lightgrey;  border: .1px solid'>
+                            {{$row->firstName}} {{$row->lastName}}
+                            <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
+                            <div style="font-weight:normal">{{$row->Text}}</div>
+                        </div>
                         @endif
-                    </div>
                     <?php
                     if (++$i == 4) break;
                     ?>
