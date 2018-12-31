@@ -44,14 +44,9 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-/*         $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'DOB' => 'required',
-            'notes' => 'nullable',
-            'gender' => 'required',
-            'primaryClass' => 'required',
-            'reference' => 'nullable',
+/*          $this->validate($request, [
+            'attend' => 'required',
+
         ]); */
         $classes = $request->input('cla');
         $stu = $request->input('stu');
@@ -61,10 +56,13 @@ class AttendanceController extends Controller
         {
             foreach($stu as $student)
             {
+                if(isset($attend[$i]))
+                {
                 $attendance = Attendance::updateOrCreate(
                     ['date' => $request->input('date'), 'student_id' => $student, 'classes_id' => $classes],
                     ['attend' => $attend[$i]]
                 );
+                }
                 $i++;
             }
         }

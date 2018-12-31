@@ -18,18 +18,18 @@
         ?>
         Students:
         @foreach ($cla->student as $student)
-        <div style="border:1px solid black;padding:8px;" class="class-layout-row">
+                <div style="border:1px solid black;padding:8px;" class="class-layout-row">
                 <a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a>
                 <span style="float:right;"> 
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
-                @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend))
+                @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend)&&isset($student->attendance->where('classes_id', $cla->id)->first()->attend))
                 {{Form::label('present'.$i.'', 'Present')}}
-                {{Form::radio('attend['.$i.']', '1',$student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend == 1, array('id'=>'present'.$i.''))}}
+                {{Form::radio('attend['.$i.']', '1',$student->attendance->where('classes_id', $cla->id)->first()->attend == 1, array('id'=>'present'.$i.''))}}
                 {{Form::label('absent'.$i.'', 'Absent')}}
-                {{Form::radio('attend['.$i.']', '0',$student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend == 0, array('id'=>'absent'.$i.''))}}
+                {{Form::radio('attend['.$i.']', '0',$student->attendance->where('classes_id', $cla->id)->first()->attend == 0, array('id'=>'absent'.$i.''))}}
                 @else
                 {{Form::label('present'.$i.'', 'Present')}}
-                {{Form::radio('attend['.$i.']', '1', true, array('id'=>'present'.$i.''))}}
+                {{Form::radio('attend['.$i.']', '1', false, array('id'=>'present'.$i.''))}}
                 {{Form::label('absent'.$i.'', 'Absent')}}
                 {{Form::radio('attend['.$i.']', '0', false, array('id'=>'absent'.$i.''))}}
                 @endif 
