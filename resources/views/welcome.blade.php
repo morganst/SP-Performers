@@ -53,19 +53,19 @@
                     ?>
                     @foreach($notes as $row)
                         @if($row['I/B'] == 'Incident')
-                        <div style='background-color: #7CFF82; border: .1px solid'>
+                        <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
                             {{$row->firstName}} {{$row->lastName}}
                             <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
                             <div style="font-weight:normal">{{$row->Text}}</div>
                         </div>
                         @elseif($row['I/B'] == 'Breakthrough')
-                        <div style='background-color: #FF3F3F; border: .1px solid'>
+                        <div style='background-color: #7CFF82; border: .1px solid; padding-left: 5px;'>
                             {{$row->firstName}} {{$row->lastName}}
                             <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
                             <div style="font-weight:normal">{{$row->Text}}</div>
                         </div>
                         @else
-                        <div style='background-color: lightgrey;  border: .1px solid'>
+                        <div style='background-color: lightgrey;  border: .1px solid; padding-left: 5px;'>
                             {{$row->firstName}} {{$row->lastName}}
                             <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
                             <div style="font-weight:normal">{{$row->Text}}</div>
