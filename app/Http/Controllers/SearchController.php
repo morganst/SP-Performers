@@ -31,7 +31,7 @@ class SearchController extends Controller
       }
       else
       {
-       $data = Attendance::orderBy('id', 'desc')->get();
+       $data = Attendance::orderBy('id', 'asc')->get();
       }
       $total_row = $data->count();
       if($total_row > 0)

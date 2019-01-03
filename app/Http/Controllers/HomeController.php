@@ -29,20 +29,24 @@ class HomeController extends Controller
     {
         $array = [];
         $i=0;
-        foreach(Auth::user()->classes as $classes)
-            foreach($classes->student as $students)
-                foreach($students->notes as $row)
-                    if(!in_array($row['NId'], $array))
-                    {
-                        $array[$i] = $row['NId'];
-                        $i++;
-                        $row->firstName = $students->firstName;
-                        $row->lastName = $students->lastName;
-                        $notes[] = $row;
-                    }
-        $notes = array_reverse(array_sort($notes, function ($value) {
-            return $value['created_at'];
-          }));
+
+            foreach(Auth::user()->classes as $classes)
+                foreach($classes->student as $students)
+                    foreach($students->notes as $row)
+                        if(!in_array($row['NId'], $array))
+                        {
+                            $array[$i] = $row['NId'];
+                            $i++;
+                            $row->firstName = $students->firstName;
+                            $row->lastName = $students->lastName;
+                            $notes[] = $row;
+                        }
+        if(isset($notes))
+        {
+            $notes = array_reverse(array_sort($notes, function ($value) {
+                return $value['created_at'];
+            }));
+        }
         return view('welcome',compact(['notes']));
     }
 
