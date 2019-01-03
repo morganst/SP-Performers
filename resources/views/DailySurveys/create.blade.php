@@ -117,7 +117,7 @@
             <div>
                 {{Form::submit('Submit')}}
                 @if($next < count($array))
-                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Next</a>
+            <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Next</a>
                 @endif
                 @if($prev > -1)
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Previous</a>
@@ -128,7 +128,7 @@
     {!! Form::close() !!}
     <a href="/notes/createnew/{{$lookupID}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
 
-        @foreach($dailySurveys as $row)
+        {{-- @foreach($dailySurveys as $row)
         <div>
             <ul>
                 <li>Daily survey ID: {{$row['id']}}</li>
@@ -144,20 +144,35 @@
                 <hr>
             </ul>
         </div>
-        @endforeach
+        @endforeach --}}
 
     </div>
 
     <script>
-
         function Confirm()
         {
-        var x = confirm("Continue without submitting?");
-        if (x)
-          return true;
-        else
-          return false;
+            for (var i = 0; i < document.getElementsByName('Q1').length; i++)
+            {
+                if (document.getElementsByName('Q1')[i].checked || document.getElementsByName('Q2')[i].checked || document.getElementsByName('Q3')[i].checked || document.getElementsByName('Q4')[i].checked || document.getElementsByName('Q5')[i].checked)
+                {
+                    var x = confirm("Continue without submitting?");
+                    if (x)
+                    return true;
+                    else
+                    return false;
+                }
+            }
+            for (var i = 0; i < document.getElementsByName('Mood').length; i++)
+            {
+                if (document.getElementsByName('Mood')[i].checked)
+                {
+                    var x = confirm("Continue without submitting?");
+                    if (x)
+                    return true;
+                    else
+                    return false;
+                }
+            }
         }
-      
       </script>
 @endsection
