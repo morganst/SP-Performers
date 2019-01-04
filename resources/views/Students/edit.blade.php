@@ -41,10 +41,17 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('reference', 'Refernce', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('reference', 'Reference', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     {{Form::text('reference', $stu->reference, ['class' => 'form-control', 'placeholder' => 'Reference'])}}
                 </div>
+            </div>
+            &nbsp;
+            <div class="form-row">
+                    {!! Form::label('enrolled', 'Currently Enrolled', ['class' => 'col-lg-2 control-label'] )  !!}
+                    <div class="col col-md-3">
+                        {!!  Form::select('enrolled', ['0' => 'Yes', '1' => 'No'],  $stu->enrolled, ['class' => 'form-control' ]) !!}
+                    </div>
             </div>
             &nbsp;
             <div style="padding-top: 10px">

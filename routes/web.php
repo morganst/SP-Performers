@@ -22,6 +22,7 @@ Route::get('classes/show/{id}', 'ClassController@show');
 Route::get('attendances/{id}', 'AttendanceController@index');
 Route::get('delete/{id}', 'AttendanceController@destroy');
 Route::post('/search', 'AttendanceController@search');
+Route::get('students/past', 'StudentController@past');
 
 Auth::routes(['verify' => true]);
 

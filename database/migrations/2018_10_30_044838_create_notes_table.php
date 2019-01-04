@@ -19,9 +19,9 @@ class CreateNotesTable extends Migration
             $table->string('I/B');
             $table->string('Instructor');
             $table->string('Class');
-            $table->integer('SID');
+            $table->integer('SID')->unsigned();
             $table->mediumText('Text');
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('SID')->references('id')->on('students')->onDelete('cascade');
         });
        
     }

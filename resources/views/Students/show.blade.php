@@ -31,13 +31,19 @@ $age = $d2->diff($d1);
             <div>Age: {{$age->y}}</div>
             <div>Gender: {{$stu->gender}}</div>
             <div>Primary Class: {{$stu->primaryClass}}</div>
+            <div>Reference: {{$stu->reference}}</div>
+            @if($stu->enrolled == 0)
+                <div>Currently Enrolled: Yes</div>
+            @else
+                <div>Currently Enrolled: No</div>
+            @endif
             @if(is_null($var) || $var->isEmpty())
-            <div>Notes Available: No </div>
+            <div>Notes Available: No 
             <a href="/notes/createnew/{{$stu->id}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
+            </div>
             @else
             <div>Notes Available: Yes </div>
             @endif
-            <div>Reference: {{$stu->reference}}</div>
         </div>
         <hr>
         Classes Assigned:
