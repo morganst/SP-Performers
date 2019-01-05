@@ -83,6 +83,6 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
         return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+            ?: redirect('/instructors')->with('success', 'User Created!');
     } 
 }

@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+    @endif
     <h1>Class Index</h1>
     <div style="padding-bottom: 1em">Here you can view and edit classes</div> 
     <br>
@@ -18,17 +23,22 @@
                     <div>
                         {{$class->name}}:
                         <br>
-                            <div class="btn-group">
+                        <div class="btn-group">
                                 <a class="btn btn-secondary" href="/classes/{{$class->id}}" role="button">View</a>
                                 @if(Auth::user()->role==1)
                                     <a class="btn btn-primary active" href="/classes/{{$class->id}}/edit" role="button">Edit</a>
-                                    <a class="btn btn-primary active" href="/classes/{{$class->id}}/addUser" role="button">Assign Instructor</a>
-                                    <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
                                     {!!Form::open(['action' => ['ClassController@destroy', $class->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
                                         {{Form::hidden('_method', 'DELETE')}}
                                         {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                                     {!!Form::close()!!}
                                 @endif
+                            </div>
+                            <br><br>
+                            <div class="btn-group">
+                                    @if(Auth::user()->role==1)
+                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/addUser" role="button">Assign Instructor</a>
+                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
+                                    @endif
                             </div>
                     </div>
                 </div>

@@ -22,6 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('gender')->default('Male');
             $table->string('primaryClass');
             $table->string('reference')->nullable();
+            $table->boolean('enrolled')->default('0');
         });
     }
 

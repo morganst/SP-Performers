@@ -6,11 +6,11 @@
     {{ session()->get('success') }}
 </div>
 @endif
-    <h1>Student Index</h1>
+    <h1>Past Student Index</h1>
     <div style="padding-bottom: 1em">Here you can view and edit students</div> 
     <div>
-    <span><a href="/students/past" class="btn btn-md btn-primary">Previous Students</a></span>
-    <span style="float:right"><a href="/students/create" class="btn btn-md btn-primary">Add New</a></span>
+        <span><a href="/students" class="btn btn-md btn-primary">Current Students</a></span>
+        <span style="float:right"><a href="/students/create" class="btn btn-md btn-primary">Add New</a></span>
     </div>
     <hr>
     @if(count($students) > 0)

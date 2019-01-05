@@ -1,16 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+    @endif
     <h1>Instructor Index</h1>
     <div style="padding-bottom: 1em">Here you can view and edit instructors</div>
-    <br>
     @if(Auth::user()->role==1)
         <div class="text-right"><a href="instructors/create" class="btn btn-md btn-primary">Add New</a></div>
     @endif
     <hr>
     @if(count($users) > 0)
         <div class="row">
-            <div class="col-3 col-lg-3">Name</div>
+        Instructor Name:
         </div>
         <br>
 

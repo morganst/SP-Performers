@@ -1,23 +1,34 @@
 @extends('layouts.app')
-
+@for($i=0;$i<count($cla->student);$i++)
+    <?php 
+    $array[$i] = $cla->student[$i]->id;
+    ?>
+@endfor
+    <?php
+    $key = array_search($lookupID, $array);
+    $next = $key + 1;
+    $prev = $key - 1;
+    ?>
 @section('content')
-<h1>THis is the Student Survey Page for the {{$cla->name}}class</h1>
-    <a href="/classes/show/{{$cla->id}}">back</a>
+<h1>This is the Student Survey Page for {{$cla->name}}</h1>
     <div class="daily-survey-container">
-        <!--GET STUDENTID -->
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+        @endif
     <h1>
         {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
         {{DB::table('students')->where('id', $lookupID)->value('lastName')}}
     </h1>
-    <h1>Student ID: {{$lookupID}}</h1>
 
         {!! Form::open(['action' => 'DailySurveyController@store', 'method' => 'POST']) !!}
         <form>
             {{ Form::hidden('ClassID', $cla->id) }}
             {{ Form::hidden('cla', $cla) }}
             {{ Form::hidden('StudentID', $lookupID)}}
-            <a href="/notes/createfor/{{$lookupID}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">add Note</a>
-            &nbsp;
+{{--             <a href="/notes/createfor/{{$lookupID}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">add Note</a>
+ --}}            &nbsp;
             <div class="form-row">
                 {!! Form::label('Q1', 'Rate your experience about something question 1?')  !!}
                 <div class="radio-btn-spread">
@@ -105,14 +116,19 @@
         
             <div>
                 {{Form::submit('Submit')}}
-
+                @if($next < count($array))
+            <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Next</a>
+                @endif
+                @if($prev > -1)
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Previous</a>
+                @endif
+                <a href="/classes/show/{{$cla->id}}">back</a>
             </div>
         </form>
     {!! Form::close() !!}
+    <a href="/notes/createnew/{{$lookupID}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
 
-
-
-        @foreach($dailySurveys as $row)
+        {{-- @foreach($dailySurveys as $row)
         <div>
             <ul>
                 <li>Daily survey ID: {{$row['id']}}</li>
@@ -128,8 +144,35 @@
                 <hr>
             </ul>
         </div>
-        @endforeach
+        @endforeach --}}
 
     </div>
 
+    <script>
+        function Confirm()
+        {
+            for (var i = 0; i < document.getElementsByName('Q1').length; i++)
+            {
+                if (document.getElementsByName('Q1')[i].checked || document.getElementsByName('Q2')[i].checked || document.getElementsByName('Q3')[i].checked || document.getElementsByName('Q4')[i].checked || document.getElementsByName('Q5')[i].checked)
+                {
+                    var x = confirm("Continue without submitting?");
+                    if (x)
+                    return true;
+                    else
+                    return false;
+                }
+            }
+            for (var i = 0; i < document.getElementsByName('Mood').length; i++)
+            {
+                if (document.getElementsByName('Mood')[i].checked)
+                {
+                    var x = confirm("Continue without submitting?");
+                    if (x)
+                    return true;
+                    else
+                    return false;
+                }
+            }
+        }
+      </script>
 @endsection

@@ -12,19 +12,18 @@ class AttendanceController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function index($id)
     {
         $cla = Classes::find($id);
-        $attend = Attendance::orderBy('created_at', 'des')->paginate(100);
+        $attend = Attendance::orderBy('created_at', 'des')->paginate(6);
         return view('Attendances.index', compact(['cla', 'attend']));
     }
 
     public function search(Request $request){
         $searchDate = $request->input('date');
-        $search;
         $cla = Classes::find($request->input('cla'));
-        $attend = Attendance::orderBy('created_at', 'des')->paginate(100);
+        $attend = Attendance::orderBy('created_at', 'des')->get();
         return view('Attendances.search', compact(['cla', 'attend', 'searchDate']));
     }
     /**
@@ -45,14 +44,9 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-/*         $this->validate($request, [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'DOB' => 'required',
-            'notes' => 'nullable',
-            'gender' => 'required',
-            'primaryClass' => 'required',
-            'reference' => 'nullable',
+/*          $this->validate($request, [
+            'attend' => 'required',
+
         ]); */
         $classes = $request->input('cla');
         $stu = $request->input('stu');
@@ -62,14 +56,17 @@ class AttendanceController extends Controller
         {
             foreach($stu as $student)
             {
+                if(isset($attend[$i]))
+                {
                 $attendance = Attendance::updateOrCreate(
                     ['date' => $request->input('date'), 'student_id' => $student, 'classes_id' => $classes],
                     ['attend' => $attend[$i]]
                 );
+                }
                 $i++;
             }
         }
-        return redirect('/classes')->with('success', 'Student Created!');
+        return redirect()->back()->with('message', 'Attendance Submitted!');
     }
 
     /**
@@ -114,6 +111,14 @@ class AttendanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $att = Attendance::find($id);
+
+        /*if(auth()->user()->id !== $stu->user_id) {
+            return redirect('students')->with('error', 'Unauthorized page');
+        }*/
+
+        $att->delete();
+
+        return redirect()->back()->with('message', 'Record deleted!');
     }
 }

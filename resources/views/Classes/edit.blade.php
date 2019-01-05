@@ -13,7 +13,7 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('limit', 'Limit', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('limit', 'Class Size Limit', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     {{Form::text('limit', $cla->limit, ['class' => 'form-control', 'placeholder' => 'Limit'])}}
                 </div>

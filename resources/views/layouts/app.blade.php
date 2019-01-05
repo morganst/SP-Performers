@@ -23,8 +23,14 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-
         <main class="py-4">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                </div>
+                @endif
             @yield('content')
         </main>
     </div>

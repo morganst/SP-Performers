@@ -20,9 +20,15 @@ Route::resource('', 'HomeController');
 Route::resource('classes', 'ClassController');
 Route::get('classes/show/{id}', 'ClassController@show');
 Route::get('attendances/{id}', 'AttendanceController@index');
+Route::get('delete/{id}', 'AttendanceController@destroy');
 Route::post('/search', 'AttendanceController@search');
+Route::get('students/past', 'StudentController@past');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
+Route::get('profile', function () {
+
+})->middleware('verified');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -59,3 +65,6 @@ Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create')
 
 Route::get('/sendemail', 'SendEmailController@index');
 Route::post('/sendemail/send', 'SendEmailController@send');
+
+Route::get('/live_search', 'SearchController@index');
+Route::get('/live_search/action', 'SearchController@action')->name('live_search.action');

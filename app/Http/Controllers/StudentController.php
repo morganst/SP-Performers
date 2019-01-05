@@ -14,7 +14,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $students = Student::orderBy('created_at', 'des')->paginate(10);
+        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(10);
         return view('Students.index')->with('students', $students);
     }
 
@@ -33,6 +33,7 @@ class StudentController extends Controller
             'gender' => 'required',
             'primaryClass' => 'required',
             'reference' => 'nullable',
+            'enrolled' => 'nullable',
         ]);
 
         $student = new Student;
@@ -42,6 +43,7 @@ class StudentController extends Controller
         $student->gender = $request->input('gender');
         $student->primaryClass = $request->input('primaryClass');
         $student->reference = $request->input('reference');
+        $student->enrolled = $request->input('enrolled');
        
         //$student->user_id = auth()->user()->id;
         $student->save();
@@ -76,6 +78,7 @@ class StudentController extends Controller
             'gender' => 'required',
             'primaryClass' => 'required',
             'reference' => 'nullable',
+            'enrolled' => 'nullable',
         ]);
 
         $student = Student::find($id);
@@ -85,6 +88,7 @@ class StudentController extends Controller
         $student->gender = $request->input('gender');
         $student->primaryClass = $request->input('primaryClass');
         $student->reference = $request->input('reference');
+        $student->enrolled = $request->input('enrolled');
        
         $student->save();
 
@@ -102,5 +106,11 @@ class StudentController extends Controller
         $stu->delete();
 
         return redirect('/students')->with('success', 'Student Deleted!');
+    }
+
+    public function past()
+    {
+        $students = Student::where('enrolled', '1')->orderBy('created_at', 'des')->paginate(10);
+        return view('Students.past')->with('students', $students);
     }
 }

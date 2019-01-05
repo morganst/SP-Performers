@@ -10,7 +10,7 @@
         <div class="col-3 col-lg-3">Student Name:</div>
     </div>
     <br>
-        @foreach($cla->attendance as $att)
+        @foreach($attend as $att)
             <div class="class-layout-row">
                 <div>
                     {{$att->student['firstName']}} {{$att->student['lastName']}}:
@@ -29,6 +29,6 @@
     <p>No classes found</p>
     @endif
     <div class="text-right">
-        <a href="/" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+        <a href="/classes/{{$cla->id}}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
     </div>
 @endsection

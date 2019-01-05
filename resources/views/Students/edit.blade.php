@@ -41,16 +41,23 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('reference', 'Refernce', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('reference', 'Reference', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     {{Form::text('reference', $stu->reference, ['class' => 'form-control', 'placeholder' => 'Reference'])}}
                 </div>
             </div>
             &nbsp;
+            <div class="form-row">
+                    {!! Form::label('enrolled', 'Currently Enrolled', ['class' => 'col-lg-2 control-label'] )  !!}
+                    <div class="col col-md-3">
+                        {!!  Form::select('enrolled', ['0' => 'Yes', '1' => 'No'],  $stu->enrolled, ['class' => 'form-control' ]) !!}
+                    </div>
+            </div>
+            &nbsp;
             <div style="padding-top: 10px">
                 {{Form::hidden('_method', 'PUT')}}
                 {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-                <a href="{{ URL::previous() }}" class="btn btn-secondary">Go Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-secondary">Back</a>
             </div>
         </form>
     {!! Form::close() !!}

@@ -25,7 +25,7 @@
             <div class="form-row">
                 {!! Form::label('Instructor', 'Instructor', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::text('Instructor', ' ' , ['class' => 'form-control'])}}
+                    {{Form::text('Instructor', '' , ['class' => 'form-control'])}}
                 </div>
             </div>
             &nbsp;
