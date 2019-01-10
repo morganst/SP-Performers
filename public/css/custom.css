@@ -4,6 +4,9 @@
     margin: auto;
 
 }
+body{
+    margin: 0%;
+}
 
 /*END LAYOUT PAGE*/
 /*DAILY SURVEY*/
@@ -70,7 +73,7 @@ h1.hidden {
 
 .center-this-div{
     width: 40%;
-    
+
 }
 
 
@@ -173,3 +176,77 @@ h1.hidden {
 
 /* END CLASS PAGE*/
 
+/* END LOGIN PAGE*/
+
+.login-page{
+    height: 100vh;
+    margin: 0;
+    background: radial-gradient(#4795a8, #6dd5ed);
+    background-repeat: no-repeat;
+}
+.login-container{
+    margin: auto;
+    width: fit-content;
+    padding: .6em 1.5em .7em 1.5em;
+    margin-top: 15%;
+    background: radial-gradient(#ffffff, #ebebeb);
+    box-shadow: 3px 3px 6px rgb(71, 71, 71);
+    font-family: Nunito;
+    border-radius: 2px;
+    font-size: 1.5em;
+}
+.login-header{
+    font-size: 2em;
+}
+
+input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgb(204, 204, 204) !important;
+    color: rgb(61, 61, 61);
+}
+input:focus{
+    outline: none;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: rgb(61, 61, 61) !important;
+}
+input:-webkit-autofill:focus{
+    outline: none;
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+small{
+    color: black;
+
+}
+a:link{
+    text-decoration: none;
+
+}
+label, #forgot-pass{
+    font-size: .5em;
+    vertical-align: middle;
+    margin-left: 1em;
+}
+#remember-me, #forgot-pass{
+    margin: 0%;
+}
+input[type=submit] {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+/* END LOGIN PAGE*/
+
+/* NAVBAR*/
+    /*See navbar.blade.php under views/inc*/
+/* END NAVBAR*/

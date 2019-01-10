@@ -10,19 +10,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
+    @include('inc.navbar')
     <div id="app">
-        @include('inc.navbar')
         <main class="py-4">
                 @if ($errors->any())
                 <div class="alert alert-danger">
