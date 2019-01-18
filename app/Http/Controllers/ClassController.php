@@ -104,7 +104,7 @@ class ClassController extends Controller
     public function addUser($id)
     {
         $cla = Classes::find($id);
-        $users = User::all();
+        $users = User::where('role', '0')->get();
         return view('Classes.addUser', compact(['cla', 'users']));
     }
 
