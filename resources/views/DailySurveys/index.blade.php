@@ -8,7 +8,7 @@
     {{ session()->get('message') }}
 </div>
 @endif
-    <h2>All Students in Class: {{$cla->name}}</h2>
+    <h2>All Students in Class: {{$cla->name}} <span style="float:right;"> Teacher: @if(count($cla->user)>0){{$cla->user[0]->firstName}} {{$cla->user[0]->lastName}}@endif</span></h2>
     <div class="text-right"><a href="/live_search" class="btn btn-md btn-primary">Past Attendance</a></div><br>
     <div>
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
