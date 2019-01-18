@@ -22,8 +22,8 @@
             @foreach($classes as $class)
                 <div class="class-layout-row">
                     <div>
-                        {{$class->name}}:
-                        <br>
+                        {{$class->name}}: <h6><b>Time:</b> {{$class->time}}  <b>Location: </b>{{$class->location}}</h6>
+
                         <div class="btn-group">
                                 <a class="btn btn-secondary" href="/classes/{{$class->id}}" role="button">View</a>
                                 @if(Auth::user()->role==1)

@@ -15,6 +15,8 @@
         <hr>
         <div>Name: {{$cla->name}}</div>
         <div>Class Size Limit: {{$cla->limit}}</div>
+        <div>Class Time: {{$cla->time}}</div>
+        <div>Class Location: {{$cla->location}}</div>
         <br>
         <div>Instructors: </div>
         @foreach($cla->user as $user)

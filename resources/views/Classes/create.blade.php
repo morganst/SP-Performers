@@ -13,9 +13,23 @@
             </div>
             &nbsp;
             <div class="form-row">
+                {!! Form::label('time', 'Class Time', ['class' => 'col-lg-2 control-label'] )  !!}
+                <div class="col col-md-3">
+                    {{Form::text('time', '', ['class' => 'form-control', 'placeholder' => 'Class Time'])}}
+                </div>
+            </div>
+            &nbsp;
+            <div class="form-row">
+                {!! Form::label('loaction', 'Class Location', ['class' => 'col-lg-2 control-label'] )  !!}
+                <div class="col col-md-3">
+                    {{Form::text('location', '', ['class' => 'form-control', 'placeholder' => 'Class Limit'])}}
+                </div>
+            </div>
+            &nbsp;
+            <div class="form-row">
                 {!! Form::label('limit', 'Class Size Limit', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::text('limit', '', ['class' => 'form-control', 'placeholder' => 'Limit'])}}
+                    {{Form::text('limit', 8, ['class' => 'form-control', 'placeholder' => 'Limit'])}}
                 </div>
             </div>
             &nbsp;

@@ -33,11 +33,15 @@ class ClassController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             'limit' => 'required|integer',
+            'time' => 'required|string',
+            'location' => 'required|string',
         ]);
 
         $class = new Classes;
         $class->name = $request->input('name');
         $class->limit = $request->input('limit');
+        $class->time = $request->input('time');
+        $class->location = $request->input('location');
         //$class->user_id = auth()->user()->id;
         $class->save();
 
@@ -69,11 +73,15 @@ class ClassController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             'limit' => 'required|integer',
+            'time' => 'required|string',
+            'location' => 'required|string',
         ]);
 
         $class = Classes::find($id);
         $class->name = $request->input('name');
         $class->limit = $request->input('limit');
+        $class->time = $request->input('time');
+        $class->location = $request->input('location');
 
         $class->save();
 
