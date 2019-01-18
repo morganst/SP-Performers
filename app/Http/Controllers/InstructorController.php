@@ -15,7 +15,7 @@ class InstructorController extends Controller
     public function index()
     {
         $count = User::where('role', '0')->get();
-        $users = User::orderBy('created_at', 'des')->paginate(10);
+        $users = User::where('role', '0')->orderBy('created_at', 'des')->paginate(10);
         return view('Instructors.index', compact(['users', 'count']));
     }
     

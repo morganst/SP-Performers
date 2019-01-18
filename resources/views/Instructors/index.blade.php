@@ -20,9 +20,6 @@
         <br>
 
         @foreach($users as $user)
-            @if($user->role==1)
-                @continue
-            @endif
             <div class="class-layout-row">
                 <div>{{$user->firstName}} {{$user->lastName}}
                     <br>
