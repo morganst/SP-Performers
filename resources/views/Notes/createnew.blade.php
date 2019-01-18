@@ -18,13 +18,6 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('SID', 'StudentID', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                        {!!Form::number('SID',  $stu->id, ['readonly']);!!}
-                    </div> 
-        </div>
-        &nbsp;
-            <div class="form-row">
                 {!! Form::label('Instructor', 'Instructor', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     {{Form::text('Instructor', ''.Auth::user()->firstName.' '.Auth::user()->lastName.'' , ['class' => 'form-control'])}}
@@ -35,7 +28,7 @@
                 {!! Form::label('I/B', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     
-                    {!!  Form::select('I/B', ['Incident' => 'Incident', 'Breakthrough' => 'Breakthrough', 'None' => 'None'], '' , ['class' => 'form-control' ]) !!}
+                    {!!  Form::select('I/B', ['Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'None' => 'None'], '' , ['class' => 'form-control' ]) !!}
                 </div>
             </div>
             &nbsp;
@@ -46,6 +39,8 @@
                 </div>
             </div>
             &nbsp;
+            {!!Form::hidden('SID',  $stu->id);!!}
+            {{Form::hidden('url', URL::previous())}}
             <div style="padding-top: 10px">
                 <span style="float:right;">
                     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
