@@ -8,8 +8,8 @@ class InstructorController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest'); 
-        $this->middleware('guest', ['only' => ['create']]);
+        $this->middleware('auth'); 
+        $this->middleware('admin', ['only' => ['create']]);
     }
 
     public function index()

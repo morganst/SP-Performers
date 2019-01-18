@@ -43,7 +43,7 @@ class StudentController extends Controller
         $student->gender = $request->input('gender');
         $student->primaryClass = $request->input('primaryClass');
         $student->reference = $request->input('reference');
-        $student->enrolled = $request->input('enrolled');
+        //$student->enrolled = $request->input('enrolled');
        
         //$student->user_id = auth()->user()->id;
         $student->save();
