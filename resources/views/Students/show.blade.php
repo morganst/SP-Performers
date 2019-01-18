@@ -31,7 +31,7 @@ $age = $d2->diff($d1);
             <div>Age: {{$age->y}}</div>
             <div>Gender: {{$stu->gender}}</div>
             <div>Primary Class: {{$stu->primaryClass}}</div>
-            <div>Reference: {{$stu->reference}}</div>
+            <div>Referral: {{$stu->reference}}</div>
             @if($stu->enrolled == 0)
                 <div>Currently Enrolled: Yes</div>
             @else

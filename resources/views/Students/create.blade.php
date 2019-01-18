@@ -41,7 +41,7 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('reference', 'Reference', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('reference', 'Referral', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     {{Form::text('reference', '', ['class' => 'form-control', 'placeholder' => 'Reference'])}}
                 </div>

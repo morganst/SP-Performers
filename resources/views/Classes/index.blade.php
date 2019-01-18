@@ -7,6 +7,7 @@
     </div>
     @endif
     <h1>Class Index</h1>
+    <h3>Total Classes: {{count($count)}}</h3>
     <div style="padding-bottom: 1em">Here you can view and edit classes</div> 
     <br>
     @if(Auth::user()->role==1)

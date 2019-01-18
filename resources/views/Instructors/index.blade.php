@@ -7,6 +7,7 @@
     </div>
     @endif
     <h1>Instructor Index</h1>
+    <h3>Total Instructors: {{count($count)}}</h3>
     <div style="padding-bottom: 1em">Here you can view and edit instructors</div>
     @if(Auth::user()->role==1)
         <div class="text-right"><a href="instructors/create" class="btn btn-md btn-primary">Add New</a></div>

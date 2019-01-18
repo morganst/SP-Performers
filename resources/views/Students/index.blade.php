@@ -6,7 +6,8 @@
     {{ session()->get('success') }}
 </div>
 @endif
-    <h1>Student Index</h1>
+    <h1>Student Index</h1> 
+    <h3>Total Students: {{count($count)}}</h3>
     <div style="padding-bottom: 1em">Here you can view and edit students</div> 
     <div>
     <span><a href="/students/past" class="btn btn-md btn-primary">Previous Students</a></span>
