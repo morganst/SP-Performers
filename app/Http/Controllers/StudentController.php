@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Classes;
 
 class StudentController extends Controller
 {
@@ -21,7 +22,16 @@ class StudentController extends Controller
 
     public function create()
     {
-        return view('Students.create');
+        $class = Classes::select('name')->distinct()->get();
+
+        $array=array();
+        $k = 0;
+        foreach($class as $cla)
+        {
+            $array[$k] = $cla['name'];
+            $k++;
+        }
+        return view('Students.create', compact(['array']));
     }
 
     public function store(Request $request)
@@ -61,12 +71,20 @@ class StudentController extends Controller
     public function edit($id)
     {
         $stu = Student::find($id);
+        $class = Classes::select('name')->distinct()->get();
 
+        $array=array();
+        $k = 0;
+        foreach($class as $cla)
+        {
+            $array[$k] = $cla['name'];
+            $k++;
+        }
         /*if(auth()->user()->id !== $stu->user_id) {
             return redirect('students')->with('error', 'Unauthorized page');
         }*/
 
-        return view('Students.edit')->with('stu', $stu);
+        return view('Students.edit', compact(['array','stu']));
     }
 
     public function update(Request $request, $id)

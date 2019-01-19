@@ -36,7 +36,7 @@
             <div class="form-row">
                 {!! Form::label('primaryClass', 'Primary Class', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::text('primaryClass', '', ['class' => 'form-control', 'placeholder' => 'Primary Class'])}}
+                    {{Form::select('primaryClass', $array, null, ['class' => 'form-control'])}}
                 </div>
             </div>
             &nbsp;

@@ -20,9 +20,9 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('loaction', 'Class Location', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('location', 'Class Location', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::text('location', '', ['class' => 'form-control', 'placeholder' => 'Class Limit'])}}
+                    {{Form::text('location', '', ['class' => 'form-control', 'placeholder' => 'Class Location'])}}
                 </div>
             </div>
             &nbsp;
