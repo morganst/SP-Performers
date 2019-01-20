@@ -17,13 +17,13 @@ Route::get('/unauthorized', function () {
 
 
 Route::resource('', 'HomeController');
-Route::resource('classes', 'ClassController');
 Route::get('classes/show/{id}', 'ClassController@show');
 Route::get('attendances/{id}', 'AttendanceController@index');
 Route::get('delete/{id}', 'AttendanceController@destroy');
 Route::post('/search', 'AttendanceController@search');
 Route::get('students/past', 'StudentController@past');
-
+Route::get('/changepassword/reset','InstructorController@showChangePasswordForm');
+Route::post('/changepassword/reset','InstructorController@changePassword')->name('changePassword');
 Auth::routes(['verify' => true]);
 
 Route::get('profile', function () {
