@@ -32,6 +32,9 @@
                                 {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                             {!!Form::close()!!}
                         @endif
+                        @if(Auth::user()->role == 0 && Auth::user()->id == $user->id)
+                            <a class="btn btn-primary active" href="/instructors/{{$user->id}}/edit" role="button">Edit</a>
+                        @endif
                     </div>
                 </div>
             </div>
