@@ -12,15 +12,17 @@
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
+
     }
 
     .sidenav a {
-        padding: 8px 8px 8px 32px;
+        padding: 8px 16px 8px 32px;
         text-decoration: none;
         font-size: 25px;
         color: #818181;
         display: block;
         transition: 0.3s;
+        text-align: center;
     }
 
     .sidenav a:hover {
@@ -45,20 +47,20 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="/">Home</a> I
     @Auth
-    <a href="/classes">Classes</a> I
+    <a href="/classes"><span class="fas fa-home"></span>Classes</a> I
     <a href="/students">Students</a> I
     <a href="/instructors">Instructors</a> I
     <a href="/logout">Logout</a>
     @endAuth
 </div>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+<span style="font-size:50px;cursor:pointer;margin-left:10px;" onclick="openNav()">&#9776;</span>
 
 <script>
     function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "200px";
     }
 
     function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.width = "0px";
     }
 </script>

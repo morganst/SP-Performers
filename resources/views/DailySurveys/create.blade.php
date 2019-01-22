@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @for($i=0;$i<count($cla->student);$i++)
-    <?php 
+    <?php
     $array[$i] = $cla->student[$i]->id;
     ?>
 @endfor
@@ -30,7 +30,7 @@
 {{--             <a href="/notes/createfor/{{$lookupID}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">add Note</a>
  --}}            &nbsp;
             <div class="form-row">
-                {!! Form::label('Q1', 'Rate your experience about something question 1?')  !!}
+                {!! Form::label('Q1', 'Rate your mood before class started.')  !!}
                 <div class="radio-btn-spread">
                     {!! Form::radio('Q1', '1')  !!}
                     {!! Form::radio('Q1', '2')  !!}
@@ -41,7 +41,7 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('Q2', 'Rate your experience about something question 2?' )  !!}
+                {!! Form::label('Q2', 'Rate your mood during classtime.' )  !!}
                 <div class="radio-btn-spread">
                     {!! Form::radio('Q2', '1')  !!}
                     {!! Form::radio('Q2', '2')  !!}
@@ -53,7 +53,7 @@
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('Q3', 'Rate your experience about something question 3?')  !!}
+                {!! Form::label('Q3', 'Rate your mood now that class is over.')  !!}
                 <div class="radio-btn-spread">
                     {!! Form::radio('Q3', '1')  !!}
                     {!! Form::radio('Q3', '2')  !!}
@@ -88,16 +88,16 @@
             <div class="mood-row">
                 <div class="div-center">{!! Form::label('Mood', 'Mood')  !!}</div>
                 <div class="radio-btn-spread-mood div-center">
-                    {!! Form::radio('Mood', '1')  !!}
-                    {!! Form::radio('Mood', '2')  !!}
-                    {!! Form::radio('Mood', '3')  !!}
-                    {!! Form::radio('Mood', '4')  !!}
+                    <span>{!! Form::radio('Mood', '1')  !!}<span>happy</span></span>
+                    {!! Form::radio('Mood', '2')  !!}<span>happy</span>
+                    {!! Form::radio('Mood', '3')  !!}<span>happy</span>
+                    {!! Form::radio('Mood', '4')  !!}<span>happy</span>
                 </div>
                 <div class="radio-btn-spread-mood div-center">
-                    {!! Form::radio('Mood', '5')  !!}
-                    {!! Form::radio('Mood', '6')  !!}
-                    {!! Form::radio('Mood', '7')  !!}
-                    {!! Form::radio('Mood', '8')  !!}
+                    {!! Form::radio('Mood', '5')  !!}<span>happy</span>
+                    {!! Form::radio('Mood', '6')  !!}<span>happy</span>
+                    {!! Form::radio('Mood', '7')  !!}<span>happy</span>
+                    {!! Form::radio('Mood', '8')  !!}<span>happy</span>
                 </div>
                 <div class="radio-btn-spread-mood div-center">
                     {!! Form::radio('Mood', '9')  !!}
@@ -113,16 +113,16 @@
                 </div>
             </div>
             &nbsp;
-        
+
             <div>
-                {{Form::submit('Submit')}}
+                {{Form::submit('Submit',['class' => 'button'])}}
                 @if($next < count($array))
-            <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Next</a>
+            <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="button" role="button" aria-pressed="true" onclick="return Confirm()">Next</a>
                 @endif
                 @if($prev > -1)
-                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="btn btn-primary" role="button" aria-pressed="true" onclick="return Confirm()">Previous</a>
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="button" role="button" aria-pressed="true" onclick="return Confirm()">Previous</a>
                 @endif
-                <a href="/classes/show/{{$cla->id}}">back</a>
+                <a href="/classes/show/{{$cla->id}}" class="button">back</a>
             </div>
         </form>
     {!! Form::close() !!}

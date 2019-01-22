@@ -1,43 +1,54 @@
+:root {
+    --btn-bg-color: rgb(211, 211, 211);
+    --dailySurvey-container-bg: rgb(190, 190, 190);
+
+    --app-font-fam: nunito;
+    --app-font-color: black;
+    --app-font-size: 1em;
+
+    --btn-font-fam: nunito;
+    --container-font-fam: nunito;
+    --radial-color1: rgb(98, 182, 221);
+    --radial-color2: rgb(103, 199, 243);
+
+    --txt-color-btn: black;
+}
+
+
+html {
+    height: 100vh;
+}
+
+
 /*LAYOUT PAGE*/
 #app{
     width: 80%;
     margin: auto;
+    font-family: var(--app-font-fam);
+    color: var(--app-font-color);
+    font-size: var(--app-font-size);
 
 }
+
 body{
-    margin: 0%;
+
+    margin: 0;
+    background: radial-gradient(circle farthest-side, #d4d4d4, #f7f7f7);
+    background-repeat: no-repeat;
 }
 
 /*END LAYOUT PAGE*/
 /*DAILY SURVEY*/
 .daily-survey-container{
+    text-align: center;
     width: 80%;
+    padding: 2px 15px;
     margin: auto;
-    background-color: honeydew;/* COLOR */
-}
-.daily-survey-container h1 , h2, h3 {
-    background-color: aquamarine;
-}
-.radio{
-    padding: 40%;
-}
-.check{
-    display: block;
-    position: absolute;
-    border: 5px solid aqua;
-    border-radius: 100%;
-    height: 25px;
-    width: 25px;
-    top: 30px;
-    left: 20px;
-	z-index: 5;
-	transition: border .25s linear;
-	-webkit-transition: border .25s linear;
+    background-color: var(--dailySurvey-container-bg);/* COLOR */
 }
 
-input[type=radio]:checked ~ .check {
-    border: 5px solid #0DFF92;
-  }
+
+
 
 /* END DAILY SURVEY*/
 /* Hika's stuff*/
@@ -105,7 +116,13 @@ h1.hidden {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+}
+input[type="radio"] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(2.5);
+    margin: 10px;
 }
 .div-center{
     margin: auto;
@@ -186,7 +203,8 @@ h1.hidden {
 }
 .login-container{
     margin: auto;
-    width: fit-content;
+    width: 75%;
+    max-width: 650px;
     padding: .6em 1.5em .7em 1.5em;
     margin-top: 15%;
     background: radial-gradient(#ffffff, #ebebeb);
@@ -213,11 +231,13 @@ input:focus{
 }
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
+    box-shadow: 0 0 0px 1000px white inset;
     -webkit-text-fill-color: rgb(61, 61, 61) !important;
 }
 input:-webkit-autofill:focus{
     outline: none;
     -webkit-box-shadow: 0 0 0px 1000px white inset;
+    box-shadow: 0 0 0px 1000px white inset;
 }
 small{
     color: black;
@@ -228,25 +248,55 @@ a:link{
 
 }
 label, #forgot-pass{
-    font-size: .5em;
+
     vertical-align: middle;
     margin-left: 1em;
 }
 #remember-me, #forgot-pass{
     margin: 0%;
 }
-input[type=submit] {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
+
 /* END LOGIN PAGE*/
 
 /* NAVBAR*/
     /*See navbar.blade.php under views/inc*/
 /* END NAVBAR*/
+
+/* CONTAINERS*/
+.container{
+    margin: auto;
+    width: 20%;
+    min-width: fit-content;
+    max-width: 650px;
+    padding: .6em 1.5em .7em 1.5em;
+    margin: 1em;
+    background: radial-gradient(var(--radial-color1),var(--radial-color2));
+    box-shadow: 2px 2px 4px rgb(71, 71, 71);
+    font-family: var(--container-font-fam);
+    border-radius: 2px;
+    font-size: 1.5em;
+}
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    align-content: stretch;
+    justify-content: center;
+}
+/* END CONTAINERS*/
+
+
+.button, input[type="submit" i]{
+    background: var(--btn-bg-color);
+    box-shadow: 1px 1px 3px rgb(71, 71, 71);
+    border-radius: 2px;
+    border-width: 0;
+    color: var(--txt-color-btn);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: var(--btn-font-fam);
+}
