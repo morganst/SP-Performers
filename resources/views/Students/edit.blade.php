@@ -36,12 +36,12 @@
             <div class="form-row">
                 {!! Form::label('primaryClass', 'Primary Class', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
-                    {{Form::text('primaryClass', $stu->primaryClass, ['class' => 'form-control', 'placeholder' => 'Primary Class'])}}
+                    {{Form::select('primaryClass',$array, $stu->primaryClass, ['class' => 'form-control'])}}
                 </div>
             </div>
             &nbsp;
             <div class="form-row">
-                {!! Form::label('reference', 'Reference', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('reference', 'Referral', ['class' => 'col-lg-2 control-label'] )  !!}
                 <div class="col col-md-3">
                     {{Form::text('reference', $stu->reference, ['class' => 'form-control', 'placeholder' => 'Reference'])}}
                 </div>

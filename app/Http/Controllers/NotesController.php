@@ -18,10 +18,16 @@ class NotesController extends Controller
     public function index()
     {
         $array = [];
+        $allArray = [];
         $i=0;
+        $k=0;
+
         foreach(Auth::user()->classes as $classes)
+        {
             foreach($classes->student as $students)
+            {
                 foreach($students->notes as $row)
+                {
                     if(!in_array($row['NId'], $array))
                     {
                         $array[$i] = $row['NId'];
@@ -30,16 +36,35 @@ class NotesController extends Controller
                         $row->lastName = $students->lastName;
                         $notes[] = $row;
                     }
+                }
+            }
+        }
         if(isset($notes))
         {
             $notes = array_reverse(array_sort($notes, function ($value) {
                 return $value['created_at'];
             }));
         }
-        //$notes = $note::orderBy('created_at', 'des')->paginate(10);
-        
-    //   return $notes;
-        return view('Notes.index',compact(['notes']));
+        $stu = Student::get();
+        foreach($stu as $stu)
+        {
+            foreach($stu->notes as $row)
+                            if(!in_array($row['NId'], $allArray))
+                            {
+                                $allArray[$k] = $row['NId'];
+                                $k++;
+                                $row->firstName = $stu->firstName;
+                                $row->lastName = $stu->lastName;
+                                $allNotes[] = $row;
+                            }
+        }
+        if(isset($allNotes))
+        {
+            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
+                return $value['created_at'];
+            }));
+        }
+        return view('Notes.index',compact(['notes','allNotes']));
     }
 
     /**
@@ -92,7 +117,9 @@ class NotesController extends Controller
         $notes->Text= $request->input('Text');
         $notes->SID= $request->input('SID');
         $notes->save();
-      return redirect('/students')->with('success', 'Note Created!');
+
+        $url = $request->input('url');
+        return redirect($url)->with('success', 'Note Created!');
     }
 
     /**
@@ -103,7 +130,7 @@ class NotesController extends Controller
      */
     public function show($SID)
     {
-        $notes = Note::where('SID', '=', $SID)->get();
+        $notes = Note::where('SID', '=', $SID)->orderBy('created_at', 'des')->get();
         $allNotes = Note::get();
         return view('Notes.show', compact(['notes', 'SID', 'allNotes']));
     }
@@ -144,7 +171,9 @@ class NotesController extends Controller
     $notes->$var= $request->input('I/B');
     $notes->Text= $request->input('Text');
     $notes->save();
-  return redirect('/students')->with('success', 'Note Updated!');
+
+    $url = $request->input('url');
+    return redirect($url)->with('success', 'Note Edited!');
     }
 
     /**

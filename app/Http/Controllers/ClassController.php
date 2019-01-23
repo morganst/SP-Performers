@@ -18,8 +18,9 @@ class ClassController extends Controller
 
     public function index()
     {
+        $count = Classes::get();
         $classes = Classes::orderBy('created_at', 'des')->paginate(5);
-        return view('Classes.index')->with('classes', $classes);
+        return view('Classes.index', compact(['classes', 'count']));
     }
 
     public function create()
@@ -32,11 +33,15 @@ class ClassController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             'limit' => 'required|integer',
+            'time' => 'required|string',
+            'location' => 'required|string',
         ]);
 
         $class = new Classes;
         $class->name = $request->input('name');
         $class->limit = $request->input('limit');
+        $class->time = $request->input('time');
+        $class->location = $request->input('location');
         //$class->user_id = auth()->user()->id;
         $class->save();
 
@@ -68,11 +73,15 @@ class ClassController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             'limit' => 'required|integer',
+            'time' => 'required|string',
+            'location' => 'required|string',
         ]);
 
         $class = Classes::find($id);
         $class->name = $request->input('name');
         $class->limit = $request->input('limit');
+        $class->time = $request->input('time');
+        $class->location = $request->input('location');
 
         $class->save();
 
@@ -95,7 +104,7 @@ class ClassController extends Controller
     public function addUser($id)
     {
         $cla = Classes::find($id);
-        $users = User::all();
+        $users = User::where('role', '0')->get();
         return view('Classes.addUser', compact(['cla', 'users']));
     }
 

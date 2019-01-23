@@ -54,8 +54,8 @@
                         <button type="submit">
                             {{ __('Login') }}
                         </button>
-                        <a  href="{{ route('password.request') }}">
-                           <span id="forgot-pass"><small>{{ __('Forgot Your Password?') }}</small></span></a>
+                        {{-- <a  href="{{ route('password.request') }}">
+                           <span id="forgot-pass"><small>{{ __('Forgot Your Password?') }}</small></span></a> --}}
                     </div>
                 </form>
         </div>

@@ -31,7 +31,7 @@ $age = $d2->diff($d1);
             <div>Age: {{$age->y}}</div>
             <div>Gender: {{$stu->gender}}</div>
             <div>Primary Class: {{$stu->primaryClass}}</div>
-            <div>Reference: {{$stu->reference}}</div>
+            <div>Referral: {{$stu->reference}}</div>
             @if($stu->enrolled == 0)
                 <div>Currently Enrolled: Yes</div>
             @else
@@ -50,8 +50,7 @@ $age = $d2->diff($d1);
         @foreach($stu->classes as $class)
                     <div class="class-layout-row">
                         <div>
-                            {{$class->name}}:
-                            <br>
+                            {{$class->name}}:<h6><b>Time:</b> {{$class->time}}  <b>Location: </b>{{$class->location}}</h6>
                                 <div class="btn-group">
                                     <a class="btn btn-secondary" href="/classes/{{$class->id}}" role="button">View</a>
                                     @if(Auth::user()->role==1)

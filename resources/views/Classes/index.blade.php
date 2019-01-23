@@ -7,7 +7,8 @@
     </div>
     @endif
     <h1>Class Index</h1>
-    <div style="padding-bottom: 1em">Here you can view and edit classes</div>
+    <h3>Total Classes: {{count($count)}}</h3>
+    <div style="padding-bottom: 1em">Here you can view and edit classes</div> 
     <br>
     @if(Auth::user()->role==1)
     <div class="text-right"><a href="/classes/create" class="btn btn-md btn-primary">Add New</a></div>
@@ -20,7 +21,7 @@
         <div class="flex-container">
             @foreach($classes as $class)
                 <div class="container">
-                    {{$class->name}}:
+                    {{$class->name}}: <h6><b>Time:</b> {{$class->time}}  <b>Location: </b>{{$class->location}}</h6>
                     <br>
                     <div class="btn-group">
                         <a class="button" href="/classes/{{$class->id}}" role="button">View</a>
