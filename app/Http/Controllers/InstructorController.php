@@ -9,8 +9,8 @@ class InstructorController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth'); 
-        $this->middleware('admin', ['only' => ['create']]);
+        //$this->middleware('auth'); 
+        //$this->middleware('admin', ['only' => ['create']]);
     }
 
     public function index()
