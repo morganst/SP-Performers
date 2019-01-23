@@ -18,10 +18,16 @@ class NotesController extends Controller
     public function index()
     {
         $array = [];
+        $allArray = [];
         $i=0;
+        $k=0;
+
         foreach(Auth::user()->classes as $classes)
+        {
             foreach($classes->student as $students)
+            {
                 foreach($students->notes as $row)
+                {
                     if(!in_array($row['NId'], $array))
                     {
                         $array[$i] = $row['NId'];
@@ -30,16 +36,35 @@ class NotesController extends Controller
                         $row->lastName = $students->lastName;
                         $notes[] = $row;
                     }
+                }
+            }
+        }
         if(isset($notes))
         {
             $notes = array_reverse(array_sort($notes, function ($value) {
                 return $value['created_at'];
             }));
         }
-        //$notes = $note::orderBy('created_at', 'des')->paginate(10);
-        
-    //   return $notes;
-        return view('Notes.index',compact(['notes']));
+        $stu = Student::get();
+        foreach($stu as $stu)
+        {
+            foreach($stu->notes as $row)
+                            if(!in_array($row['NId'], $allArray))
+                            {
+                                $allArray[$k] = $row['NId'];
+                                $k++;
+                                $row->firstName = $stu->firstName;
+                                $row->lastName = $stu->lastName;
+                                $allNotes[] = $row;
+                            }
+        }
+        if(isset($allNotes))
+        {
+            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
+                return $value['created_at'];
+            }));
+        }
+        return view('Notes.index',compact(['notes','allNotes']));
     }
 
     /**
