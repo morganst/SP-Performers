@@ -12,14 +12,14 @@ class NotesTableSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
- 
+
         for ($i = 0; $i < 50; $i++) {
-           Note::create([
+            Note::create([
                 'Instructor' => $faker->firstName,
                 'Class' => $faker->randomElement(['Dance','Art', 'Music']),
                 'I/B' => $faker->randomElement(['Incident', 'Breakthrough','None']),
-                'Text' => $faker->text($maxNbChars = 200),   
-                'SID' => $faker->numberBetween($min = 1, $max = 54)   
+                'Text' => $faker->text($maxNbChars = 200),
+                'SID' => $faker->numberBetween($min = 1, $max = 50)
             ]);
         }
     }

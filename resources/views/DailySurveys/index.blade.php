@@ -20,7 +20,7 @@
         @foreach ($cla->student as $student)
                 <div style="border:1px solid black;padding:8px;" class="class-layout-row">
                 <a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a>
-                <span style="float:right;"> 
+                <span style="float:right;">
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
                 @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend)&&isset($student->attendance->where('classes_id', $cla->id)->first()->attend))
                 {{Form::label('present'.$i.'', 'Present')}}
@@ -32,7 +32,7 @@
                 {{Form::radio('attend['.$i.']', '1', false, array('id'=>'present'.$i.''))}}
                 {{Form::label('absent'.$i.'', 'Absent')}}
                 {{Form::radio('attend['.$i.']', '0', false, array('id'=>'absent'.$i.''))}}
-                @endif 
+                @endif
                 </span>
         </div>
         <input type="hidden" name="stu[]" value="<?php echo $student->id; ?>"/>
@@ -43,8 +43,8 @@
         @endforeach
         <br>
         <div class="text-right">
-            {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-            <a href="/classes" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            {{Form::submit('Submit', ['class' => 'button'])}}
+            <a href="/classes" class="button" role="button" aria-pressed="true">Back</a>
         </div>
         {!! Form::close() !!}
     </div>
