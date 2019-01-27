@@ -46,7 +46,7 @@ class PosttestController extends Controller
         ];
 
         $student = Student::find($id);
-        return view('posttest.create')
+        return view('Posttest.create')
             ->with('student', $student)
             ->with('questions', $questions);
     }
