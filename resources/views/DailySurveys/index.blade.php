@@ -13,9 +13,9 @@
     <div>
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
         <div style="float:right;">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}}</div><br>
-        <?php
+        @php
         $i = 0;
-        ?>
+        @endphp
         Students:
         @foreach ($cla->student as $student)
                 <div style="border:1px solid black;padding:8px;" class="class-layout-row">
@@ -37,9 +37,9 @@
         </div>
         <input type="hidden" name="stu[]" value="<?php echo $student->id; ?>"/>
         <input type="hidden" name="cla" value="<?php echo $cla->id; ?>"/>
-        <?php
+        @php
         $i++;
-        ?>
+        @endphp
         @endforeach
         <br>
         <div class="text-right">

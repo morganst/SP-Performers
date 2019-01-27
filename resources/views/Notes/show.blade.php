@@ -1,22 +1,22 @@
 @extends('layouts.app')
-<?php
+@php
 $array=array();
 $k = 0;
-?>
+@endphp
 @for($i=0;$i<count($allNotes);$i++)
-    <?php 
+    @php 
     if(!in_array($allNotes[$i]->SID, $array))
     {
         $array[$k] = $allNotes[$i]->SID;
         $k++;
     }
-    ?>
+    @endphp
 @endfor
-    <?php
+    @php
     $key = array_search($SID, $array);
     $next = $key + 1;
     $prev = $key - 1;
-    ?>
+    @endphp
 @section('content')
 <h1 class="hidden">{{$var="I/B"}}</h1> 
 @if(count($notes) > 0)

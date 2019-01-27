@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @for($i=0;$i<count($cla->student);$i++)
-    <?php
+    @php
     $array[$i] = $cla->student[$i]->id;
-    ?>
+    @endphp
 @endfor
-    <?php
+    @php
     $key = array_search($lookupID, $array);
     $next = $key + 1;
     $prev = $key - 1;
-    ?>
+    @endphp
 @section('content')
 <h1>This is the Student Survey Page for {{$cla->name}}</h1>
     <div class="daily-survey-container">

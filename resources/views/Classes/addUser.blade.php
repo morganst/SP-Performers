@@ -10,13 +10,13 @@
                 <div class="col-3 col-lg-3">Name:</div>
             </div>
             <br />
-            <?php
+            @php
             $array = array();
-            ?>
+            @endphp
             @for($i=0;$i<count($cla->user);$i++)
-                <?php
+                @php
                 $array[$i] = $cla->user[$i]->pivot['user_id'];
-                ?>
+                @endphp
             @endfor
                 @foreach($users as $user)
                         @if(!in_array($user->id,$array))
