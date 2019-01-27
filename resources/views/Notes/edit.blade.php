@@ -1,4 +1,6 @@
-<?php $var="I/B"; $var2=$notes->student()->first(); ?>
+@php 
+$var="I/B"; $var2=$notes->student()->first();
+@endphp
 @extends('layouts.app')
 
 @section('content')

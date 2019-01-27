@@ -3,7 +3,7 @@
 @section('content')
     {!! Form::open(['action' => 'AttendanceController@search', 'method' => 'POST']) !!}
     <div align="right">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}} <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i>Search Date</button></div><br>
-    <input type="hidden" name="cla" value="<?php echo $cla->id; ?>"/>
+    <input type="hidden" name="cla" value="@php echo $cla->id;@endphp"/>
     {!! Form::close() !!}
     @if(count($attend) > 0)
     <div class="row">

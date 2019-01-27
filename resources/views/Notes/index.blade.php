@@ -31,9 +31,9 @@
                             <div class="card-body">
                                 {{-- For instructor --}}
                                 @if(isset($notes) && Auth::user()->role==0)
-                                <?php
+                                @php
                                 $i=0
-                                ?>
+                                @endphp
                                 @foreach($notes as $row)
                                     @if($row['I/B'] == 'Incident')
                                     <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
@@ -60,8 +60,6 @@
                                         <div style="font-weight:normal">{{$row->Text}}</div>
                                     </div>
                                     @endif
-                                <?php
-                                ?>
                                 @endforeach
                                 <div>
                                 <a style="float:right;" href="/notes" role="button">View More</a>
@@ -69,9 +67,9 @@
                             @endif
                             {{-- For admin --}}
                             @if(isset($notes) && Auth::user()->role==1)
-                                <?php
+                                @php
                                 $i=0
-                                ?>
+                                @endphp
                                 @foreach($allNotes as $row)
                                     @if($row['I/B'] == 'Incident')
                                     <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
@@ -98,8 +96,6 @@
                                         <div style="font-weight:normal">{{$row->Text}}</div>
                                     </div>
                                     @endif
-                                <?php
-                                ?>
                                 @endforeach
                             @endif
                             </div>
