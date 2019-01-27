@@ -82,7 +82,7 @@ class StudentController extends Controller
         $stu = Student::find($id);
         //query to find the pretest 
         $pretest = Pretest::where('student_id', '=', $id) ->get();
-        return view('students.pretest')->with('stu', $stu)->with('pretest', $pretest);
+        return view('Students.pretest')->with('stu', $stu)->with('pretest', $pretest);
     }
 
     public function posttest($id) 
@@ -90,7 +90,7 @@ class StudentController extends Controller
         $stu = Student::find($id);
         //query to find the posttest 
         $posttest = Posttest::where('student_id', '=', $id) ->get();
-        return view('students.posttest')->with('stu', $stu)->with('posttest', $posttest);
+        return view('Students.posttest')->with('stu', $stu)->with('posttest', $posttest);
     }
 
     public function edit($id)
