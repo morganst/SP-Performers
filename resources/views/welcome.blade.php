@@ -81,13 +81,9 @@
     {{-- For instructor --}}
     @if(isset($notes) && Auth::user()->role==0)
         Recent Notes:
-<<<<<<< HEAD
         @php
         $i=0
         @endphp
-=======
-
->>>>>>> 3dfc61b80b7ab18a0c12c1ecb19d9cf209529f82
         @foreach($notes as $row)
             @if($row['I/B'] == 'Incident')
             <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
@@ -114,12 +110,9 @@
                 <div style="font-weight:normal">{{$row->Text}}</div>
             </div>
             @endif
-<<<<<<< HEAD
         @php
         if (++$i == 4) break;
         @endphp
-=======
->>>>>>> 3dfc61b80b7ab18a0c12c1ecb19d9cf209529f82
         @endforeach
         <div>
         <a style="float:right;" href="/notes" role="button">View More</a>
@@ -128,12 +121,9 @@
     {{-- For admin --}}
     @if(isset($allNotes) && Auth::user()->role==1)
         Recent Notes:
-<<<<<<< HEAD
         @php
         $i=0
         @endphp
-=======
->>>>>>> 3dfc61b80b7ab18a0c12c1ecb19d9cf209529f82
         @foreach($allNotes as $row)
             @if($row['I/B'] == 'Incident')
             <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
@@ -160,12 +150,9 @@
                 <div style="font-weight:normal">{{$row->Text}}</div>
             </div>
             @endif
-<<<<<<< HEAD
         @php
         if (++$i == 4) break;
         @endphp
-=======
->>>>>>> 3dfc61b80b7ab18a0c12c1ecb19d9cf209529f82
         @endforeach
         <div>
         <a style="float:right;" href="/notes" role="button">View More</a>

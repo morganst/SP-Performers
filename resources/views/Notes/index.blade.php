@@ -66,21 +66,12 @@
                                 </div>
                             @endif
                             {{-- For admin --}}
-<<<<<<< HEAD
-                            @if(isset($notes) && Auth::user()->role==1)
+                            @if(isset($allNotes) && Auth::user()->role==1)
                                 @php
                                 $i=0
                                 @endphp
-                                @foreach($allNotes as $row)
-                                    @if($row['I/B'] == 'Incident')
-=======
-                            @if(isset($allNotes) && Auth::user()->role==1)
-                                <?php
-                                $i=0
-                                ?>
                                 @foreach($allNotes as $note)
                                     @if($note['I/B'] == 'Incident')
->>>>>>> 3dfc61b80b7ab18a0c12c1ecb19d9cf209529f82
                                     <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
                                         {{$note->firstName}} {{$note->lastName}}
                                         <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
