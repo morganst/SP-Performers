@@ -20,7 +20,7 @@
         <div class="dashboard-note">
             @if(isset($allNotes))
                 @foreach($allNotes as $note)
-                    @if($note['I/B'] === "Severe Incident" && $note['Hide'] == 'No')
+                    @if($note['I/B'] === "Severe Incident" && $note['Hide'] != 'Yes')
                     <div class="severe-note-card">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <a href="/notes/{{$note->SID}}" class="severe-note">
