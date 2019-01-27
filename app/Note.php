@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Student;
+
 class Note extends Model
 {
    // protected $fillable = ['firstName', 'lastName','DOB'];
@@ -14,7 +16,7 @@ class Note extends Model
 
     public $timestamps = true;
     public function student()
-{
-    return $this->belongsTo('App\Student','SID');
-}
+    {
+        return $this->belongsTo('App\Student','SID');
+    }
 }

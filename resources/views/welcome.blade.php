@@ -3,19 +3,56 @@
 @section('content')
 
 <div><h2>Dashboard</h2></div>
+
+
 <div>
     @if (session('status'))
         <div role="alert">
             {{ session('status') }}
         </div>
     @endif
+
+
     @if(Auth::user()->role==1)
         You are logged in as an Administrator.
+
+        <br /><br />
+        <div class="dashboard-note">
+            @if(isset($allNotes))
+                @foreach($allNotes as $note)
+                    @if($note['I/B'] === "Severe Incident" && $note['Hide'] == 'No')
+                    <div class="severe-note-card">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <a href="/notes/{{$note->SID}}" class="severe-note">
+                        <span class="severe">
+                            <strong>{{$note['I/B']}}!</strong>
+                        </span>
+                        <br /> 
+                        Date: {{$note['created_at']->toFormattedDateString()}}
+                        <br />
+                        Instructor: {{$note['Instructor']}}
+                        <br />
+                        Class: {{$note['Class']}}
+                        <br />
+                        Student:
+                        {{$note->firstName}} {{$note->lastName}}
+                        <br /><br />
+                    </a>
+                    </div>
+                    @endif
+                @endforeach
+            @endif
+        </div>
+
     @else
         You are logged in as an Instructor.
-    @endif
     <hr>
     Your Classes
+    @endif
+
+    
+
+
     <div class="flex-container">
         @foreach(Auth::user()->classes as $class)
         <div class="container">
@@ -44,9 +81,7 @@
     {{-- For instructor --}}
     @if(isset($notes) && Auth::user()->role==0)
         Recent Notes:
-        <?php
-        $i=0
-        ?>
+
         @foreach($notes as $row)
             @if($row['I/B'] == 'Incident')
             <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
@@ -73,20 +108,14 @@
                 <div style="font-weight:normal">{{$row->Text}}</div>
             </div>
             @endif
-        <?php
-        if (++$i == 4) break;
-        ?>
         @endforeach
         <div>
         <a style="float:right;" href="/notes" role="button">View More</a>
         </div>
     @endif
     {{-- For admin --}}
-    @if(isset($notes) && Auth::user()->role==1)
+    @if(isset($allNotes) && Auth::user()->role==1)
         Recent Notes:
-        <?php
-        $i=0
-        ?>
         @foreach($allNotes as $row)
             @if($row['I/B'] == 'Incident')
             <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
@@ -113,9 +142,6 @@
                 <div style="font-weight:normal">{{$row->Text}}</div>
             </div>
             @endif
-        <?php
-        if (++$i == 4) break;
-        ?>
         @endforeach
         <div>
         <a style="float:right;" href="/notes" role="button">View More</a>

@@ -19,6 +19,7 @@
     <!-- Styles -->
 
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/sass/app.scss') }}" rel="stylesheet">
 </head>
 <body>
     @include('inc.navbar')
