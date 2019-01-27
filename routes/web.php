@@ -41,3 +41,17 @@ Route::get('students/pretest/{id?}', function($id = null)
         ->with('stu', $stu);
 });
 
+Route::get('students/posttest/{id?}', function($id = null)
+{
+
+    if ($id)
+    {
+        $posttest = Posttest::where('student_id', '=', $id)->get();
+        $stu = Student::find($id);
+    }
+
+    return View::make('students.posttest')
+        ->with('posttest', $posttest)
+        ->with('stu', $stu);
+});
+

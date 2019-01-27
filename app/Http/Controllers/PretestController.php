@@ -133,17 +133,5 @@ class PretestController extends Controller
         return redirect('/students')->with('success', 'Student Updated!');
     }
 
-    public function destroy($id)
-    {
-        $stu = Student::find($id);
-
-        /*if(auth()->user()->id !== $stu->user_id) {
-            return redirect('students')->with('error', 'Unauthorized page');
-        }*/
-
-        $stu->delete();
-
-        return redirect('/students')->with('success', 'Student Deleted!');
-    }
 
 }
