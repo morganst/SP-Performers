@@ -31,6 +31,8 @@ class HomeController extends Controller
         $allArray = [];
         $i=0;
         $k=0;
+        $notes = [];
+        $allNotes = [];
 
         foreach(Auth::user()->classes as $classes)
         {
@@ -59,14 +61,16 @@ class HomeController extends Controller
         foreach($stu as $stu)
         {
             foreach($stu->notes as $row)
-                            if(!in_array($row['NId'], $allArray))
-                            {
-                                $allArray[$k] = $row['NId'];
-                                $k++;
-                                $row->firstName = $stu->firstName;
-                                $row->lastName = $stu->lastName;
-                                $allNotes[] = $row;
-                            }
+            {
+                if(!in_array($row['NId'], $allArray))
+                {
+                    $allArray[$k] = $row['NId'];
+                    $k++;
+                    $row->firstName = $stu->firstName;
+                    $row->lastName = $stu->lastName;
+                    $allNotes[] = $row;
+                }
+            }
         }
         if(isset($allNotes))
         {

@@ -66,34 +66,43 @@
                                 </div>
                             @endif
                             {{-- For admin --}}
+<<<<<<< HEAD
                             @if(isset($notes) && Auth::user()->role==1)
                                 @php
                                 $i=0
                                 @endphp
                                 @foreach($allNotes as $row)
                                     @if($row['I/B'] == 'Incident')
+=======
+                            @if(isset($allNotes) && Auth::user()->role==1)
+                                <?php
+                                $i=0
+                                ?>
+                                @foreach($allNotes as $note)
+                                    @if($note['I/B'] == 'Incident')
+>>>>>>> 3dfc61b80b7ab18a0c12c1ecb19d9cf209529f82
                                     <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
-                                        {{$row->firstName}} {{$row->lastName}}
-                                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$row->Text}}</div>
+                                        {{$note->firstName}} {{$note->lastName}}
+                                        <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
+                                        <div style="font-weight:normal">{{$note->Text}}</div>
                                     </div>
-                                    @elseif($row['I/B'] == 'Severe Incident')
+                                    @elseif($note['I/B'] == 'Severe Incident')
                                                     <div style='background-color: #ff772d; border: .1px solid; padding-left: 5px;'>
-                                                        <a href="/students/{{$row->SID}}" style="color: black">{{$row->firstName}} {{$row->lastName}}</a>
-                                                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
-                                                        <div style="font-weight:normal">{{$row->Text}}</div>
+                                                        <a href="/students/{{$note->SID}}" style="color: black">{{$note->firstName}} {{$note->lastName}}</a>
+                                                        <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
+                                                        <div style="font-weight:normal">{{$note->Text}}</div>
                                                     </div>
-                                    @elseif($row['I/B'] == 'Breakthrough')
+                                    @elseif($note['I/B'] == 'Breakthrough')
                                     <div style='background-color: #7CFF82; border: .1px solid; padding-left: 5px;'>
-                                        {{$row->firstName}} {{$row->lastName}}
-                                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$row->Text}}</div>
+                                        {{$note->firstName}} {{$note->lastName}}
+                                        <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
+                                        <div style="font-weight:normal">{{$note->Text}}</div>
                                     </div>
                                     @else
                                     <div style='background-color: lightgrey;  border: .1px solid; padding-left: 5px;'>
-                                        {{$row->firstName}} {{$row->lastName}}
-                                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$row->Text}}</div>
+                                        {{$note->firstName}} {{$note->lastName}}
+                                        <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
+                                        <div style="font-weight:normal">{{$note->Text}}</div>
                                     </div>
                                     @endif
                                 @endforeach

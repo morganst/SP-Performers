@@ -10,9 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Pretest;
+use App\Posttest;
+use App\Student;
 
 Route::get('/unauthorized', function () {
     return view('unauthorized');
+});
+
+Route::get('/', function () {
+    return view('home');
 });
 
 
@@ -51,7 +58,8 @@ Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
 Route::resource('notes', 'NotesController');
 Route::resource('attendances', 'AttendanceController');
-
+Route::resource('pretest', 'PretestController');
+Route::resource('posttest', 'PosttestController');
 Route::post('/attachUser/{user_id}/{classes_id}', 'ClassController@attachUser');
 Route::post('/detachUser/{user_id}/{classes_id}', 'ClassController@detachUser');
 Route::get('classes/{id}/addUser', 'ClassController@addUser');
@@ -68,3 +76,34 @@ Route::post('/sendemail/send', 'SendEmailController@send');
 
 Route::get('/live_search', 'SearchController@index');
 Route::get('/live_search/action', 'SearchController@action')->name('live_search.action');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('students/pretest/{id?}', function($id = null)
+{
+
+    if ($id)
+    {
+        $pretest = Pretest::where('student_id', '=', $id)->get();
+        $stu = Student::find($id);
+    }
+
+    return View::make('students.pretest')
+        ->with('pretest', $pretest)
+        ->with('stu', $stu);
+});
+
+Route::get('students/posttest/{id?}', function($id = null)
+{
+
+    if ($id)
+    {
+        $posttest = Posttest::where('student_id', '=', $id)->get();
+        $stu = Student::find($id);
+    }
+
+    return View::make('students.posttest')
+        ->with('posttest', $posttest)
+        ->with('stu', $stu);
+});

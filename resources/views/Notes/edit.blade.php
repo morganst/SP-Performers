@@ -37,6 +37,13 @@ $var="I/B"; $var2=$notes->student()->first();
                 </div>
             </div>
             &nbsp;
+            <div class="form-row">
+                {!! Form::label('Hide From Homepage?', 'Hide From Homepage?', ['class' => 'col-lg-2 control-label'] )  !!}
+                <div class="col col-md-3">
+                    {!!  Form::select('Hide', ['No' => 'No', 'Yes' => 'Yes'], ['class' => 'form-control' ]) !!}
+                </div>
+            </div>
+            &nbsp;
             {{Form::hidden('url', URL::previous())}}
             <div style="padding-top: 10px">
                 <span style="float:right;">

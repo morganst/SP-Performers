@@ -49,14 +49,16 @@ class NotesController extends Controller
         foreach($stu as $stu)
         {
             foreach($stu->notes as $row)
-                            if(!in_array($row['NId'], $allArray))
-                            {
-                                $allArray[$k] = $row['NId'];
-                                $k++;
-                                $row->firstName = $stu->firstName;
-                                $row->lastName = $stu->lastName;
-                                $allNotes[] = $row;
-                            }
+            {
+                if(!in_array($row['NId'], $allArray))
+                {
+                    $allArray[$k] = $row['NId'];
+                    $k++;
+                    $row->firstName = $stu->firstName;
+                    $row->lastName = $stu->lastName;
+                    $allNotes[] = $row;
+                }
+            }
         }
         if(isset($allNotes))
         {
@@ -107,15 +109,18 @@ class NotesController extends Controller
             'I/B' => 'nullable',
             'Text' => 'required',
             'SID'=>'required',
-           
+            'Hide'=>'nullable'
         ]);
+
         $var="I/B";
-       $notes = new Note;
+
+        $notes = new Note;
         $notes->Class = $request->input('Class');
         $notes->Instructor= $request->input('Instructor');
         $notes->$var= $request->input('I/B');
         $notes->Text= $request->input('Text');
         $notes->SID= $request->input('SID');
+        $notes->Hide= $request->input('Hide');
         $notes->save();
 
         $url = $request->input('url');
@@ -162,14 +167,16 @@ class NotesController extends Controller
         'Instructor' => 'required',
         'I/B' => 'nullable',
         'Text' => 'required',
-       
+        'Hide' => 'required'
     ]);
+    
     $var="I/B";
     $notes = Note::find($NId);
     $notes->Class = $request->input('Class');
     $notes->Instructor= $request->input('Instructor');
     $notes->$var= $request->input('I/B');
     $notes->Text= $request->input('Text');
+    $notes->Hide = $request->input('Hide');
     $notes->save();
 
     $url = $request->input('url');
