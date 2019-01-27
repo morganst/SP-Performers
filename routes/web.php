@@ -89,7 +89,7 @@ Route::get('students/pretest/{id?}', function($id = null)
         $stu = Student::find($id);
     }
 
-    return View::make('students.pretest')
+    return View::make('Students.pretest')
         ->with('pretest', $pretest)
         ->with('stu', $stu);
 });
@@ -103,7 +103,7 @@ Route::get('students/posttest/{id?}', function($id = null)
         $stu = Student::find($id);
     }
 
-    return View::make('students.posttest')
+    return View::make('Students.posttest')
         ->with('posttest', $posttest)
         ->with('stu', $stu);
 });
