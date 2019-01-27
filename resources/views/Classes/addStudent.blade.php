@@ -9,13 +9,13 @@
             <div class="row">
             </div>
             <br />
-            <?php
+            @php
             $array = array();
-            ?>
+            @endphp
             @for($i=0;$i<count($cla->student);$i++)
-                <?php
+                @php
                 $array[$i] = $cla->student[$i]->pivot['student_id'];
-                ?>
+                @endphp
             @endfor
                 <table>
                     <thead>
