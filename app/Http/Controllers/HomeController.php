@@ -31,7 +31,8 @@ class HomeController extends Controller
         $allArray = [];
         $i=0;
         $k=0;
-        $notes;
+        $notes = [];
+        $allNotes = [];
 
         foreach(Auth::user()->classes as $classes)
         {
