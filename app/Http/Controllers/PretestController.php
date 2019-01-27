@@ -53,26 +53,26 @@ class PretestController extends Controller
 
         $student = Student::find($pretest->student_id);
         
-        $pretest->q1 = $request->input('Q1');
-        $pretest->q2 = $request->input('Q2');
-        $pretest->q3 = $request->input('Q3');
-        $pretest->q4 = (int)$request->input('Q4');
-        $pretest->q5 = (int)$request->input('Q5');
-        $pretest->q6 = (int)$request->input('Q6');
-        $pretest->q7 = (int)$request->input('Q7');
-        $pretest->q8 = (int)$request->input('Q8');
-        $pretest->q9 = (int)$request->input('Q9');
-        $pretest->q10 = (int)$request->input('Q10');
-        $pretest->q11 = $request->input('Q11');
-        $pretest->q12 = (int)$request->input('Q12');
-        $pretest->q13 = (int)$request->input('Q13');
-        $pretest->q14 = (int)$request->input('Q14');
-        $pretest->q15 = (int)$request->input('Q15');
-        $pretest->q16 = (int)$request->input('Q16');
-        $pretest->q17 = (int)$request->input('Q17');
-        $pretest->q18 = (int)$request->input('Q18');
-        $pretest->q19 = (int)$request->input('Q19');
-        $pretest->q20 = (int)$request->input('Q20');
+        $pretest->Q1 = $request->input('Q1');
+        $pretest->Q2 = $request->input('Q2');
+        $pretest->Q3 = $request->input('Q3');
+        $pretest->Q4 = (int)$request->input('Q4');
+        $pretest->Q5 = (int)$request->input('Q5');
+        $pretest->Q6 = (int)$request->input('Q6');
+        $pretest->Q7 = (int)$request->input('Q7');
+        $pretest->Q8 = (int)$request->input('Q8');
+        $pretest->Q9 = (int)$request->input('Q9');
+        $pretest->Q10 = (int)$request->input('Q10');
+        $pretest->Q11 = $request->input('Q11');
+        $pretest->Q12 = (int)$request->input('Q12');
+        $pretest->Q13 = (int)$request->input('Q13');
+        $pretest->Q14 = (int)$request->input('Q14');
+        $pretest->Q15 = (int)$request->input('Q15');
+        $pretest->Q16 = (int)$request->input('Q16');
+        $pretest->Q17 = (int)$request->input('Q17');
+        $pretest->Q18 = (int)$request->input('Q18');
+        $pretest->Q19 = (int)$request->input('Q19');
+        $pretest->Q20 = (int)$request->input('Q20');
 
         $student->pretest()->save($pretest);
 
