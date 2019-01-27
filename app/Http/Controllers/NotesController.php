@@ -49,14 +49,16 @@ class NotesController extends Controller
         foreach($stu as $stu)
         {
             foreach($stu->notes as $row)
-                            if(!in_array($row['NId'], $allArray))
-                            {
-                                $allArray[$k] = $row['NId'];
-                                $k++;
-                                $row->firstName = $stu->firstName;
-                                $row->lastName = $stu->lastName;
-                                $allNotes[] = $row;
-                            }
+            {
+                if(!in_array($row['NId'], $allArray))
+                {
+                    $allArray[$k] = $row['NId'];
+                    $k++;
+                    $row->firstName = $stu->firstName;
+                    $row->lastName = $stu->lastName;
+                    $allNotes[] = $row;
+                }
+            }
         }
         if(isset($allNotes))
         {

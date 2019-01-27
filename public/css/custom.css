@@ -300,3 +300,13 @@ label, #forgot-pass{
     font-size: 16px;
     font-family: var(--btn-font-fam);
 }
+
+.dashboard-note {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.dashboard-note .severe {
+    color: red;
+}
+  

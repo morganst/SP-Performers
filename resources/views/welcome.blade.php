@@ -3,19 +3,47 @@
 @section('content')
 
 <div><h2>Dashboard</h2></div>
+
+
 <div>
     @if (session('status'))
         <div role="alert">
             {{ session('status') }}
         </div>
     @endif
+
+
     @if(Auth::user()->role==1)
         You are logged in as an Administrator.
     @else
         You are logged in as an Instructor.
-    @endif
     <hr>
     Your Classes
+    @endif
+
+    <div class="dashboard-note">
+    @if(isset($allNotes))
+        @foreach($allNotes as $note)
+            @if($note['I/B'] === "Severe Incident")
+            <div>
+                <span class="severe">
+                    {{$note['I/B']}} 
+                </span>
+                <br /> 
+                Instructor: {{$note['Instructor']}}
+                <br />
+                Class: {{$note['Class']}}
+                <br />
+                Student:
+                <a href="/notes/{{$note->SID}}" style="color: black">{{$note->firstName}} {{$note->lastName}}</a>
+                <br /><br />
+            </div>
+            @endif
+        @endforeach
+    @endif
+    </div>
+
+
     <div class="flex-container">
         @foreach(Auth::user()->classes as $class)
         <div class="container">
