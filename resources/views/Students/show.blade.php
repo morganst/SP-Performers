@@ -10,6 +10,7 @@ $age = $d2->diff($d1);
         <div class="text-right">
             <a href="/notes/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Instructor Notes</a>
             <a href="/sendemail" class="new-btn edit-button" style="" role="button">Send Report</a>
+            <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a>
             @if(Auth::user()->role==1)
                 <a href="/students/{{$stu->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
                 <br /><br />
@@ -45,10 +46,7 @@ $age = $d2->diff($d1);
                         <div>
                             {{$class->name}}:<h6><b>Time:</b> {{$class->time}}  <b>Location: </b>{{$class->location}}</h6>
                                 <div class="btn-group">
-                                    <a class="btn btn-secondary" href="/classes/{{$class->id}}" role="button">View</a>
-                                    @if(Auth::user()->role==1)
-                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Manage Student</a>
-                                    @endif
+                                    <a class="new-btn primary-button" href="/classes/{{$class->id}}" role="button">View Class</a>
                                 </div>
                         </div>
                     </div>
