@@ -17,35 +17,38 @@ class NotesController extends Controller
      */
     public function index()
     {
-        $array = [];
-        $allArray = [];
-        $i=0;
-        $k=0;
-
-        foreach(Auth::user()->classes as $classes)
+        if(Auth::user()->role==0)
         {
-            foreach($classes->student as $students)
+            $array = [];
+            $i=0;
+            foreach(Auth::user()->classes as $classes)
             {
-                foreach($students->notes as $row)
+                foreach($classes->student as $students)
                 {
-                    if(!in_array($row['NId'], $array))
+                    foreach($students->notes as $row)
                     {
-                        $array[$i] = $row['NId'];
-                        $i++;
-                        $row->firstName = $students->firstName;
-                        $row->lastName = $students->lastName;
-                        $notes[] = $row;
+                        if(!in_array($row['NId'], $array))
+                        {
+                            $array[$i] = $row['NId'];
+                            $i++;
+                            $row->firstName = $students->firstName;
+                            $row->lastName = $students->lastName;
+                            $notes[] = $row;
+                        }
                     }
                 }
             }
-        }
-        if(isset($notes))
-        {
-            $notes = array_reverse(array_sort($notes, function ($value) {
-                return $value['created_at'];
-            }));
+            if(isset($notes))
+            {
+                $notes = array_reverse(array_sort($notes, function ($value) {
+                    return $value['created_at'];
+                }));
+            }
+            return view('Notes.index',compact(['notes']));
         }
         $stu = Student::get();
+        $k=0;
+        $allArray = [];
         foreach($stu as $stu)
         {
             foreach($stu->notes as $row)
@@ -66,7 +69,7 @@ class NotesController extends Controller
                 return $value['created_at'];
             }));
         }
-        return view('Notes.index',compact(['notes','allNotes']));
+        return view('Notes.index',compact(['allNotes']));
     }
 
     /**
