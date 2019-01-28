@@ -34,7 +34,6 @@ body{
 
     margin: 0;
     background: radial-gradient(circle farthest-side, #d4d4d4, #f7f7f7);
-    background-repeat: no-repeat;
 }
 
 /*END LAYOUT PAGE*/
@@ -84,18 +83,23 @@ h1.hidden {
 
 .center-this-div{
     width: 40%;
-
 }
 
 
 
 .form-row{
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-bottom: 4px;
 }
+
+.form-row-uncentered {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4px;
+}
+
 .mood-row{
 
     display: flex;
@@ -248,10 +252,13 @@ a:link{
 
 }
 label, #forgot-pass{
-
     vertical-align: middle;
-    margin-left: 1em;
 }
+
+label {
+    padding: .25em 0;
+}
+
 #remember-me, #forgot-pass{
     margin: 0%;
 }
@@ -287,13 +294,13 @@ label, #forgot-pass{
 /* END CONTAINERS*/
 
 
-.button, input[type="submit" i]{
+.button {
     background: var(--btn-bg-color);
     box-shadow: 1px 1px 3px rgb(71, 71, 71);
     border-radius: 2px;
     border-width: 0;
     color: var(--txt-color-btn);
-    padding: 15px 32px;
+    padding: 15px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -343,4 +350,96 @@ label, #forgot-pass{
     transition: 0.3s;
 }
 
+.student {
+    padding: 10px;
+}
 
+.flex-container-index {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    align-content: stretch;
+}
+
+.student-name:link {
+    color: black;
+    text-decoration: underline;
+}
+
+.student-name:visited {
+    color: black;
+    text-decoration: underline;
+}
+
+.pagination {
+    display: flex;
+    padding: 5px;
+    list-style: none;
+    border-radius: .25rem;
+}
+
+.page-item {
+    padding: 5px;
+}
+
+.page-link:visited {
+    color: #265778;
+}
+
+.page-link:link {
+    color: #265778
+}
+
+.float-right {
+    float: right;
+}
+
+
+.new-btn {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    font-size: 100%;
+    padding: .5em 1em;
+    display: inline-block;
+    zoom: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    user-select: none;
+    margin: 0, 5px, 5px, 5px;
+}
+
+.edit-button {
+    background: rgb(66, 184, 221);
+}
+
+.warning-button {
+    background: rgb(223, 117, 20);
+}
+
+.primary-button {
+    background: #265778;
+}
+
+.error-button {
+    background: rgb(202, 60, 60);
+}
+
+.back {
+    background: rgb(61, 61, 61);
+}
+
+.form-control {
+    padding: .5em .6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    margin-left: 5px;
+}
