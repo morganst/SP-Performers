@@ -8,22 +8,18 @@ $age = $d2->diff($d1);
 @section('content')
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
         <div class="text-right">
-             
-            
-            <a href="/notes/{{$stu->id}}" class="btn btn-secondary" style="color: #F2F2F2" role="button">Instructor Notes</a>
-            <a href="/sendemail" class="btn btn-secondary" style="color: #F2F2F2" role="button">Send Report</a>
+            <a href="/notes/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Instructor Notes</a>
+            <a href="/sendemail" class="new-btn edit-button" style="" role="button">Send Report</a>
+            <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a>
             @if(Auth::user()->role==1)
-            <a href="/students/{{$stu->id}}/edit" class="btn btn-secondary" style="color: #F2F2F2" role="button">Edit</a>
-            {!!Form::open(['action' => ['StudentController@destroy', $stu->id], 'method' => 'POST', 'class' => 'btn btn-danger', 'style' => 'padding: 0'])!!}
-                {{Form::hidden('_method', 'DELETE')}}
-                {{Form::submit('Delete', ['class' => 'btn btn-danger', 'role' => 'button'])}}
-            {!!Form::close()!!}
+                <a href="/students/{{$stu->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
+                <br /><br />
             @endif
         </div>
         <div>Student's Information:</div>
         <hr>
         <h1 class="hidden">  {{$var=$stu->notes}}</h1> 
-        <div class="center-this-div">
+        <div>
             <div>Student ID: {{$stu->id}}</div>
             <div>First Name: {{$stu->firstName}}</div>
             <div>Last Name: {{$stu->lastName}}</div>
@@ -38,11 +34,9 @@ $age = $d2->diff($d1);
                 <div>Currently Enrolled: No</div>
             @endif
             @if(is_null($var) || $var->isEmpty())
-            <div>Notes Available: No 
-            <a href="/notes/createnew/{{$stu->id}}" class="btn btn-secondary" style="color: #F2F2F2; float:right;" role="button">Create Note</a>
-            </div>
+                <div>Notes Available: No</div>
             @else
-            <div>Notes Available: Yes </div>
+                <div>Notes Available: Yes</div>
             @endif
         </div>
         <hr>
@@ -52,10 +46,7 @@ $age = $d2->diff($d1);
                         <div>
                             {{$class->name}}:<h6><b>Time:</b> {{$class->time}}  <b>Location: </b>{{$class->location}}</h6>
                                 <div class="btn-group">
-                                    <a class="btn btn-secondary" href="/classes/{{$class->id}}" role="button">View</a>
-                                    @if(Auth::user()->role==1)
-                                        <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Manage Student</a>
-                                    @endif
+                                    <a class="new-btn primary-button" href="/classes/{{$class->id}}" role="button">View Class</a>
                                 </div>
                         </div>
                     </div>
@@ -63,21 +54,21 @@ $age = $d2->diff($d1);
     <hr>
         <p>
         @if($pretest->isEmpty())
-            <a href ="/pretest/{{$stu->id}}" class="" role="button">Complete Pre-Test</a>
+            <a href ="/pretest/{{$stu->id}}" class="new-btn primary-button" role="button">Complete Pre-Test</a>
         @else
-        <a href ="/students/pretest/{{$stu->id}}" class="" role="button">View Pre-Test results</a>
+        <a href ="/students/pretest/{{$stu->id}}" class="new-btn edit-button" role="button">View Pre-Test results</a>
         <br />
             @if($posttest->isEmpty())
-                <a href ="/posttest/{{$stu->id}}" class="" role="button">Complete Post-Test</a>
+                <a href ="/posttest/{{$stu->id}}" class="new-btn primary-button" role="button">Complete Post-Test</a>
             @else
-            <a href ="/students/posttest/{{$stu->id}}" class="" role="button">View Post-Test results</a>
+            <a href ="/students/posttest/{{$stu->id}}" class="new-btn edit-button" role="button">View Post-Test results</a>
             @endif
         @endif
-        
         </p>
-<small>Created: {{$stu->created_at}}</small>
+
+        <small>Created: {{$stu->created_at}}</small>
         <div class="text-right">
-            <a href="/students" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            <a href="/students" class="new-btn back" role="button" aria-pressed="true"><- Back</a>
         </div>
 
 @endsection
