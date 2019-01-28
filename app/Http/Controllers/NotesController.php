@@ -69,7 +69,7 @@ class NotesController extends Controller
                 return $value['created_at'];
             }));
         }
-        return view('Notes.index',compact(['notes','allNotes']));
+        return view('Notes.index',compact(['allNotes']));
     }
 
     /**
