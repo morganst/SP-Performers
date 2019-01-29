@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Attendance;
+use App\Student;
 
 class SearchController extends Controller
 {
+    public function searchStudent(){
+        $searchkey = \Request::get('title');
+        $students =  Student::where('firstName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
+        return view('Students/search', ['students' => $students]);
+    }
     function index()
     {
      return view('live_search');
