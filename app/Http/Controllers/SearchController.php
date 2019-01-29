@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Attendance;
 use App\Student;
 use App\User;
+use App\Classes;
 
 class SearchController extends Controller
 {

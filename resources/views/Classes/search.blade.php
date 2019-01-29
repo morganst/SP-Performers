@@ -6,6 +6,17 @@
         {{ session()->get('success') }}
     </div>
     @endif
+   
+    <h1>Class Index</h1>
+    
+    <div style="padding-bottom: 1em">Here you can view and edit classes</div>
+    
+    <br>
+    
+    @if(Auth::user()->role==1)
+    <div class="text-right"><a href="/classes/create" class="btn btn-md btn-primary">Add New</a></div>
+    @endif
+    <hr>
     <form class="form-inline my-2 my-md-2 nav" role="search" method="get" action="{{url("/searchClasses")}}">
             <div class="input-group">
                 <input type="text" class="form-control mr-sm-0" placeholder="Search" name="title">
@@ -14,13 +25,6 @@
                 </div>
             </div>
     </form> 
-    <h1>Class Index</h1>
-    <div style="padding-bottom: 1em">Here you can view and edit classes</div>
-    <br>
-    @if(Auth::user()->role==1)
-    <div class="text-right"><a href="/classes/create" class="btn btn-md btn-primary">Add New</a></div>
-    @endif
-    <hr>
     @if(count($classes) > 0)
         <div class="row">
             <div class="col-3 col-lg-3">Class Name</div>
