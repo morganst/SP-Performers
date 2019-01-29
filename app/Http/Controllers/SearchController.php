@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Attendance;
 use App\Student;
-use App\Classes;
+use App\User;
 
 class SearchController extends Controller
 {
@@ -18,6 +18,11 @@ class SearchController extends Controller
         $searchkey = \Request::get('title');
         $classes = Classes::where('name', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
         return view('Classes/search', ['classes' => $classes]);
+    }
+    public function searchInstructors(){
+        $searchkey = \Request::get('title');
+        $users = User::where('firstName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
+        return view('Instructors/search', ['users' => $users]);
     }
     function index()
     {
