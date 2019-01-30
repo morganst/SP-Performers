@@ -4,52 +4,52 @@
     <h1>New Student</h1>
     <p>Please enter information for creating a new student</p>
     {!! Form::open(['action' => 'StudentController@store', 'method' => 'POST']) !!}
-        <form>
-            <div class="form-row">
+    <form class="small-form">
+            <div class="form-row-inline-md">
                 {!! Form::label('firstName', 'First Name', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::text('firstName', '', ['class' => 'form-control', 'placeholder' => 'First Name'])}}
-                </div>
+                
+                    {{Form::text('firstName', '', ['class' => 'form-control-right', 'placeholder' => 'First Name'])}}
+
             </div>
             &nbsp;
-            <div class="form-row">
+            <div class="form-row-inline-md">
                 {!! Form::label('lastName', 'Last Name', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::text('lastName', '', ['class' => 'form-control', 'placeholder' => 'Last Name'])}}
-                </div>
+                
+                    {{Form::text('lastName', '', ['class' => 'form-control-right', 'placeholder' => 'Last Name'])}}
+
             </div>
             &nbsp;
-            <div class="form-row">
+            <div class="form-row-inline-md">
                 {!! Form::label('DOB', 'Date of Birth', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::date('DOB', \Carbon\Carbon::now())}}
-                </div>
+                
+                    {{Form::date('DOB', \Carbon\Carbon::now(), ['class' => 'form-control-right'])}}
+
             </div>
             &nbsp;
-            <div class="form-row">
+            <div class="form-row-inline-md">
                 {!! Form::label('gender', 'Gender', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {!!  Form::select('gender', ['Male' => 'Male', 'Female' => 'Female', 'Other' => 'Other'],  '', ['class' => 'form-control' ]) !!}
-                </div>
+                
+                    {!!  Form::select('gender', ['Male' => 'Male', 'Female' => 'Female', 'Other' => 'Other'],  '', ['class' => 'form-control-right' ]) !!}
+    
             </div>
             &nbsp;
-            <div class="form-row">
+            <div class="form-row-inline-md">
                 {!! Form::label('primaryClass', 'Primary Class', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::select('primaryClass', $array, null, ['class' => 'form-control'])}}
-                </div>
+                
+                    {{Form::select('primaryClass', $array, null, ['class' => 'form-control-right'])}}
+         
             </div>
             &nbsp;
-            <div class="form-row">
+            <div class="form-row-inline-md">
                 {!! Form::label('reference', 'Referral', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::text('reference', '', ['class' => 'form-control', 'placeholder' => 'Referral'])}}
-                </div>
+                
+                    {{Form::text('reference', '', ['class' => 'form-control-right', 'placeholder' => 'Referral'])}}
+       
             </div>
             &nbsp;
-            <div style="padding-top: 10px">
-                {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-                <a class="btn btn-secondary" href="/students" role="button">Back</a>
+            <div class="form-row-inline-md" style="padding-top: 10px">
+                {{Form::submit('Submit', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 41px;'])}}
+                <a class="form-control-right button" href="/students" role="button">Cancel</a>
             </div>
         </form>
     {!! Form::close() !!}

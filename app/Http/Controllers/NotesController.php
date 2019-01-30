@@ -139,8 +139,8 @@ class NotesController extends Controller
     public function show($SID)
     {
         $notes = Note::where('SID', '=', $SID)->orderBy('created_at', 'des')->get();
-        $allNotes = Note::get();
-        return view('Notes.show', compact(['notes', 'SID', 'allNotes']));
+        return view('Notes.show')->with('notes', $notes)
+                                ->with('SID', $SID);
     }
 
     /**

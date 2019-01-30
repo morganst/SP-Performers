@@ -351,10 +351,27 @@ label {
 
 .dashboard-note .severe-note-card
 {
-    padding: 20px;
+    padding: 10px;
     background-color: #d66363;
     border-color: #ebccd1;
-    color: #ebccd1;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.dashboard-note .breakthrough-note-card
+{
+    padding: 10px;
+    background-color: #89d477;
+    border-color: #8899dd;
+    color: white;
+    margin-bottom: 15px;
+}
+.dashboard-note .incident-note-card
+{
+    padding: 10px;
+    background-color: #d66363;
+    border-color: #ebccd1;
+    color: white;
     margin-bottom: 15px;
 }
 
@@ -429,10 +446,16 @@ label {
     cursor: pointer;
     -webkit-user-drag: none;
     user-select: none;
+    margin-bottom: 10px;
 }
 
 .edit-button {
     background: rgb(66, 184, 221);
+}
+.clear-button {
+    background: rgb(255, 255, 255);
+    opacity: .8;
+    color: black;
 }
 
 .warning-button {

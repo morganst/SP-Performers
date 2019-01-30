@@ -6,8 +6,9 @@ $d2 = new DateTime(date("Y-m-d"));
 $age = $d2->diff($d1);
 @endphp
 @section('content')
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
-        <div class="text-right">
+        <div>
             <a href="/notes/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Instructor Notes</a>
             <a href="/sendemail" class="new-btn edit-button" style="" role="button">Send Report</a>
             <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a>
@@ -40,16 +41,18 @@ $age = $d2->diff($d1);
             @endif
         </div>
         <hr>
-        Classes Assigned:
         @foreach($stu->classes as $class)
-                    <div class="class-layout-row">
-                        <div>
-                            {{$class->name}}:<h6><b>Time:</b> {{$class->time}}  <b>Location: </b>{{$class->location}}</h6>
-                                <div class="btn-group">
-                                    <a class="new-btn primary-button" href="/classes/{{$class->id}}" role="button">View Class</a>
-                                </div>
-                        </div>
-                    </div>
+            <div class="w3-card-4" style="width:80%; max-width: 350px; display: inline-block">
+                <div class="w3-container w3-light-grey">
+                    <h3>{{$class->name}}</h3>
+                </div>
+                <div class="w3-container">
+                    <p>Time: {{$class->time}}</p>
+                    <p>Location: {{$class->location}}</p>
+                    <hr>
+                </div>
+                    <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}" role="button">View Class</a>
+            </div>
         @endforeach
     <hr>
         <p>
