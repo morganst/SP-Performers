@@ -7,7 +7,7 @@ $age = $d2->diff($d1);
 @endphp
 @section('content')
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
-        <div class="text-right">
+        <div>
             <a href="/notes/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Instructor Notes</a>
             <a href="/sendemail" class="new-btn edit-button" style="" role="button">Send Report</a>
             <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a>

@@ -7,51 +7,54 @@ $var="I/B"; $var2=$notes->student()->first();
 
 <h2>Edit Note for {{$var2->firstName}} {{$var2->lastName}}</h2>
     {!! Form::open(['action' => ['NotesController@update',  $notes->NId ],'method' => 'POST']) !!}
-        <form>
-            <div class="form-row">
+        <form class="small-form">
+            <div class="form-row-inline-md">
                 {!! Form::label('Class', 'Class', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {!!  Form::select('Class', ['Music' => 'Music', 'Art' => 'Art', 'Dance' => 'Dance'],  $notes->Class, ['class' => 'form-control' ]) !!}
-                </div>
+
+                    {!!  Form::select('Class', ['Music' => 'Music', 'Art' => 'Art', 'Dance' => 'Dance'],  $notes->Class, ['class' => 'form-control-right' ]) !!}
+      
             </div>
             &nbsp;
-            <div class="form-row">
+            <div class="form-row-inline-md">
                 {!! Form::label('Instructor', 'Instructor', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {{Form::text('Instructor', $notes->Instructor, ['class' => 'form-control'])}}
-                </div>
+         
+                    {{Form::text('Instructor', $notes->Instructor, ['class' => 'form-control-right'])}}
+           
             </div>
             &nbsp;
-            <div class="form-row">
-                {!! Form::label('I/B', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    
-                    {!!  Form::select('I/B', [ 'Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'None' => 'None'], $notes->$var , ['class' => 'form-control' ]) !!}
-                </div>
+            <div class="form-row-inline-md">
+                {!! Form::label('I/B', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}                    
+                    {!!  Form::select('I/B', [ 'Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'None' => 'None'], $notes->$var , ['class' => 'form-control-right' ]) !!}
+     
             </div>
             &nbsp;
-            <div class="form-row">
-                {!! Form::label('Text', 'Report', ['class' => 'col-lg-2 control-label']  )  !!}
-                <div class="col col-md-3">
-                    {{Form::textarea('Text', $notes->Text, ['class' => 'form-control', 'placeholder' => 'Please explain'])}}
-                </div>
+            <div class="form-row-inline-md">
+               
+
+                    {{Form::textarea('Text', $notes->Text, ['class' => 'form-control-text', 'placeholder' => 'Please explain'])}}
+       
             </div>
             &nbsp;
-            <div class="form-row">
+            <div class="form-row-inline-md">
                 {!! Form::label('Hide From Homepage?', 'Hide From Homepage?', ['class' => 'col-lg-2 control-label'] )  !!}
-                <div class="col col-md-3">
-                    {!!  Form::select('Hide', ['No' => 'No', 'Yes' => 'Yes'], ['class' => 'form-control' ]) !!}
-                </div>
+            
+                    {!!  Form::select('Hide', ['No' => 'No', 'Yes' => 'Yes'], null, ['class' => 'form-control-right' ]) !!}
+         
             </div>
             &nbsp;
-            {{Form::hidden('url', URL::previous())}}
-            <div style="padding-top: 10px">
-                <span style="float:right;">
+            <div class="form-row-inline-md" style="padding-top: 20px">
+                    {{Form::hidden('url', URL::previous())}}
                     {{Form::hidden('_method', 'PUT')}}
-                    {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-                    <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
-                </span>
+                    {{Form::submit('Submit', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 41px;'])}}
+                    <a href="{{ URL::previous() }}" class="form-control-right button" role="button" aria-pressed="true">Cancel</a>
             </div>
         </form>
     {!! Form::close() !!}
+
+    <div class="form-row-inline-md">
+        {!!Form::open(['action' => ['NotesController@destroy', $notes->NId], 'method' => 'POST', 'class' => 'btn btn-danger', 'style' => 'padding: 0'])!!}
+            {{Form::hidden('_method', 'DELETE')}}
+            {{Form::submit('Delete', ['class' => 'form-control-right new-btn error-button', 'role' => 'button', 'style' => 'padding-top: 10px'])}}
+        {!!Form::close()!!}
+    </div>
 @endsection
