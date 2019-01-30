@@ -12,17 +12,16 @@
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
-
     }
 
     .sidenav a {
-        padding: 8px 16px 8px 32px;
+        padding: 5px 10px;
         text-decoration: none;
-        font-size: 25px;
+        font-size: 28px;
         color: #818181;
         display: block;
         transition: 0.3s;
-        text-align: center;
+        text-align: left;
     }
 
     .sidenav a:hover {
@@ -32,9 +31,11 @@
     .sidenav .closebtn {
         position: absolute;
         top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
+        right: 5px;
+        font-size: 45px;
+    }
+    .sm-text {
+        font-size: 16pt;
     }
 
     @media screen and (max-height: 450px) {
@@ -45,12 +46,12 @@
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/">Home</a> I
+    <a href="/"><span class="sm-text fas fa-home"></span> Home</a> 
     @Auth
-    <a href="/classes"><span class="fas fa-home"></span>Classes</a> I
-    <a href="/students">Students</a> I
-    <a href="/instructors">Instructors</a> I
-    <a href="/logout">Logout</a>
+    <a href="/classes"><span class="sm-text fas fa-bell"></span> Classes</a> 
+    <a href="/students"><span class="sm-text fas fa-users"></span> Students</a> 
+    <a href="/instructors"><span class="sm-text fas fa-chalkboard-teacher"></span> Instructors</a> 
+    <a href="/logout"><span class="sm-text fas fa-sign-out-alt"></span> Logout</a>
     @endAuth
 </div>
 <span style="font-size:50px;cursor:pointer;margin-left:10px;" onclick="openNav()">&#9776;</span>
