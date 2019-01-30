@@ -45,7 +45,5 @@
     @else
         <p>No instructors found</p>
     @endif
-    <div class="text-right">
-            <a href="/" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
-    </div>
+
 @endsection

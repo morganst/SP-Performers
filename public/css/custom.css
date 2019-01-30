@@ -112,11 +112,20 @@ h1.hidden {
     margin-bottom: 5px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 750px) {
     .form-row-inline-md {
         display: inline-block;
         width: 100%;
         margin-bottom: 5px;
+    }
+    .student-index-container {
+        display: inline-block;
+        width: 100%;
+    }
+    .student {
+        width: 50%;
+        padding-bottom: 15px;
+        display: inline-block
     }
 }
 
@@ -375,7 +384,7 @@ label {
     margin-bottom: 15px;
 }
 
-.dashboard-note .severe-note-card .closebtn {
+.dashboard-note .closebtn {
     margin-left: 15px;
     color: #ffffff;
     font-weight: bold;
@@ -386,8 +395,24 @@ label {
     transition: 0.3s;
 }
 
-.student {
+.dashboard-note .note-note-card {
     padding: 10px;
+    background-color: #265778;
+    border-color: #ebccd1;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.student {
+    width: 35%;
+    padding-bottom: 15px;
+    display: inline-block
+}
+
+@media screen and (max-width: 600px) {
+    .student {
+        width: 50%;
+    }
 }
 
 .flex-container-index {
@@ -509,4 +534,8 @@ label {
 
 .small-form {
     width: 50%;
+}
+
+.student-index-container {
+    display: inline-block;
 }

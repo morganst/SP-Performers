@@ -15,15 +15,12 @@
     </div>
     <hr>
     @if(count($students) > 0)
-        <div class="flex-container-index">
-            <div class="student-index">
+        <div class="student-index-container">
             @foreach($students as $student)
                     <div class="student">
                         <a class="student-name" href="/students/{{$student->id}}" role="button">{{$student->firstName}} {{$student->lastName}}</a>
-                        <br>
                     </div>
             @endforeach
-            </div>
         </div>
     {{$students->links()}}
     @else

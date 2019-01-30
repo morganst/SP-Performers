@@ -9,6 +9,11 @@
 </div>
 @endif
     <h2>All Students in Class: {{$cla->name}} <span style="float:right;"> Teacher: @if(count($cla->user)>0){{$cla->user[0]->firstName}} {{$cla->user[0]->lastName}}@endif</span></h2>
+    @if(Auth::user()->role==1)
+            <div style="float: right">
+                <a href="/classes/{{$cla->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
+            </div>
+    @endif
     <div class="text-right"><a href="/live_search" class="btn btn-md btn-primary">Past Attendance</a></div><br>
     <div>
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}

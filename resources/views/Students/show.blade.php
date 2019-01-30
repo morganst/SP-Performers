@@ -70,8 +70,6 @@ $age = $d2->diff($d1);
         </p>
 
         <small>Created: {{$stu->created_at}}</small>
-        <div class="text-right">
-            <a href="/students" class="new-btn back" role="button" aria-pressed="true"><- Back</a>
-        </div>
+
 
 @endsection
