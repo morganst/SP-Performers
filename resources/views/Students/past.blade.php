@@ -41,7 +41,7 @@
         <p>No students found</p>
     @endif
     <div class="text-right">
-            <a href="/" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            <a href="/students" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
     </div>
     <script>
 
