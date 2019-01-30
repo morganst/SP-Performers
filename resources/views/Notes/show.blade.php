@@ -11,7 +11,9 @@
             $class = "";
             if($note['I/B'] == "Breakthrough")
                 $class = "breakthrough-note-card";
-            elseif($note['I/B'] == "Incident")
+            else if($note['I/B'] == "None")
+                $class = "note-note-card";
+            else if($note['I/B'] == "Incident")
                 $class = "incident-note-card";
             else
                 $class = "severe-note-card";

@@ -1,28 +1,6 @@
 @extends('layouts.app')
 @section('content')
   
-        {{-- <div class="hika-container">
-
-          <span class="all-surveys">Card Title</span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-     
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
-        </div>
-        @foreach($notes as $row)
-        <div>
-            <ul>
-                <li>Daily survey ID: {{$row['NId']}}</li>
-               
-               @if ($row->SID==12)
-               <div>First Name: {{$row->Instructor}}</div>
-                @endif
-                <hr>
-            </ul>
-        </div>
-        
-        @endforeach --}}
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-xs-12">
@@ -31,35 +9,31 @@
                             <div class="card-body">
                                 {{-- For instructor --}}
                                 @if(isset($notes) && Auth::user()->role==0)
-                                @php
-                                $i=0
-                                @endphp
-                                @foreach($notes as $row)
-                                    @if($row['I/B'] == 'Incident')
-                                    <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
-                                        {{$row->firstName}} {{$row->lastName}}
-                                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$row->Text}}</div>
+                                @foreach($notes as $note)
+                                    @php 
+                                        $class = "";
+                                        if($note['I/B'] == "Breakthrough")
+                                            $class = "breakthrough-note-card";
+                                        else if($note['I/B'] == "None")
+                                            $class = "note-note-card";
+                                        else if($note['I/B'] == "Incident")
+                                            $class = "incident-note-card";
+                                        else
+                                            $class = "severe-note-card";
+                                    @endphp
+
+                                    <div class="dashboard-note">
+                                        <div class="{{$class}}">
+                                            <h2>{{$note['I/B']}}!</h2>
+                                            <h3>Created By: {{$note->Instructor}}</h3>
+                                            <h3>Class: {{$note->Class}}</h3>       
+                                            
+                                            <div class='note-card-text'> {{$note->Text}}</div>
+
+                                            <h5>Created: {{$note['created_at']->toFormattedDateString()}}</h5>
+                                            <a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a>
                                     </div>
-                                    @elseif($row['I/B'] == 'Severe Incident')
-                                                    <div style='background-color: #ff772d; border: .1px solid; padding-left: 5px;'>
-                                                        <a href="/students/{{$row->SID}}" style="color: black">{{$row->firstName}} {{$row->lastName}}</a>
-                                                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
-                                                        <div style="font-weight:normal">{{$row->Text}}</div>
-                                                    </div>
-                                    @elseif($row['I/B'] == 'Breakthrough')
-                                    <div style='background-color: #7CFF82; border: .1px solid; padding-left: 5px;'>
-                                        {{$row->firstName}} {{$row->lastName}}
-                                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$row->Text}}</div>
-                                    </div>
-                                    @else
-                                    <div style='background-color: lightgrey;  border: .1px solid; padding-left: 5px;'>
-                                        {{$row->firstName}} {{$row->lastName}}
-                                        <h6><b>Date: </b>{{$row['created_at']->toDateString()}} <b>Instructor: </b>{{$row['Instructor']}} <b>Class:</b> {{$row['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$row->Text}}</div>
-                                    </div>
-                                    @endif
+                                </div>
                                 @endforeach
                                 <div>
                                 <a style="float:right;" href="/notes" role="button">View More</a>
@@ -67,35 +41,32 @@
                             @endif
                             {{-- For admin --}}
                             @if(isset($allNotes) && Auth::user()->role==1)
-                                @php
-                                $i=0
-                                @endphp
-                                @foreach($allNotes as $note)
-                                    @if($note['I/B'] == 'Incident')
-                                    <div style='background-color: #FF3F3F; border: .1px solid; padding-left: 5px;'>
-                                        {{$note->firstName}} {{$note->lastName}}
-                                        <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$note->Text}}</div>
+                            @foreach($allNotes as $note)
+                                
+                                    @php 
+                                        $class = "";
+                                        if($note['I/B'] == "Breakthrough")
+                                            $class = "breakthrough-note-card";
+                                        else if($note['I/B'] == "None")
+                                            $class = "note-note-card";
+                                        else if($note['I/B'] == "Incident")
+                                            $class = "incident-note-card";
+                                        else
+                                            $class = "severe-note-card";
+                                    @endphp
+
+                                    <div class="dashboard-note">
+                                        <div class="{{$class}}">
+                                            <h2>{{$note['I/B']}}!</h2>
+                                            <h3>Created By: {{$note->Instructor}}</h3>
+                                            <h3>Class: {{$note->Class}}</h3>       
+                                            
+                                            <div class='note-card-text'> {{$note->Text}}</div>
+
+                                            <h5>Created: {{$note['created_at']->toFormattedDateString()}}</h5>
+                                            <a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a>
                                     </div>
-                                    @elseif($note['I/B'] == 'Severe Incident')
-                                                    <div style='background-color: #ff772d; border: .1px solid; padding-left: 5px;'>
-                                                        <a href="/students/{{$note->SID}}" style="color: black">{{$note->firstName}} {{$note->lastName}}</a>
-                                                        <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
-                                                        <div style="font-weight:normal">{{$note->Text}}</div>
-                                                    </div>
-                                    @elseif($note['I/B'] == 'Breakthrough')
-                                    <div style='background-color: #7CFF82; border: .1px solid; padding-left: 5px;'>
-                                        {{$note->firstName}} {{$note->lastName}}
-                                        <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$note->Text}}</div>
-                                    </div>
-                                    @else
-                                    <div style='background-color: lightgrey;  border: .1px solid; padding-left: 5px;'>
-                                        {{$note->firstName}} {{$note->lastName}}
-                                        <h6><b>Date: </b>{{$note['created_at']->toDateString()}} <b>Instructor: </b>{{$note['Instructor']}} <b>Class:</b> {{$note['Class']}}</h6>
-                                        <div style="font-weight:normal">{{$note->Text}}</div>
-                                    </div>
-                                    @endif
+                                </div>
                                 @endforeach
                             @endif
                             </div>
