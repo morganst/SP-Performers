@@ -103,6 +103,7 @@
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <h2>{{$note['I/B']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
+                    <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
                     <h3>Class: {{$note->Class}}</h3>       
                     
                     <div class='note-card-text'> {{$note->Text}}</div>
@@ -140,6 +141,7 @@
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <h2>{{$note['I/B']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
+                    <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
                     <h3>Class: {{$note->Class}}</h3>       
                     
                     <div class='note-card-text'> {{$note->Text}}</div>

@@ -17,11 +17,12 @@
     .sidenav a {
         padding: 5px 10px;
         text-decoration: none;
-        font-size: 28px;
+        font-size: 26px;
         color: #818181;
         display: block;
         transition: 0.3s;
         text-align: left;
+        font-size: 22px;
     }
 
     .sidenav a:hover {
@@ -32,7 +33,7 @@
         position: absolute;
         top: 0;
         right: 5px;
-        font-size: 45px;
+        font-size: 40px;
     }
     .sm-text {
         font-size: 16pt;
@@ -50,7 +51,9 @@
     @Auth
     <a href="/classes"><span class="sm-text fas fa-bell"></span> Classes</a> 
     <a href="/students"><span class="sm-text fas fa-users"></span> Students</a> 
+    @if(Auth::user()->role==1)
     <a href="/instructors"><span class="sm-text fas fa-chalkboard-teacher"></span> Instructors</a> 
+    @endif
     <a href="/logout"><span class="sm-text fas fa-sign-out-alt"></span> Logout</a>
     @endAuth
 </div>

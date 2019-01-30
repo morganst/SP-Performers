@@ -31,7 +31,7 @@
                                         @if(count($cla->student)<$cla->limit)
                                             <td>
                                                         {!!Form::open(['action' => ['ClassController@attachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
-                                                                {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
+                                                                {{Form::submit('Add to Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
                                                         {!!Form::close()!!}
                                             </td>
                                         @endif

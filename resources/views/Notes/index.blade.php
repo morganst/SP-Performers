@@ -26,6 +26,7 @@
                                         <div class="{{$class}}">
                                             <h2>{{$note['I/B']}}!</h2>
                                             <h3>Created By: {{$note->Instructor}}</h3>
+                                            <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
                                             <h3>Class: {{$note->Class}}</h3>       
                                             
                                             <div class='note-card-text'> {{$note->Text}}</div>
@@ -42,7 +43,6 @@
                             {{-- For admin --}}
                             @if(isset($allNotes) && Auth::user()->role==1)
                             @foreach($allNotes as $note)
-                                
                                     @php 
                                         $class = "";
                                         if($note['I/B'] == "Breakthrough")
@@ -59,6 +59,7 @@
                                         <div class="{{$class}}">
                                             <h2>{{$note['I/B']}}!</h2>
                                             <h3>Created By: {{$note->Instructor}}</h3>
+                                            <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
                                             <h3>Class: {{$note->Class}}</h3>       
                                             
                                             <div class='note-card-text'> {{$note->Text}}</div>

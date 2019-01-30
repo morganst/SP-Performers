@@ -8,8 +8,6 @@
     </div>
     @endif
     <h1>Class Index</h1>
-    <h3>Total Classes: {{count($count)}}</h3>
-    <div style="padding-bottom: 1em">Here you can view and edit classes</div> 
     <br>
     @if(Auth::user()->role==1)
     <div class="new-btn primary-button"><a href="/classes/create">Add New</a></div>
@@ -43,7 +41,4 @@
     @else
         <p>No classes found</p>
     @endif
-    <div class="text-right">
-            <a href="/" class="button" role="button" aria-pressed="true">Back</a>
-    </div>
 @endsection

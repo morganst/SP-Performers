@@ -18,9 +18,8 @@ class ClassController extends Controller
 
     public function index()
     {
-        $count = Classes::get();
-        $classes = Classes::orderBy('created_at', 'des')->paginate(5);
-        return view('Classes.index', compact(['classes', 'count']));
+        $classes = Classes::orderBy('created_at', 'des')->paginate(8);
+        return view('Classes.index')->with('classes', $classes);
     }
 
     public function create()
