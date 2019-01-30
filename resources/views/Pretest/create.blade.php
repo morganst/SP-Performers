@@ -166,9 +166,9 @@
             </div>
             <hr>
             &nbsp;
-            <div style="padding-top: 10px">
-                {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
-                <a class="btn btn-secondary" href="/students" role="button">Back</a>
+            <div class="form-row-inline" style="padding-top: 10px">
+                {{Form::submit('Submit', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 40px;'])}}
+                <a class="form-control-right button" href="/students" role="button">Cancel</a>
             </div>
         </form>
     {!! Form::close() !!}
