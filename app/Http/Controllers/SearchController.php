@@ -36,16 +36,30 @@ class SearchController extends Controller
      {
       $output = '';
       $query = $request->get('query');
+      //$query = strtoupper($query);
       if($query != '')
       {
-         $data = Attendance::whereHas('student', function ($request) use ($query) {
-            $request->where('firstName', 'like', ''.$query.'%');
-        })->orWhereHas('student', function ($request) use ($query) {
-            $request->where('lastName', 'like', ''.$query.'%');
-        })->orWhereHas('classes', function ($request) use ($query) {
-            $request->where('name', 'like', ''.$query.'%');
-        })->orWhere('date', 'like', '%'.$query.'%')
-        ->orderBy('id', 'desc')->get();
+        if($query == 'present')
+        {
+            $data = Attendance::where('attend', '=', '1')
+            ->orderBy('id', 'desc')->get();
+        }
+        elseif($query == 'absent')
+        {
+            $data = Attendance::where('attend', '=', '0')
+            ->orderBy('id', 'desc')->get();
+        }
+        else
+        {
+            $data = Attendance::whereHas('student', function ($request) use ($query) {
+                $request->where('firstName', 'like', ''.$query.'%');
+            })->orWhereHas('student', function ($request) use ($query) {
+                $request->where('lastName', 'like', ''.$query.'%');
+            })->orWhereHas('classes', function ($request) use ($query) {
+                $request->where('name', 'like', ''.$query.'%');
+            })->orWhere('date', 'like', '%'.$query.'%')
+            ->orderBy('id', 'desc')->get();
+        }
       }
       else
       {

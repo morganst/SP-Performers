@@ -3,7 +3,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 @section('content')
   <br />
-  <div class="container box">
+  <div>
       @if(session()->has('message'))
       <div class="alert alert-success">
           {{ session()->get('message') }}

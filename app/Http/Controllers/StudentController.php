@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\Classes;
+use App\Pretest;
+use App\Posttest;
 
 class StudentController extends Controller
 {
@@ -14,13 +17,23 @@ class StudentController extends Controller
 
     public function index()
     {
-        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(10);
-        return view('Students.index')->with('students', $students);
+        $count = Student::where('enrolled', '0')->get();
+        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(23);
+        return view('Students.index', compact(['students', 'count']));
     }
 
     public function create()
     {
-        return view('Students.create');
+        $class = Classes::select('name')->distinct()->get();
+
+        $array=array();
+        $k = 0;
+        foreach($class as $cla)
+        {
+            $array[$k] = $cla['name'];
+            $k++;
+        }
+        return view('Students.create', compact(['array']));
     }
 
     public function store(Request $request)
@@ -54,18 +67,49 @@ class StudentController extends Controller
     public function show($id)
     {
         $stu = Student::find($id);
-        return view('Students.show')->with('stu', $stu);
+        $pretest = Pretest::where('student_id', '=', $id)->get();
+
+        $posttest = Posttest::where('student_id', '=', $id)->get();
+
+        return view('Students.show')
+            ->with('stu', $stu)
+            ->with('pretest', $pretest)
+            ->with('posttest', $posttest);
+    }
+
+    public function pretest($id) 
+    {
+        $stu = Student::find($id);
+        //query to find the pretest 
+        $pretest = Pretest::where('student_id', '=', $id) ->get();
+        return view('Students.pretest')->with('stu', $stu)->with('pretest', $pretest);
+    }
+
+    public function posttest($id) 
+    {
+        $stu = Student::find($id);
+        //query to find the posttest 
+        $posttest = Posttest::where('student_id', '=', $id) ->get();
+        return view('Students.posttest')->with('stu', $stu)->with('posttest', $posttest);
     }
 
     public function edit($id)
     {
         $stu = Student::find($id);
+        $class = Classes::select('name')->distinct()->get();
 
+        $array=array();
+        $k = 0;
+        foreach($class as $cla)
+        {
+            $array[$k] = $cla['name'];
+            $k++;
+        }
         /*if(auth()->user()->id !== $stu->user_id) {
             return redirect('students')->with('error', 'Unauthorized page');
         }*/
 
-        return view('Students.edit')->with('stu', $stu);
+        return view('Students.edit', compact(['array','stu']));
     }
 
     public function update(Request $request, $id)

@@ -17,6 +17,8 @@ class CreateClassesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('limit');
+            $table->string('time');
+            $table->string('location');
             $table->timestamps();
         });
     }

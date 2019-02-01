@@ -12,6 +12,11 @@
             {!!Form::close()!!}
         </div>
     @endif
+    @if(Auth::user()->role == 0 && Auth::user()->id == $user->id)
+        <div class="text-right">
+            <a href="/instructors/{{$user->id}}/edit" class="btn btn-secondary" style="color: #F2F2F2" role="button">Edit</a>
+        </div>
+    @endif
         <hr>
         <div>First Name: {{$user->firstName}}</div>
         <div>Last Name: {{$user->lastName}}</div>

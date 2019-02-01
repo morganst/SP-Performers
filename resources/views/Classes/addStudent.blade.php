@@ -9,13 +9,13 @@
             <div class="row">
             </div>
             <br />
-            <?php
+            @php
             $array = array();
-            ?>
+            @endphp
             @for($i=0;$i<count($cla->student);$i++)
-                <?php
+                @php
                 $array[$i] = $cla->student[$i]->pivot['student_id'];
-                ?>
+                @endphp
             @endfor
                 <table>
                     <thead>
@@ -31,7 +31,7 @@
                                         @if(count($cla->student)<$cla->limit)
                                             <td>
                                                         {!!Form::open(['action' => ['ClassController@attachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
-                                                                {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
+                                                                {{Form::submit('Add to Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
                                                         {!!Form::close()!!}
                                             </td>
                                         @endif

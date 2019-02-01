@@ -17,29 +17,59 @@ class NotesController extends Controller
      */
     public function index()
     {
-        $array = [];
-        $i=0;
-        foreach(Auth::user()->classes as $classes)
-            foreach($classes->student as $students)
-                foreach($students->notes as $row)
-                    if(!in_array($row['NId'], $array))
-                    {
-                        $array[$i] = $row['NId'];
-                        $i++;
-                        $row->firstName = $students->firstName;
-                        $row->lastName = $students->lastName;
-                        $notes[] = $row;
-                    }
-        if(isset($notes))
+        if(Auth::user()->role==0)
         {
-            $notes = array_reverse(array_sort($notes, function ($value) {
+            $array = [];
+            $i=0;
+            foreach(Auth::user()->classes as $classes)
+            {
+                foreach($classes->student as $students)
+                {
+                    foreach($students->notes as $row)
+                    {
+                        if(!in_array($row['NId'], $array))
+                        {
+                            $array[$i] = $row['NId'];
+                            $i++;
+                            $row->firstName = $students->firstName;
+                            $row->lastName = $students->lastName;
+                            $notes[] = $row;
+                        }
+                    }
+                }
+            }
+            if(isset($notes))
+            {
+                $notes = array_reverse(array_sort($notes, function ($value) {
+                    return $value['created_at'];
+                }));
+            }
+            return view('Notes.index',compact(['notes']));
+        }
+        $stu = Student::get();
+        $k=0;
+        $allArray = [];
+        foreach($stu as $stu)
+        {
+            foreach($stu->notes as $row)
+            {
+                if(!in_array($row['NId'], $allArray))
+                {
+                    $allArray[$k] = $row['NId'];
+                    $k++;
+                    $row->firstName = $stu->firstName;
+                    $row->lastName = $stu->lastName;
+                    $allNotes[] = $row;
+                }
+            }
+        }
+        if(isset($allNotes))
+        {
+            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
                 return $value['created_at'];
             }));
         }
-        //$notes = $note::orderBy('created_at', 'des')->paginate(10);
-        
-    //   return $notes;
-        return view('Notes.index',compact(['notes']));
+        return view('Notes.index',compact(['allNotes']));
     }
 
     /**
@@ -82,17 +112,22 @@ class NotesController extends Controller
             'I/B' => 'nullable',
             'Text' => 'required',
             'SID'=>'required',
-           
+            'Hide'=>'nullable'
         ]);
+
         $var="I/B";
-       $notes = new Note;
+
+        $notes = new Note;
         $notes->Class = $request->input('Class');
         $notes->Instructor= $request->input('Instructor');
         $notes->$var= $request->input('I/B');
         $notes->Text= $request->input('Text');
         $notes->SID= $request->input('SID');
+        $notes->Hide= $request->input('Hide');
         $notes->save();
-      return redirect('/students')->with('success', 'Note Created!');
+
+        $url = $request->input('url');
+        return redirect($url)->with('success', 'Note Created!');
     }
 
     /**
@@ -103,9 +138,9 @@ class NotesController extends Controller
      */
     public function show($SID)
     {
-        $notes = Note::where('SID', '=', $SID)->get();
-        $allNotes = Note::get();
-        return view('Notes.show', compact(['notes', 'SID', 'allNotes']));
+        $notes = Note::where('SID', '=', $SID)->orderBy('created_at', 'des')->get();
+        return view('Notes.show')->with('notes', $notes)
+                                ->with('SID', $SID);
     }
 
     /**
@@ -135,16 +170,20 @@ class NotesController extends Controller
         'Instructor' => 'required',
         'I/B' => 'nullable',
         'Text' => 'required',
-       
+        'Hide' => 'required'
     ]);
+    
     $var="I/B";
     $notes = Note::find($NId);
     $notes->Class = $request->input('Class');
     $notes->Instructor= $request->input('Instructor');
     $notes->$var= $request->input('I/B');
     $notes->Text= $request->input('Text');
+    $notes->Hide = $request->input('Hide');
     $notes->save();
-  return redirect('/students')->with('success', 'Note Updated!');
+
+    $url = $request->input('url');
+    return redirect($url)->with('success', 'Note Edited!');
     }
 
     /**

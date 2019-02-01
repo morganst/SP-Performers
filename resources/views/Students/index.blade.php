@@ -6,8 +6,9 @@
     {{ session()->get('success') }}
 </div>
 @endif
-    <h1>Student Index</h1>
-    <div style="padding-bottom: 1em">Here you can view and edit students</div>
+    <h1>Student Index</h1> 
+    <h3>Total Students: {{count($count)}}</h3>
+    <div style="padding-bottom: 1em">Here you can view and edit students</div> 
     <div>
     <span><a href="/students/past" class="button">Previous Students</a></span>
     <span style="float:right"><a href="/students/create" class="button">Add New</a></span>
@@ -22,27 +23,11 @@
             </div>
     </form> 
     @if(count($students) > 0)
-        <div class="row">
-            <div class="col-lg-3">Student Name:</div>
-        </div>
-        <div class="flex-container">
+        <div class="student-index-container">
             @foreach($students as $student)
-                <div class="container">
-                    <div class="col-lg-3">{{$student->firstName}} {{$student->lastName}}
-                        <br>
-                        <div class="btn-group">
-                            <a class="btn btn-secondary" href="/students/{{$student->id}}" role="button">View</a>
-                            @if(Auth::user()->role==1)
-                            <a class="btn btn-primary active" href="/students/{{$student->id}}/edit" role="button">Edit</a>
-                                {!!Form::open(['action' => ['StudentController@destroy', $student->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger', 'onsubmit' => 'return ConfirmDelete()'])!!}
-                                    {{Form::hidden('_method', 'DELETE')}}
-                                    {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
-                                {!!Form::close()!!}
-                            @endif
-                        </div>
+                    <div class="student">
+                        <a class="student-name" href="/students/{{$student->id}}" role="button">{{$student->firstName}} {{$student->lastName}}</a>
                     </div>
-                </div>
-                <br>
             @endforeach
         </div>
     {{$students->links()}}

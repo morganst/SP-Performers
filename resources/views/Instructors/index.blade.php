@@ -7,6 +7,7 @@
     </div>
     @endif
     <h1>Instructor Index</h1>
+    <h3>Total Instructors: {{count($count)}}</h3>
     <div style="padding-bottom: 1em">Here you can view and edit instructors</div>
     @if(Auth::user()->role==1)
         <div class="text-right"><a href="instructors/create" class="btn btn-md btn-primary">Add New</a></div>
@@ -27,9 +28,6 @@
         <br>
 
         @foreach($users as $user)
-            @if($user->role==1)
-                @continue
-            @endif
             <div class="class-layout-row">
                 <div>{{$user->firstName}} {{$user->lastName}}
                     <br>
@@ -42,6 +40,9 @@
                                 {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
                             {!!Form::close()!!}
                         @endif
+                        @if(Auth::user()->role == 0 && Auth::user()->id == $user->id)
+                            <a class="btn btn-primary active" href="/instructors/{{$user->id}}/edit" role="button">Edit</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -52,7 +53,5 @@
     @else
         <p>No instructors found</p>
     @endif
-    <div class="text-right">
-            <a href="/" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
-    </div>
+
 @endsection
