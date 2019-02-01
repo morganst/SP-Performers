@@ -74,6 +74,17 @@
         <a style="float:right;" href="/notes" role="button">View More</a>
         </div>
     @endif
+
+    <div class="chart-container">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <script src="resources\js\app.js" type="text/javascript">
+
+    </script>
+    <script type="text/javascript">
+        updateChart([3,3,3,3,3,3]);
+    </script>
+
 </div>
 
 @endsection

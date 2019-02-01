@@ -37,6 +37,12 @@ body{
     background-repeat: no-repeat;
 }
 
+.chart-container{
+    display: block;
+    background-color: rgb(185, 185, 206);
+    max-height: 30vh;
+}
+
 /*END LAYOUT PAGE*/
 /*DAILY SURVEY*/
 .daily-survey-container{

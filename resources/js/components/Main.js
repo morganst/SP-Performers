@@ -18,3 +18,4 @@ export default class Main extends Component {
 if (document.getElementById("root")) {
   ReactDom.render(<Main />, document.getElementById("root"));
 }
+

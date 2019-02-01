@@ -7,6 +7,7 @@ use App\Student;
 use App\Note;
 use App\Classes;
 use Illuminate\Support\Facades\Auth;
+use App\DailySurvey;
 
 class HomeController extends Controller
 {
@@ -47,10 +48,11 @@ class HomeController extends Controller
                 return $value['created_at'];
             }));
         }
-        return view('welcome',compact(['notes']));
+        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
+        return view('welcome',compact(['notes']))->with('dailySurveys',$dailySurveys);
     }
 
-    public function logout () 
+    public function logout ()
     {
         auth()->logout();
         return redirect('/login');
