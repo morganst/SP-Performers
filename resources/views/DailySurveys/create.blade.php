@@ -174,5 +174,5 @@
                 }
             }
         }
-      </script>
+    </script>
 @endsection

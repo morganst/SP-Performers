@@ -63,7 +63,7 @@ class DailySurveyController extends Controller
             'Q5'=>'required',
             'Mood'=>'required',
 
-        ]); 
+        ]);
 
         $dailySurvey = new DailySurvey;
         $dailySurvey->StudentID = $request->get('StudentID');
@@ -83,7 +83,7 @@ class DailySurveyController extends Controller
         $id = $dailySurvey->id;
         $cla = Classes::find($id);
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
-        return back()->with('cla',$cla)->with('dailySurveys',$dailySurveys)->with('success', 'Survey Submitted!');
+        return back()->with('cla',$cla)->with('id',$id)->with('dailySurveys',$dailySurveys)->with('success', 'Survey Submitted!');
     }
 
     /**

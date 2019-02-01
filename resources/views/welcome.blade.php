@@ -82,7 +82,7 @@
 
     </script>
     <script type="text/javascript">
-        updateChart([3,3,3,3,3,3]);
+        chartData = [3,3,3,3,3,3];
     </script>
 
 </div>

@@ -9,6 +9,7 @@
 </div>
 @endif
     <h2>All Students in Class: {{$cla->name}}</h2>
+
     <div class="text-right"><a href="/live_search" class="button">Past Attendance</a></div><br>
     <div>
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
@@ -16,6 +17,7 @@
         <?php
         $i = 0;
         ?>
+        <h2><?php $num = array();?></h2>
         Students:
         @foreach ($cla->student as $student)
                 <div style="border:1px solid black;padding:8px;" class="class-layout-row">
@@ -37,6 +39,7 @@
         </div>
         <input type="hidden" name="stu[]" value="<?php echo $student->id; ?>"/>
         <input type="hidden" name="cla" value="<?php echo $cla->id; ?>"/>
+        <?php $num[$i] = $i; ?>
         <?php
         $i++;
         ?>
@@ -51,9 +54,11 @@
 
     <hr>
     <h2>Graph:</h2>
+
     <div id="chart">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script>
+            var num = <?php echo '["' . implode('","', $num) . '"]' ?>;
                 const options = {
                 chart: {
                     height: 450,
@@ -65,7 +70,8 @@
                 series: [{
                     name: 'Student Survey Score',
                     data: [
-                        9, 7, 12,
+                        num[0],
+                        num[1], num[2],
                         8, 16, 4,
                         8, 11, 10,
                         9
@@ -96,12 +102,12 @@
                         fontSize: "25px"
                     }
                 }
-             };
-             // Initialize Chart
+            };
+            // Initialize Chart
             const chart = new ApexCharts(document.querySelector('#chart'), options);
-             //Render Chart
+            //Render Chart
             chart.render();
-             //Event Method Example
+            //Event Method Example
             document.querySelector("button").addEventListener("click", () => chart.updateOptions({
                 plotOptions: {
                     bar: {
