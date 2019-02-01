@@ -26,9 +26,12 @@ class DatabaseSeeder extends Seeder
         }
 
         for ($i = 0; $i < 50; $i++) {
+            $firstName = $faker->firstName;
+            $lastName = $faker->lastName;
             Student::create([
-                'firstName' => $faker->firstName,
-                'lastName' => $faker->lastName,
+                'firstName' => $firstName,
+                'lastName' => $lastName,
+                'fullName' => $firstName . ' ' . $lastName,
                 'DOB' => $faker->date,
                 'primaryClass' => $faker->realText(20)
             ]);
