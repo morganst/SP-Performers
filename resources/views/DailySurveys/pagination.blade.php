@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>Laravel Live Data Search with Sorting & Pagination using Ajax</title>
+      @php echo '<input type="hidden" name="id" value="'.$id.'">'@endphp
+  <title>Student Attendance</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -9,7 +10,7 @@
  <body>
   <br />
   <div class="container">
-   <h3 align="center">Laravel Live Data Search with Sorting & Pagination using Ajax</h3><br />
+   <h3 align="center">Student Attendance</h3><br />
    <div class="row">
     <div class="col-md-9">
 
@@ -24,14 +25,16 @@
     <table class="table table-striped table-bordered">
      <thead>
       <tr>
-       <th width="20%" class="sorting" data-sorting_type="asc" data-column_name="fullName" style="cursor: pointer">Name <span id="fullName_icon"></span></th>
-       <th width="20%" class="sorting" data-sorting_type="asc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
-{{--        <th width="20%" class="sorting" data-sorting_type="asc" data-column_name="class" style="cursor: pointer">Class <span id="class_icon"></span></th>
- --}}       <th width="35%">Date</th>
+            <th width="20%" class="sorting" data-sorting_type="asc" data-column_name="fullName" style="cursor: pointer">Name <span id="fullName_icon"></span></th>
+            <th width="20%" class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
+      {{--<th width="20%" class="sorting" data-sorting_type="asc" data-column_name="class" style="cursor: pointer">Class <span id="class_icon"></span></th>--}}       
+            <th width="20%" class="sorting" data-sorting_type="asc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
+            <th width="20%">Remove</th>
+
       </tr>
      </thead>
      <tbody>
-      @include('pagination_data')
+      @include('DailySurveys.pagination_data')
      </tbody>
     </table>
     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
@@ -45,14 +48,16 @@
       
        function clear_icon()
        {
-        $('#id_icon').html('');
+        $('#date_icon').html('');
         $('#fullName_icon').html('');
+        $('#attend_icon').html('');
        }
       
        function fetch_data(page, sort_type, sort_by, query)
        {
+           var id = <?php echo json_encode($id) ?>;
         $.ajax({
-         url:"/pagination/fetch_data?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,
+         url:"/"+id+"/pagination/fetch_data?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,
          success:function(data)
          {
           $('tbody').html('');

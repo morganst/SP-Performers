@@ -29,8 +29,8 @@ Route::get('attendances/{id}', 'AttendanceController@index');
 Route::get('delete/{id}', 'AttendanceController@destroy');
 Route::post('/search', 'AttendanceController@search');
 
-Route::get('/pagination', 'PaginationController@index');
-Route::get('/pagination/fetch_data', 'PaginationController@fetch_data');
+Route::get('/{id}/pagination', 'PaginationController@index');
+Route::get('/{id}/pagination/fetch_data', 'PaginationController@fetch_data');
 
 Route::get('students/past', 'StudentController@past');
 Route::get('/changepassword/reset','InstructorController@showChangePasswordForm');
@@ -78,8 +78,8 @@ Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create')
 Route::get('/sendemail', 'SendEmailController@index');
 Route::post('/sendemail/send', 'SendEmailController@send');
 
-Route::get('/live_search', 'SearchController@index');
-Route::get('/live_search/action', 'SearchController@action')->name('live_search.action');
+/* Route::get('/live_search', 'SearchController@index');
+Route::get('/live_search/action', 'SearchController@action')->name('live_search.action'); */
 
 
 Route::get('/home', 'HomeController@index')->name('home');
