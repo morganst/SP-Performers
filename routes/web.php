@@ -28,6 +28,10 @@ Route::get('classes/show/{id}', 'ClassController@show');
 Route::get('attendances/{id}', 'AttendanceController@index');
 Route::get('delete/{id}', 'AttendanceController@destroy');
 Route::post('/search', 'AttendanceController@search');
+
+Route::get('/pagination', 'PaginationController@index');
+Route::get('/pagination/fetch_data', 'PaginationController@fetch_data');
+
 Route::get('students/past', 'StudentController@past');
 Route::get('/changepassword/reset','InstructorController@showChangePasswordForm');
 Route::post('/changepassword/reset','InstructorController@changePassword')->name('changePassword');
