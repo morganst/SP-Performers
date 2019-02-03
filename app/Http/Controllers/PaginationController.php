@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Attendance;
+use App\Classes;
 use DB;
 
 class PaginationController extends Controller
 {
     function index($id)
     {
-     $data = Attendance::with('student')->where('classes_id', '=', $id)->orderBy('id', 'asc')->paginate(8);
+        $data = Attendance::with('student')->where('classes_id', '=', $id)->orderBy('id', 'asc')->paginate(8);
      return view('DailySurveys.pagination', compact('data', 'id'));
     }
 
     function fetch_data(Request $request, $id)
     {
-     if($request->ajax())
+        if($request->ajax())
      {
       $sort_by = $request->get('sortby');
       $sort_type = $request->get('sorttype');
