@@ -78,7 +78,10 @@
     <div class="chart-container">
         <canvas id="myChart" width="400" height="400"></canvas>
     </div>
+
     <script src="resources\js\app.js" type="text/javascript">
+
+    <div id="react-render"></div>
 
     </script>
     <script type="text/javascript">

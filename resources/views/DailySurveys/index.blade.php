@@ -54,15 +54,89 @@
 
     <hr>
     <h2>Graph:</h2>
+    <script>
+            function myFunction() {
+                var numbersArray;
+                for(i = 0; i < 10; i++)
+                {
+                    var x;
+
+                    x = Math.floor((Math.random() * 100) + 1);
+                    numbersArray[i] = x;
+                }
+                numbersArray = document.getElementById("demo");
+            }
+            </script>
+    <button onclick="myFunction()">Generate Numbers</button>
+
+    <p id="demo"></p>
+
+
+    <div id="chart2">
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script>
+        var options = {
+            chart: {
+                height: 350,
+                type: 'radar',
+                width: '50%',
+            },
+            series: [{
+                name: 'Series 1',
+                data: [80, 50, 30, 40, 100, 20],
+            }],
+            title: {
+                text: 'Basic Radar Chart'
+            },
+            labels: ['January', 'February', 'March', 'April', 'May', 'June']
+            };
+        // Initialize Chart
+        var chart = new ApexCharts(document.querySelector('#chart2'), options);
+        //Render Chart
+        chart.render();
+        </script>
+    </div>
+    <div id="chart3">
+            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script>
+            var options = {
+                chart: {
+                    type: 'donut',
+                    width: '50%',
+                },
+                series: [44, 55, 41, 17, 15],
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+        var chart = new ApexCharts(
+                document.querySelector("#chart3"),
+                options
+            );
+
+            chart.render();
+        </script>
+
+    </div>
+
 
     <div id="chart">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script>
             var num = <?php echo '["' . implode('","', $num) . '"]' ?>;
-                const options = {
+                options = {
                 chart: {
                     height: 450,
-                    width: '100%',
+                    width: '50%',
                     type: 'bar',
                     background: '#f4f4f4',
                     foreColor: '333'
@@ -88,7 +162,7 @@
                     }
                 },
                 fill: {
-                    colors: ['#f44336']
+                    colors: ['#3ad622']
                 },
                 dataLabels: {
                     enabled: false
@@ -104,17 +178,9 @@
                 }
             };
             // Initialize Chart
-            const chart = new ApexCharts(document.querySelector('#chart'), options);
+            chart = new ApexCharts(document.querySelector('#chart'), options);
             //Render Chart
             chart.render();
-            //Event Method Example
-            document.querySelector("button").addEventListener("click", () => chart.updateOptions({
-                plotOptions: {
-                    bar: {
-                        horizontal: true
-                    }
-                }
-            }))
         </script>
     </div>
 </div>

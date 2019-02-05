@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\StudentController;
+use App\Students;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('students', function() {
+    // If the Content-Type and Accept headers are set to 'application/json',
+    // this will return a JSON structure. This will be cleaned up later.
+    return Students::all();
+});
+
 /* Route::get('student', 'StudentController@index');
- 
+
 Route::get('student/{student}', 'StudentController@show');
- 
+
 Route::post('student','StudentController@store');
- 
+
 Route::put('student/{student}','StudentController@update');
- 
+
 Route::delete('student/{student}', 'StudentController@delete');
  */

@@ -4,18 +4,30 @@ import Navbar from './Navbar/Navbar';
 import StudentList from './Student/StudentList';
 
 export default class Main extends Component {
+  componentDidMount(){
+    fetch('/api/students').then(response=>{
+      return response.json();
+    }).then(students => this.setState({students}))
+  }
+
+  renderStudents(){
+    return this.state.students.map(student => {
+      return <div>{student.firstName}</div>
+    })
+  }
 
   render() {
+    console.log("asd")
     return (
       <div>
-          <Navbar />
-          <StudentList />
+
+        {this.renderStudents()};
       </div>
     );
   }
 }
 
-if (document.getElementById("root")) {
-  ReactDom.render(<Main />, document.getElementById("root"));
+if (document.getElementById("react-render")) {
+  ReactDom.render(<Main />, document.getElementById("react-render"));
 }
 
