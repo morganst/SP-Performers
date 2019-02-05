@@ -18,6 +18,7 @@ class CreateStudentsTable extends Migration
             $table->timestamps();
             $table->string('firstName');
             $table->string('lastName');
+            $table->string('fullName');
             $table->date('DOB');
             $table->string('gender')->default('Male');
             $table->string('primaryClass');

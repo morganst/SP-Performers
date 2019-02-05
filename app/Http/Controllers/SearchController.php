@@ -18,7 +18,7 @@ class SearchController extends Controller
      {
       $output = '';
       $query = $request->get('query');
-      //$query = strtoupper($query);
+      $query = strtolower($query);
       if($query != '')
       {
         if($query == 'present')
@@ -37,6 +37,8 @@ class SearchController extends Controller
                 $request->where('firstName', 'like', ''.$query.'%');
             })->orWhereHas('student', function ($request) use ($query) {
                 $request->where('lastName', 'like', ''.$query.'%');
+            })->orWhereHas('student', function ($request) use ($query) {
+                $request->where('fullName', 'like', ''.$query.'%');
             })->orWhereHas('classes', function ($request) use ($query) {
                 $request->where('name', 'like', ''.$query.'%');
             })->orWhere('date', 'like', '%'.$query.'%')
@@ -74,7 +76,7 @@ class SearchController extends Controller
       {
        $output = '
        <tr>
-        <td align="center" colspan="5">No Data Found</td>
+        <td align="center" colspan="6">No Data Found</td>
        </tr>
        ';
       }
