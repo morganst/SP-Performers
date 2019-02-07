@@ -14,7 +14,7 @@
                 <a href="/classes/{{$cla->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
             </div>
     @endif
-    <div class="text-right"><a href="/live_search" class="btn btn-md btn-primary">Past Attendance</a></div><br>
+    <div class="text-right"><a href="/{{$cla->id}}/pagination" class="btn btn-md btn-primary">Past Attendance</a></div><br>
     <div>
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
         <div style="float:right;">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}}</div><br>

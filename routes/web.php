@@ -28,6 +28,10 @@ Route::get('classes/show/{id}', 'ClassController@show');
 Route::get('attendances/{id}', 'AttendanceController@index');
 Route::get('delete/{id}', 'AttendanceController@destroy');
 Route::post('/search', 'AttendanceController@search');
+
+Route::get('/{id}/pagination', 'PaginationController@index');
+Route::get('/{id}/pagination/fetch_data', 'PaginationController@fetch_data');
+
 Route::get('students/past', 'StudentController@past');
 Route::get('/changepassword/reset','InstructorController@showChangePasswordForm');
 Route::post('/changepassword/reset','InstructorController@changePassword')->name('changePassword');
@@ -74,11 +78,12 @@ Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create')
 Route::get('/sendemail', 'SendEmailController@index');
 Route::post('/sendemail/send', 'SendEmailController@send');
 
-Route::get('/live_search', 'SearchController@index');
-Route::get('/live_search/action', 'SearchController@action')->name('live_search.action');
+
 Route::get('/searchStudent', 'SearchController@searchStudent');
 Route::get('/searchClasses', 'SearchController@searchClasses');
 Route::get('/searchInstructors', 'SearchController@searchInstructors');
+/* Route::get('/live_search', 'SearchController@index');
+Route::get('/live_search/action', 'SearchController@action')->name('live_search.action'); */
 
 
 Route::get('/home', 'HomeController@index')->name('home');

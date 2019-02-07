@@ -18,7 +18,7 @@ class ClassController extends Controller
 
     public function index()
     {
-        $classes = Classes::orderBy('created_at', 'des')->paginate(8);
+        $classes = Classes::orderBy('created_at', 'des')->paginate(9);
         return view('Classes.index')->with('classes', $classes);
     }
 
@@ -49,9 +49,9 @@ class ClassController extends Controller
 
     public function show($id)
     {
-        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
+        $dailySurveys = DailySurvey::get();
         $cla = Classes::find($id);
-        $students = Student::paginate(10);
+        $students = Student::get();
         return view('DailySurveys.index', compact(['cla', 'students', 'dailySurveys']));
         //return view('classes.show')->with('cla', $cla);
     }

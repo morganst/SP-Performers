@@ -1,4 +1,6 @@
-<h1 class="hidden">{{$var="I/B"}}</h1> 
+@php 
+$var="I/B"; 
+@endphp
 @extends('layouts.app')
 
 @section('content')
