@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -11,6 +10,7 @@
       </head>
       <body>
             <br />
+            <div class="daily-survey-container">
             <h3>Student Attendance for: {{$data[0]->classes['name']}}</h3>
             <p>at: {{$data[0]->classes['location']}} ({{$data[0]->classes['time']}})</p>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
@@ -27,6 +27,7 @@
                         @include('DailySurveys.pagination_data')
                   </tbody>
             </table>
+            </div>
             <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
             <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
             <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc" />
