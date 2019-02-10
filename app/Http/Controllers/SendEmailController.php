@@ -8,6 +8,11 @@ use App\Mail\SendMail;
 
 class SendEmailController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); 
+    }
+    
     function index()
     {
      return view('email.sendemail');

@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class NotesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); 
+    }
     /**
      * Display a listing of the resource.
      *
@@ -109,18 +113,18 @@ class NotesController extends Controller
         $this->validate($request, [
             'Class' => 'required',
             'Instructor' => 'required',
-            'I/B' => 'nullable',
+            'Type' => 'nullable',
             'Text' => 'required',
             'SID'=>'required',
             'Hide'=>'nullable'
         ]);
 
-        $var="I/B";
+        $var="Type";
 
         $notes = new Note;
         $notes->Class = $request->input('Class');
         $notes->Instructor= $request->input('Instructor');
-        $notes->$var= $request->input('I/B');
+        $notes->$var= $request->input('Type');
         $notes->Text= $request->input('Text');
         $notes->SID= $request->input('SID');
         $notes->Hide= $request->input('Hide');
@@ -168,16 +172,16 @@ class NotesController extends Controller
         $this->validate($request, [
         'Class' => 'required',
         'Instructor' => 'required',
-        'I/B' => 'nullable',
+        'Type' => 'nullable',
         'Text' => 'required',
         'Hide' => 'required'
     ]);
     
-    $var="I/B";
+    $var="Type";
     $notes = Note::find($NId);
     $notes->Class = $request->input('Class');
     $notes->Instructor= $request->input('Instructor');
-    $notes->$var= $request->input('I/B');
+    $notes->$var= $request->input('Type');
     $notes->Text= $request->input('Text');
     $notes->Hide = $request->input('Hide');
     $notes->save();

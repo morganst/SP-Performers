@@ -1,5 +1,5 @@
 @php 
-$var="I/B"; $var2=$notes->student()->first();
+$var="Type"; $var2=$notes->student()->first();
 @endphp
 @extends('layouts.app')
 
@@ -23,8 +23,8 @@ $var="I/B"; $var2=$notes->student()->first();
             </div>
             &nbsp;
             <div class="form-row-inline-md">
-                {!! Form::label('I/B', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}                    
-                    {!!  Form::select('I/B', [ 'Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'None' => 'None'], $notes->$var , ['class' => 'form-control-right' ]) !!}
+                {!! Form::label('Type', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}                    
+                    {!!  Form::select('Type', [ 'Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'None' => 'None'], $notes->$var , ['class' => 'form-control-right' ]) !!}
      
             </div>
             &nbsp;
