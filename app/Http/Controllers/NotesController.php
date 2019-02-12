@@ -69,7 +69,44 @@ class NotesController extends Controller
                 return $value['created_at'];
             }));
         }
+        
         return view('Notes.index',compact(['allNotes']));
+    }
+
+    function fetch_data(Request $request)
+    {
+        if($request->ajax())
+     {
+        $stu = Student::get();
+        $k=0;
+        $allArray = [];
+        foreach($stu as $stu)
+        {
+            foreach($stu->notes as $row)
+            {
+                if(!in_array($row['NId'], $allArray))
+                {
+                    $allArray[$k] = $row['NId'];
+                    $k++;
+                    $row->firstName = $stu->firstName;
+                    $row->lastName = $stu->lastName;
+                    $allNotes[] = $row;
+                }
+            }
+        }
+        if(isset($allNotes))
+        {
+            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
+                return $value['created_at'];
+            }));
+        }
+      $sort_by = $request->get('sortby');
+      $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $allNotes = Note::get()->orderBy($sort_by, $sort_type);
+      return view('Notes.index_data', compact('allNotes'))->render();
+     }
     }
 
     /**

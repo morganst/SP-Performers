@@ -11,7 +11,8 @@
       <body>
             <br />
             <div class="daily-survey-container">
-            <h3>Student Attendance for:</h3>
+            <h3>Student Attendance for: {{$data[0]->classes['name']}}</h3>
+            <p>at: {{$data[0]->classes['location']}} ({{$data[0]->classes['time']}})</p>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
             <table>
                   <thead>
@@ -23,13 +24,14 @@
                         </tr>
                   </thead>
                   <tbody>
-                        @include('Notes.index_data')
+                        @include('DailySurveys.pagination_data')
                   </tbody>
             </table>
             </div>
             <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
             <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
             <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc" />
+            @php echo '<input type="hidden" name="id" value="'.$id.'">'@endphp
       </body>
       <script>
             $(document).ready(function(){
@@ -43,8 +45,9 @@
             
             function fetch_data(page, sort_type, sort_by, query)
             {
+            var id = <?php echo json_encode($id) ?>;
             $.ajax({
-            url:"/index/fetch_data?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,
+            url:"/"+id+"/pagination/fetch_data?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,
             success:function(data)
             {
             $('tbody').html('');

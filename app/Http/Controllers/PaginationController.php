@@ -25,8 +25,6 @@ class PaginationController extends Controller
             $query = str_replace(" ", "%", $query);
             $data = Attendance::where('classes_id', '=', $id)->whereHas('student', function ($request) use ($query) {
                 $request->where('fullName', 'like', '%'.$query.'%');
-/*             })->orWhereHas('classes', function ($request) use ($query) {
-                $request->where('name', 'like', '%'.$query.'%'); */
             })->orWhere('date', 'like', '%'.$query.'%')->where('classes_id', '=', $id)
                     ->orderBy($sort_by, $sort_type)
                     ->paginate(8);
