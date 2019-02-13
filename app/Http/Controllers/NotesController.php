@@ -49,6 +49,7 @@ class NotesController extends Controller
         $stu = Student::get();
         $k=0;
         $allArray = [];
+        $allNotes = [];
         foreach($stu as $stu)
         {
             foreach($stu->notes as $row)

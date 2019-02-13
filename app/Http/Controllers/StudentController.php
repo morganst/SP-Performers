@@ -156,7 +156,8 @@ class StudentController extends Controller
 
     public function past()
     {
+        $count = Student::where('enrolled', '1')->get();
         $students = Student::where('enrolled', '1')->orderBy('created_at', 'des')->paginate(10);
-        return view('Students.past')->with('students', $students);
+        return view('Students.past', compact(['students', 'count']));
     }
 }
