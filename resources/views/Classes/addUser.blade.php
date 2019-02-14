@@ -24,7 +24,7 @@
                                 <div class="col-3 col-lg-3">{{$user->firstName}} {{$user->lastName}}</div>
                                     <div class="btn-group">
                                             {!!Form::open(['action' => ['ClassController@attachUser', $cla->id, $user->id], 'method' => 'POST', 'class' => ''])!!}
-                                                    {{Form::submit('Add to Class', ['class' => 'btn btn-sm btn-danger'])}}
+                                                    {{Form::submit('Add to Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
                                             {!!Form::close()!!}
                                     </div>
                             </div>
@@ -43,7 +43,7 @@
                     <div class="col-3 col-lg-3">{{$user->firstName}} {{$user->lastName}}</div>
                         <div class="btn-group">
                             {!!Form::open(['action' => ['ClassController@detachUser', $cla->id, $user->id], 'method' => 'POST', 'class' => ''])!!}
-                                    {{Form::submit('Remove from Class', ['class' => 'btn btn-sm btn-danger'])}}
+                                    {{Form::submit('Remove from Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
                             {!!Form::close()!!}
                         </div>
                 </div>
@@ -52,6 +52,6 @@
             
     <hr>
     <div class="text-right">
-        <a href="/classes" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+        <a href="/classes" class="button" role="button" aria-pressed="true">Back</a>
     </div>
 @endsection

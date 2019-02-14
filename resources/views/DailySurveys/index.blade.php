@@ -14,7 +14,7 @@
                 <a href="/classes/{{$cla->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
             </div>
     @endif
-    <div class="text-right"><a href="/{{$cla->id}}/pagination" class="btn btn-md btn-primary">Past Attendance</a></div><br>
+    <div class="text-right"><a href="/{{$cla->id}}/pagination" class="button">Past Attendance</a></div><br>
     <div>
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
         <div style="float:right;">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}}</div><br>
@@ -26,7 +26,7 @@
                 <div style="border:1px solid black;padding:8px;" class="class-layout-row">
                 <a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a>
                 <span style="float:right;">
-                <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" style="margin-top:10px"class="new-btn edit-button" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
                 @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend)&&isset($student->attendance->where('classes_id', $cla->id)->first()->attend))
                 {{Form::label('present'.$i.'', 'Present')}}
                 {{Form::radio('attend['.$i.']', '1',$student->attendance->where('classes_id', $cla->id)->first()->attend == 1, array('id'=>'present'.$i.''))}}

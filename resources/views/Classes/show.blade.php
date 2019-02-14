@@ -13,10 +13,10 @@
             </div>
         @endif
         <hr>
-        <div>Name: {{$cla->name}}</div>
-        <div>Class Size Limit: {{$cla->limit}}</div>
-        <div>Class Time: {{$cla->time}}</div>
-        <div>Class Location: {{$cla->location}}</div>
+        <div><b>Name:</b> {{$cla->name}}</div>
+        <div><b>Class Size Limit:</b> {{$cla->limit}}</div>
+        <div><b>Class Time:</b> {{$cla->time}}</div>
+        <div><b>Class Location:</b> {{$cla->location}}</div>
         <br>
         <div>Instructors: </div>
         @foreach($cla->user as $user)
