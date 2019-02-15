@@ -100,12 +100,18 @@ class NotesController extends Controller
             $allNotes = array_reverse(array_sort($allNotes, function ($value) {
                 return $value['created_at'];
             }));
-        }
+        } 
       $sort_by = $request->get('sortby');
       $sort_type = $request->get('sorttype');
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            $allNotes = Note::get()->orderBy($sort_by, $sort_type);
+            $allNotes = Note::where('Class', 'like', '%'.$query.'%')
+            ->orWhere('Type', 'like', '%'.$query.'%')
+            ->orWhere('Instructor', 'like', '%'.$query.'%')
+            ->orWhere('created_at', 'like', '%'.$query.'%')
+            ->orderBy($sort_by, $sort_type)
+            ->paginate(8);
+    
       return view('Notes.index_data', compact('allNotes'))->render();
      }
     }
@@ -147,18 +153,18 @@ class NotesController extends Controller
         $this->validate($request, [
             'Class' => 'required',
             'Instructor' => 'required',
-            'I/B' => 'nullable',
+            'Type' => 'nullable',
             'Text' => 'required',
             'SID'=>'required',
             'Hide'=>'nullable'
         ]);
 
-        $var="I/B";
+        $var="Type";
 
         $notes = new Note;
         $notes->Class = $request->input('Class');
         $notes->Instructor= $request->input('Instructor');
-        $notes->$var= $request->input('I/B');
+        $notes->$var= $request->input('Type');
         $notes->Text= $request->input('Text');
         $notes->SID= $request->input('SID');
         $notes->Hide= $request->input('Hide');
@@ -206,16 +212,16 @@ class NotesController extends Controller
         $this->validate($request, [
         'Class' => 'required',
         'Instructor' => 'required',
-        'I/B' => 'nullable',
+        'Type' => 'nullable',
         'Text' => 'required',
         'Hide' => 'required'
     ]);
     
-    $var="I/B";
+    $var="Type";
     $notes = Note::find($NId);
     $notes->Class = $request->input('Class');
     $notes->Instructor= $request->input('Instructor');
-    $notes->$var= $request->input('I/B');
+    $notes->$var= $request->input('Type');
     $notes->Text= $request->input('Text');
     $notes->Hide = $request->input('Hide');
     $notes->save();

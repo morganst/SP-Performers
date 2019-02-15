@@ -23,12 +23,12 @@
         <div class="dashboard-note">
             @if(isset($allNotes))
                 @foreach($allNotes as $note)
-                    @if($note['I/B'] === "Severe Incident" && $note['Hide'] != 'Yes')
+                    @if($note['Type'] === "Severe Incident" && $note['Hide'] != 'Yes')
                     <div class="severe-note-card">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <a href="/notes/{{$note->SID}}" class="severe-note">
                         <span class="severe">
-                            <strong>{{$note['I/B']}}!</strong>
+                            <strong>{{$note['Type']}}!</strong>
                         </span>
                         <br /> 
                         Date: {{$note['created_at']->toFormattedDateString()}}
@@ -91,11 +91,11 @@
         @if($note['Hide'] != 'Yes')
             @php 
                 $class = "";
-                if($note['I/B'] == "Breakthrough")
+                if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
-                else if($note['I/B'] == "None")
+                else if($note['Type'] == "None")
                     $class = "note-note-card";
-                else if($note['I/B'] == "Incident")
+                else if($note['Type'] == "Incident")
                     $class = "incident-note-card";
                 else
                     $class = "severe-note-card";
@@ -104,7 +104,7 @@
             <div class="dashboard-note">
                 <div class="{{$class}}">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <h2>{{$note['I/B']}}!</h2>
+                    <h2>{{$note['Type']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
                     <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
                     <h3>Class: {{$note->Class}}</h3>       
@@ -136,11 +136,11 @@
         @if($note['Hide'] != 'Yes')
             @php 
                 $class = "";
-                if($note['I/B'] == "Breakthrough")
+                if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
-                else if($note['I/B'] == "None")
+                else if($note['Type'] == "None")
                     $class = "note-note-card";
-                else if($note['I/B'] == "Incident")
+                else if($note['Type'] == "Incident")
                     $class = "incident-note-card";
                 else
                     $class = "severe-note-card";
@@ -149,7 +149,7 @@
             <div class="dashboard-note">
                 <div class="{{$class}}">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <h2>{{$note['I/B']}}!</h2>
+                    <h2>{{$note['Type']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
                     <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
                     <h3>Class: {{$note->Class}}</h3>       
@@ -167,7 +167,7 @@
         @endphp
         @endforeach
         <div>
-        <a style="float:right;" href="/notes" role="button">View More</a>
+        <a class="button" style="float:right;" href="/notes" role="button">View More</a>
         </div>
     @endif
 </div>

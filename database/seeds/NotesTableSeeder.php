@@ -17,7 +17,7 @@ class NotesTableSeeder extends Seeder
             Note::create([
                 'Instructor' => $faker->firstName,
                 'Class' => $faker->randomElement(['Dance','Art', 'Music']),
-                'I/B' => $faker->randomElement(['Incident', 'Breakthrough','None']),
+                'Type' => $faker->randomElement(['Incident', 'Breakthrough','None']),
                 'Text' => $faker->text($maxNbChars = 200),
                 'SID' => $faker->numberBetween($min = 1, $max = 50)
             ]);

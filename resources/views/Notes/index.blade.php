@@ -11,16 +11,19 @@
       <body>
             <br />
             <div class="daily-survey-container">
-            <h3>Student Attendance for:</h3>
+            <h3>Student Notes:</h3>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
             <table>
                   <thead>
                         <tr>
-                        <th>Name</th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
-                        <th>Remove</th>
-                        </tr>
+                        <th class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
+                        <th class="sorting" data-sorting_type="desc" data-column_name="Instructor" style="cursor: pointer">Created By<span id="instructor_icon"></span></th>
+                        <th>Student</th>
+                        <th class="sorting" data-sorting_type="desc" data-column_name="Class" style="cursor: pointer">Class<span id="class_icon"></span></th>
+                        <th>Note</th>
+                        <th class="sorting" data-sorting_type="desc" data-column_name="created_at" style="cursor: pointer">Date<span id="date_icon"></span></th>
+                        <th>Edit</th>
+                        <tr>
                   </thead>
                   <tbody>
                         @include('Notes.index_data')
@@ -28,7 +31,7 @@
             </table>
             </div>
             <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
-            <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
+            <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="NId" />
             <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc" />
       </body>
       <script>
