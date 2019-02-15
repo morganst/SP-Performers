@@ -21,7 +21,7 @@ class NotesController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role==0)
+        /* if(Auth::user()->role==0)
         {
             $array = [];
             $i=0;
@@ -73,8 +73,8 @@ class NotesController extends Controller
             $allNotes = array_reverse(array_sort($allNotes, function ($value) {
                 return $value['created_at'];
             }));
-        }
-        
+        } */
+        $allNotes = Note::orderBy('Nid', 'asc')->paginate(8);
         return view('Notes.index',compact(['allNotes']));
     }
 
@@ -82,7 +82,7 @@ class NotesController extends Controller
     {
         if($request->ajax())
      {
-        $stu = Student::get();
+       /* $stu = Student::get();
         $k=0;
         $allArray = [];
         foreach($stu as $stu)
@@ -104,7 +104,7 @@ class NotesController extends Controller
             $allNotes = array_reverse(array_sort($allNotes, function ($value) {
                 return $value['created_at'];
             }));
-        } 
+        } */
       $sort_by = $request->get('sortby');
       $sort_type = $request->get('sorttype');
             $query = $request->get('query');

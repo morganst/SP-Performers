@@ -47,7 +47,7 @@
     @if(isset($allNotes) && Auth::user()->role==1)
         @if($note['Hide'] != 'Yes')
             <tr>
-                <td>{{$note['Type']}}!</td>
+                <td>{{$note->Type}}!</td>
                 <td>{{$note->Instructor}}</td>
                 <td>{{$note->firstName}} {{$note->lastName}}</td>
                 <td>{{$note->Class}}</td>       
@@ -60,5 +60,7 @@
 </tr>
     @endforeach
 <tr>
-
+    <td colspan="4" align="center">
+        {!! $allNotes->links() !!}
+    </td>
 </tr>
