@@ -9,6 +9,11 @@ use DB;
 
 class PaginationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); 
+    }
+    
     function index($id)
     {
         $data = Attendance::with('student')->where('classes_id', '=', $id)->orderBy('id', 'asc')->paginate(8);

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class NotescreateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); 
+    }
+    
     public function createfor($SID)
     {
         $notes = Note::where('SID', '=', $SID)->get();

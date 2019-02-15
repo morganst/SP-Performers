@@ -24,7 +24,7 @@
         Students:
         @foreach ($cla->student as $student)
                 <div style="border:1px solid black;padding:8px;" class="class-layout-row">
-                <a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a>
+                <div><a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a></div>
                 <span style="float:right;">
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" style="margin-top:10px"class="new-btn edit-button" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
                 @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend)&&isset($student->attendance->where('classes_id', $cla->id)->first()->attend))
