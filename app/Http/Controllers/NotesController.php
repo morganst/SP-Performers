@@ -21,7 +21,7 @@ class NotesController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role==0)
+        /* if(Auth::user()->role==0)
         {
             $array = [];
             $i=0;
@@ -53,6 +53,7 @@ class NotesController extends Controller
         $stu = Student::get();
         $k=0;
         $allArray = [];
+        $allNotes = [];
         foreach($stu as $stu)
         {
             foreach($stu->notes as $row)
@@ -72,8 +73,51 @@ class NotesController extends Controller
             $allNotes = array_reverse(array_sort($allNotes, function ($value) {
                 return $value['created_at'];
             }));
-        }
+        } */
+        $allNotes = Note::orderBy('Nid', 'asc')->paginate(8);
         return view('Notes.index',compact(['allNotes']));
+    }
+
+    function fetch_data(Request $request)
+    {
+        if($request->ajax())
+     {
+       /* $stu = Student::get();
+        $k=0;
+        $allArray = [];
+        foreach($stu as $stu)
+        {
+            foreach($stu->notes as $row)
+            {
+                if(!in_array($row['NId'], $allArray))
+                {
+                    $allArray[$k] = $row['NId'];
+                    $k++;
+                    $row->firstName = $stu->firstName;
+                    $row->lastName = $stu->lastName;
+                    $allNotes[] = $row;
+                }
+            }
+        }
+        if(isset($allNotes))
+        {
+            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
+                return $value['created_at'];
+            }));
+        } */
+      $sort_by = $request->get('sortby');
+      $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $allNotes = Note::where('Class', 'like', '%'.$query.'%')
+            ->orWhere('Type', 'like', '%'.$query.'%')
+            ->orWhere('Instructor', 'like', '%'.$query.'%')
+            ->orWhere('created_at', 'like', '%'.$query.'%')
+            ->orderBy($sort_by, $sort_type)
+            ->paginate(8);
+    
+      return view('Notes.index_data', compact('allNotes'))->render();
+     }
     }
 
     /**

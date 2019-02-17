@@ -167,7 +167,7 @@
         @endphp
         @endforeach
         <div>
-        <a style="float:right;" href="/notes" role="button">View More</a>
+        <a class="button" style="float:right;" href="/notes" role="button">View More</a>
         </div>
     @endif
 </div>

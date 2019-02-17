@@ -17,6 +17,7 @@ class CreateDailysurveysTable extends Migration
             $table->increments('id');
             $table->integer('StudentID');
             $table->integer('ClassID');
+            $table->date('date');
             $table->timestamps();
             $table->integer('Q1');
             $table->integer('Q2');

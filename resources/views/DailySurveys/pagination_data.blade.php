@@ -1,3 +1,4 @@
+@if(count($data)>0)
 @foreach($data as $row)
 <tr>
     <td>{{$row->student['fullName']}}</td>
@@ -13,6 +14,11 @@
         {!!Form::close()!!}</td>
 </tr>
     @endforeach
+@else
+<tr>
+    <td>No results found</td>
+</tr>
+@endif
 <tr>
     <td colspan="4" align="center">
         {!! $data->links() !!}

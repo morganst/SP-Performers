@@ -21,23 +21,23 @@ $age = $d2->diff($d1);
         <hr>
         <h1 class="hidden">  {{$var=$stu->notes}}</h1> 
         <div>
-            <div>Student ID: {{$stu->id}}</div>
-            <div>First Name: {{$stu->firstName}}</div>
-            <div>Last Name: {{$stu->lastName}}</div>
-            <div>Date of Birth: {{date("m-d-Y", strtotime($stu->DOB))}}</div>
-            <div>Age: {{$age->y}}</div>
-            <div>Gender: {{$stu->gender}}</div>
-            <div>Primary Class: {{$stu->primaryClass}}</div>
-            <div>Referral: {{$stu->reference}}</div>
+            <div><b>Student ID:</b> {{$stu->id}}</div>
+            <div><b>First Name:</b> {{$stu->firstName}}</div>
+            <div><b>Last Name:</b> {{$stu->lastName}}</div>
+            <div><b>Date of Birth:</b> {{date("m-d-Y", strtotime($stu->DOB))}}</div>
+            <div><b>Age:</b> {{$age->y}}</div>
+            <div><b>Gender:</b> {{$stu->gender}}</div>
+            <div><b>Primary Class:</b> {{$stu->primaryClass}}</div>
+            <div><b>Referral:</b> {{$stu->reference}}</div>
             @if($stu->enrolled == 0)
-                <div>Currently Enrolled: Yes</div>
+                <div><b>Currently Enrolled:</b> Yes</div>
             @else
-                <div>Currently Enrolled: No</div>
+                <div><b>Currently Enrolled:</b> No</div>
             @endif
             @if(is_null($var) || $var->isEmpty())
-                <div>Notes Available: No</div>
+                <div><b>Notes Available:</b> No</div>
             @else
-                <div>Notes Available: Yes</div>
+                <div><b>Notes Available:</b> Yes</div>
             @endif
         </div>
         <hr>

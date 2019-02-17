@@ -23,7 +23,7 @@ class PosttestController extends Controller
             'How comfortable do you feel talking about your past? 1=Very uncomfortable, 5=Comfortable', 
             'How likely are you to set goals for the next year? 1=Not likely at all, 5=Very likely', 
             'I feel like I can put myself in others shoes? 1=No, 5=Yes', 
-            'I can understand other people\'s feelings/pain?', 
+            'I can understand other people\'s feelings/pain? 1=Strongly disagree, 5=Strongly agree', 
             'My friends and I share the same values? 1=Strongly disagree, 5=Strongly agree', 
             'I am happy with my friendships? 1=Strongly disagree, 5=Strongly agree', 
             'I am good at forgiving others for small mistakes? 1=Strongly disagree, 5=Strongly agree', 

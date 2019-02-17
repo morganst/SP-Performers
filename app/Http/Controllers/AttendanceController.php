@@ -62,7 +62,7 @@ class AttendanceController extends Controller
             {
                 if(isset($attend[$i]))
                 {
-                $attendance = Attendance::updateOrCreate(
+                    $attendance = Attendance::updateOrCreate(
                     ['date' => $request->input('date'), 'student_id' => $student, 'classes_id' => $classes],
                     ['attend' => $attend[$i]]
                 );
