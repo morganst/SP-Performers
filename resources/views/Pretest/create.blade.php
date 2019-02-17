@@ -27,7 +27,7 @@
             <table style="width:100%">
                 <thead>
                     <tr>
-                        <th>1 = Strongly Disagree  &nbsp | &nbsp 2 = Disagree &nbsp | &nbsp 3 = Netrual &nbsp | &nbsp 4 = Agree &nbsp | &nbsp 5 = Strongly Agree</th>
+                        <th></th>
                         <th>1&nbsp&nbsp</th>
                         <th>2&nbsp&nbsp</th>
                         <th>3&nbsp&nbsp</th>
@@ -99,7 +99,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q10', "I feel like I can put myself in others shoes?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q10', "I feel like I can put myself in others shoes? 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                     <td>{!! Form::radio('Q10', '1')  !!}</td>
                     <td>{!! Form::radio('Q10', '2')  !!}</td>
@@ -110,7 +110,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q11', "I can understand other people's feelings/pain?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q11', "I can understand other people's feelings/pain? 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q11', '1')  !!}</td>
                 <td>{!! Form::radio('Q11', '2')  !!}</td>
@@ -121,7 +121,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q12', "My friends and I share the same values?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q12', "My friends and I share the same values? 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q12', '1')  !!}</td>
                 <td>{!! Form::radio('Q12', '2')  !!}</td>
@@ -132,7 +132,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q13', "I am happy with my friendships?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q13', "I am happy with my friendships? 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q13', '1')  !!}</td>
                 <td>{!! Form::radio('Q13', '2')  !!}</td>
@@ -143,7 +143,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q14', "I am good at forgiving others for small mistakes?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q14', "I am good at forgiving others for small mistakes? 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q14', '1')  !!}</td>
                 <td>{!! Form::radio('Q14', '2')  !!}</td>
@@ -154,7 +154,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q15', "I have at least one hobby that I enjoy?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q15', "I have at least one hobby that I enjoy? 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q15', '1')  !!}</td>
                 <td>{!! Form::radio('Q15', '2')  !!}</td>
@@ -165,7 +165,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q16', "I am satisfied with the honest conversations I can have with those that are important to me?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q16', "I am satisfied with the honest conversations I can have with those that are important to me? 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q16', '1')  !!}</td>
                 <td>{!! Form::radio('Q16', '2')  !!}</td>
@@ -176,7 +176,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q17', "When I am emotional, I feel comfortable turning to someone I know for help.", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q17', "When I am emotional, I feel comfortable turning to someone I know for help. 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q17', '1')  !!}</td>
                 <td>{!! Form::radio('Q17', '2')  !!}</td>
@@ -187,7 +187,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q18', "I am part of a community that I can express myself in?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q18', "I am part of a community that I can express myself in? 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q18', '1')  !!}</td>
                 <td>{!! Form::radio('Q18', '2')  !!}</td>
@@ -198,7 +198,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q19', "I enjoy spending time with talented people.", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q19', "I enjoy spending time with talented people. 1=Strongly disagree, 5=Strongly agree", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q19', '1')  !!}</td>
                 <td>{!! Form::radio('Q19', '2')  !!}</td>
@@ -208,7 +208,7 @@
              
             &nbsp;
             <tr>
-            <td>{!! Form::label('Q20', "How likely would you be to use an art form as a way of expressing life’s difficulties?", ['class' => 'col-lg-2 control-label'] )  !!}</td>
+            <td>{!! Form::label('Q20', "How likely would you be to use an art form as a way of expressing life’s difficulties? 1=Not at all likely, 5=Extremely likely", ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 
                 <td>{!! Form::radio('Q20', '1')  !!}</td>
                 <td>{!! Form::radio('Q20', '2')  !!}</td>

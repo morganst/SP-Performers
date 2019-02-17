@@ -89,12 +89,11 @@
                 </tr>
             <table>
 
-            <hr>
             <small>Created : {{$pretests->created_at}}</small>
             @endforeach
         
         <div class="text-right">
-            <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
         </div>
 
 <style>

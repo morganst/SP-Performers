@@ -36,7 +36,7 @@
                     <td>{{ $posttests->Q7 }} </td>
                 </tr>
                 <tr>
-                    <td>I can understand other people\'s feelings/pain?</td>
+                    <td>I can understand other people\'s feelings/pain? 1=Strongly disagree, 5=Strongly agree</td>
                     <td>{{ $posttests->Q8 }} </td>
                 </tr>
                 <tr>
@@ -116,8 +116,6 @@
                     <td>{{ $posttests->Q27 }} </td>
                 </tr>
             <table>
-
-            <hr>
             <small>Created : {{$posttests->created_at}}</small>
             @endforeach
         
