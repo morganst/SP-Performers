@@ -9,7 +9,7 @@
             <table>
                 <tr>
                     <td>How long have you been living in Jacksonville?</td>
-                    <td>{{ $pretests->Q1 }}</td>
+                    <td>{{ $pretests->Q1 }} Year(s)</td>
                 </tr>
                 <tr>
                     <td>Are you attending school?</td>
@@ -17,7 +17,7 @@
                 </tr>
                 <tr>
                     <td>How many siblings do you have?</td>
-                    <td>{{ $pretests->Q3 }} </td>
+                    <td>{{ $pretests->Q3 }} Sibling(s)</td>
                 </tr>
                 <tr>
                     <td>How open are you about your feelings? 1=Not open at all, 5=Very open</td>
