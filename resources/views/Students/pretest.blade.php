@@ -9,7 +9,7 @@
             <table>
                 <tr>
                     <td>How long have you been living in Jacksonville?</td>
-                    <td>{{ $pretests->Q1 }} Year(s)</td>
+                    <td>{{ $pretests->Q1 }}</td>
                 </tr>
                 <tr>
                     <td>Are you attending school?</td>
@@ -94,6 +94,7 @@
         
         <div class="text-right">
             <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
+            <a href="/pretest/{{$stu->id}}/edit" class="button" role="button" aria-pressed="true">Edit</a>
         </div>
 
 <style>
