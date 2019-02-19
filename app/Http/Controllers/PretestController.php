@@ -80,6 +80,12 @@ class PretestController extends Controller
         return redirect('/students')->with('success', 'Pretest completed!');
     }
 
+    public function edit($id)
+    {
+        $student = Student::find($id);
+        return view('Pretest.edit', compact(['student']));
+    }
+    
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -104,34 +110,40 @@ class PretestController extends Controller
             'Q19' => 'required',
             'Q20' => 'required'
         ]);
-
-        $pretest = Pretest::find($id);
+        $pretest = Pretest::where('student_id', '=', $id)->first();
         $pretest->Q1 = $request->input('Q1');
-        $pretest->Q2 = $request->input('Q1');
-        $pretest->Q3 = $request->input('Q1');
-        $pretest->Q4 = $request->input('Q1');
-        $pretest->Q5 = $request->input('Q1');
-        $pretest->Q6 = $request->input('Q1');
-        $pretest->Q7 = $request->input('Q1');
-        $pretest->Q8 = $request->input('Q1');
-        $pretest->Q9 = $request->input('Q1');
-        $pretest->Q10 = $request->input('Q1');
-        $pretest->Q11 = $request->input('Q1');
-        $pretest->Q12 = $request->input('Q1');
-        $pretest->Q13 = $request->input('Q1');
-        $pretest->Q14 = $request->input('Q1');
-        $pretest->Q15 = $request->input('Q1');
-        $pretest->Q16 = $request->input('Q1');
-        $pretest->Q17 = $request->input('Q1');
-        $pretest->Q18 = $request->input('Q1');
-        $pretest->Q19 = $request->input('Q1');
-        $pretest->Q20 = $request->input('Q1');
+        $pretest->Q2 = $request->input('Q2');
+        $pretest->Q3 = $request->input('Q3');
+        $pretest->Q4 = $request->input('Q4');
+        $pretest->Q5 = $request->input('Q5');
+        $pretest->Q6 = $request->input('Q6');
+        $pretest->Q7 = $request->input('Q7');
+        $pretest->Q8 = $request->input('Q8');
+        $pretest->Q9 = $request->input('Q9');
+        $pretest->Q10 = $request->input('Q10');
+        $pretest->Q11 = $request->input('Q11');
+        $pretest->Q12 = $request->input('Q12');
+        $pretest->Q13 = $request->input('Q13');
+        $pretest->Q14 = $request->input('Q14');
+        $pretest->Q15 = $request->input('Q15');
+        $pretest->Q16 = $request->input('Q16');
+        $pretest->Q17 = $request->input('Q17');
+        $pretest->Q18 = $request->input('Q18');
+        $pretest->Q19 = $request->input('Q19');
+        $pretest->Q20 = $request->input('Q20');
 
        
         $pretest->save();
 
-        return redirect('/students')->with('success', 'Student Updated!');
+        return redirect('/students')->with('success', 'Pretest Updated!');
     }
 
+    public function destroy($id)
+    {
+        $pretest = Pretest::where('student_id', '=', $id)->first();
 
+        $pretest->delete();
+
+        return redirect('/students')->with('success', 'Pretest Deleted!');
+    }
 }

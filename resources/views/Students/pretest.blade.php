@@ -94,6 +94,7 @@
         
         <div class="text-right">
             <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
+            <a href="/pretest/{{$stu->id}}/edit" class="button" role="button" aria-pressed="true">Edit</a>
         </div>
 
 <style>
