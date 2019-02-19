@@ -9,7 +9,7 @@
             <table>
                 <tr>
                     <td>How long have you been living in Jacksonville?</td>
-                    <td>{{ $pretests->Q1 }} Year(s)</td>
+                    <td>{{ $pretests->Q1 }}</td>
                 </tr>
                 <tr>
                     <td>Are you attending school?</td>
