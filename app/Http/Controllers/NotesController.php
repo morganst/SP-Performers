@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Student;
 use App\Note;
 use App\Classes;
+use App\DB;
 use Illuminate\Support\Facades\Auth;
 
 class NotesController extends Controller
@@ -109,7 +110,11 @@ class NotesController extends Controller
       $sort_type = $request->get('sorttype');
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            $allNotes = Note::where('Class', 'like', '%'.$query.'%')
+            $allNotes = Note::whereHas('student', function ($request) use ($query) 
+            {
+                $request->where('fullName', 'like', '%'.$query.'%');
+            })
+            ->orWhere('Class', 'like', '%'.$query.'%')
             ->orWhere('Type', 'like', '%'.$query.'%')
             ->orWhere('Instructor', 'like', '%'.$query.'%')
             ->orWhere('created_at', 'like', '%'.$query.'%')

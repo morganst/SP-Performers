@@ -1,5 +1,4 @@
 @foreach($allNotes as $note)
-{{$note->SID}}
     {{-- @if(isset($notes) && Auth::user()->role==0)
         Recent Activity: 
         @php
@@ -58,11 +57,10 @@
     @endphp
     @if(isset($allNotes) && Auth::user()->role==1)
         @if($note['Hide'] != 'Yes')
-        <div >
             <tr class="{{$class}}">
                 <td>{{$note->Type}}!</td>
                 <td>{{$note->Instructor}}</td>
-                <td>{{$note->firstName}} {{$note->lastName}}</td>
+                <td>{{$note->student["fullName"]}}</td>
                 <td>{{$note->Class}}</td>       
                 <td>{{$note['created_at']->toFormattedDateString()}}</td>
                 <td><a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a></td>
@@ -73,7 +71,6 @@
             <tr>
                 <td><br></td>
             </tr>
-        </div>
         @endif
     @endif
 </tr>
