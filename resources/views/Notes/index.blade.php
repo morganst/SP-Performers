@@ -13,17 +13,20 @@
             <div class="daily-survey-container">
             <h3>Student Notes:</h3>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
-            <table>
+            <br><br>
+            <table style='border-spacing:0px'>
                   <thead>
                         <tr>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="Instructor" style="cursor: pointer">Created By<span id="instructor_icon"></span></th>
-                        <th>Student</th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="Class" style="cursor: pointer">Class<span id="class_icon"></span></th>
-                        <th>Note</th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="created_at" style="cursor: pointer">Date<span id="date_icon"></span></th>
-                        <th>Edit</th>
+                        <th width="15%" class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
+                        <th width="20%" class="sorting" data-sorting_type="desc" data-column_name="Instructor" style="cursor: pointer">Created By<span id="instructor_icon"></span></th>
+                        <th width="20%">Student</th>
+                        <th width="15%" class="sorting" data-sorting_type="desc" data-column_name="Class" style="cursor: pointer">Class<span id="class_icon"></span></th>
+                        <th width="15%" class="sorting" data-sorting_type="desc" data-column_name="created_at" style="cursor: pointer">Date<span id="date_icon"></span></th>
+                        <th width="15%">Edit</th>
                         <tr>
+                        <tr>
+                              <td><br></td>
+                        </tr>
                   </thead>
                   <tbody>
                         @include('Notes.index_data')
@@ -40,8 +43,9 @@
             function clear_icon()
             {
             $('#date_icon').html('');
-            $('#fullName_icon').html('');
-            $('#attend_icon').html('');
+            $('#type_icon').html('');
+            $('#instructor_icon').html('');
+            $('#class_icon').html('');
             }
             
             function fetch_data(page, sort_type, sort_by, query)

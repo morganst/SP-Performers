@@ -539,3 +539,29 @@ label {
 .student-index-container {
     display: inline-block;
 }
+
+.breakthrough-search
+{
+    padding: 10px;
+    background-color: #89d477;
+    border-color: #8899dd;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.none-search {
+    padding: 10px;
+    background-color: #265778;
+    border-color: #ebccd1;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.incident-search
+{
+    padding: 10px;
+    background-color: #d66363;
+    border-color: #ebccd1;
+    color: white;
+    margin-bottom: 15px;
+}

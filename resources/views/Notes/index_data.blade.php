@@ -1,4 +1,5 @@
 @foreach($allNotes as $note)
+{{$note->SID}}
     {{-- @if(isset($notes) && Auth::user()->role==0)
         Recent Activity: 
         @php
@@ -44,17 +45,35 @@
         </div>
     @endif --}}
     {{-- For admin --}}
+    @php 
+        $class = "";
+        if($note['Type'] == "Breakthrough")
+            $class = "breakthrough-search";
+        else if($note['Type'] == "None")
+            $class = "none-search";
+        else if($note['Type'] == "Incident")
+            $class = "incident-search";
+        else
+            $class = "severe-note-card";
+    @endphp
     @if(isset($allNotes) && Auth::user()->role==1)
         @if($note['Hide'] != 'Yes')
-            <tr>
+        <div >
+            <tr class="{{$class}}">
                 <td>{{$note->Type}}!</td>
                 <td>{{$note->Instructor}}</td>
                 <td>{{$note->firstName}} {{$note->lastName}}</td>
                 <td>{{$note->Class}}</td>       
-                <td>{{$note->Text}}</td>
                 <td>{{$note['created_at']->toFormattedDateString()}}</td>
                 <td><a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a></td>
             </tr>
+            <tr class="{{$class}}">
+                <td colspan="6">{{$note->Text}}</td>
+            </tr>
+            <tr>
+                <td><br></td>
+            </tr>
+        </div>
         @endif
     @endif
 </tr>

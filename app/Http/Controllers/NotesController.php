@@ -75,7 +75,7 @@ class NotesController extends Controller
             }));
         } */
         $allNotes = Note::orderBy('Nid', 'asc')->paginate(8);
-        return view('Notes.index',compact(['allNotes']));
+        return view('Notes.index',compact('allNotes'));
     }
 
     function fetch_data(Request $request)

@@ -23,10 +23,10 @@
             <table>
                   <thead>
                         <tr>
-                        <th>Name</th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
-                        <th>Remove</th>
+                        <th width="30">Name</th>
+                        <th width="25" class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
+                        <th width="25" class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
+                        <th width="20">Remove</th>
                         </tr>
                   </thead>
                   <tbody>
