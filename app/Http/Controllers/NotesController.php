@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Student;
 use App\Note;
 use App\Classes;
+use App\DB;
 use Illuminate\Support\Facades\Auth;
 
 class NotesController extends Controller
@@ -35,86 +36,65 @@ class NotesController extends Controller
                         {
                             $array[$i] = $row['NId'];
                             $i++;
-                            $row->firstName = $students->firstName;
-                            $row->lastName = $students->lastName;
-                            $notes[] = $row;
+                            $note[] = $row->NId;
                         }
                     }
                 }
             }
-            if(isset($notes))
-            {
-                $notes = array_reverse(array_sort($notes, function ($value) {
-                    return $value['created_at'];
-                }));
-            }
-            return view('Notes.index',compact(['notes']));
-        }
-        $stu = Student::get();
-        $k=0;
-        $allArray = [];
-        $allNotes = [];
-        foreach($stu as $stu)
-        {
-            foreach($stu->notes as $row)
-            {
-                if(!in_array($row['NId'], $allArray))
-                {
-                    $allArray[$k] = $row['NId'];
-                    $k++;
-                    $row->firstName = $stu->firstName;
-                    $row->lastName = $stu->lastName;
-                    $allNotes[] = $row;
-                }
-            }
-        }
-        if(isset($allNotes))
-        {
-            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
-                return $value['created_at'];
-            }));
+            $notes = Note::whereIn('NId',$note)->orderBy('Nid', 'asc')->paginate(5);
+            return view('Notes.index',compact('notes','note'));
         } */
         $allNotes = Note::orderBy('Nid', 'asc')->paginate(8);
-        return view('Notes.index',compact(['allNotes']));
+        return view('Notes.index',compact('allNotes'));
     }
 
     function fetch_data(Request $request)
     {
         if($request->ajax())
      {
-       /* $stu = Student::get();
-        $k=0;
-        $allArray = [];
-        foreach($stu as $stu)
-        {
-            foreach($stu->notes as $row)
-            {
-                if(!in_array($row['NId'], $allArray))
-                {
-                    $allArray[$k] = $row['NId'];
-                    $k++;
-                    $row->firstName = $stu->firstName;
-                    $row->lastName = $stu->lastName;
-                    $allNotes[] = $row;
-                }
-            }
-        }
-        if(isset($allNotes))
-        {
-            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
-                return $value['created_at'];
-            }));
-        } */
       $sort_by = $request->get('sortby');
       $sort_type = $request->get('sorttype');
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            $allNotes = Note::where('Class', 'like', '%'.$query.'%')
+            $allNotes = Note::whereHas('student', function ($request) use ($query) 
+            {
+                $request->where('fullName', 'like', '%'.$query.'%');
+            })
+            ->orWhere('Class', 'like', '%'.$query.'%')
             ->orWhere('Type', 'like', '%'.$query.'%')
             ->orWhere('Instructor', 'like', '%'.$query.'%')
             ->orWhere('created_at', 'like', '%'.$query.'%')
             ->orderBy($sort_by, $sort_type)
             ->paginate(8);
+
+            /* $array = [];
+            $i=0;
+            foreach(Auth::user()->classes as $classes)
+            {
+                foreach($classes->student as $students)
+                {
+                    foreach($students->notes as $row)
+                    {
+                        if(!in_array($row['NId'], $array))
+                        {
+                            $array[$i] = $row['NId'];
+                            $i++;
+                            $notes[] = $row->NId;
+                        }
+                    }
+                }
+            }
+            
+            $notes = Note::whereIn('NId',$notes)->whereHas('student', function ($request) use ($query) 
+            {
+                $request->where('fullName', 'like', '%'.$query.'%');
+            })
+            ->orWhere('Class', 'like', '%'.$query.'%')
+            ->orWhere('Type', 'like', '%'.$query.'%')
+            ->orWhere('Instructor', 'like', '%'.$query.'%')
+            ->orWhere('created_at', 'like', '%'.$query.'%')
+            ->orderBy($sort_by, $sort_type)
+            ->paginate(8); */
     
       return view('Notes.index_data', compact('allNotes'))->render();
      }

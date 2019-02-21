@@ -123,7 +123,7 @@
     @endforeach
 
         <div>
-        <a style="float:right;" href="/notes" role="button">View More</a>
+        <a style="float:right;" href="/notes" role="button">View All</a>
         </div>
     @endif
     {{-- For admin --}}
@@ -151,7 +151,7 @@
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <h2>{{$note['Type']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
-                    <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
+                    <h3>Student: {{$note->student["fullName"]}}</h3>
                     <h3>Class: {{$note->Class}}</h3>       
                     
                     <div class='note-card-text'> {{$note->Text}}</div>
@@ -167,7 +167,7 @@
         @endphp
         @endforeach
         <div>
-        <a class="button" style="float:right;" href="/notes" role="button">View More</a>
+        <a class="button" style="float:right;" href="/notes" role="button">View All</a>
         </div>
     @endif
 </div>

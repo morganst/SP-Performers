@@ -61,7 +61,6 @@ Route::resource('students', 'StudentController');
 Route::resource('instructors', 'InstructorController');
 Route::resource('classes', 'ClassController');
 Route::resource('notes', 'NotesController');
-Route::get('/index', 'NotesController@index');
 Route::get('/index/fetch_data', 'NotesController@fetch_data');
 Route::resource('attendances', 'AttendanceController');
 Route::resource('pretest', 'PretestController');
