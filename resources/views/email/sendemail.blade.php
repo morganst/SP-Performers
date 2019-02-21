@@ -57,7 +57,7 @@
     <div class="form-group">
      <input type="submit" name="send" class="btn btn-info" value="Send" />
    </form>
-   <span style="float:right;"><a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a></span>
+   <span style="float:right;"><a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a></span>
   </div>
   </div>
  </body>

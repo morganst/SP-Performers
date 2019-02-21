@@ -28,7 +28,7 @@
     <hr>
 <small>Created: {{$cla->created_at}}</small>
         <div class="text-right">
-            <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
         </div>
 
 @endsection

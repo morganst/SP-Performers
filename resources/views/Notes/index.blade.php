@@ -48,7 +48,7 @@
             $('#class_icon').html('');
             }
             
-            function fetch_data(page, sort_type, sort_by, query)
+            function fetch_data(page, sort_type, sort_by, query, note)
             {
             $.ajax({
             url:"/index/fetch_data?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,

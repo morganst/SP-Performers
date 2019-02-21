@@ -57,27 +57,7 @@ class HomeController extends Controller
                 return $value['created_at'];
             }));
         }
-        $stu = Student::get();
-        foreach($stu as $stu)
-        {
-            foreach($stu->notes as $row)
-            {
-                if(!in_array($row['NId'], $allArray))
-                {
-                    $allArray[$k] = $row['NId'];
-                    $k++;
-                    $row->firstName = $stu->firstName;
-                    $row->lastName = $stu->lastName;
-                    $allNotes[] = $row;
-                }
-            }
-        }
-        if(isset($allNotes))
-        {
-            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
-                return $value['created_at'];
-            }));
-        }
+        $allNotes = Note::orderBy('Nid', 'asc')->get();
         return view('welcome',compact(['notes','allNotes']));
     }
 
