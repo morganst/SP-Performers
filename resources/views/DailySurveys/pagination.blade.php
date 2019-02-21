@@ -10,23 +10,24 @@
       </head>
       <body>
       @if(isset($data[0]->classes['name']))
-            <br />
+            <br>
             <div class="daily-survey-container">
             <h3>Student Attendance for: {{$data[0]->classes['name']}}</h3>
             <p>at: {{$data[0]->classes['location']}} ({{$data[0]->classes['time']}})</p>
       @else
-            <br />
-            <h3>Student Attendance</h3>
+            <br>
             <div class="daily-survey-container">
+            <h3>Student Attendance</h3>
       @endif
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
-            <table>
+            <br><br>
+            <table width="100%">
                   <thead>
                         <tr>
-                        <th width="30">Name</th>
-                        <th width="25" class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
-                        <th width="25" class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
-                        <th width="20">Remove</th>
+                        <th width="30%">Name</th>
+                        <th width="25%" class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
+                        <th width="25%" class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
+                        <th width="20%">Remove</th>
                         </tr>
                   </thead>
                   <tbody>

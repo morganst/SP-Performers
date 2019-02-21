@@ -71,6 +71,11 @@
     
 </tr>
     @endforeach
+    @else
+<tr>
+    <td>No results found</td>
+</tr>
+    @endif
     <tr>
             <td colspan="5" align="center">
                 {!! $allNotes->links() !!}
@@ -81,4 +86,4 @@
                         </div>
             </td>
         </tr>
-    @endif
+

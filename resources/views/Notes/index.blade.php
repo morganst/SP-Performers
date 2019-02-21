@@ -9,7 +9,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       </head>
       <body>
-            <br />
+            <br>
             <div class="daily-survey-container">
             <h3>Student Notes:</h3>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
