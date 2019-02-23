@@ -25,22 +25,22 @@
                 @foreach($allNotes as $note)
                     @if($note['Type'] === "Severe Incident" && $note['Hide'] != 'Yes')
                     <div class="severe-note-card">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <a href="/notes/{{$note->SID}}" class="severe-note">
-                        <span class="severe">
-                            <strong>{{$note['Type']}}!</strong>
-                        </span>
-                        <br /> 
-                        Date: {{$note['created_at']->toFormattedDateString()}}
-                        <br />
-                        Instructor: {{$note['Instructor']}}
-                        <br />
-                        Class: {{$note['Class']}}
-                        <br />
-                        Student:
-                        {{$note->firstName}} {{$note->lastName}}
-                        <br /><br />
-                    </a>
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <a href="/notes/{{$note->SID}}" class="severe-note">
+                            <span class="severe">
+                                <strong>{{$note['Type']}}!</strong>
+                            </span>
+                            <br /> 
+                            Date: {{$note['created_at']->toFormattedDateString()}}
+                            <br />
+                            Instructor: {{$note['Instructor']}}
+                            <br />
+                            Class: {{$note['Class']}}
+                            <br />
+                            Student:
+                            {{$note->firstName}} {{$note->lastName}}
+                            <br /><br />
+                        </a>
                     </div>
                     @endif
                 @endforeach
@@ -61,6 +61,7 @@
                 <div class="w3-container w3-light-grey">
                     <h3>{{$class->name}}</h3>
                 </div>
+
                 <div class="w3-container">
                     <p>Time: {{$class->time}}</p>   
                     <p>Location: {{$class->location}}</p>
@@ -77,9 +78,8 @@
                 @endif
 
                 <a class="w3-button w3-block w3-blue" href="/classes/{{$class->id}}" role="button">View Class</a>
-                </div>
             @endforeach
-    </div>
+        </div>
     <hr>
     {{-- For instructor --}}
     @if(isset($notes) && Auth::user()->role==0)
@@ -103,7 +103,7 @@
 
             <div class="dashboard-note">
                 <div class="{{$class}}">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <h2>{{$note['Type']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
                     <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
@@ -113,8 +113,8 @@
 
                     <h5>Created: {{$note['created_at']->toFormattedDateString()}}</h5>
                     <a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a>
+                </div>
             </div>
-        </div>
         @endif
         @php 
         if (++$i == 4) 
@@ -123,7 +123,7 @@
     @endforeach
 
         <div>
-        <a style="float:right;" href="/notes" role="button">View All</a>
+            <a style="float:right;" href="/notes" role="button">View All</a>
         </div>
     @endif
     {{-- For admin --}}
@@ -148,7 +148,7 @@
 
             <div class="dashboard-note">
                 <div class="{{$class}}">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                     <h2>{{$note['Type']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
                     <h3>Student: {{$note->student["fullName"]}}</h3>
@@ -158,8 +158,8 @@
 
                     <h5>Created: {{$note['created_at']->toFormattedDateString()}}</h5>
                     <a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a>
+                </div>
             </div>
-        </div>
         @endif
         @php 
         if (++$i == 4) 
@@ -167,9 +167,14 @@
         @endphp
         @endforeach
         <div>
-        <a class="button" style="float:right;" href="/notes" role="button">View All</a>
+            <a class="button" style="float:right;" href="/notes" role="button">View All</a>
         </div>
     @endif
+
+    <div id="react-render"></div>
+
+    <script src="{{ URL::asset('js/app.js') }}" type="text/javascript"></script>
+
 </div>
 
 @endsection

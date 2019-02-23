@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Student;
 use App\Note;
 use App\Classes;
+use App\DailySurvey;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -58,7 +59,9 @@ class HomeController extends Controller
             }));
         }
         $allNotes = Note::orderBy('Nid', 'asc')->get();
-        return view('welcome',compact(['notes','allNotes']));
+        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
+        return view('welcome',compact(['notes','allNotes']))
+            ->with('dailySurveys',$dailySurveys);
     }
 
     public function logout () 
