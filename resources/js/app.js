@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDom from "react-dom";
+import { Line } from 'react-chartjs-2';
 
 export default class Main extends Component {
 
@@ -17,51 +18,107 @@ export default class Main extends Component {
         }).then(survey => this.setState({survey}))
     }
 
-   renderSurvey()
-   {
-       const { survey = [] } = this.state;
+    getData()
+    {
+        const { survey = [] } = this.state;
 
-       console.log(survey)
+        let studentNumber = 0, data = [], mon = 0, tues = 0, wed = 0, thurs = 0, friday = 0;
 
-       if(survey.length)
-       {
-           return survey.map(survey => {
+        const date = new Date();
 
-               const _date = new Date(survey.date)
+        let lastWeek = new Date(date.setDate(date.getDate() - 7));
 
-               var date = new Date();
+        if(survey.length)
+        {
+            survey.map(survey => {
 
-               date.setDate(_date.getDate() - 7);
+                const _date = new Date(survey.date)
 
-               console.log(_date, date)
+                console.log(_date)
 
-               //returns surveys completed in past 7 days
-               if(_date > date)
-               {
-                    return <div key={survey.id}>
-                        <div>Student ID: {survey.StudentID}</div>
-                        <div>Class ID : {survey.ClassID}</div>
-                        <div>Question 1 : {survey.Q1}</div>
-                        <div>Question 2 : {survey.Q2}</div>
-                        <div>Question 3 : {survey.Q3}</div>
-                        <div>Question 4 : {survey.Q4}</div>
-                        <div>Question 5 : {survey.Q5}</div>
-                        <div>Mood : {survey.mood}</div>
-                        <div>------------------------------</div>
-                    </div>
-               }
-               return null;
-           })
-       }
+                if(_date > lastWeek)
+                {
+                    studentNumber++;
+
+                    switch(_date.getDay()) {
+                        case 1:
+                            mon += survey.Q1;
+                            mon += survey.Q2;
+                            mon += survey.Q3;
+                            mon += survey.Q4;
+                            mon += survey.Q5;
+                            break;
+                        case 2:
+                            tues += survey.Q1;
+                            tues += survey.Q2;
+                            tues += survey.Q3;
+                            tues += survey.Q4;
+                            tues += survey.Q5;
+                            break;
+                        case 3:
+                            wed += survey.Q1;
+                            wed += survey.Q2;
+                            wed += survey.Q3;
+                            wed += survey.Q4;
+                            wed += survey.Q5;
+                            break;
+                        case 4:
+                            thurs += survey.Q1;
+                            thurs += survey.Q2;
+                            thurs += survey.Q3;
+                            thurs += survey.Q4;
+                            thurs += survey.Q5;
+                            break;
+                        case 5:
+                            friday += survey.Q1;
+                            friday += survey.Q2;
+                            friday += survey.Q3;
+                            friday += survey.Q4;
+                            friday += survey.Q5;
+                            break;
+                        default: 
+                            break;
+                    }
+                }
+
+                });
+
+                console.log(studentNumber)
+
+                mon = mon / studentNumber;
+                tues = tues / studentNumber;
+                wed = wed / studentNumber;
+                thurs = thurs / studentNumber;
+                friday = friday / studentNumber;
+
+                if(mon === 0) mon = null;
+                if(tues === 0) tues = null;
+                if(wed === 0) wed = null;
+                if(thurs === 0) thurs = null;
+                if(friday === 0) friday = null;
+
+                data.push(mon, tues, wed, thurs, friday);
+
+                console.log(data)
+                return data;
+            }
+        return null;
     }
 
     render() 
     {
         return (
             <div>
-                {this.renderSurvey()}
+                <Line data = {{ labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                                datasets: [{
+                                label: "Weekly Student Mood",
+                                backgroundColor: 'rgb(255, 99, 132)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: this.getData(),
+                                }]}}
+                        height={60} />
             </div>
-        );  
+        )
     }
 }	
 
