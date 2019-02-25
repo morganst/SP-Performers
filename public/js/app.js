@@ -23657,9 +23657,19 @@ function (_Component) {
 
       if (survey.length) {
         return survey.map(function (survey) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: survey.id
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Student ID: ", survey.StudentID), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Class ID : ", survey.ClassID), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 1 : ", survey.Q1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 2 : ", survey.Q2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 3 : ", survey.Q3), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 4 : ", survey.Q4), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 5 : ", survey.Q5), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Mood : ", survey.mood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "------------------------------"));
+          var _date = new Date(survey.date);
+
+          var date = new Date();
+          date.setDate(_date.getDate() - 7);
+          console.log(_date, date); //returns surveys completed in past 7 days
+
+          if (_date > date) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              key: survey.id
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Student ID: ", survey.StudentID), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Class ID : ", survey.ClassID), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 1 : ", survey.Q1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 2 : ", survey.Q2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 3 : ", survey.Q3), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 4 : ", survey.Q4), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Question 5 : ", survey.Q5), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Mood : ", survey.mood), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "------------------------------"));
+          }
+
+          return null;
         });
       }
     }
