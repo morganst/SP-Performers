@@ -12,8 +12,9 @@ class SearchController extends Controller
 {
     public function searchStudent(){
         $searchkey = \Request::get('title');
+        $count = Student::where('enrolled', '0')->get();
         $students =  Student::where('fullName', 'like', '' .$searchkey. '%')->orWhere('lastName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
-        return view('Students/search', ['students' => $students]);
+        return view('Students.index', compact(['students', 'count']));
     }
     public function searchClasses(){
         $searchkey = \Request::get('title');
