@@ -9,33 +9,29 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       </head>
       <body>
-            <br>
+            <br />
             <div class="daily-survey-container">
-            <h3>Student Notes:</h3>
+            <h3>Student Attendance for: {{$data[0]->classes['name']}}</h3>
+            <p>at: {{$data[0]->classes['location']}} ({{$data[0]->classes['time']}})</p>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
-            <br><br>
-            <table style='border-spacing:0px'>
+            <table>
                   <thead>
                         <tr>
-                        <th width="15%" class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
-                        <th width="20%" class="sorting" data-sorting_type="desc" data-column_name="Instructor" style="cursor: pointer">Created By<span id="instructor_icon"></span></th>
-                        <th width="20%"class="sorting" data-sorting_type="desc" data-column_name="fullName" style="cursor: pointer">Student</th>
-                        <th width="15%" class="sorting" data-sorting_type="desc" data-column_name="Class" style="cursor: pointer">Class<span id="class_icon"></span></th>
-                        <th width="15%" class="sorting" data-sorting_type="desc" data-column_name="created_at" style="cursor: pointer">Date<span id="date_icon"></span></th>
-                        <th width="15%">Edit</th>
-                        <tr>
-                        <tr>
-                              <td><br></td>
+                        <th>Name</th>
+                        <th class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
+                        <th class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
+                        <th>Remove</th>
                         </tr>
                   </thead>
                   <tbody>
-                        @include('Notes.index_data')
+                        @include('DailySurveys.pagination_data')
                   </tbody>
             </table>
             </div>
             <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
-            <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="NId" />
+            <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
             <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc" />
+            @php echo '<input type="hidden" name="id" value="'.$id.'">'@endphp
       </body>
       <script>
             $(document).ready(function(){
@@ -43,15 +39,15 @@
             function clear_icon()
             {
             $('#date_icon').html('');
-            $('#type_icon').html('');
-            $('#instructor_icon').html('');
-            $('#class_icon').html('');
+            $('#fullName_icon').html('');
+            $('#attend_icon').html('');
             }
             
-            function fetch_data(page, sort_type, sort_by, query, note)
+            function fetch_data(page, sort_type, sort_by, query)
             {
+            var id = <?php echo json_encode($id) ?>;
             $.ajax({
-            url:"/index/fetch_data?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,
+            url:"/"+id+"/pagination/fetch_data?page="+page+"&sortby="+sort_by+"&sorttype="+sort_type+"&query="+query,
             success:function(data)
             {
             $('tbody').html('');

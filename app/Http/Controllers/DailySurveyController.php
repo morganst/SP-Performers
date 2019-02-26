@@ -62,10 +62,22 @@ class DailySurveyController extends Controller
             'Q4'=>'required',
             'Q5'=>'required',
             'Mood'=>'required',
+            'date'=>'required'
 
         ]); 
 
-        $dailySurvey = new DailySurvey;
+        $dailySurveys = DailySurvey::updateOrCreate(
+            ['StudentID' => $request->get('StudentID'), 
+            'date' => $request->input('date'), 
+            'ClassID' => $request->get('ClassID')],
+            ['Q1' => $request->get('Q1'),
+            'Q2' => $request->get('Q2'),
+            'Q3' => $request->get('Q3'),
+            'Q4' => $request->get('Q4'),
+            'Q5' => $request->get('Q5'),
+            'Mood'=> $request->get('Mood')]
+        );
+        /* $dailySurvey = new DailySurvey;
         $dailySurvey->StudentID = $request->get('StudentID');
         $dailySurvey->ClassID = $request->get('ClassID');
         $dailySurvey->Q1 = $request->get('Q1');
@@ -74,16 +86,17 @@ class DailySurveyController extends Controller
         $dailySurvey->Q4 = $request->get('Q4');
         $dailySurvey->Q5 = $request->get('Q5');
         $dailySurvey->Mood = $request->get('Mood');
+        $dailySurvey->date = $request->get('date');
 
         $dailySurvey->save();
-
+        
         $dailySurvey->cla = $request->input('cla');
         $dailySurvey->id = $request->input('ClassID');
 
         $id = $dailySurvey->id;
         $cla = Classes::find($id);
-        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
-        return back()->with('cla',$cla)->with('dailySurveys',$dailySurveys)->with('success', 'Survey Submitted!');
+        /*$dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10); */
+        return redirect()->back()->with('success', 'Survey Submitted!');
     }
 
     /**

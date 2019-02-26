@@ -8,6 +8,10 @@ use App\Classes;
 
 class AttendanceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); 
+    }
     /**
      * Display a listing of the resource.
      *
@@ -58,7 +62,7 @@ class AttendanceController extends Controller
             {
                 if(isset($attend[$i]))
                 {
-                $attendance = Attendance::updateOrCreate(
+                    $attendance = Attendance::updateOrCreate(
                     ['date' => $request->input('date'), 'student_id' => $student, 'classes_id' => $classes],
                     ['attend' => $attend[$i]]
                 );

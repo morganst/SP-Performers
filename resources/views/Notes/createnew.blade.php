@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 @php 
 $var="I/B"; 
 @endphp
+=======
+<h1 class="hidden">{{$var="Type"}}</h1> 
+>>>>>>> fe59e199ab65ccdd78cda3ee2c5e458e8508e565
 @extends('layouts.app')
 
 @section('content')
@@ -27,10 +31,10 @@ $var="I/B";
             </div>
             &nbsp;
             <div class="form-row-inline-md">
-                {!! Form::label('I/B', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}
+                {!! Form::label('Type', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}
             
                     
-                    {!!  Form::select('I/B', ['Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'None' => 'None'], '' , ['class' => 'form-control-right' ]) !!}
+                    {!!  Form::select('Type', ['Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'Note' => 'Note'], '' , ['class' => 'form-control-right' ]) !!}
          
             </div>
             &nbsp;

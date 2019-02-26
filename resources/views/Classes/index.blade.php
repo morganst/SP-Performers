@@ -87,7 +87,7 @@
 </div>
     @if(count($classes) > 0)
             @foreach($classes as $class)
-            <div class="w3-card-4" style="width:80%; max-width: 350px; display: inline-block">
+            <div class="w3-card-4" style="width:80%; max-width: 350px; display: inline-block; margin: 10px;">
                 <div class="w3-container w3-light-grey">
                     <h3>{{$class->name}}</h3>
                 </div>
@@ -98,7 +98,7 @@
                 </div>
                     
                 @if(Auth::user()->role==1)
-                    <a class="new-btn edit-button" href="/classes/{{$class->id}}/edit" style="float: right" role="button">Edit</a>
+                    <a class="new-btn edit-button" href="/classes/{{$class->id}}/edit" style="float: right;margin-right:10px" role="button">Edit</a>
                 @endif
                 
                 @if(Auth::user()->role==1)

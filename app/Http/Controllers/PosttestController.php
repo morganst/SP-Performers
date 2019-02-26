@@ -16,39 +16,66 @@ class PosttestController extends Controller
     public function show($id)
     {
         $questions = [
-            'How open are you about your feelings? 1=Not open at all, 5=Very open', 
-            'How positive do you feel about your future? 1=Not very positive, 5=Very positive', 
-            'I am not sure I can trust the adults in my life? 1=Strongly disagree, 5=Strongly agree', 
-            'I am not sure adults in my life trust me? 1=Strongly disagree, 5=Strongly agree', 
-            'How comfortable do you feel talking about your past? 1=Very uncomfortable, 5=Comfortable', 
-            'How likely are you to set goals for the next year? 1=Not likely at all, 5=Very likely', 
-            'I feel like I can put myself in others shoes? 1=No, 5=Yes', 
+            'How open are you about your feelings?', 
+            'How positive do you feel about your future?', 
+            'I am not sure I can trust the adults in my life?', 
+            'I am not sure adults in my life trust me?', 
+            'How comfortable do you feel talking about your past?', 
+            'How likely are you to set goals for the next year?', 
+            'I feel like I can put myself in others shoes?', 
             'I can understand other people\'s feelings/pain?', 
-            'My friends and I share the same values? 1=Strongly disagree, 5=Strongly agree', 
-            'I am happy with my friendships? 1=Strongly disagree, 5=Strongly agree', 
-            'I am good at forgiving others for small mistakes? 1=Strongly disagree, 5=Strongly agree', 
-            'I have at least one hobby that I enjoy? 1=Strongly disagree, 5=Strongly agree', 
-            'I am satisfied with the honest conversations I can have with those that are important to me? 1=Strongly disagree, 5=Strongly agree', 
-            'When I am emotional, I feel comfortable turning to someone I know for help 1=Strongly disagree, 5=Strongly agree', 
-            'I am part of a community that I can express myself in? 1=Strongly disagree, 5=Strongly agree', 
-            'I enjoy spending time with talented people 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: Better express my feelings 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: More comfortably talk about my past 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: Trust others more 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: Better develop friendships 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: Use art as a tool to express my feelings 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: Better express my feelings 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: More comfortably talk about my past 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: Trust others more 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: Better develop friendships 1=Strongly disagree, 5=Strongly agree', 
-            'As a result of this program, I can: Use art as a tool to express my feelings 1=Strongly disagree, 5=Strongly agree', 
+            'My friends and I share the same values?', 
+            'I am happy with my friendships?', 
+            'I am good at forgiving others for small mistakes?', 
+            'I have at least one hobby that I enjoy?', 
+            'I am satisfied with the honest conversations I can have with those that are important to me?', 
+            'When I am emotional, I feel comfortable turning to someone I know for help', 
+            'I am part of a community that I can express myself in?', 
+            'I enjoy spending time with talented people', 
+            'As a result of this program, I can: Better express my feelings', 
+            'As a result of this program, I can: More comfortably talk about my past', 
+            'As a result of this program, I can: Trust others more', 
+            'As a result of this program, I can: Better develop friendships', 
+            'As a result of this program, I can: Use art as a tool to express my feelings', 
+            'As a result of this program, I can: Better express my feelings', 
+            'As a result of this program, I can: More comfortably talk about my past', 
+            'As a result of this program, I can: Trust others more', 
+            'As a result of this program, I can: Better develop friendships', 
+            'As a result of this program, I can: Use art as a tool to express my feelings', 
             'What other benefits have you gained from this program?'
+        ];
+        $rank = [
+            '1=Not open at all, 5=Very open', 
+            '1=Not very positive, 5=Very positive', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Very uncomfortable, 5=Comfortable', 
+            '1=Not likely at all, 5=Very likely', 
+            '1=No, 5=Yes', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
         ];
 
         $student = Student::find($id);
-        return view('Posttest.create')
-            ->with('student', $student)
-            ->with('questions', $questions);
+        return view('Posttest.create', compact(['student','questions','rank']));
+
     }
 
     public function store(Request $request)
@@ -124,6 +151,70 @@ class PosttestController extends Controller
         return redirect('/students')->with('success', 'Post-Test completed!');
     }
 
+    public function edit($id)
+    {
+        $questions = [
+            'How open are you about your feelings?', 
+            'How positive do you feel about your future?', 
+            'I am not sure I can trust the adults in my life?', 
+            'I am not sure adults in my life trust me?', 
+            'How comfortable do you feel talking about your past?', 
+            'How likely are you to set goals for the next year?', 
+            'I feel like I can put myself in others shoes?', 
+            'I can understand other people\'s feelings/pain?', 
+            'My friends and I share the same values?', 
+            'I am happy with my friendships?', 
+            'I am good at forgiving others for small mistakes?', 
+            'I have at least one hobby that I enjoy?', 
+            'I am satisfied with the honest conversations I can have with those that are important to me?', 
+            'When I am emotional, I feel comfortable turning to someone I know for help', 
+            'I am part of a community that I can express myself in?', 
+            'I enjoy spending time with talented people', 
+            'As a result of this program, I can: Better express my feelings', 
+            'As a result of this program, I can: More comfortably talk about my past', 
+            'As a result of this program, I can: Trust others more', 
+            'As a result of this program, I can: Better develop friendships', 
+            'As a result of this program, I can: Use art as a tool to express my feelings', 
+            'As a result of this program, I can: Better express my feelings', 
+            'As a result of this program, I can: More comfortably talk about my past', 
+            'As a result of this program, I can: Trust others more', 
+            'As a result of this program, I can: Better develop friendships', 
+            'As a result of this program, I can: Use art as a tool to express my feelings', 
+            'What other benefits have you gained from this program?'
+        ];
+        $rank = [
+            '1=Not open at all, 5=Very open', 
+            '1=Not very positive, 5=Very positive', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Very uncomfortable, 5=Comfortable', 
+            '1=Not likely at all, 5=Very likely', 
+            '1=No, 5=Yes', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+            '1=Strongly disagree, 5=Strongly agree', 
+        ];
+
+        $student = Student::find($id);
+        return view('Posttest.edit', compact(['student','questions','rank']));
+    }
+
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -156,7 +247,7 @@ class PosttestController extends Controller
             'Q27' => 'required'
         ]);
 
-        $posttest = Posttest::find($id);
+        $posttest = Posttest::where('student_id', '=', $id)->first();
         $posttest->Q1 = (int)$request->input('Q1');
         $posttest->Q2 = (int)$request->input('Q2');
         $posttest->Q3 = (int)$request->input('Q3');
@@ -188,5 +279,14 @@ class PosttestController extends Controller
         $posttest->save();
 
         return redirect('/students')->with('success', 'Student Updated!');
+    }
+
+    public function destroy($id)
+    {
+        $posttest = Posttest::where('student_id', '=', $id)->first();
+
+        $posttest->delete();
+
+        return redirect('/students')->with('success', 'Posttest Deleted!');
     }
 }

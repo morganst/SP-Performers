@@ -10,6 +10,7 @@ use App\Classes;
 
 class SearchController extends Controller
 {
+<<<<<<< HEAD
     public function searchStudent(){
         $searchkey = \Request::get('title');
         $students =  Student::where('fullName', 'like', '' .$searchkey. '%')->orWhere('lastName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
@@ -25,6 +26,13 @@ class SearchController extends Controller
         $users = User::where('firstName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
         return view('Instructors/search', ['users' => $users]);
     }
+=======
+    public function __construct()
+    {
+        $this->middleware('auth'); 
+    }
+    
+>>>>>>> fe59e199ab65ccdd78cda3ee2c5e458e8508e565
     function index()
     {
      return view('live_search');

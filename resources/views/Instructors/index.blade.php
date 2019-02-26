@@ -10,7 +10,7 @@
     <h3>Total Instructors: {{count($count)}}</h3>
     <div style="padding-bottom: 1em">Here you can view and edit instructors</div>
     @if(Auth::user()->role==1)
-        <div class="text-right"><a href="instructors/create" class="btn btn-md btn-primary">Add New</a></div>
+        <div class="text-right"><a href="instructors/create" class="button">Add New</a></div>
     @endif
     <hr>
     <form class="form-inline my-2 my-md-2 nav" role="search" method="get" action="{{url("/searchInstructors")}}">
@@ -32,16 +32,13 @@
                 <div>{{$user->firstName}} {{$user->lastName}}
                     <br>
                     <div class="btn-group">
-                        <a class="btn btn-secondary" href="/instructors/{{$user->id}}" role="button">View</a>
+                        <a class="button" href="/instructors/{{$user->id}}" role="button">View</a>
                         @if(Auth::user()->role==1)
-                            <a class="btn btn-primary active" href="/instructors/{{$user->id}}/edit" role="button">Edit</a>
-                            {!!Form::open(['action' => ['InstructorController@destroy', $user->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
-                                {{Form::hidden('_method', 'DELETE')}}
-                                {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
-                            {!!Form::close()!!}
+                            <a class="button" href="/instructors/{{$user->id}}/edit" role="button">Edit</a>
+                            
                         @endif
                         @if(Auth::user()->role == 0 && Auth::user()->id == $user->id)
-                            <a class="btn btn-primary active" href="/instructors/{{$user->id}}/edit" role="button">Edit</a>
+                            <a class="button" href="/instructors/{{$user->id}}/edit" role="button" >Edit</a>
                         @endif
                     </div>
                 </div>

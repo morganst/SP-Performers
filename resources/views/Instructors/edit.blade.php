@@ -1,136 +1,100 @@
 @extends('layouts.app')
 
 @section('content')
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Laravel') }}</title>
-    </head>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Edit Instructor') }}</div>
+    <h1>Edit Instructor</h1>
+    <form method="POST"  action="{{route('instructors.update', $user->id )}}">
+        @csrf
+        <div class="form-row-inline-md">
+            <label for="firstName" class="col-lg-2 control-label">{{ __('First Name') }}</label>
+            <input id="firstName" type="text" class="form-control-right{{ $errors->has('firstName') ? ' is-invalid' : '' }}" name="firstName" value="{{ $user->firstName }}" required autofocus>
 
-                    <div class="card-body">
-                        <form method="POST" action="{{route('instructors.update', $user->id )}}">
-                            @csrf
+            @if ($errors->has('firstName'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('firstName') }}</strong>
+                </span>
+            @endif
+        </div>
 
-                            <div class="form-group row">
-                                <label for="firstName" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
+        <div class="form-row-inline-md">
+            <label for="lastName" class="col-lg-2 control-label">{{ __('Last Name') }}</label>
+                <input id="lastName" type="text" class="form-control-right{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ $user->lastName }}" required autofocus>
+                @if ($errors->has('lastName'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('lastName') }}</strong>
+                    </span>
+                @endif
+        </div>
 
-                                <div class="col-md-6">
-                                    <input id="firstName" type="text" class="form-control{{ $errors->has('firstName') ? ' is-invalid' : '' }}" name="firstName" value="{{ $user->firstName }}" required autofocus>
+        <div class="form-row-inline-md">
+            <label for="email" class="col-lg-2 control-label">{{ __('E-Mail Address') }}</label>
+                <input id="email" type="text" class="form-control-right{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email  }}" required>
+                @if ($errors->has('email'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+        </div>
 
-                                    @if ($errors->has('firstName'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('firstName') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
+        <div class="form-row-inline-md">
+            <label for="center" class="col-lg-2 control-label">{{ __('Center') }}</label>
+                <input id="center" type="text" class="form-control-right{{ $errors->has('center') ? ' is-invalid' : '' }}" name="center" value="{{ $user->center  }}" autofocus>
+                @if ($errors->has('center'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('center') }}</strong>
+                    </span>
+                @endif
+        </div>
 
-                            <div class="form-group row">
-                                <label for="lastName" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+        @if(Auth::user()->role==1)
+        <div class="form-row-inline-md">
+            <label for="center" class="col-lg-2 control-label">{{ __('Role') }}</label>                              
+                <select class="form-control-right" name="role" id="role">
+                    <option <?php if ($user->role == 0) echo 'selected' ; ?> value="0">Instructor</option>
+                    <option <?php if ($user->role == 1) echo 'selected' ; ?> value="1">Admin</option>
+                </select>
+        </div>
+        @endif
+        <hr>
+        Reset Password
+        <br><br>
+        <div class="form-row-inline-md{{ $errors->has('password') ? ' has-error' : '' }}">
+                <label class="col-lg-2 control-label">Password</label>
 
-                                <div class="col-md-6">
-                                    <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ $user->lastName }}" required autofocus>
+                <div class="col-md-6">
+                    <input type="password" class="form-control-right" name="password">
 
-                                    @if ($errors->has('lastName'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('lastName') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email  }}" required>
-
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            
-
-                            <div class="form-group row">
-                                <label for="center" class="col-md-4 col-form-label text-md-right">{{ __('Center') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="center" type="text" class="form-control{{ $errors->has('center') ? ' is-invalid' : '' }}" name="center" value="{{ $user->center  }}" autofocus>
-
-                                    @if ($errors->has('center'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('center') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                            @if(Auth::user()->role==1)
-                            <div class="form-group row">
-                                    <label for="center" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>                              
-                                    <div class="col-md-6">
-                                        <select class="form-control" name="role" id="role">
-                                            <option <?php if ($user->role == 0) echo 'selected' ; ?> value="0">Instructor</option>
-                                            <option <?php if ($user->role == 1) echo 'selected' ; ?> value="1">Admin</option>
-                                        </select>
-                                    </div>
-                            </div>
-                            @endif
-                            <hr>
-                            <h6>Reset Password</h6>
-                            <div class="form-group row{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <label class="col-md-4 col-form-label text-md-right">Password</label>
-        
-                                    <div class="col-md-6">
-                                        <input type="password" class="form-control" name="password">
-        
-                                        @if ($errors->has('password'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('password') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-        
-                                <div class="form-group row{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                    <label class="col-md-4 col-form-label text-md-right">Confirm Password</label>
-        
-                                    <div class="col-md-6">
-                                        <input type="password" class="form-control" name="password_confirmation">
-        
-                                        @if ($errors->has('password_confirmation'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    {{Form::hidden('_method', 'PUT')}}
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Update') }}
-                                    </button>
-                                    <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true" style="float:right;">Back</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
+
+            <div class="form-row-inline-md{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                <label class="col-lg-2 control-label">Confirm Password</label>
+
+                <div class="col-md-6">
+                    <input type="password" class="form-control-right" name="password_confirmation">
+
+                    @if ($errors->has('password_confirmation'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+        <hr>
+        <div class="form-row-inline-md" style="padding-top: 20px">
+                {{Form::hidden('_method', 'PUT')}}
+                {{Form::submit('Save', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 41px;'])}}
+                <a href="{{ URL::previous() }}" class="form-control-right button">Cancel</a>
         </div>
-    </div>
-</html>
+        <div class="form-row-inline-md">
+                {!!Form::open(['action' => ['InstructorController@destroy', $user->id], 'method' => 'POST'])!!}
+                    {{Form::hidden('_method', 'DELETE')}}
+                    {{Form::submit('Delete Instructor', ['class' => 'form-control-right new-btn error-button', 'role' => 'button', 'style' => 'padding-top: 10px'])}}
+                {!!Form::close()!!}
+        </div>
+    </form>
 @endsection

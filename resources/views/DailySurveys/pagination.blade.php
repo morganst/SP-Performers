@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -10,28 +9,37 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       </head>
       <body>
-            <br />
+      @if(isset($data[0]->classes['name']))
+            <br>
+            <div class="daily-survey-container">
             <h3>Student Attendance for: {{$data[0]->classes['name']}}</h3>
             <p>at: {{$data[0]->classes['location']}} ({{$data[0]->classes['time']}})</p>
+      @else
+            <br>
+            <div class="daily-survey-container">
+            <h3>Student Attendance</h3>
+      @endif
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
-            <table>
+            <br><br>
+            <table width="100%">
                   <thead>
                         <tr>
-                        <th>Name</th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
-                        <th>Remove</th>
+                        <th width="30%">Name</th>
+                        <th width="25%" class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
+                        <th width="25%" class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
+                        <th width="20%">Remove</th>
                         </tr>
                   </thead>
                   <tbody>
                         @include('DailySurveys.pagination_data')
                   </tbody>
-            </table>
-            <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
-            <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
-            <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc" />
-            @php echo '<input type="hidden" name="id" value="'.$id.'">'@endphp
-      </body>
+                  </table>
+                  </div>
+                  <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
+                  <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />
+                  <input type="hidden" name="hidden_sort_type" id="hidden_sort_type" value="asc" />
+                  @php echo '<input type="hidden" name="id" value="'.$id.'">'@endphp
+            </body>
       <script>
             $(document).ready(function(){
             

@@ -17,7 +17,7 @@
                 </tr>
                 <tr>
                     <td>How many siblings do you have?</td>
-                    <td>{{ $pretests->Q3 }} </td>
+                    <td>{{ $pretests->Q3 }} Sibling(s)</td>
                 </tr>
                 <tr>
                     <td>How open are you about your feelings? 1=Not open at all, 5=Very open</td>
@@ -89,12 +89,12 @@
                 </tr>
             <table>
 
-            <hr>
             <small>Created : {{$pretests->created_at}}</small>
             @endforeach
         
         <div class="text-right">
-            <a href="{{ URL::previous() }}" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
+            <a href="/pretest/{{$stu->id}}/edit" class="button" role="button" aria-pressed="true">Edit</a>
         </div>
 
 <style>

@@ -60,7 +60,7 @@
                         <td>{{$student->firstName}}</td>
                         <td>{{$student->lastName}} </td>
                         <td>{!!Form::open(['action' => ['ClassController@detachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
-                                    {{Form::submit('Remove from Class', ['class' => 'btn btn-sm btn-danger'])}}
+                                    {{Form::submit('Remove from Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
                             {!!Form::close()!!}</td>
                 </tr>
 
@@ -69,6 +69,6 @@
     </table>
     <hr>
         <div class="text-right">
-            <a href="/classes" class="btn btn-primary" role="button" aria-pressed="true">Back</a>
+            <a href="/classes" class="button" role="button" aria-pressed="true">Back</a>
         </div>
 @endsection

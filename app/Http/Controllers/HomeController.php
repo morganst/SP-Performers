@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Student;
 use App\Note;
 use App\Classes;
+use App\DailySurvey;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -57,28 +58,10 @@ class HomeController extends Controller
                 return $value['created_at'];
             }));
         }
-        $stu = Student::get();
-        foreach($stu as $stu)
-        {
-            foreach($stu->notes as $row)
-            {
-                if(!in_array($row['NId'], $allArray))
-                {
-                    $allArray[$k] = $row['NId'];
-                    $k++;
-                    $row->firstName = $stu->firstName;
-                    $row->lastName = $stu->lastName;
-                    $allNotes[] = $row;
-                }
-            }
-        }
-        if(isset($allNotes))
-        {
-            $allNotes = array_reverse(array_sort($allNotes, function ($value) {
-                return $value['created_at'];
-            }));
-        }
-        return view('welcome',compact(['notes','allNotes']));
+        $allNotes = Note::orderBy('Nid', 'asc')->get();
+        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
+        return view('welcome',compact(['notes','allNotes']))
+            ->with('dailySurveys',$dailySurveys);
     }
 
     public function logout () 
