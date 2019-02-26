@@ -50,32 +50,10 @@
 // }
 
 // updateChart(chartData);
-import React, { Component } from "react";
-import ReactDom from "react-dom";
 
-export default class Main extends Component {
-  componentDidMount(){
-    fetch('/api/students').then(response=>{
-      return response.json();
-    }).then(students => this.setState({students}))
-  }
-
-  renderStudents(){
-    return this.state.students.map(student => {
-      return <div>{student.firstName}</div>
-    })
-  }
-
-  render() {
-    console.log("asd")
-    return (
-      <div>
-
-        {this.renderStudents()};
-      </div>
-    );
-  }
-}
+import React, { Component } from 'react';
+import ReactDom from 'react-dom';
+import Main from './components/Main';
 
 if (document.getElementById("react-render")) {
   ReactDom.render(<Main />, document.getElementById("react-render"));

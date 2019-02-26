@@ -44,7 +44,7 @@ class StudentController extends Controller
         $student->primaryClass = $request->input('primaryClass');
         $student->reference = $request->input('reference');
         //$student->enrolled = $request->input('enrolled');
-       
+
         //$student->user_id = auth()->user()->id;
         $student->save();
 
@@ -89,7 +89,7 @@ class StudentController extends Controller
         $student->primaryClass = $request->input('primaryClass');
         $student->reference = $request->input('reference');
         $student->enrolled = $request->input('enrolled');
-       
+
         $student->save();
 
         return redirect('/students')->with('success', 'Student Updated!');

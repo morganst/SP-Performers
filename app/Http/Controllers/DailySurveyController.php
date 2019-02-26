@@ -86,6 +86,13 @@ class DailySurveyController extends Controller
         return back()->with('cla',$cla)->with('id',$id)->with('dailySurveys',$dailySurveys)->with('success', 'Survey Submitted!');
     }
 
+    public function chart()
+    {
+        $result = \DB::table('dailySurveys')
+                    ->get('StudentID');
+        return response()->json($result);
+    }
+
     /**
      * Display the specified resource.
      *

@@ -20,29 +20,29 @@
         <h2><?php $num = array();?></h2>
         Students:
         @foreach ($cla->student as $student)
-                <div style="border:1px solid black;padding:8px;" class="class-layout-row">
+            <div style="border:1px solid black;padding:8px;" class="class-layout-row">
                 <a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a>
                 <span style="float:right;">
-                <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
-                @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend)&&isset($student->attendance->where('classes_id', $cla->id)->first()->attend))
-                {{Form::label('present'.$i.'', 'Present')}}
-                {{Form::radio('attend['.$i.']', '1',$student->attendance->where('classes_id', $cla->id)->first()->attend == 1, array('id'=>'present'.$i.''))}}
-                {{Form::label('absent'.$i.'', 'Absent')}}
-                {{Form::radio('attend['.$i.']', '0',$student->attendance->where('classes_id', $cla->id)->first()->attend == 0, array('id'=>'absent'.$i.''))}}
-                @else
-                {{Form::label('present'.$i.'', 'Present')}}
-                {{Form::radio('attend['.$i.']', '1', false, array('id'=>'present'.$i.''))}}
-                {{Form::label('absent'.$i.'', 'Absent')}}
-                {{Form::radio('attend['.$i.']', '0', false, array('id'=>'absent'.$i.''))}}
-                @endif
+                    <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" class="btn btn-primary" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
+                    @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend)&&isset($student->attendance->where('classes_id', $cla->id)->first()->attend))
+                    {{Form::label('present'.$i.'', 'Present')}}
+                    {{Form::radio('attend['.$i.']', '1',$student->attendance->where('classes_id', $cla->id)->first()->attend == 1, array('id'=>'present'.$i.''))}}
+                    {{Form::label('absent'.$i.'', 'Absent')}}
+                    {{Form::radio('attend['.$i.']', '0',$student->attendance->where('classes_id', $cla->id)->first()->attend == 0, array('id'=>'absent'.$i.''))}}
+                    @else
+                    {{Form::label('present'.$i.'', 'Present')}}
+                    {{Form::radio('attend['.$i.']', '1', false, array('id'=>'present'.$i.''))}}
+                    {{Form::label('absent'.$i.'', 'Absent')}}
+                    {{Form::radio('attend['.$i.']', '0', false, array('id'=>'absent'.$i.''))}}
+                    @endif
                 </span>
-        </div>
-        <input type="hidden" name="stu[]" value="<?php echo $student->id; ?>"/>
-        <input type="hidden" name="cla" value="<?php echo $cla->id; ?>"/>
-        <?php $num[$i] = $i; ?>
-        <?php
-        $i++;
-        ?>
+            </div>
+
+            <input type="hidden" name="stu[]" value="<?php echo $student->id; ?>"/>
+            <input type="hidden" name="cla" value="<?php echo $cla->id; ?>"/>
+
+            <?php $num[$i] = $i;$i++; ?>
+
         @endforeach
         <br>
         <div class="text-right">
@@ -54,23 +54,6 @@
 
     <hr>
     <h2>Graph:</h2>
-    <script>
-            function myFunction() {
-                var numbersArray;
-                for(i = 0; i < 10; i++)
-                {
-                    var x;
-
-                    x = Math.floor((Math.random() * 100) + 1);
-                    numbersArray[i] = x;
-                }
-                numbersArray = document.getElementById("demo");
-            }
-            </script>
-    <button onclick="myFunction()">Generate Numbers</button>
-
-    <p id="demo"></p>
-
 
     <div id="chart2">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -96,6 +79,7 @@
         chart.render();
         </script>
     </div>
+
     <div id="chart3">
             <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script>
@@ -127,7 +111,6 @@
         </script>
 
     </div>
-
 
     <div id="chart">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
