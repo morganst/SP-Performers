@@ -21,17 +21,17 @@ class ClassController extends Controller
     {
         
         $classes = Classes::orderBy('created_at', 'des')->paginate(9);
-
+        $search=Classes::all();
 
        
-        $filter = array("other");
+        $filter = array("");
         $check = "";
        
     
 
     
     
-     foreach($classes as $class){
+     foreach($search as $class){
      
                     $size=sizeof($filter);
                     for ($i = 0; $i < $size; $i++){
