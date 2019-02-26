@@ -17,9 +17,45 @@ class ClassController extends Controller
     }
 
     public function index()
+    
     {
+        
         $classes = Classes::orderBy('created_at', 'des')->paginate(9);
-        return view('Classes.index')->with('classes', $classes);
+
+
+       
+        $filter = array("other");
+        $check = "";
+       
+    
+
+    
+    
+     foreach($classes as $class){
+     
+                    $size=sizeof($filter);
+                    for ($i = 0; $i < $size; $i++){
+                        if($class->location==$filter[$i]){
+                            $check="yes";
+                            break;
+                        }
+                        else{
+                            $check="no";
+                        }
+                    
+    
+  
+                        
+                     
+                      }
+                      
+                    if( $check=="no"){
+                        array_push($filter,$class->location);
+                        }
+                    }
+                         
+                         
+        return view('Classes.index',compact(['filter', 'classes']));
     }
 
     public function create()

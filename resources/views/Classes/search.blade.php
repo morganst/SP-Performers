@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     @if(session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}
@@ -8,13 +9,10 @@
     @endif
    
     <h1>Class Index</h1>
-    
-    <div style="padding-bottom: 1em">Here you can view and edit classes</div>
-    
     <br>
     
     @if(Auth::user()->role==1)
-    <div class="text-right"><a href="/classes/create" class="btn btn-md btn-primary">Add New</a></div>
+    <div class="new-btn primary-button"><a href="/classes/create">Add New</a></div>
     @endif
     <hr>
     <form class="form-inline my-2 my-md-2 nav" role="search" method="get" action="{{url("/searchClasses")}}">
@@ -25,41 +23,38 @@
                 </div>
             </div>
     </form> 
+    <ul class="dropdown-menu">
+                        <li><a href="/filter?title=DCPS">DCPS</a></li>
+                    <li>  <a href="/filter?title=Juvi">Juvenile detention</a></li>
+
+                        <li>  <a href="/filter?title=other">other</a></li>
+                    </ul>
     @if(count($classes) > 0)
-        <div class="row">
-            <div class="col-3 col-lg-3">Class Name</div>
-        </div>
-        <div class="flex-container">
             @foreach($classes as $class)
-                <div class="container">
-                    {{$class->name}}:
-                    <br>
-                    <div class="btn-group">
-                        <a class="button" href="/classes/{{$class->id}}" role="button">View</a>
-                        @if(Auth::user()->role==1)
-                            <a class="btn btn-primary active" href="/classes/{{$class->id}}/edit" role="button">Edit</a>
-                            {!!Form::open(['action' => ['ClassController@destroy', $class->id], 'method' => 'POST', 'class' => 'btn btn-sm btn-danger'])!!}
-                                {{Form::hidden('_method', 'DELETE')}}
-                                {{Form::submit('Delete', ['class' => 'btn btn-sm btn-danger'])}}
-                            {!!Form::close()!!}
-                        @endif
-                    </div>
-                    <br><br>
-                    <div class="btn-group">
-                            @if(Auth::user()->role==1)
-                                <a class="btn btn-primary active" href="/classes/{{$class->id}}/addUser" role="button">Assign Instructor</a>
-                                <a class="btn btn-primary active" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
-                            @endif
-                    </div>
+            <div class="w3-card-4" style="width:80%; max-width: 350px; display: inline-block">
+                <div class="w3-container w3-light-grey">
+                    <h3>{{$class->name}}</h3>
                 </div>
-                <div class="row">&nbsp;</div>
+                <div class="w3-container">
+                    <p>Time: {{$class->time}}</p>   
+                    <p>Location: {{$class->location}}</p>
+                    <hr>
+                </div>
+                    
+                @if(Auth::user()->role==1)
+                    <a class="new-btn edit-button" href="/classes/{{$class->id}}/edit" style="float: right" role="button">Edit</a>
+                @endif
+                
+                @if(Auth::user()->role==1)
+                    <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}/addUser" role="button">Assign Instructor</a>
+                    <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
+                @endif
+
+                <a class="w3-button w3-block w3-blue" href="/classes/{{$class->id}}" role="button">View Class</a>
+                </div>
             @endforeach
-        </div>
     {{$classes->links()}}
     @else
         <p>No classes found</p>
     @endif
-    <div class="text-right">
-            <a href="/" class="button" role="button" aria-pressed="true">Back</a>
-    </div>
 @endsection

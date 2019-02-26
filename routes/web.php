@@ -84,7 +84,7 @@ Route::get('/searchClasses', 'SearchController@searchClasses');
 Route::get('/searchInstructors', 'SearchController@searchInstructors');
 /* Route::get('/live_search', 'SearchController@index');
 Route::get('/live_search/action', 'SearchController@action')->name('live_search.action'); */
-
+Route::get('/filter', 'FilterController@filter');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
