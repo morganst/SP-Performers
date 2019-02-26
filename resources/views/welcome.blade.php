@@ -93,7 +93,7 @@
                 $class = "";
                 if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
-                else if($note['Type'] == "None")
+                else if($note['Type'] == "Note")
                     $class = "note-note-card";
                 else if($note['Type'] == "Incident")
                     $class = "incident-note-card";
@@ -138,7 +138,7 @@
                 $class = "";
                 if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
-                else if($note['Type'] == "None")
+                else if($note['Type'] == "Note")
                     $class = "note-note-card";
                 else if($note['Type'] == "Incident")
                     $class = "incident-note-card";

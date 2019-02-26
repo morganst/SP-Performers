@@ -5,7 +5,7 @@
         $class = "";
         if($note['Type'] == "Breakthrough")
             $class = "breakthrough-search";
-        else if($note['Type'] == "None")
+        else if($note['Type'] == "Note")
             $class = "none-search";
         else if($note['Type'] == "Incident")
             $class = "incident-search";
