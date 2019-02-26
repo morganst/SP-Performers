@@ -19,7 +19,41 @@ class SearchController extends Controller
     public function searchClasses(){
         $searchkey = \Request::get('title');
         $classes = Classes::where('name', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
-        return view('Classes/search', ['classes' => $classes]);
+        $search=Classes::all();
+
+       
+        $filter = array("");
+        $check = "";
+       
+    
+
+    
+    
+     foreach($search as $class){
+     
+                    $size=sizeof($filter);
+                    for ($i = 0; $i < $size; $i++){
+                        if($class->location==$filter[$i]){
+                            $check="yes";
+                            break;
+                        }
+                        else{
+                            $check="no";
+                        }
+                    
+    
+  
+                        
+                     
+                      }
+                      
+                    if( $check=="no"){
+                        array_push($filter,$class->location);
+                        }
+                    }
+                         
+                         
+                    return view('Classes.index',compact(['filter', 'classes']));
     }
     public function searchInstructors(){
         $searchkey = \Request::get('title');
