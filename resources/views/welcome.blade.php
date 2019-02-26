@@ -78,8 +78,9 @@
                 @endif
 
                 <a class="w3-button w3-block w3-blue" href="/classes/{{$class->id}}" role="button">View Class</a>
+           </div>
             @endforeach
-        </div>
+        
     <hr>
     {{-- For instructor --}}
     @if(isset($notes) && Auth::user()->role==0)
