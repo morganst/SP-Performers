@@ -228,7 +228,6 @@ input[type="radio"] {
 /* END LOGIN PAGE*/
 
 .login-page{
-    height: 100vh;
     margin: 0;
     background: radial-gradient(#4795a8, #6dd5ed);
     background-repeat: no-repeat;
