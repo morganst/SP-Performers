@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $faker->randomElement(['Dance','Art', 'Music']),
                 'limit' => $faker->numberBetween(10,20),
                 'time' => $faker->time($format = 'H:i'),
-                'location' => $faker->state,
+                'location' => $faker->randomElement(['DCPS','Juvi','other']),
             ]);
         }
 
