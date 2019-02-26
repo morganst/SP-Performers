@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 @php 
 $var="I/B"; 
 @endphp
-=======
-<h1 class="hidden">{{$var="Type"}}</h1> 
->>>>>>> fe59e199ab65ccdd78cda3ee2c5e458e8508e565
 @extends('layouts.app')
 
 @section('content')
