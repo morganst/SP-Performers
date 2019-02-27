@@ -377,7 +377,7 @@ label {
 .dashboard-note .incident-note-card
 {
     padding: 10px;
-    background-color: #d66363;
+    background-color:  #ff2f2fb7;
     border-color: #ebccd1;
     color: white;
     margin-bottom: 15px;
@@ -557,6 +557,15 @@ label {
 }
 
 .incident-search
+{
+    padding: 10px;
+    background-color: #ff2f2fb7;
+    border-color: #ebccd1;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.severe-note-search
 {
     padding: 10px;
     background-color: #d66363;

@@ -41,7 +41,14 @@ class DailySurveyController extends Controller
         //
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         $cla = Classes::find($id);
-        return view('DailySurveys.create')->with('cla', $cla)->with('lookupID',$lookupID)->with('dailySurveys',$dailySurveys);
+        for($i=0;$i<count($cla->student);$i++)
+        {
+            $array[$i] = $cla->student[$i]->id;
+        }
+        $key = array_search($lookupID, $array);
+        $next = $key + 1;
+        $prev = $key - 1;
+        return view('DailySurveys.create',compact(['cla','lookupID','dailySurveys','next','prev','array']));
     }
 
     /**
