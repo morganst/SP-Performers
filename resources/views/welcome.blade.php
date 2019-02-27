@@ -78,8 +78,8 @@
                 @endif
 
                 <a class="w3-button w3-block w3-blue" href="/classes/{{$class->id}}" role="button">View Class</a>
+           </div>
             @endforeach
-        </div>
     <hr>
     {{-- For instructor --}}
     @if(isset($notes) && Auth::user()->role==0)
@@ -90,7 +90,7 @@
                 $class = "";
                 if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
-                else if($note['Type'] == "None")
+                else if($note['Type'] == "Note")
                     $class = "note-note-card";
                 else if($note['Type'] == "Incident")
                     $class = "incident-note-card";
@@ -132,7 +132,7 @@
                 $class = "";
                 if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
-                else if($note['Type'] == "None")
+                else if($note['Type'] == "Note")
                     $class = "note-note-card";
                 else if($note['Type'] == "Incident")
                     $class = "incident-note-card";

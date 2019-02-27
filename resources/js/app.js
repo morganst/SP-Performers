@@ -34,8 +34,6 @@ export default class Main extends Component {
 
                 const _date = new Date(survey.date)
 
-                console.log(_date)
-
                 if(_date > lastWeek)
                 {
                     studentNumber++;
@@ -83,13 +81,20 @@ export default class Main extends Component {
 
                 });
 
-                console.log(studentNumber)
+                mon = Math.round( (mon / studentNumber) * 100);
+                mon = mon / 100;
 
-                mon = mon / studentNumber;
-                tues = tues / studentNumber;
-                wed = wed / studentNumber;
-                thurs = thurs / studentNumber;
-                friday = friday / studentNumber;
+                tues = Math.round( (tues / studentNumber) * 100);
+                tues = tues / 100;
+
+                wed = Math.round( (wed / studentNumber) * 100);
+                wed = wed / 100;
+
+                thurs = Math.round( (thurs / studentNumber) * 100);
+                thurs = thurs / 100;
+
+                friday = Math.round( (friday / studentNumber) * 100);
+                friday = friday / 100;
 
                 if(mon === 0) mon = null;
                 if(tues === 0) tues = null;

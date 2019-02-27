@@ -1,4 +1,6 @@
-<h1 class="hidden">{{$var="Type"}}</h1> 
+@php 
+$var="I/B"; 
+@endphp
 @extends('layouts.app')
 
 @section('content')
@@ -28,7 +30,7 @@
                 {!! Form::label('Type', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}
             
                     
-                    {!!  Form::select('Type', ['Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'None' => 'None'], '' , ['class' => 'form-control-right' ]) !!}
+                    {!!  Form::select('Type', ['Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'Note' => 'Note'], '' , ['class' => 'form-control-right' ]) !!}
          
             </div>
             &nbsp;

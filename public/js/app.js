@@ -64002,8 +64002,6 @@ function (_Component) {
         survey.map(function (survey) {
           var _date = new Date(survey.date);
 
-          console.log(_date);
-
           if (_date > lastWeek) {
             studentNumber++;
 
@@ -64053,12 +64051,16 @@ function (_Component) {
             }
           }
         });
-        console.log(studentNumber);
-        mon = mon / studentNumber;
-        tues = tues / studentNumber;
-        wed = wed / studentNumber;
-        thurs = thurs / studentNumber;
-        friday = friday / studentNumber;
+        mon = Math.round(mon / studentNumber * 100);
+        mon = mon / 100;
+        tues = Math.round(tues / studentNumber * 100);
+        tues = tues / 100;
+        wed = Math.round(wed / studentNumber * 100);
+        wed = wed / 100;
+        thurs = Math.round(thurs / studentNumber * 100);
+        thurs = thurs / 100;
+        friday = Math.round(friday / studentNumber * 100);
+        friday = friday / 100;
         if (mon === 0) mon = null;
         if (tues === 0) tues = null;
         if (wed === 0) wed = null;
@@ -64118,8 +64120,8 @@ if (document.getElementById("react-render")) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\SP-Performers\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\SP-Performers\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Morga\Documents\repos\SP-Performers\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Morga\Documents\repos\SP-Performers\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
