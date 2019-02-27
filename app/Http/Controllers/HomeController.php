@@ -29,11 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         $array = [];
-        $allArray = [];
         $i=0;
-        $k=0;
         $notes = [];
-        $allNotes = [];
 
         foreach(Auth::user()->classes as $classes)
         {
@@ -58,10 +55,10 @@ class HomeController extends Controller
                 return $value['created_at'];
             }));
         }
-        $allNotes = Note::orderBy('Nid', 'asc')->get();
+        $i = 0;
+        $allNotes = Note::orderBy('Nid', 'asc')->paginate(4);
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
-        return view('welcome',compact(['notes','allNotes']))
-            ->with('dailySurveys',$dailySurveys);
+        return view('welcome',compact(['notes','allNotes','dailySurveys','i']));
     }
 
     public function logout () 

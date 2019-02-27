@@ -50,7 +50,7 @@
         else if($note['Type'] == "Incident")
             $class = "incident-search";
         else
-            $class = "severe-note-card";
+            $class = "severe-note-search";
     @endphp
         @if($note['Hide'] != 'Yes')
             <tr class="{{$class}}">

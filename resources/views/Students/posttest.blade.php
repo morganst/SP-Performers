@@ -32,7 +32,7 @@
                     <td>{{ $posttests->Q6 }} </td>
                 </tr>
                 <tr>
-                    <td>I feel like I can put myself in others shoes? 1=No, 5=Yes</td>
+                    <td>I feel like I can put myself in others shoes? 1=Strongly disagree, 5=Strongly agree</td>
                     <td>{{ $posttests->Q7 }} </td>
                 </tr>
                 <tr>

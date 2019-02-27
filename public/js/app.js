@@ -64118,8 +64118,8 @@ if (document.getElementById("react-render")) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Morgan\Documents\repos\SP-Performers\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Morgan\Documents\repos\SP-Performers\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\SP-Performers\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\SP-Performers\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
