@@ -71,7 +71,9 @@ Route::get('classes/{id}/addUser', 'ClassController@addUser');
 
 Route::post('/attachStudent/{student_id}/{classes_id}', 'ClassController@attachStudent');
 Route::post('/detachStudent/{student_id}/{classes_id}', 'ClassController@detachStudent');
+
 Route::get('classes/{id}/addStudent', 'ClassController@addStudent');
+Route::get('classes/{id}/addStudent/fetch_data', 'ClassController@fetch_data');
 
 Route::resource('/dailysurvey','DailySurveyController');
 Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create');

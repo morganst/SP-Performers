@@ -159,9 +159,12 @@ class ClassController extends Controller
 
     public function addStudent($id)
     {
+        $array = array();
         $cla = Classes::find($id);
         $students = Student::paginate(10);
-        return view('Classes.addStudent', compact(['cla', 'students']));
+        for($i=0;$i<count($cla->student);$i++)
+            $array[$i] = $cla->student[$i]->pivot['student_id'];
+        return view('Classes.addStudent', compact(['students','id','cla','array']));
     }
 
     public function attachStudent($class_id,$student_id)
@@ -177,5 +180,21 @@ class ClassController extends Controller
         $cla->student()->detach($student_id);
         return back()->with('success', 'Student Removed!');
     }
-
+    function fetch_data(Request $request, $id)
+    {
+        if($request->ajax())
+     {
+      $array = array();
+      $sort_by = $request->get('sortby');
+      $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $students = Student::where('fullName', 'like', '%'.$query.'%')->orderBy($sort_by, $sort_type)
+            ->paginate(10);
+            $cla = Classes::find($id);
+            for($i=0;$i<count($cla->student);$i++)
+            $array[$i] = $cla->student[$i]->pivot['student_id'];
+      return view('Classes.addStudentData', compact('students','cla','array'))->render();
+     }
+    }
 }
