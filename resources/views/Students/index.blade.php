@@ -21,12 +21,13 @@
                     <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i>Search</button>
                 </div>
             </div>
+            <br>
     </form> 
     @if(count($students) > 0)
-        <div class="student-index-container">
+        <div>
             @foreach($students as $student)
                     <div class="student">
-                        <a class="student-name" href="/students/{{$student->id}}" role="button">{{$student->firstName}} {{$student->lastName}}</a>
+                        <a class="student-name" href="/students/{{$student->id}}" role="button">{{$student->fullName}}</a>
                     </div>
             @endforeach
         </div>

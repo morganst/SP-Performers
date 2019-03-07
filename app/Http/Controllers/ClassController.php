@@ -140,7 +140,7 @@ class ClassController extends Controller
     {
         $array = array();
         $cla = Classes::find($id);
-        $users = User::where('role', '0')->paginate(10);
+        $users = User::where('role', '0')->paginate(8);
         for($i=0;$i<count($cla->user);$i++)
             $array[$i] = $cla->user[$i]->pivot['user_id'];
         return view('Classes.addUser', compact(['cla', 'users','array','id']));
@@ -164,7 +164,7 @@ class ClassController extends Controller
     {
         $array = array();
         $cla = Classes::find($id);
-        $students = Student::paginate(10);
+        $students = Student::paginate(8);
         for($i=0;$i<count($cla->student);$i++)
             $array[$i] = $cla->student[$i]->pivot['student_id'];
         return view('Classes.addStudent', compact(['students','id','cla','array']));
@@ -193,7 +193,7 @@ class ClassController extends Controller
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
             $students = Student::where('fullName', 'like', '%'.$query.'%')->orderBy($sort_by, $sort_type)
-            ->paginate(10);
+            ->paginate(8);
             $cla = Classes::find($id);
             for($i=0;$i<count($cla->student);$i++)
             $array[$i] = $cla->student[$i]->pivot['student_id'];
@@ -211,7 +211,7 @@ class ClassController extends Controller
             $query = str_replace(" ", "%", $query);
             $users = User::where('firstName', 'like', '%'.$query.'%')->where('role', '0')->
             orWhere('lastName', 'like', '%'.$query.'%')->where('role', '0')->orderBy($sort_by, $sort_type)
-            ->paginate(10);
+            ->paginate(8);
             $cla = Classes::find($id);
             for($i=0;$i<count($cla->user);$i++)
             $array[$i] = $cla->user[$i]->pivot['user_id'];

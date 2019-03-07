@@ -18,7 +18,7 @@ class StudentController extends Controller
     public function index()
     {
         $count = Student::where('enrolled', '0')->get();
-        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(23);
+        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(20);
         return view('Students.index', compact(['students', 'count']));
     }
 
