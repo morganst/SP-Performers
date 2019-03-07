@@ -138,9 +138,12 @@ class ClassController extends Controller
 
     public function addUser($id)
     {
+        $array = array();
         $cla = Classes::find($id);
-        $users = User::where('role', '0')->get();
-        return view('Classes.addUser', compact(['cla', 'users']));
+        $users = User::where('role', '0')->paginate(10);
+        for($i=0;$i<count($cla->user);$i++)
+            $array[$i] = $cla->user[$i]->pivot['user_id'];
+        return view('Classes.addUser', compact(['cla', 'users','array','id']));
     }
 
     public function attachUser($class_id,$user_id)
@@ -195,6 +198,24 @@ class ClassController extends Controller
             for($i=0;$i<count($cla->student);$i++)
             $array[$i] = $cla->student[$i]->pivot['student_id'];
       return view('Classes.addStudentData', compact('students','cla','array'))->render();
+     }
+    }
+    function fetch_user(Request $request, $id)
+    {
+        if($request->ajax())
+     {
+      $array = array();
+      $sort_by = $request->get('sortby');
+      $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+            $users = User::where('firstName', 'like', '%'.$query.'%')->where('role', '0')->
+            orWhere('lastName', 'like', '%'.$query.'%')->where('role', '0')->orderBy($sort_by, $sort_type)
+            ->paginate(10);
+            $cla = Classes::find($id);
+            for($i=0;$i<count($cla->user);$i++)
+            $array[$i] = $cla->user[$i]->pivot['user_id'];
+      return view('Classes.addUserData', compact('users','array','cla','id'))->render();
      }
     }
 }

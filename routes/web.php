@@ -67,13 +67,15 @@ Route::resource('pretest', 'PretestController');
 Route::resource('posttest', 'PosttestController');
 Route::post('/attachUser/{user_id}/{classes_id}', 'ClassController@attachUser');
 Route::post('/detachUser/{user_id}/{classes_id}', 'ClassController@detachUser');
-Route::get('classes/{id}/addUser', 'ClassController@addUser');
 
 Route::post('/attachStudent/{student_id}/{classes_id}', 'ClassController@attachStudent');
 Route::post('/detachStudent/{student_id}/{classes_id}', 'ClassController@detachStudent');
 
 Route::get('classes/{id}/addStudent', 'ClassController@addStudent');
 Route::get('classes/{id}/addStudent/fetch_data', 'ClassController@fetch_data');
+
+Route::get('classes/{id}/addUser', 'ClassController@addUser');
+Route::get('classes/{id}/addUser/fetch_user', 'ClassController@fetch_user');
 
 Route::resource('/dailysurvey','DailySurveyController');
 Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create');
