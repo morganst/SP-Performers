@@ -22,7 +22,7 @@
             <div class="form-row-inline-md">
                 {!! Form::label('DOB', 'Date of Birth', ['class' => 'col-lg-2 control-label'] )  !!}
                 
-                    {{Form::date('DOB', \Carbon\Carbon::now(), ['class' => 'form-control-right'])}}
+                    {{Form::date('DOB', \Carbon\Carbon::now('America/New_York'), ['class' => 'form-control-right'])}}
 
             </div>
             &nbsp;
