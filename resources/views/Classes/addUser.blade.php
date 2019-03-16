@@ -9,7 +9,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       </head>
       <body>
-            <div class="daily-survey-container">
+            <div class="live-container">
             <h3>Add Instructors to Class: {{$cla->name}}</h3>
             <p>at: {{$cla->location}} ({{$cla->time}})</p>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>

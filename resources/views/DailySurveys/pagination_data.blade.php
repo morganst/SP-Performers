@@ -20,7 +20,7 @@
 </tr>
 @endif
 <tr>
-    <td colspan="4" align="center">
+    <td colspan="4" align="left">
         {!! $data->links() !!}
     </td>
 </tr>

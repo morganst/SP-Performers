@@ -448,7 +448,7 @@ label {
 }
 
 .page-link:link {
-    color: #265778
+    color: #265778;
 }
 
 .float-right {
@@ -573,3 +573,15 @@ label {
     color: white;
     margin-bottom: 15px;
 }
+
+.live-container{
+    text-align: center;
+    width: 80%;
+    padding: 2px 15px;
+    margin: auto;
+    background-color: lightblue;/* COLOR */
+    border-radius: 25px;
+}
+
+
+
