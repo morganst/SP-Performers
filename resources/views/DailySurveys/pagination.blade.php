@@ -11,12 +11,12 @@
       <body>
       @if(isset($data[0]->classes['name']))
             <br>
-            <div class="daily-survey-container">
+            <div class="live-container">
             <h3>Student Attendance for: {{$data[0]->classes['name']}}</h3>
             <p>at: {{$data[0]->classes['location']}} ({{$data[0]->classes['time']}})</p>
       @else
             <br>
-            <div class="daily-survey-container">
+            <div class="live-container">
             <h3>Student Attendance</h3>
       @endif
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>

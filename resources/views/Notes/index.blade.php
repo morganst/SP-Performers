@@ -10,7 +10,7 @@
       </head>
       <body>
             <br>
-            <div class="daily-survey-container">
+            <div class="live-container">
             <h3>Student Notes:</h3>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
             <br><br>

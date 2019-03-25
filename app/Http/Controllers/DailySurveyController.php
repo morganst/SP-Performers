@@ -38,8 +38,6 @@ class DailySurveyController extends Controller
      */
     public function create($id, $lookupID)
     {
-        //
-        $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         $cla = Classes::find($id);
         for($i=0;$i<count($cla->student);$i++)
         {
@@ -48,7 +46,7 @@ class DailySurveyController extends Controller
         $key = array_search($lookupID, $array);
         $next = $key + 1;
         $prev = $key - 1;
-        return view('DailySurveys.create',compact(['cla','lookupID','dailySurveys','next','prev','array']));
+        return view('DailySurveys.create',compact(['cla','lookupID','next','prev','array']));
     }
 
     /**

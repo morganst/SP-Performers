@@ -168,17 +168,23 @@
                 @endif
             &nbsp;
         </table>
+        <br>
                 {{Form::submit('Submit',['class' => 'button'])}}
-                @if($next < count($array))
-            <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="button" role="button" aria-pressed="true" onclick="return Confirm()">Next</a>
-                @endif
-                @if($prev > -1)
-                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="button" role="button" aria-pressed="true" onclick="return Confirm()">Previous</a>
+                @if($next < count($array) && $prev == -1)
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="button" role="button" aria-pressed="true">Next</a>
+                <a class="button" role="button" aria-pressed="true" style="background-color:transparent; color:grey">Previous</a>
+                @elseif($next < count($array) && $prev > -1)
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$next]}}" class="button" role="button" aria-pressed="true">Next</a>
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="button" role="button" aria-pressed="true">Previous</a>
+                @elseif($prev > -1 && $next == count($array))
+                <a class="button" role="button" aria-pressed="true" style="background-color:transparent; color:grey">Next</a>
+                <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="button" role="button" aria-pressed="true">Previous</a>
                 @endif
                 <a href="/classes/show/{{$cla->id}}" class="button">back</a>
     {!! Form::close() !!}
+    <br>
     </div>
-    <script>
+    {{-- <script>
         function Confirm()
         {
             for (var i = 0; i < document.getElementsByName('Q1').length; i++)
@@ -204,5 +210,5 @@
                 }
             }
         }
-      </script>
+      </script> --}}
 @endsection
