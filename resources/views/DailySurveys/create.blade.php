@@ -118,52 +118,52 @@
                 @if(isset(DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->date)&&(DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->date== date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York')))))
             <tr>
                     <td>{!! Form::radio('Mood', '1', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 1) !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '2', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 2)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '3', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 3)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '4', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 4)  !!}<span>happy</span></td>
+                    <td>{!! Form::radio('Mood', '2', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 2)  !!}<span>accepted</span></td>
+                    <td>{!! Form::radio('Mood', '3', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 3)  !!}<span>peaceful</span></td>
+                    <td>{!! Form::radio('Mood', '4', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 4)  !!}<span>optimistic</span></td>
             </tr>
             <tr>
-                    <td>{!! Form::radio('Mood', '5', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 5)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '6', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 6)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '7', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 7)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '8', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 8)  !!}<span>happy</span></td>
+                    <td>{!! Form::radio('Mood', '5', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 5)  !!}<span>proud</span></td>
+                    <td>{!! Form::radio('Mood', '6', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 6)  !!}<span>appreciated</span></td>
+                    <td>{!! Form::radio('Mood', '7', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 7)  !!}<span>respected</span></td>
+                    <td>{!! Form::radio('Mood', '8', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 8)  !!}<span>sad</span></td>
             </tr>
             <tr>
-                    <td>{!! Form::radio('Mood', '9', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 9)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '10', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 10)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '11', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 11)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '12', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 12)  !!}<span>happy</span></td>
+                    <td>{!! Form::radio('Mood', '9', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 9)  !!}<span>lonely</span></td>
+                    <td>{!! Form::radio('Mood', '10', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 10)  !!}<span>guilty</span></td>
+                    <td>{!! Form::radio('Mood', '11', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 11)  !!}<span>scared</span></td>
+                    <td>{!! Form::radio('Mood', '12', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 12)  !!}<span>helpless</span></td>
             </tr>
             <tr>
-                    <td>{!! Form::radio('Mood', '13', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 13)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '14', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 14)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '15', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 15)  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '16', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 16)  !!}<span>happy</span></td>
+                    <td>{!! Form::radio('Mood', '13', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 13)  !!}<span>insecure</span></td>
+                    <td>{!! Form::radio('Mood', '14', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 14)  !!}<span>anxious</span></td>
+                    <td>{!! Form::radio('Mood', '15', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 15)  !!}<span>angry</span></td>
+                    <td>{!! Form::radio('Mood', '16', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->mood == 16)  !!}<span>hurt</span></td>
             </tr>
                 @else
                 <tr>
                     <td>{!! Form::radio('Mood', '1')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '2')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '3')  !!}<span>happy</span></td>
-                    <td> {!! Form::radio('Mood', '4')  !!}<span>happy</span></td>
+                    <td>{!! Form::radio('Mood', '2')  !!}<span>proud</span></td>
+                    <td>{!! Form::radio('Mood', '3')  !!}<span>peaceful</span></td>
+                    <td> {!! Form::radio('Mood', '4')  !!}<span>optimistic</span></td>
                 </tr>
                 <tr>
-                    <td>{!! Form::radio('Mood', '5')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '6')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '7')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '8')  !!}<span>happy</span></td>
+                    <td>{!! Form::radio('Mood', '5')  !!}<span>accepted</span></td>
+                    <td>{!! Form::radio('Mood', '6')  !!}<span>appreciated</span></td>
+                    <td>{!! Form::radio('Mood', '7')  !!}<span>respected</span></td>
+                    <td>{!! Form::radio('Mood', '8')  !!}<span>sad</span></td>
                 </tr>
                 <tr>
-                    <td>{!! Form::radio('Mood', '9')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '10')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '11')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '12')  !!}<span>happy</span></td>
+                    <td>{!! Form::radio('Mood', '9')  !!}<span>lonely</span></td>
+                    <td>{!! Form::radio('Mood', '10')  !!}<span>guilty</span></td>
+                    <td>{!! Form::radio('Mood', '11')  !!}<span>scared</span></td>
+                    <td>{!! Form::radio('Mood', '12')  !!}<span>helpless</span></td>
                 </tr>
                 <tr>
-                    <td>{!! Form::radio('Mood', '13')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '14')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '15')  !!}<span>happy</span></td>
-                    <td>{!! Form::radio('Mood', '16')  !!}<span>happy</span></td>
+                    <td>{!! Form::radio('Mood', '13')  !!}<span>insecure</span></td>
+                    <td>{!! Form::radio('Mood', '14')  !!}<span>anxious</span></td>
+                    <td>{!! Form::radio('Mood', '15')  !!}<span>angry</span></td>
+                    <td>{!! Form::radio('Mood', '16')  !!}<span>hurt</span></td>
                 </tr>
                 @endif
             &nbsp;

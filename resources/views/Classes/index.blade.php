@@ -12,8 +12,8 @@
 }
 
 .dropdown {
-   left: 1px;
-    top:-10px;
+  left: 1px;
+  top:-10px;
   position: relative;
   display: inline;
 }
@@ -50,10 +50,10 @@
         {{ session()->get('success') }}
     </div>
     @endif
-   
+
     <h1>Class Index</h1>
     <br>
-    
+
     @if(Auth::user()->role==1)
     <div class="new-btn primary-button"><a href="/classes/create">Add New</a></div>
     @endif
@@ -64,10 +64,10 @@
                 <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i>Search</button>
                 <div class="input-group-append">
                 <br>
-                    
-             
+
+
             </div>
-    </form> 
+    </form>
     <div class="dropdown">
     <button >Filter</button>
     <div class="dropdown-content">
@@ -78,9 +78,9 @@
 @for($i = 0; $i < $size; $i++)
 
                         <a href="/filter?title={{$filter[$i]}}">{{$filter[$i]}}</a>
-                   
+
                         @endfor
-                
+
                     </div>
 </div>
 <hr>
@@ -92,15 +92,15 @@
                     <h3>{{$class->name}}</h3>
                 </div>
                 <div class="w3-container">
-                    <p>Time: {{$class->time}}</p>   
+                    <p>Time: {{$class->time}}</p>
                     <p>Location: {{$class->location}}</p>
                     <hr>
                 </div>
-                    
+
                 @if(Auth::user()->role==1)
                     <a class="new-btn edit-button" href="/classes/{{$class->id}}/edit" style="float: right;margin-right:10px" role="button">Edit</a>
                 @endif
-                
+
                 @if(Auth::user()->role==1)
                     <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}/addUser" role="button">Assign Instructor</a>
                     <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
@@ -113,4 +113,7 @@
     @else
         <p>No classes found</p>
     @endif
+    <div id="react-render2"></div>
+    <script src="{{ URL::asset('js/app.js') }}" type="text/javascript"></script>
+
 @endsection
