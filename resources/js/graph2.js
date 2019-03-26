@@ -9,15 +9,17 @@ export default class Graph extends Component {
         super(props);
 
         this.state = {};
+
+        this.getData.bind(this);
     }
 
     componentDidMount()
     {
-        /*
-        fetch('/api/class').then(response=> {
+
+        fetch('/api/survey').then(response=> {
             return response.json();
         }).then(survey => this.setState({survey}))
-        */
+
        console.log("here");
     }
 
@@ -44,29 +46,41 @@ export default class Graph extends Component {
             survey.map(survey => {
 
                 const _date = new Date(survey.date)
-
+                console.log(survey.date);
                 if(_date > lastWeek)
                 {
                     studentNumber++;
                     switch(survey.mood) {
                         case 1:
+                        case 2:
+                        case 3:
+                        case 4:
                             happy += 1;
                             break;
-                        case 2:
+                        case 5:
+                        case 6:
+                        case 7:
                             empowered += 1;
                             break;
-                        case 3:
+                        case 8:
+                        case 9:
+                        case 10:
                             sad += 1;
                             break;
-                        case 4:
+                        case 11:
+                        case 12:
+                        case 13:
                             scared += 1;
                             break;
-                        case 5:
+                        case 14:
+                        case 15:
+                        case 16:
                             angry += 1;
                             break;
                         default:
                             break;
                     }
+
                 }
                 });
 
@@ -76,9 +90,7 @@ export default class Graph extends Component {
                 if(scared === 0) scared = null;
                 if(angry === 0) angry = null;
 
-                data.push(4, 4, 4, 4, 4);
-                //const data = ["1","2"];
-                console.log("work");
+                data.push(happy, empowered, sad, scared, angry);
                 return data;
             }
         return null;
@@ -86,10 +98,6 @@ export default class Graph extends Component {
 
     render()
     {
-        const data = this.getData() || [];
-        console.log(data);
-        this.getData();
-
         return<div>
             <Radar data = {{
                 labels: ["Happy", "Empowered", "Sad", "Scared", "Angry"],
@@ -98,7 +106,7 @@ export default class Graph extends Component {
                         label: "Weekly Student Mood",
                         backgroundColor: 'rgb(255, 99, 132)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data:data,
+                        data: this.getData(),
                         //data: [5,5,5,5,5]
                     }]}}
             height={60} />

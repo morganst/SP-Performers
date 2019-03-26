@@ -64134,9 +64134,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -64158,17 +64158,24 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Graph).call(this, props));
     _this.state = {};
+
+    _this.getData.bind(_assertThisInitialized(_this));
+
     return _this;
   }
 
   _createClass(Graph, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      /*
-      fetch('/api/class').then(response=> {
-          return response.json();
-      }).then(survey => this.setState({survey}))
-      */
+      var _this2 = this;
+
+      fetch('/api/survey').then(function (response) {
+        return response.json();
+      }).then(function (survey) {
+        return _this2.setState({
+          survey: survey
+        });
+      });
       console.log("here");
     }
   }, {
@@ -64199,27 +64206,40 @@ function (_Component) {
         survey.map(function (survey) {
           var _date = new Date(survey.date);
 
+          console.log(survey.date);
+
           if (_date > lastWeek) {
             studentNumber++;
 
             switch (survey.mood) {
               case 1:
+              case 2:
+              case 3:
+              case 4:
                 happy += 1;
                 break;
 
-              case 2:
+              case 5:
+              case 6:
+              case 7:
                 empowered += 1;
                 break;
 
-              case 3:
+              case 8:
+              case 9:
+              case 10:
                 sad += 1;
                 break;
 
-              case 4:
+              case 11:
+              case 12:
+              case 13:
                 scared += 1;
                 break;
 
-              case 5:
+              case 14:
+              case 15:
+              case 16:
                 angry += 1;
                 break;
 
@@ -64233,9 +64253,7 @@ function (_Component) {
         if (sad === 0) sad = null;
         if (scared === 0) scared = null;
         if (angry === 0) angry = null;
-        data.push(4, 4, 4, 4, 4); //const data = ["1","2"];
-
-        console.log("work");
+        data.push(happy, empowered, sad, scared, angry);
         return data;
       }
 
@@ -64244,9 +64262,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var data = this.getData() || [];
-      console.log(data);
-      this.getData();
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__["Radar"], {
         data: {
           labels: ["Happy", "Empowered", "Sad", "Scared", "Angry"],
@@ -64254,7 +64269,7 @@ function (_Component) {
             label: "Weekly Student Mood",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: data //data: [5,5,5,5,5]
+            data: this.getData() //data: [5,5,5,5,5]
 
           }]
         },
