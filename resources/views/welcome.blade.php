@@ -25,12 +25,12 @@
                 @foreach($allNotes as $note)
                     @if($note['Type'] === "Severe Incident" && $note['Hide'] != 'Yes')
                     <div class="severe-note-card">
-                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <a href="/notes/{{$note->SID}}" class="severe-note">
                             <span class="severe">
                                 <strong>{{$note['Type']}}!</strong>
                             </span>
-                            <br /> 
+                            <br />
                             Date: {{$note['created_at']->toFormattedDateString()}}
                             <br />
                             Instructor: {{$note['Instructor']}}
@@ -52,10 +52,10 @@
     <hr>
     @endif
 
-    
 
 
-    
+
+
         @foreach(Auth::user()->classes as $class)
         <div class="w3-card-4" style="width:80%; max-width: 350px; display: inline-block">
                 <div class="w3-container w3-light-grey">
@@ -63,15 +63,15 @@
                 </div>
 
                 <div class="w3-container">
-                    <p>Time: {{$class->time}}</p>   
+                    <p>Time: {{$class->time}}</p>
                     <p>Location: {{$class->location}}</p>
                     <hr>
                 </div>
-                    
+
                 @if(Auth::user()->role==1)
                     <a class="new-btn edit-button" href="/classes/{{$class->id}}/edit" style="float: right" role="button">Edit</a>
                 @endif
-                
+
                 @if(Auth::user()->role==1)
                     <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}/addUser" role="button">Assign Instructor</a>
                     <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}/addStudent" role="button">Assign Student</a>
@@ -83,10 +83,10 @@
     <hr>
     {{-- For instructor --}}
     @if(isset($notes) && Auth::user()->role==0)
-        Recent Activity: 
+        Recent Activity:
         @foreach($notes as $note)
         @if($note['Hide'] != 'Yes')
-            @php 
+            @php
                 $class = "";
                 if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
@@ -100,12 +100,12 @@
 
             <div class="dashboard-note">
                 <div class="{{$class}}">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                     <h2>{{$note['Type']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
                     <h3>Student: {{$note->firstName}} {{$note->lastName}}</h3>
-                    <h3>Class: {{$note->Class}}</h3>       
-                    
+                    <h3>Class: {{$note->Class}}</h3>
+
                     <div class='note-card-text'> {{$note->Text}}</div>
 
                     <h5>Created: {{$note['created_at']->toFormattedDateString()}}</h5>
@@ -113,8 +113,8 @@
                 </div>
             </div>
         @endif
-        @php 
-        if (++$i == 4) 
+        @php
+        if (++$i == 4)
             break;
         @endphp
     @endforeach
@@ -125,10 +125,10 @@
     @endif
     {{-- For admin --}}
     @if(isset($allNotes) && Auth::user()->role==1)
-        Recent Activity: 
+        Recent Activity:
         @foreach($allNotes as $note)
         @if($note['Hide'] != 'Yes')
-            @php 
+            @php
                 $class = "";
                 if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
@@ -142,12 +142,12 @@
 
             <div class="dashboard-note">
                 <div class="{{$class}}">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                     <h2>{{$note['Type']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
                     <h3>Student: {{$note->student["fullName"]}}</h3>
-                    <h3>Class: {{$note->Class}}</h3>       
-                    
+                    <h3>Class: {{$note->Class}}</h3>
+
                     <div class='note-card-text'> {{$note->Text}}</div>
 
                     <h5>Created: {{$note['created_at']->toFormattedDateString()}}</h5>

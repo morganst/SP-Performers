@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\DailySurvey;
+use App\Classes;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,19 @@ Route::get('survey', function() {
     return DailySurvey::all();
 });
 
+Route::get('class', function() {
+    // If the Content-Type and Accept headers are set to 'application/json',
+    // this will return a JSON structure. This will be cleaned up later.
+    return Classes::all();
+});
+
 /* Route::get('student', 'StudentController@index');
- 
+
 Route::get('student/{student}', 'StudentController@show');
- 
+
 Route::post('student','StudentController@store');
- 
+
 Route::put('student/{student}','StudentController@update');
- 
+
 Route::delete('student/{student}', 'StudentController@delete');
  */

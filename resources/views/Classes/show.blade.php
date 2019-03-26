@@ -31,4 +31,7 @@
             <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
         </div>
 
+        <script src="{{ URL::asset('js/app.js') }}" type="text/javascript"></script>
+        <div>ASLKDJFLKSJJ DFLKJFS</div>
+
 @endsection

@@ -63933,6 +63933,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
+/* harmony import */ var _graph2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./graph2 */ "./resources/js/graph2.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63950,6 +63951,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -64098,6 +64100,191 @@ function (_Component) {
 
 if (document.getElementById("react-render")) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Main, null), document.getElementById("react-render"));
+} //add new graph links here
+else if (document.getElementById("react-render2")) {
+    react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_graph2__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("react-render2"));
+  } else if (document.getElementById("react-render3")) {
+    react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_graph2__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("react-render3"));
+  }
+
+/***/ }),
+
+/***/ "./resources/js/graph2.js":
+/*!********************************!*\
+  !*** ./resources/js/graph2.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Graph; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var Graph =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Graph, _Component);
+
+  function Graph(props) {
+    var _this;
+
+    _classCallCheck(this, Graph);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Graph).call(this, props));
+    _this.state = {};
+
+    _this.getData.bind(_assertThisInitialized(_this));
+
+    return _this;
+  }
+
+  _createClass(Graph, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch('/api/survey').then(function (response) {
+        return response.json();
+      }).then(function (survey) {
+        return _this2.setState({
+          survey: survey
+        });
+      });
+      console.log("here");
+    }
+  }, {
+    key: "getData",
+    value: function getData() {
+      var _this$state$survey = this.state.survey,
+          survey = _this$state$survey === void 0 ? [] : _this$state$survey;
+      var studentNumber = 0,
+          data = [],
+          happy = 0,
+          empowered = 0,
+          sad = 0,
+          scared = 0,
+          angry = 0;
+      var date = new Date();
+      var lastWeek = new Date(date.setDate(date.getDate() - 7));
+      /*
+      NOTE: this graph should take the student surveys over the course of the WEEK and get the answer
+      to question 5 (the mood of the student). The mood should be displayed in the categories of
+      "Happy" (1-4),
+      "Empowered" (5-7),
+      "Sad" (8-10),
+      "Scared" (11-13),
+      "Angry" (14-16)
+      */
+
+      if (survey.length) {
+        survey.map(function (survey) {
+          var _date = new Date(survey.date);
+
+          console.log(survey.date);
+
+          if (_date > lastWeek) {
+            studentNumber++;
+
+            switch (survey.mood) {
+              case 1:
+              case 2:
+              case 3:
+              case 4:
+                happy += 1;
+                break;
+
+              case 5:
+              case 6:
+              case 7:
+                empowered += 1;
+                break;
+
+              case 8:
+              case 9:
+              case 10:
+                sad += 1;
+                break;
+
+              case 11:
+              case 12:
+              case 13:
+                scared += 1;
+                break;
+
+              case 14:
+              case 15:
+              case 16:
+                angry += 1;
+                break;
+
+              default:
+                break;
+            }
+          }
+        });
+        if (happy === 0) happy = null;
+        if (empowered === 0) empowered = null;
+        if (sad === 0) sad = null;
+        if (scared === 0) scared = null;
+        if (angry === 0) angry = null;
+        data.push(happy, empowered, sad, scared, angry);
+        return data;
+      }
+
+      return null;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__["Radar"], {
+        data: {
+          labels: ["Happy", "Empowered", "Sad", "Scared", "Angry"],
+          datasets: [{
+            label: "Weekly Student Mood",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: this.getData() //data: [5,5,5,5,5]
+
+          }]
+        },
+        height: 60
+      }));
+    }
+  }]);
+
+  return Graph;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+if (document.getElementById("react-render2")) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Graph, null), document.getElementById("react-render2"));
 }
 
 /***/ }),
@@ -64120,8 +64307,8 @@ if (document.getElementById("react-render")) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Morga\Documents\repos\SP-Performers\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Morga\Documents\repos\SP-Performers\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\SP-Performers\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\SP-Performers\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

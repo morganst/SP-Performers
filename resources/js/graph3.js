@@ -128,13 +128,6 @@ export default class Main extends Component {
     }
 }
 
-if (document.getElementById("react-render")) {
+if (document.getElementById("react-render3")) {
     ReactDom.render(<Main />, document.getElementById("react-render"));
-}
-//add new graph links here
-else if (document.getElementById("react-render2")) {
-    ReactDom.render(<Graph />, document.getElementById("react-render2"));
-}
-else if (document.getElementById("react-render3")) {
-    ReactDom.render(<Graph />, document.getElementById("react-render3"));
 }
