@@ -75,7 +75,7 @@
             </tr>
             &nbsp;
             <tr>
-                <td>{!! Form::label('Q4', 'Rate your experience about something question 4?')  !!}</td>
+                <td>{!! Form::label('Q4', 'Did you experience an breakthrough?')  !!}</td>
                 <td>{!! Form::label('Q4', '1=Very Negative, 5=Very Positive')  !!}</td>
                 @if(isset(DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->date)&&(DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->date== date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York')))))
                     <td>{!! Form::radio('Q4', '1', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->Q4 == 1)  !!}</td>
@@ -93,7 +93,7 @@
             </tr>
             &nbsp;
             <tr>
-                <td>{!! Form::label('Q5', 'Rate your experience about something question 5?')  !!}</td>
+                <td>{!! Form::label('Q5', 'Did you experience an incident?')  !!}</td>
                 <td>{!! Form::label('Q5', '1=Very Negative, 5=Very Positive')  !!}</td>
                 @if(isset(DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->date)&&(DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->date== date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York')))))
                     <td>{!! Form::radio('Q5', '1', DB::table('dailySurveys')->where('StudentID', $lookupID)->orderBy('updated_at', 'desc')->first()->Q5 == 1)  !!}</td>

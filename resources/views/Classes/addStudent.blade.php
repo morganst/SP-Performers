@@ -38,10 +38,11 @@
                         {!!Form::close()!!}</td>
                 </tr>
                 @endforeach
-                    <tbody>
+            </tbody>
                       </table>
                       <br>
                   </div>
+                  <a href="/classes" class="button" style="float:right">back</a>
                   <br>
                   <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
                   <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />

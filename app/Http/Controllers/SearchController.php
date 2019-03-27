@@ -57,8 +57,10 @@ class SearchController extends Controller
     }
     public function searchInstructors(){
         $searchkey = \Request::get('title');
-        $users = User::where('firstName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
-        return view('Instructors/search', ['users' => $users]);
+        $users = User::where('role', '0')->where('firstName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
+        $count = User::where('role', '0')->get();
+        $admin = User::where('role', '1')->orderBy('created_at', 'des')->get();
+        return view('Instructors.search', compact(['users','admin', 'count']));
     }
     function index()
     {
