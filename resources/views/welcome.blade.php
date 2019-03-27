@@ -112,11 +112,11 @@
                     <a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a>
                 </div>
             </div>
+            @if (++$i == 4)
+            @break
+            @endif
         @endif
-        @php
-        if (++$i == 4)
-            break;
-        @endphp
+        
     @endforeach
 
         <div>
