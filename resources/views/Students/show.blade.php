@@ -68,8 +68,6 @@ $age = $d2->diff($d1);
             @endif
         @endif
         </p>
-
         <small>Created: {{$stu->created_at}}</small>
-
-
+        <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true" style="float:right;">Back</a>
 @endsection

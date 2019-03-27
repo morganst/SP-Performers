@@ -183,6 +183,7 @@ class ClassController extends Controller
         $cla->student()->detach($student_id);
         return back()->with('success', 'Student Removed!');
     }
+
     function fetch_data(Request $request, $id)
     {
         if($request->ajax())
@@ -192,7 +193,7 @@ class ClassController extends Controller
       $sort_type = $request->get('sorttype');
             $query = $request->get('query');
             $query = str_replace(" ", "%", $query);
-            $students = Student::where('fullName', 'like', '%'.$query.'%')->orderBy($sort_by, $sort_type)
+            $students = Student::where('fullName', 'like', '%'.$query.'%')->orWhere('primaryClass', 'like', '%'.$query.'%')->orderBy($sort_by, $sort_type)
             ->paginate(8);
             $cla = Classes::find($id);
             for($i=0;$i<count($cla->student);$i++)
@@ -200,6 +201,7 @@ class ClassController extends Controller
       return view('Classes.addStudentData', compact('students','cla','array'))->render();
      }
     }
+
     function fetch_user(Request $request, $id)
     {
         if($request->ajax())

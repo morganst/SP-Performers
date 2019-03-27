@@ -24,15 +24,7 @@ class StudentController extends Controller
 
     public function create()
     {
-        $class = Classes::select('name')->distinct()->get();
-
-        $array=array();
-        $k = 0;
-        foreach($class as $cla)
-        {
-            $array[$k] = $cla['name'];
-            $k++;
-        }
+        $array = Classes::select('name')->distinct()->pluck('name','name');
         return view('Students.create', compact(['array']));
     }
 
@@ -98,15 +90,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $stu = Student::find($id);
-        $class = Classes::select('name')->distinct()->get();
-
-        $array=array();
-        $k = 0;
-        foreach($class as $cla)
-        {
-            $array[$k] = $cla['name'];
-            $k++;
-        }
+        $array = Classes::select('name')->distinct()->pluck('name','name');
         /*if(auth()->user()->id !== $stu->user_id) {
             return redirect('students')->with('error', 'Unauthorized page');
         }*/
