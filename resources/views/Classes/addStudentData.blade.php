@@ -28,5 +28,3 @@
         {!! $students->links() !!}
     </td>
 </tr>
-
-<a href="/classes" class="button" style="float:right">back</a>
