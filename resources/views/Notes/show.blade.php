@@ -34,13 +34,13 @@
     @endforeach
 
     <div class="text-right">
-        <a href="{{ URL::previous() }}" class="new-btn back" role="button" aria-pressed="true"><- Back</a>
+    <a href="/students/{{$SID}}" class="new-btn back" role="button" aria-pressed="true"><- Back</a>
     </div>
 @else
     <p>No notes found</p>
     <div>
         <a href="/notes/createnew/{{$SID}}" class="new-btn primary-button" style="color: #F2F2F2" role="button">Create New Note</a>
-        <a href="{{ URL::previous() }}" class="new-btn back" role="button" aria-pressed="true"><- Back</a>
+        <a href="/students/{{$SID}}" class="new-btn back" role="button" aria-pressed="true"><- Back</a>
     </div>
 @endif
 
