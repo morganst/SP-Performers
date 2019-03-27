@@ -18,21 +18,13 @@ class StudentController extends Controller
     public function index()
     {
         $count = Student::where('enrolled', '0')->get();
-        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(20);
+        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(16);
         return view('Students.index', compact(['students', 'count']));
     }
 
     public function create()
     {
-        $class = Classes::select('name')->distinct()->get();
-
-        $array=array();
-        $k = 0;
-        foreach($class as $cla)
-        {
-            $array[$k] = $cla['name'];
-            $k++;
-        }
+        $array = Classes::select('name')->distinct()->pluck('name','name');
         return view('Students.create', compact(['array']));
     }
 
@@ -98,15 +90,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $stu = Student::find($id);
-        $class = Classes::select('name')->distinct()->get();
-
-        $array=array();
-        $k = 0;
-        foreach($class as $cla)
-        {
-            $array[$k] = $cla['name'];
-            $k++;
-        }
+        $array = Classes::select('name')->distinct()->pluck('name','name');
         /*if(auth()->user()->id !== $stu->user_id) {
             return redirect('students')->with('error', 'Unauthorized page');
         }*/
@@ -157,7 +141,7 @@ class StudentController extends Controller
     public function past()
     {
         $count = Student::where('enrolled', '1')->get();
-        $students = Student::where('enrolled', '1')->orderBy('created_at', 'des')->paginate(10);
+        $students = Student::where('enrolled', '1')->orderBy('created_at', 'des')->paginate(16);
         return view('Students.past', compact(['students', 'count']));
     }
 }

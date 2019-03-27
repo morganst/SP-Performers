@@ -23,4 +23,9 @@
     <td colspan="4" align="left">
         {!! $data->links() !!}
     </td>
+    <td>
+            <div class="text-right">
+                    <a href="/classes/{{$id}}" class="button" style="float:right">back</a>
+            </div>
+        </td>
 </tr>

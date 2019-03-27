@@ -90,7 +90,7 @@
                 $class = "";
                 if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
-                else if($note['Type'] == "Note")
+                else if($note['Type'] == "None")
                     $class = "note-note-card";
                 else if($note['Type'] == "Incident")
                     $class = "incident-note-card";
@@ -112,11 +112,11 @@
                     <a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a>
                 </div>
             </div>
+            @if (++$i == 4)
+            @break
+            @endif
         @endif
-        @php
-        if (++$i == 4)
-            break;
-        @endphp
+        
     @endforeach
 
         <div>
@@ -132,7 +132,7 @@
                 $class = "";
                 if($note['Type'] == "Breakthrough")
                     $class = "breakthrough-note-card";
-                else if($note['Type'] == "Note")
+                else if($note['Type'] == "None")
                     $class = "note-note-card";
                 else if($note['Type'] == "Incident")
                     $class = "incident-note-card";

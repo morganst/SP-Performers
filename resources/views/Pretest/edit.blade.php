@@ -10,11 +10,11 @@
         <table style="width:100%">
                 <tr>
                     <td width="55%">{!! Form::label('Q1', "How long have you been living in Jacksonville?", ['class' => 'col-lg-2 control-label'])!!}</td>
-                    <td align="right">{{Form::label('year-1', '1 Year')}} {!! Form::radio('Q1', '1 Year', $student->pretest['Q1'] == '1 Year', array('id'=>'year-1'))!!}</td>
-                    <td align="right">{{Form::label('year-2', '2 Years')}} {!! Form::radio('Q1', '2 Years', $student->pretest['Q1'] == '2 Years', array('id'=>'year-2'))!!}</td>
-                    <td align="right">{{Form::label('year-3', '3 Years')}} {!! Form::radio('Q1', '3 Years', $student->pretest['Q1'] == '3 Years', array('id'=>'year-3'))!!}</td>
-                    <td align="right">{{Form::label('year-4', '4 Years')}} {!! Form::radio('Q1', '4 Years', $student->pretest['Q1'] == '4 Years', array('id'=>'year-4'))!!}</td>
-                    <td align="right">{{Form::label('year-5', '5+ Years')}} {!! Form::radio('Q1', '5+ Years', $student->pretest['Q1'] == '5+ Years', array('id'=>'year-5'))!!}</td>
+                    <td align="right">{{Form::label('year-1', '1 Year')}} {!! Form::radio('Q1', '1', $student->pretest['Q1'] == '1', array('id'=>'year-1'))!!}</td>
+                    <td align="right">{{Form::label('year-2', '2 Years')}} {!! Form::radio('Q1', '2', $student->pretest['Q1'] == '2', array('id'=>'year-2'))!!}</td>
+                    <td align="right">{{Form::label('year-3', '3 Years')}} {!! Form::radio('Q1', '3', $student->pretest['Q1'] == '3', array('id'=>'year-3'))!!}</td>
+                    <td align="right">{{Form::label('year-4', '4 Years')}} {!! Form::radio('Q1', '4', $student->pretest['Q1'] == '4', array('id'=>'year-4'))!!}</td>
+                    <td align="right">{{Form::label('year-5', '5+ Years')}} {!! Form::radio('Q1', '5', $student->pretest['Q1'] == '5', array('id'=>'year-5'))!!}</td>
                 </tr>
                 &nbsp;
                 <tr>

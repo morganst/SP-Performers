@@ -13,22 +13,24 @@ class SearchController extends Controller
     public function searchStudent(){
         $searchkey = \Request::get('title');
         $count = Student::where('enrolled', '0')->get();
-        $students =  Student::where('fullName', 'like', '' .$searchkey. '%')->orWhere('lastName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(20);
+        $students =  Student::where('enrolled', '0')->where('fullName', 'like', '' .$searchkey. '%')->orWhere('lastName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(16);
         return view('Students.index', compact(['students', 'count']));
     }
+
+    public function searchPastStudent(){
+        $searchkey = \Request::get('title');
+        $count = Student::where('enrolled', '1')->get();
+        $students =  Student::where('enrolled', '1')->where('fullName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(16);
+        return view('Students.past', compact(['students', 'count']));
+    }
+
     public function searchClasses(){
         $searchkey = \Request::get('title');
         $classes = Classes::where('name', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
         $search=Classes::all();
-
-       
+  
         $filter = array("");
         $check = "";
-       
-    
-
-    
-    
      foreach($search as $class){
      
                     $size=sizeof($filter);
@@ -40,25 +42,20 @@ class SearchController extends Controller
                         else{
                             $check="no";
                         }
-                    
-    
-  
-                        
-                     
                       }
                       
                     if( $check=="no"){
                         array_push($filter,$class->location);
                         }
-                    }
-                         
-                         
+                    }             
                     return view('Classes.index',compact(['filter', 'classes']));
     }
     public function searchInstructors(){
         $searchkey = \Request::get('title');
-        $users = User::where('firstName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
-        return view('Instructors/search', ['users' => $users]);
+        $users = User::where('role', '0')->where('firstName', 'like', '' .$searchkey. '%')->orderBy('created_at', 'des')->paginate(10);
+        $count = User::where('role', '0')->get();
+        $admin = User::where('role', '1')->orderBy('created_at', 'des')->get();
+        return view('Instructors.search', compact(['users','admin', 'count']));
     }
     function index()
     {

@@ -52,7 +52,6 @@
         else
             $class = "severe-note-search";
     @endphp
-        @if($note['Hide'] != 'Yes')
             <tr class="{{$class}}">
                 <td>{{$note->Type}}!</td>
                 <td>{{$note->Instructor}}</td>
@@ -66,9 +65,7 @@
             </tr>
             <tr>
                 <td><br></td>
-            </tr>
-        @endif
-    
+            </tr>  
 </tr>
     @endforeach
     @else

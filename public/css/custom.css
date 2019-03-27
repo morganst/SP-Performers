@@ -360,7 +360,7 @@ label {
 .dashboard-note .severe-note-card
 {
     padding: 10px;
-    background-color: #d66363;
+    background-color: #ff0000;
     border-color: #ebccd1;
     color: white;
     margin-bottom: 15px;
@@ -568,7 +568,7 @@ label {
 .severe-note-search
 {
     padding: 10px;
-    background-color: #d66363;
+    background-color: #ff0000;
     border-color: #ebccd1;
     color: white;
     margin-bottom: 15px;
@@ -582,6 +582,3 @@ label {
     background-color: lightblue;/* COLOR */
     border-radius: 25px;
 }
-
-
-

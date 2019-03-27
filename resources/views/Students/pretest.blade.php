@@ -9,7 +9,11 @@
             <table>
                 <tr>
                     <td>How long have you been living in Jacksonville?</td>
-                    <td>{{ $pretests->Q1 }}</td>
+                    @if($pretests->Q1 == '5')
+                    <td>{{ $pretests->Q1 }}+ Year(s)</td>
+                    @else
+                    <td>{{ $pretests->Q1 }} Year(s)</td>
+                    @endif
                 </tr>
                 <tr>
                     <td>Are you attending school?</td>

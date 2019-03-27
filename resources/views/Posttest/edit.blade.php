@@ -277,14 +277,14 @@
                 <td>{!! Form::radio('Q26', '4', $student->posttest['Q26'] == 4)!!}</td>
                 <td>{!! Form::radio('Q26', '5', $student->posttest['Q26'] == 5)!!}</td>         
             </tr>
-                &nbsp;
-            <tr>
                 </table>
-        <br>
-                        {{Form::hidden('_method', 'PUT')}}
-                        {{Form::submit('Save', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 41px;'])}}
-                        <a href="{{ URL::previous() }}" class="form-control-right button">Cancel</a>
-
+            <tr>
+                <td>{!! Form::label('Q27', $questions[26], ['class' => 'col-lg-2 control-label'] )  !!}</td>
+                <td>{{ Form::textarea('Q27', $student->posttest['Q27'], ['class' => 'form-control-text', 'placeholder' => 'Write benefits here'])}}</td>        
+            </tr>
+                {{Form::hidden('_method', 'PUT')}}
+                {{Form::submit('Save', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 41px;'])}}
+                <a href="{{ URL::previous() }}" class="form-control-right button">Cancel</a>
         </form>
     {!! Form::close()!!}
             {!!Form::open(['action' => ['PretestController@destroy', $student->id], 'method' => 'POST'])!!}

@@ -16,8 +16,9 @@ class InstructorController extends Controller
     public function index()
     {
         $count = User::where('role', '0')->get();
+        $admin = User::where('role', '1')->orderBy('created_at', 'des')->get();
         $users = User::where('role', '0')->orderBy('created_at', 'des')->paginate(10);
-        return view('Instructors.index', compact(['users', 'count']));
+        return view('Instructors.index', compact(['users','admin', 'count']));
     }
     
     public function show($id)
@@ -84,7 +85,7 @@ class InstructorController extends Controller
         return view('Instructors.create');
     }
 
-    public function showChangePasswordForm(){
+    /* public function showChangePasswordForm(){
         return view('Instructors.changepassword');
     }
     public function changePassword(Request $request){
@@ -104,5 +105,5 @@ class InstructorController extends Controller
             return redirect()->back()->with("success","Password changed successfully !");
         }
         return redirect()->back()->with("success","Password failed!");
-    }
+    } */
 }
