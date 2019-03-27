@@ -85,6 +85,7 @@ Route::post('/sendemail/send', 'SendEmailController@send');
 
 
 Route::get('/searchStudent', 'SearchController@searchStudent');
+Route::get('/searchPastStudent', 'SearchController@searchPastStudent');
 Route::get('/searchClasses', 'SearchController@searchClasses');
 Route::get('/searchInstructors', 'SearchController@searchInstructors');
 /* Route::get('/live_search', 'SearchController@index');

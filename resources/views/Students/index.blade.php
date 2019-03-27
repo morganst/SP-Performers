@@ -17,9 +17,7 @@
     <form class="form-inline my-2 my-md-2 nav" role="search" method="get" action="{{url("/searchStudent")}}">
             <div class="input-group">
                 <input type="text" class="form-control mr-sm-0" placeholder="Search" name="title">
-                <div class="input-group-append">
-                    <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i>Search</button>
-                </div>
+                <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i>Search</button>
             </div>
             <br>
     </form> 

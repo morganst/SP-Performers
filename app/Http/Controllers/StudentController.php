@@ -18,7 +18,7 @@ class StudentController extends Controller
     public function index()
     {
         $count = Student::where('enrolled', '0')->get();
-        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(20);
+        $students = Student::where('enrolled', '0')->orderBy('created_at', 'des')->paginate(16);
         return view('Students.index', compact(['students', 'count']));
     }
 
@@ -157,7 +157,7 @@ class StudentController extends Controller
     public function past()
     {
         $count = Student::where('enrolled', '1')->get();
-        $students = Student::where('enrolled', '1')->orderBy('created_at', 'des')->paginate(10);
+        $students = Student::where('enrolled', '1')->orderBy('created_at', 'des')->paginate(16);
         return view('Students.past', compact(['students', 'count']));
     }
 }
