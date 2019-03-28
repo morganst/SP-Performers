@@ -111,7 +111,7 @@
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="button" role="button" aria-pressed="true">Previous</a>
                 @endif
                 <a href="/classes/show/{{$cla->id}}" class="button">Back</a>
-                <input type="button" class="button" onclick="myFunction()" value="Reset">
+                <input style="float:right;" type="button" class="button" onclick="myFunction()" value="Reset">
     {!! Form::close() !!}
   
     </div>
