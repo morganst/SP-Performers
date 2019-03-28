@@ -14,7 +14,7 @@
         {{DB::table('students')->where('id', $lookupID)->value('lastName')}}
     </h1>
 
-        {!! Form::open(['action' => 'DailySurveyController@store', 'method' => 'POST']) !!}
+        {!! Form::open(['action' => 'DailySurveyController@store', 'method' => 'POST','id' => 'myForm']) !!}
             {{ Form::hidden('ClassID', $cla->id) }}
             {{ Form::hidden('cla', $cla) }}
             {{ Form::hidden('StudentID', $lookupID)}}
@@ -110,11 +110,16 @@
                 <a class="button" role="button" aria-pressed="true" style="background-color:transparent; color:grey">Next</a>
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$array[$prev]}}" class="button" role="button" aria-pressed="true">Previous</a>
                 @endif
-                <a href="/classes/show/{{$cla->id}}" class="button">back</a>
+                <a href="/classes/show/{{$cla->id}}" class="button">Back</a>
+                <input type="button" class="button" onclick="myFunction()" value="Reset">
     {!! Form::close() !!}
-    <br>
+  
     </div>
-    <br>
+    <script>
+            function myFunction() {
+                     document.getElementById("myForm").reset();
+                                }
+    </script>
     {{-- <script>
         function Confirm()
         {

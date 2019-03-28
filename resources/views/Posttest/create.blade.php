@@ -4,7 +4,7 @@
     <h1>{{$student->firstName}} {{$student->lastName}}</h1>
     <p>Please complete the Post-test form</p>
 
-    {!! Form::open(['action' => 'PosttestController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['action' => 'PosttestController@store', 'method' => 'POST', 'id'=>'myForm']) !!}
         <form>
         {{ Form::hidden('student_id', $student->id) }}
         <table style="width:100%">
@@ -288,9 +288,14 @@
             <div class="form-row-inline" style="padding-top: 10px">
                 {{Form::submit('Submit', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 40px;'])}}
                 <a class="form-control-right button" href="/students" role="button">Cancel</a>
+                <input type="button" class="form-control-right button" onclick="myFunction()" value="Reset">
             </div>
         </form>
     {!! Form::close() !!}
-
+    <script>
+function myFunction() {
+  document.getElementById("myForm").reset();
+}
+</script>
     
 @endsection
