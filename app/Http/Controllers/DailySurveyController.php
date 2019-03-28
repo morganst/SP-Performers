@@ -66,7 +66,7 @@ class DailySurveyController extends Controller
             'Q4'=>'required',
             'Q4'=>'required',
             'Q5'=>'required',
-            'Mood'=>'required',
+            'mood'=>'required',
             'date'=>'required'
 
         ]); 
@@ -80,7 +80,7 @@ class DailySurveyController extends Controller
             'Q3' => $request->get('Q3'),
             'Q4' => $request->get('Q4'),
             'Q5' => $request->get('Q5'),
-            'Mood'=> $request->get('Mood')]
+            'mood'=> $request->get('mood')]
         );
         /* $dailySurvey = new DailySurvey;
         $dailySurvey->StudentID = $request->get('StudentID');

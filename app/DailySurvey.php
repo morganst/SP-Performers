@@ -12,6 +12,6 @@ class DailySurvey extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['Q1','Q2','Q3','Q4','Q5','Mood','StudentID','date','ClassID'];
+    protected $fillable = ['Q1','Q2','Q3','Q4','Q5','mood','StudentID','date','ClassID'];
 
 }

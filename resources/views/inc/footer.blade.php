@@ -1,5 +1,5 @@
 <footer>
-    <div style="text-align: center; background-color:lightgray">
+    <div style="text-align: center; background-color:lightgray" class="footer">
         <br><h5>Built by Team TacoWare</h5>
 {{-- 
                 <h5 class="mb-1">Visit our GitHub!</h5>
