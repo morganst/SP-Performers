@@ -1,16 +1,11 @@
 @extends('layouts.app')
-@php
-$d1 = new DateTime($stu->DOB);
-$d2 = new DateTime(date("Y-m-d"));
 
-$age = $d2->diff($d1);
-@endphp
 @section('content')
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
         <div>
             <a href="/notes/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Instructor Notes</a>
-            <a href="/sendemail" class="new-btn edit-button" style="" role="button">Send Report</a>
+            <a href="/dailysurvey/{{$stu->id}}" class="new-btn edit-button" style="" role="button">View Daily Surveys</a>
             <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a>
             @if(Auth::user()->role==1)
                 <a href="/students/{{$stu->id}}/edit" class="new-btn edit-button" role="button">Edit</a>

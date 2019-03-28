@@ -7,6 +7,7 @@ use App\Student;
 use App\Classes;
 use App\Pretest;
 use App\Posttest;
+use DateTime;
 
 class StudentController extends Controller
 {
@@ -65,10 +66,16 @@ class StudentController extends Controller
 
         $posttest = Posttest::where('student_id', '=', $id)->get();
 
+        $d1 = new DateTime($stu->DOB);
+        $d2 = new DateTime(date("Y-m-d"));
+
+        $age = $d2->diff($d1);
+
         return view('Students.show')
             ->with('stu', $stu)
             ->with('pretest', $pretest)
-            ->with('posttest', $posttest);
+            ->with('posttest', $posttest)
+            ->with('age', $age);
     }
 
     public function pretest($id) 

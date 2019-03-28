@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <h1>This is the Student Survey Page for {{$cla->name}}</h1>
     <div class="daily-survey-container">
         @if(session()->has('success'))
@@ -73,28 +74,28 @@
                 {!! Form::label('Mood', 'Mood')  !!}
                 </th>
                 <tr>
-                    <td style="padding-left: 5px">{!! Form::radio('Mood', '1')  !!}<span>happy</span></td>
-                    <td style="padding-right: 45px">{!! Form::radio('Mood', '2')  !!}<span>proud</span></td>
-                    <td style="padding-right: 10px">{!! Form::radio('Mood', '3')  !!}<span>peaceful</span></td>
-                    <td >{!! Form::radio('Mood', '4')  !!}<span>optimistic</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '1')  !!}<span>happy</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '2')  !!}<span>proud</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '3')  !!}<span>peaceful</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '4')  !!}<span>optimistic</span></td>
                 </tr>
                 <tr>
-                    <td style="padding-left: 25px">{!! Form::radio('Mood', '5')  !!}<span>accepted</span></td>
-                    <td>{!! Form::radio('Mood', '6')  !!}<span>appreciated</span></td>
-                    <td>{!! Form::radio('Mood', '7')  !!}<span>respected</span></td>
-                    <td style="padding-right: 45px">{!! Form::radio('Mood', '8')  !!}<span>sad</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '5')  !!}<span>accepted</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '6')  !!}<span>appreciated</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '7')  !!}<span>respected</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '8')  !!}<span>sad</span></td>
                 </tr>
                 <tr>
-                    <td>{!! Form::radio('Mood', '9')  !!}<span>lonely</span></td>
-                    <td style="padding-right: 45px">{!! Form::radio('Mood', '10')  !!}<span>guilty</span></td>
-                    <td style="padding-right: 25px">{!! Form::radio('Mood', '11')  !!}<span>scared</span></td>
-                    <td style="padding-right: 13px">{!! Form::radio('Mood', '12')  !!}<span>helpless</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '9')  !!}<span>lonely</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '10')  !!}<span>guilty</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '11')  !!}<span>scared</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '12')  !!}<span>helpless</span></td>
                 </tr>
                 <tr>
-                    <td style="padding-left: 20px">{!! Form::radio('Mood', '13')  !!}<span>insecure</span></td>
-                    <td style="padding-right: 30px">{!! Form::radio('Mood', '14')  !!}<span>anxious</span></td>
-                    <td style="padding-right: 30px">{!! Form::radio('Mood', '15')  !!}<span>angry</span></td>
-                    <td style="padding-right: 40px">{!! Form::radio('Mood', '16')  !!}<span>hurt</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '13')  !!}<span>insecure</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '14')  !!}<span>anxious</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '15')  !!}<span>angry</span></td>
+                    <td style="text-align:left;">{!! Form::radio('Mood', '16')  !!}<span>hurt</span></td>
                 </tr>
         </table>
         <br>

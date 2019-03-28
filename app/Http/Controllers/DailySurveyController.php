@@ -112,7 +112,8 @@ class DailySurveyController extends Controller
      */
     public function show($id)
     {
-        //
+        $dailySurvey = DailySurvey::where('StudentID',$id)->orderBy('created_at', 'des')->paginate(2);
+        return view('DailySurveys.show', compact(['dailySurvey']));
     }
 
     /**
