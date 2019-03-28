@@ -66,7 +66,7 @@ class DailySurveyController extends Controller
             'Q4'=>'required',
             'Q4'=>'required',
             'Q5'=>'required',
-            'mood'=>'required',
+            'Mood'=>'required',
             'date'=>'required'
 
         ]); 
