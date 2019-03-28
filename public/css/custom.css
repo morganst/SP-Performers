@@ -582,3 +582,12 @@ label {
     background-color: lightblue;/* COLOR */
     border-radius: 25px;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: 90px;
+  }
+

@@ -2,6 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
+<img src="{{url($url)}}" class="center">
 <div class="container-fluid">
 @if(session()->has('message'))
 <div class="alert alert-success">
@@ -23,7 +24,7 @@
         @endphp
         Students:
         @foreach ($cla->student as $student)
-                <div style="border:1px solid black;padding:8px;" class="class-layout-row">
+                <div style="background-color:#e2cdf4;padding:8px;border-radius: 25px;border: 1px solid black;" class="class-layout-row">
                 <div><a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a></div>
                 <span style="float:right;">
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" style="margin-top:10px"class="new-btn edit-button" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
