@@ -80,7 +80,7 @@ class DailySurveyController extends Controller
             'Q3' => $request->get('Q3'),
             'Q4' => $request->get('Q4'),
             'Q5' => $request->get('Q5'),
-            'mood'=> $request->get('mood')]
+            'mood'=> $request->get('Mood')]
         );
         /* $dailySurvey = new DailySurvey;
         $dailySurvey->StudentID = $request->get('StudentID');
