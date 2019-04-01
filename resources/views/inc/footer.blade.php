@@ -4,7 +4,7 @@
         Morgan Sturtz | Connor Ackerman | Hika Workneh | Brandon Bradlee
         <br />
         © 2019 Copyright
-        <p><br></p>
+        <br>&nbsp; 
     </div>
 </footer>
 

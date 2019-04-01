@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<img src="{{url($url)}}" class="center">
+{{-- <img src="{{url($url)}}" class="center">--}}
 <div class="container-fluid">
 @if(session()->has('message'))
 <div class="alert alert-success">

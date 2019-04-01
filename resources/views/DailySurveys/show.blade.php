@@ -5,8 +5,7 @@
 @if(count($dailySurvey) > 0)
     <h2>
         Daily Survey Results for 
-        {{DB::table('students')->where('id', $dailySurvey[0]->StudentID)->value('firstName')}}
-        {{DB::table('students')->where('id', $dailySurvey[0]->StudentID)->value('lastName')}}
+        {{DB::table('students')->where('id', $dailySurvey[0]->StudentID)->value('fullName')}}
     </h2>
     @foreach($dailySurvey as $survey)
         <div class="live-container">
@@ -62,7 +61,16 @@
                 @elseif($survey->mood == 15) Angry
                 @else Hurt
                 @endif</td>
+            </tr>
             <tr>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;display:inline-flex"><a href="/dailysurvey/edit/{{$survey->id}}" class="new-btn edit-button" role="button">Edit</a>
+                        {!!Form::open(['action' => ['DailySurveyController@destroy', $survey->id], 'method' => 'POST'])!!}
+                        {{Form::hidden('_method', 'DELETE')}}
+                        {{Form::submit('Delete', ['class' => 'new-btn error-button', 'role' => 'button'])}}
+                        {!!Form::close()!!}</td>
+            </tr>
             </table>
         </div>
         <br>

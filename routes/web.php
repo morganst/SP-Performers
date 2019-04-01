@@ -79,6 +79,8 @@ Route::get('classes/{id}/addUser/fetch_user', 'ClassController@fetch_user');
 
 Route::resource('/dailysurvey','DailySurveyController');
 Route::get('dailysurvey/create/{id}/{lookupID}', 'DailySurveyController@create');
+Route::get('dailysurvey/edit/{id}', 'DailySurveyController@edit');
+
 
 /* Route::get('/sendemail', 'SendEmailController@index');
 Route::post('/sendemail/send', 'SendEmailController@send'); */

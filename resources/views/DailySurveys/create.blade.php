@@ -10,8 +10,7 @@
         </div>
         @endif
     <h1>
-        {{DB::table('students')->where('id', $lookupID)->value('firstName')}}
-        {{DB::table('students')->where('id', $lookupID)->value('lastName')}}
+        {{DB::table('students')->where('id', $lookupID)->value('fullName')}}
     </h1>
 
         {!! Form::open(['action' => 'DailySurveyController@store', 'method' => 'POST','id' => 'myForm']) !!}
@@ -112,8 +111,8 @@
                 @endif
                 <a href="/classes/show/{{$cla->id}}" class="button">Back</a>
                 <input style="float:right;" type="button" class="button" onclick="myFunction()" value="Reset">
-    {!! Form::close() !!}
-  
+                {!! Form::close() !!}
+        <br>
     </div>
     <script>
             function myFunction() {

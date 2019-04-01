@@ -43,6 +43,7 @@ $var="I/B";
             <div class="form-row-inline-md" style="padding-top: 10px">
                     {{Form::submit('Submit', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 41px;'])}}
                     <a href="{{ URL::previous() }}" class="form-control-right button" role="button" aria-pressed="true">Cancel</a>
+                    <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
             </div>
         </form>
     {!! Form::close() !!}

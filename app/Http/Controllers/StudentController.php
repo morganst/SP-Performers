@@ -110,6 +110,7 @@ class StudentController extends Controller
         $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
+            'fullName' => 'nullable',
             'DOB' => 'required',
             'notes' => 'nullable',
             'gender' => 'required',
@@ -121,6 +122,7 @@ class StudentController extends Controller
         $student = Student::find($id);
         $student->firstName = $request->input('firstName');
         $student->lastName = $request->input('lastName');
+        $student->fullName = $request->input('firstName') . " " . $request->input('lastName');
         $student->DOB = $request->input('DOB');
         $student->gender = $request->input('gender');
         $student->primaryClass = $request->input('primaryClass');
