@@ -24,9 +24,23 @@
     @if(count($students) > 0)
         <div>
             @foreach($students as $student)
-                    <div class="student">
-                        <a class="student-name" href="/students/{{$student->id}}" role="button">{{$student->fullName}}</a>
+                <div class="w3-card-4" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
+                    <div class="w3-container w3-light-grey">
+                        <h3>{{$student->fullName}}</h3>
                     </div>
+                    @if(Auth::user()->role==1)
+                    <div class="w3-container">
+                        &nbsp;
+                    </div>
+                    
+                        <a class="new-btn edit-button" href="/students/{{$student->id}}/edit" style="float: right;margin-right:10px" role="button">Edit</a>
+                    @endif
+                    @if(Auth::user()->role==1)
+                        <a class="w3-button w3-block w3-dark-grey" href="/dailysurvey/{{$student->id}}" role="button">View Daily Surveys</a>
+                    @endif
+                    <a class="w3-button w3-block w3-dark-grey" href="/notes/createnew/{{$student->id}}" role="button">Add Note</a>
+                    <a class="w3-button w3-block w3-blue" href="/students/{{$student->id}}" role="button">View Student</a>
+                </div>
             @endforeach
         </div>
     {{$students->links()}}

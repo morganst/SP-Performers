@@ -5,9 +5,9 @@
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
         <div>
             <a href="/notes/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Instructor Notes</a>
-            <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a>
+            {{-- <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a> --}}
             @if(Auth::user()->role==1)
-                <a href="/dailysurvey/{{$stu->id}}" class="new-btn edit-button" style="" role="button">View Daily Surveys</a>
+                {{-- <a href="/dailysurvey/{{$stu->id}}" class="new-btn edit-button" style="" role="button">View Daily Surveys</a> --}}
                 <a href="/students/{{$stu->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
                 <br /><br />
             @endif
