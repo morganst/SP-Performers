@@ -591,3 +591,14 @@ label {
     height: 90px;
   }
 
+   .footer-flex {
+    flex-shrink: 0;
+  }
+
+  html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
