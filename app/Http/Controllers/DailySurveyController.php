@@ -124,7 +124,10 @@ class DailySurveyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $survey = DailySurvey::find($id);
+        $cla = Classes::find($survey->ClassID);
+        $stu = Student::find($survey->StudentID);
+        return view('DailySurveys.edit', compact(['survey','cla','stu']));
     }
 
     /**
@@ -147,6 +150,14 @@ class DailySurveyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $survey = DailySurvey::find($id);
+
+        /*if(auth()->user()->id !== $stu->user_id) {
+            return redirect('students')->with('error', 'Unauthorized page');
+        }*/
+
+        $survey->delete();
+
+        return back()->with('success', 'Daily Survey Deleted!');
     }
 }
