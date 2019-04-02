@@ -8,10 +8,11 @@
     @endif
     <h1>Instructor Index</h1>
     <h3>Total Instructors: {{count($count)}}</h3>
-    <div style="padding-bottom: 1em">Here you can view and edit instructors</div>
+    <div style="padding-bottom: 1em">Here you can view and edit instructors
     @if(Auth::user()->role==1)
-        <div class="text-right"><a href="instructors/create" class="button">Add New</a></div>
+        <span style="float:right"><a href="instructors/create" class="button">Add New</a></span>
     @endif
+    </div>
     <hr>
     <form class="form-inline my-2 my-md-2 nav" role="search" method="get" action="{{url("/searchInstructors")}}">
             <div class="input-group">
@@ -21,23 +22,22 @@
     </form>
     @if(count($admin) > 0)
         <div class="row">
-        Admin Name:
+        <h3>Admins</h3>
         </div>
-        <br>
 
         @foreach($admin as $admin)
-            <div class="class-layout-row">
-                <div>{{$admin->firstName}} {{$admin->lastName}}
-                    <br>
-                    <div class="btn-group">
-                        <a class="button" href="/instructors/{{$admin->id}}" role="button">View</a>
-                        @if(Auth::user()->role==1)
-                            <a class="button" href="/instructors/{{$admin->id}}/edit" role="button">Edit</a>                       
-                        @endif
-                    </div>
+            <div class="w3-card-4" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
+                <div class="w3-container w3-light-grey">
+                    <h3>{{$admin->firstName}} {{$admin->lastName}}</h3>
                 </div>
+                @if(Auth::user()->role==1)
+                <div class="w3-container">
+                    &nbsp;
+                </div>
+                    <a class="new-btn edit-button" href="/instructors/{{$admin->id}}/edit" style="float: right;margin-right:10px" role="button">Edit</a>
+                @endif
+                    <a class="w3-button w3-block w3-blue" href="/instructors/{{$admin->id}}" role="button">View Admin</a>
             </div>
-            <div class="row">&nbsp;</div>
         @endforeach
     @else
         <p>No admins found</p>
@@ -45,23 +45,22 @@
     <hr>
     @if(count($users) > 0)
         <div class="row">
-        Instructor Name:
+        <h3>Instructors</h3>
         </div>
-        <br>
 
         @foreach($users as $user)
-            <div class="class-layout-row">
-                <div>{{$user->firstName}} {{$user->lastName}}
-                    <br>
-                    <div class="btn-group">
-                        <a class="button" href="/instructors/{{$user->id}}" role="button">View</a>
-                        @if((Auth::user()->role==1)||(Auth::user()->role == 0 && Auth::user()->id == $user->id))
-                            <a class="button" href="/instructors/{{$user->id}}/edit" role="button">Edit</a>                       
-                        @endif
-                    </div>
-                </div>
+        <div class="w3-card-4" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
+            <div class="w3-container w3-light-grey">
+                <h3>{{$user->firstName}} {{$user->lastName}}</h3>
             </div>
-            <div class="row">&nbsp;</div>
+            @if(Auth::user()->role==1)
+                <div class="w3-container">
+                    &nbsp;
+                </div>
+                    <a class="new-btn edit-button" href="/instructors/{{$user->id}}/edit" style="float: right;margin-right:10px" role="button">Edit</a>
+                @endif
+                    <a class="w3-button w3-block w3-blue" href="/instructors/{{$user->id}}" role="button">View Admin</a>
+            </div>
         @endforeach
 
     {{$users->links()}}

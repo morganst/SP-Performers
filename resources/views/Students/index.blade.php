@@ -32,10 +32,7 @@
                     <div class="w3-container">
                         &nbsp;
                     </div>
-                    
                         <a class="new-btn edit-button" href="/students/{{$student->id}}/edit" style="float: right;margin-right:10px" role="button">Edit</a>
-                    @endif
-                    @if(Auth::user()->role==1)
                         <a class="w3-button w3-block w3-dark-grey" href="/dailysurvey/{{$student->id}}" role="button">View Daily Surveys</a>
                     @endif
                     <a class="w3-button w3-block w3-dark-grey" href="/notes/createnew/{{$student->id}}" role="button">Add Note</a>
