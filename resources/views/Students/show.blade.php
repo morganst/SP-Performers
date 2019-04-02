@@ -37,15 +37,15 @@
         </div>
         <hr>
         @foreach($stu->classes as $class)
-            <div class="w3-card-4" style="width:80%; max-width: 350px; display: inline-block">
-                <div class="w3-container w3-light-grey">
+            <div class="w3-card-4 w3-light-blue" style="width:80%; max-width: 350px; display: inline-block">
+                <div class="w3-container w3-sand">
                     <h3>{{$class->name}}</h3>
                 </div>
                 <div class="w3-container">
                     <p>Time: {{$class->time}}</p>
                     <p>Location: {{$class->location}}</p>
                 </div>
-                    <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}" role="button">View Class</a>
+                    <a class="w3-button w3-block w3-blue" href="/classes/{{$class->id}}" role="button">View Class</a>
             </div>
         @endforeach
     <hr>
@@ -63,5 +63,5 @@
         @endif
         </p>
         <small>Created: {{$stu->created_at}}</small>
-        <a href="/students/{{$stu->id}}" class="button" role="button" aria-pressed="true" style="float:right;">Back</a>
+        <a href="/students" class="button" role="button" aria-pressed="true" style="float:right;">Back</a>
 @endsection

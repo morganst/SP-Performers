@@ -24,8 +24,8 @@
     @if(count($students) > 0)
         <div>
             @foreach($students as $student)
-                <div class="w3-card-4" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
-                    <div class="w3-container w3-light-grey">
+                <div class="w3-card-4 w3-light-blue" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
+                    <div class="w3-container w3-sand">
                         <h3>{{$student->fullName}}</h3>
                     </div>
                     @if(Auth::user()->role==1)

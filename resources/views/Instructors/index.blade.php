@@ -26,8 +26,8 @@
         </div>
 
         @foreach($admin as $admin)
-            <div class="w3-card-4" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
-                <div class="w3-container w3-light-grey">
+            <div class="w3-card-4 w3-light-blue" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
+                <div class="w3-container w3-sand">
                     <h3>{{$admin->firstName}} {{$admin->lastName}}</h3>
                 </div>
                 @if(Auth::user()->role==1)
@@ -49,8 +49,8 @@
         </div>
 
         @foreach($users as $user)
-        <div class="w3-card-4" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
-            <div class="w3-container w3-light-grey">
+        <div class="w3-card-4 w3-light-blue" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
+            <div class="w3-container w3-sand">
                 <h3>{{$user->firstName}} {{$user->lastName}}</h3>
             </div>
             @if(Auth::user()->role==1)
