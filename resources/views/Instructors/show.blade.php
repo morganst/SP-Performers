@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    #app{
+        margin-top: unset;
+    }
+</style>
     <h2>{{$user->firstName}} {{$user->lastName}}</h2>
     <div class="">Instructors Information:</div>
         <hr>
