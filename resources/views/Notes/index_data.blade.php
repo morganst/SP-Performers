@@ -79,7 +79,7 @@
             </td>
             <td>
                     <div class="text-right">
-                            <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
+                            <a href="/" class="button" role="button" aria-pressed="true">Back</a>
                         </div>
             </td>
         </tr>
