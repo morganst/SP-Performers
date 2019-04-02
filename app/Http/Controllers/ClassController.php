@@ -201,7 +201,7 @@ class ClassController extends Controller
       $sort_by = $request->get('sortby');
       $sort_type = $request->get('sorttype');
             $query = $request->get('query');
-            $query = str_replace(" ", "%", $query);
+           /*  $query = str_replace(" ", "%", $query); */
             $students = Student::where('fullName', 'like', '%'.$query.'%')->orWhere('primaryClass', 'like', '%'.$query.'%')->orderBy($sort_by, $sort_type)
             ->paginate(8);
             $cla = Classes::find($id);

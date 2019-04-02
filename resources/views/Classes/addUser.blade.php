@@ -16,7 +16,7 @@
             <br><br>
             <table style="width:100%">
                   <thead>
-                        <th style="width:50%" class="sorting" data-sorting_type="desc" data-column_name="fullName" style="cursor: pointer">Name<span id="fullName_icon"></span></th>
+                        <th style="width:50%" class="sorting" data-sorting_type="desc" data-column_name="lastName" style="cursor: pointer">Name<span id="fullName_icon"></span></th>
                         <th style="width:50%">Add to Class</th>
                   </thead>
                   <tbody id="t01">

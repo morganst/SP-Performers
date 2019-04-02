@@ -5,9 +5,9 @@
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
         <div>
             <a href="/notes/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Instructor Notes</a>
-            <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a>
+            {{-- <a href="/notes/createnew/{{$stu->id}}" class="new-btn edit-button" style="" role="button">Add Note</a> --}}
             @if(Auth::user()->role==1)
-                <a href="/dailysurvey/{{$stu->id}}" class="new-btn edit-button" style="" role="button">View Daily Surveys</a>
+                {{-- <a href="/dailysurvey/{{$stu->id}}" class="new-btn edit-button" style="" role="button">View Daily Surveys</a> --}}
                 <a href="/students/{{$stu->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
                 <br /><br />
             @endif
@@ -37,16 +37,15 @@
         </div>
         <hr>
         @foreach($stu->classes as $class)
-            <div class="w3-card-4" style="width:80%; max-width: 350px; display: inline-block">
-                <div class="w3-container w3-light-grey">
+            <div class="w3-card-4 w3-light-blue" style="width:80%; max-width: 350px; display: inline-block">
+                <div class="w3-container w3-sand">
                     <h3>{{$class->name}}</h3>
                 </div>
                 <div class="w3-container">
                     <p>Time: {{$class->time}}</p>
                     <p>Location: {{$class->location}}</p>
-                    <hr>
                 </div>
-                    <a class="w3-button w3-block w3-dark-grey" href="/classes/{{$class->id}}" role="button">View Class</a>
+                    <a class="w3-button w3-block w3-blue" href="/classes/{{$class->id}}" role="button">View Class</a>
             </div>
         @endforeach
     <hr>
@@ -64,5 +63,5 @@
         @endif
         </p>
         <small>Created: {{$stu->created_at}}</small>
-        <a href="/students/{{$stu->id}}" class="button" role="button" aria-pressed="true" style="float:right;">Back</a>
+        <a href="/students" class="button" role="button" aria-pressed="true" style="float:right;">Back</a>
 @endsection
