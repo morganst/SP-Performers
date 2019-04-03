@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     @if(session()->has('success'))
     <div class="alert alert-success">
-        {{ session()->get('success') }}
+        <span style="background-color:palegreen">{{ session()->get('success') }}</span>
     </div>
     @endif
 
@@ -87,9 +87,9 @@
 </div>
     @if(count($classes) > 0)
             @foreach($classes as $class)
-            <div class="w3-card-4 w3-light-blue" style="width:80%; max-width: 350px; display: inline-block; margin: 10px;">
+            <div class="w3-card-4 w3-pale-blue" style="width:80%; max-width: 350px; display: inline-block; margin: 10px;">
                 <div class="w3-container w3-sand">
-                    <h3>{{$class->name}}</h3>
+                    <h3><a href="/classes/{{$class->id}}" role="button">{{$class->name}}</a></h3>
                 </div>
                 <div class="w3-container">
                     <p>Time: {{$class->time}}

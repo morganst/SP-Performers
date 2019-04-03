@@ -16,7 +16,7 @@
     <hr>    
     @if(count($user->classes) > 0)
         @foreach($user->classes as $class)
-            <div class="w3-card-4 w3-light-blue" style="width:80%; max-width: 350px; display: inline-block">
+            <div class="w3-card-4 w3-pale-blue" style="width:80%; max-width: 350px; display: inline-block">
                 <div class="w3-container w3-sand">
                     <h3>{{$class->name}}</h3>
                 </div>

@@ -3,7 +3,7 @@
 @section('content')
     @if(session()->has('success'))
     <div class="alert alert-success">
-        {{ session()->get('success') }}
+        <span style="background-color:palegreen">{{ session()->get('success') }}</span>
     </div>
     @endif
     <h1>Instructor Index</h1>
@@ -26,9 +26,9 @@
         </div>
 
         @foreach($admin as $admin)
-            <div class="w3-card-4 w3-light-blue" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
+            <div class="w3-card-4 w3-pale-blue" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
                 <div class="w3-container w3-sand">
-                    <h3>{{$admin->firstName}} {{$admin->lastName}}</h3>
+                    <h3><a href="/instructors/{{$admin->id}}" role="button">{{$admin->firstName}} {{$admin->lastName}}</a></h3>
                 </div>
                 @if(Auth::user()->role==1)
                 <div class="w3-container">
@@ -49,9 +49,9 @@
         </div>
 
         @foreach($users as $user)
-        <div class="w3-card-4 w3-light-blue" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
+        <div class="w3-card-4 w3-pale-blue" style="width:80%; max-width:350px; display: inline-block; margin: 10px;">
             <div class="w3-container w3-sand">
-                <h3>{{$user->firstName}} {{$user->lastName}}</h3>
+                <h3><a href="/instructors/{{$user->id}}" role="button">{{$user->firstName}} {{$user->lastName}}</a></h3>
             </div>
             @if(Auth::user()->role==1)
                 <div class="w3-container">
@@ -59,7 +59,7 @@
                 </div>
                     <a class="new-btn edit-button" href="/instructors/{{$user->id}}/edit" style="float: right;margin-right:10px" role="button">Edit</a>
                 @endif
-                    <a class="w3-button w3-block w3-blue" href="/instructors/{{$user->id}}" role="button">View Admin</a>
+                    <a class="w3-button w3-block w3-blue" href="/instructors/{{$user->id}}" role="button">View Instructor</a>
             </div>
         @endforeach
 
