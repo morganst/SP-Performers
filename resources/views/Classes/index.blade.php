@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     @if(session()->has('success'))
     <div class="alert alert-success">
-        {{ session()->get('success') }}
+        <span style="background-color:palegreen">{{ session()->get('success') }}</span>
     </div>
     @endif
 

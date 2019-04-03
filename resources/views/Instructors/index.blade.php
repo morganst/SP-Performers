@@ -3,7 +3,7 @@
 @section('content')
     @if(session()->has('success'))
     <div class="alert alert-success">
-        {{ session()->get('success') }}
+        <span style="background-color:palegreen">{{ session()->get('success') }}</span>
     </div>
     @endif
     <h1>Instructor Index</h1>
