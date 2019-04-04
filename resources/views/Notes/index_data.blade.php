@@ -38,7 +38,7 @@
     </tr>
     @endif --}}
 {{-- For admin --}}
-@if(isset($allNotes) && Auth::user()->role==1)
+@if(isset($allNotes))
 @foreach($allNotes as $note)
     
     @php 

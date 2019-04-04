@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h1>This is the Student Survey Page for {{$cla->name}}</h1>
-    <div class="daily-survey-container">
+<h2>This is the Student Survey Page for {{$cla->name}}</h2>
+    <div class="live-container">
         @if(session()->has('success'))
         <div class="alert alert-success">
             <span style="background-color:palegreen">{{ session()->get('success') }}</span>
@@ -67,7 +67,7 @@
             </tr>
             </table>
             <br>
-            <a href="/notes/createnew/{{DB::table('students')->where('id', $lookupID)->value('id')}}" class="new-btn edit-button" style="float:right" role="button">Add Note</a>
+            <a href="/notes/createnew/{{DB::table('students')->where('id', $lookupID)->value('id')}}" class="new-btn edit-button w3-green" style="float:right" role="button">Add Note</a>
             <table width="100%">
                 <th colspan="4">
                 {!! Form::label('Mood', 'Mood')  !!}

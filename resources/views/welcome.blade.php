@@ -35,7 +35,7 @@
                             Class: {{$note['Class']}}
                             <br />
                             Student:
-                            {{$note->firstName}} {{$note->lastName}}
+                            {{$note->student["fullName"]}}
                             <br /><br />
                         </a>
                     </div>
@@ -46,6 +46,32 @@
 
     @else
         You are logged in as an Instructor.
+        <div class="dashboard-note">
+            @if(isset($notes))
+                @foreach($notes as $note)
+                    @if($note['Type'] === "Severe Incident" && $note['Hide'] != 'Yes')
+                    <div class="severe-note-card">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <a href="/notes/{{$note->SID}}" class="severe-note">
+                            <span class="severe">
+                                <strong>{{$note['Type']}}!</strong>
+                            </span>
+                            <br />
+                            Date: {{$note['created_at']->toFormattedDateString()}}
+                            <br />
+                            Instructor: {{$note['Instructor']}}
+                            <br />
+                            Class: {{$note['Class']}}
+                            <br />
+                            Student:
+                            {{$note->student["fullName"]}}
+                            <br /><br />
+                        </a>
+                    </div>
+                    @endif
+                @endforeach
+            @endif
+        </div>
     <hr>
     @endif
 
@@ -117,7 +143,7 @@
     @endforeach
 
         <div>
-            <a style="float:right;" href="/notes" role="button">View All</a>
+            <a class="button" style="float:right;" href="/notes" role="button">View All</a>
         </div>
     @endif
     {{-- For admin --}}
@@ -140,7 +166,7 @@
             <div class="dashboard-note">
                 <div class="{{$class}}">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <h2>{{$note['Type']}}!</h2>
+                    <a href="/notes/{{$note->SID}}"><h2>{{$note['Type']}}!</h2></a>
                     <h3>Created By: {{$note->Instructor}}</h3>
                     <h3>Student: {{$note->student["fullName"]}}</h3>
                     <h3>Class: {{$note->Class}}</h3>
