@@ -139,7 +139,6 @@
 
             <div class="dashboard-note">
                 <div class="{{$class}}">
-                    {{$note->NId}}
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                     <h2>{{$note['Type']}}!</h2>
                     <h3>Created By: {{$note->Instructor}}</h3>
