@@ -13,7 +13,7 @@ class SearchController extends Controller
     public function searchStudent(){
         $searchkey = \Request::get('title');
         $count = Student::where('enrolled', '0')->get();
-        $students =  Student::where('enrolled', '0')->where(strtolower('fullName'), 'like', '%' .strtolower($searchkey). '%')->orderBy('created_at', 'des')->paginate(16);
+        $students =  Student::where('enrolled', '0')->where('fullName', 'like', '%' .strtolower($searchkey). '%')->orderBy('created_at', 'des')->paginate(16);
         return view('Students.index', compact(['students', 'count']));
     }
 
