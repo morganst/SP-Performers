@@ -41,10 +41,10 @@ class NotesController extends Controller
                     }
                 }
             }
-            $notes = Note::whereIn('NId',$note)->orderBy('Nid', 'asc')->paginate(5);
+            $notes = Note::whereIn('NId',$note)->orderBy('NId', 'asc')->paginate(5);
             return view('Notes.index',compact('notes','note'));
         } */
-        $allNotes = Note::orderBy('Nid', 'asc')->paginate(8);
+        $allNotes = Note::orderBy('NId', 'asc')->paginate(8);
         return view('Notes.index',compact('allNotes'));
     }
 
