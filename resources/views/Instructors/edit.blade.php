@@ -88,7 +88,7 @@
         <div class="form-row-inline-md" style="padding-top: 20px">
                 {{Form::hidden('_method', 'PUT')}}
                 {{Form::submit('Save', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 41px;'])}}
-                <a href="{{ URL::previous() }}" class="form-control-right button">Cancel</a>
+                <a href="/instructors/{{$user->id}}" class="form-control-right button">Cancel</a>
         </div>
         </form>
         <div class="form-row-inline-md">
