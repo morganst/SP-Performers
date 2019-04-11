@@ -71,36 +71,19 @@ class DailySurveyController extends Controller
 
         ]); 
 
-        $dailySurveys = DailySurvey::updateOrCreate(
-            ['StudentID' => $request->get('StudentID'), 
-            'date' => $request->input('date'), 
-            'ClassID' => $request->get('ClassID')],
-            ['Q1' => $request->get('Q1'),
-            'Q2' => $request->get('Q2'),
-            'Q3' => $request->get('Q3'),
-            'Q4' => $request->get('Q4'),
-            'Q5' => $request->get('Q5'),
-            'mood'=> $request->get('Mood')]
-        );
-        /* $dailySurvey = new DailySurvey;
-        $dailySurvey->StudentID = $request->get('StudentID');
-        $dailySurvey->ClassID = $request->get('ClassID');
-        $dailySurvey->Q1 = $request->get('Q1');
-        $dailySurvey->Q2 = $request->get('Q2');
-        $dailySurvey->Q3 = $request->get('Q3');
-        $dailySurvey->Q4 = $request->get('Q4');
-        $dailySurvey->Q5 = $request->get('Q5');
-        $dailySurvey->Mood = $request->get('Mood');
-        $dailySurvey->date = $request->get('date');
-
-        $dailySurvey->save();
+        $dailySurveys = new DailySurvey;
+        $dailySurveys->StudentID = $request->get('StudentID');
+        $dailySurveys->date = $request->input('date');
+        $dailySurveys->ClassID = $request->get('ClassID');
+        $dailySurveys->Q1 = $request->input('Q1');
+        $dailySurveys->Q2 = $request->input('Q2');
+        $dailySurveys->Q3 = $request->input('Q3');
+        $dailySurveys->Q4 = $request->input('Q4');
+        $dailySurveys->Q5 = $request->input('Q5');
+        $dailySurveys->mood = $request->input('Mood');
         
-        $dailySurvey->cla = $request->input('cla');
-        $dailySurvey->id = $request->input('ClassID');
+        $dailySurveys->save();
 
-        $id = $dailySurvey->id;
-        $cla = Classes::find($id);
-        /*$dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10); */
         return redirect()->back()->with('success', 'Survey Submitted!');
     }
 
@@ -139,7 +122,34 @@ class DailySurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'StudentID'=>'required',
+            'ClassID'=>'required',
+            'Q1'=>'required',
+            'Q2'=>'required',
+            'Q3'=>'required',
+            'Q4'=>'required',
+            'Q4'=>'required',
+            'Q5'=>'required',
+            'Mood'=>'required',
+            'date'=>'required'
+
+        ]); 
+
+        $dailySurveys = DailySurvey::find($id);
+        $dailySurveys->StudentID = $request->get('StudentID');
+        $dailySurveys->date = $request->input('date');
+        $dailySurveys->ClassID = $request->get('ClassID');
+        $dailySurveys->Q1 = $request->input('Q1');
+        $dailySurveys->Q2 = $request->input('Q2');
+        $dailySurveys->Q3 = $request->input('Q3');
+        $dailySurveys->Q4 = $request->input('Q4');
+        $dailySurveys->Q5 = $request->input('Q5');
+        $dailySurveys->mood = $request->input('Mood');
+        
+        $dailySurveys->save();
+
+        return redirect()->back()->with('success', 'Survey Submitted!');
     }
 
     /**
