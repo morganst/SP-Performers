@@ -10,6 +10,11 @@ use App\Classes;
 
 class SearchController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function searchStudent(){
         $searchkey = \Request::get('title');
         $count = Student::where('enrolled', '0')->get();
