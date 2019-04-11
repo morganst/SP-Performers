@@ -46,7 +46,8 @@ class DailySurveyController extends Controller
         $key = array_search($lookupID, $array);
         $next = $key + 1;
         $prev = $key - 1;
-        return view('DailySurveys.create',compact(['cla','lookupID','next','prev','array']));
+        $survey = DailySurvey::where('date', '=', (\Carbon\Carbon::now('America/New_York'))->toDateString())->where('StudentID','=',$lookupID)->where('ClassID','=',$cla->id)->first();
+        return view('DailySurveys.create',compact(['cla','lookupID','next','prev','array','survey']));
     }
 
     /**
