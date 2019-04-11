@@ -38,6 +38,12 @@ $var="I/B";
                  {{Form::textarea('Text', '', ['class' => 'form-control-text', 'placeholder' => 'Please explain'])}}
             </div>
             &nbsp;
+            <div class="form-row-inline-md">
+                {!! Form::label('Hide From Homepage?', 'Hide From Homepage?', ['class' => 'col-lg-2 control-label'] )  !!}
+            
+                    {!!  Form::select('Hide', ['No' => 'No', 'Yes' => 'Yes'], null, ['class' => 'form-control-right' ]) !!}
+         
+            </div>
             {!!Form::hidden('SID',  $stu->id);!!}
             {{Form::hidden('url', URL::previous())}}
             <div class="form-row-inline-md" style="padding-top: 10px">

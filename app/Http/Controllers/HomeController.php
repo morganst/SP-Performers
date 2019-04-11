@@ -56,7 +56,7 @@ class HomeController extends Controller
             }));
         }
         $i = 0;
-        $allNotes = Note::where('Hide', '!=', 'Yes')->orderBy('NId', 'asc')->paginate(4);
+        $allNotes = Note::where('Hide', '!=', 'Yes')->orderBy('NId', 'des')->paginate(4);
         $dailySurveys = DailySurvey::orderBy('created_at','des')->paginate(10);
         return view('welcome',compact(['notes','allNotes','dailySurveys','i']));
     }
