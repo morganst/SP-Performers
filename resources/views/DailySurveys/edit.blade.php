@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>Edit Student Survey for {{$cla->name}}</h1>
-    <div class="daily-survey-container">
+    <div class="live-container">
         @if(session()->has('success'))
         <div class="alert alert-success">
             <span style="background-color:palegreen">{{ session()->get('success') }}</span>
