@@ -13,7 +13,7 @@
         {{$stu->fullName}}
     </h1>
 
-        {!! Form::open(['action' => 'DailySurveyController@store', 'method' => 'POST','id' => 'myForm']) !!}
+        {!! Form::open(['action' => ['DailySurveyController@update',  $survey->id ],'method' => 'POST']) !!}
             {{ Form::hidden('ClassID', $survey->ClassID) }}
             {{ Form::hidden('cla', $cla) }}
             {{ Form::hidden('StudentID', $survey->StudentID)}}
@@ -98,6 +98,7 @@
                 </tr>
         </table>
         <br>
+                {{Form::hidden('_method', 'PUT')}}
                 {{Form::submit('Submit',['class' => 'button'])}}
                 
                 <a href="/dailysurvey/{{$stu->id}}" class="button">Back</a>

@@ -30,7 +30,7 @@ $var="I/B";
                 {!! Form::label('Type', 'Incident/Breakthrough', ['class' => 'col-lg-2 control-label'] )  !!}
             
                     
-                    {!!  Form::select('Type', ['Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'Note' => 'Note'], '' , ['class' => 'form-control-right' ]) !!}
+                    {!!  Form::select('Type', ['Breakthrough' => 'Breakthrough', 'Incident' => 'Incident', 'Severe Incident' => 'Severe Incident', 'None' => 'None'], '' , ['class' => 'form-control-right' ]) !!}
          
             </div>
             &nbsp;
