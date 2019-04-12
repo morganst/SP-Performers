@@ -88,16 +88,8 @@ class ClassController extends Controller
         $dailySurveys = DailySurvey::get();
         $cla = Classes::find($id);
         $students = Student::get();
-        if($cla->name == 'Dance')
-            $url = 'images/dance.png';
-        elseif($cla->name == 'Art')
-            $url = 'images/paint.png';
-        elseif($cla->name == 'Music')
-            $url = 'images/music.png';
-        else
-            $url = 'images/logo.png';
 
-        return view('DailySurveys.index', compact(['cla', 'students', 'dailySurveys','url']));
+        return view('DailySurveys.index', compact(['cla', 'students', 'dailySurveys']));
         //return view('classes.show')->with('cla', $cla);
     }
 

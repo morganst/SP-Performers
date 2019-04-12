@@ -2,7 +2,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <img src="{{url($url)}}" class="center">--}}
 <div class="container-fluid">
 @if(session()->has('message'))
 <div class="alert alert-success">
@@ -24,11 +23,14 @@
         @endphp
         Students:
         @foreach ($cla->student as $student)
+        @php
+        $att = DB::table('attendances')->where('date', '=', (\Carbon\Carbon::now('America/New_York'))->toDateString())->where('student_id','=',$student->id)->where('classes_id','=',$cla->id)->first();
+        @endphp 
                 <div style="background-color:#e2cdf4;padding:8px;border-radius: 25px;border: 1px solid black;" class="class-layout-row">
                 <div><a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a></div>
                 <span style="float:right;">
                 <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" style="margin-top:10px"class="new-btn edit-button" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
-                @if(isset($student->attendance->where('date',date("Y-m-d", strtotime(\Carbon\Carbon::now('America/New_York'))))->first()->attend)&&isset($student->attendance->where('classes_id', $cla->id)->first()->attend))
+                @if($att)
                 {{Form::label('present'.$i.'', 'Present')}}
                 {{Form::radio('attend['.$i.']', '1',$student->attendance->where('classes_id', $cla->id)->first()->attend == 1, array('id'=>'present'.$i.''))}}
                 {{Form::label('absent'.$i.'', 'Absent')}}

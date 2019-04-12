@@ -15,7 +15,7 @@
 
         
             @if(isset($survey))
-            {!! Form::open(['action' => ['DailySurveyController@update',  $survey->id ],'method' => 'POST']) !!}
+            {!! Form::open(['action' => ['DailySurveyController@update',  $survey->id ],'method' => 'POST','id' => 'myForm']) !!}
             {{ Form::hidden('ClassID', $survey->ClassID) }}
             {{ Form::hidden('cla', $cla) }}
             {{ Form::hidden('StudentID', $survey->StudentID)}}
