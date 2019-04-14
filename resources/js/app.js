@@ -122,7 +122,7 @@ export default class Main extends Component {
                                 borderColor: 'rgb(255, 99, 132)',
                                 data: this.getData(),
                                 }]}}
-                        height={60} />
+                         />
             </div>
         )
     }

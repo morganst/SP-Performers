@@ -8,13 +8,16 @@
     {{ session()->get('message') }}
 </div>
 @endif
-    <h2>All Students in Class: {{$cla->name}} <span style="float:right;"> Teacher: @if(count($cla->user)>0){{$cla->user[0]->firstName}} {{$cla->user[0]->lastName}}@endif</span></h2>
+    <h2>{{$cla->name}} 
+        @if(count($cla->user)>0)with {{$cla->user[0]->firstName}} {{$cla->user[0]->lastName}}@endif
+    </h2>
+    
     @if(Auth::user()->role==1)
             <div style="float: right">
                 <a href="/classes/{{$cla->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
             </div>
     @endif
-    <div class="text-right"><a href="/{{$cla->id}}/pagination" class="button">Past Attendance</a></div><br>
+    <div ><a href="/{{$cla->id}}/pagination" class="new-btn back">Past Attendance</a></div><br>
     <div>
         {!! Form::open(['action' => 'AttendanceController@store', 'method' => 'POST']) !!}
         <div style="float:right;">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}}</div><br>
@@ -26,21 +29,21 @@
         @php
         $att = DB::table('attendances')->where('date', '=', (\Carbon\Carbon::now('America/New_York'))->toDateString())->where('student_id','=',$student->id)->where('classes_id','=',$cla->id)->first();
         @endphp 
-                <div style="background-color:#e2cdf4;padding:8px;border-radius: 25px;border: 1px solid black;" class="class-layout-row">
-                <div><a href="/students/{{$student->id}}" style="color: black">{{$student->firstName}} {{$student->lastName}}</a></div>
-                <span style="float:right;">
-                <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" style="margin-top:10px"class="new-btn edit-button" role="button" aria-pressed="true">Start Survey</a>&nbsp;&nbsp;
-                @if($att)
-                {{Form::label('present'.$i.'', 'Present')}}
-                {{Form::radio('attend['.$i.']', '1',$student->attendance->where('classes_id', $cla->id)->first()->attend == 1, array('id'=>'present'.$i.''))}}
-                {{Form::label('absent'.$i.'', 'Absent')}}
-                {{Form::radio('attend['.$i.']', '0',$student->attendance->where('classes_id', $cla->id)->first()->attend == 0, array('id'=>'absent'.$i.''))}}
-                @else
-                {{Form::label('present'.$i.'', 'Present')}}
-                {{Form::radio('attend['.$i.']', '1', false, array('id'=>'present'.$i.''))}}
-                {{Form::label('absent'.$i.'', 'Absent')}}
-                {{Form::radio('attend['.$i.']', '0', false, array('id'=>'absent'.$i.''))}}
-                @endif
+                <div style="background-color:#265778;padding:8px;border-radius: 15px;border: 1px solid black;" class="class-layout-row">
+                <div><a href="/students/{{$student->id}}" style="color: white; width:100%;border-bottom: 1px solid white; font-size: 16pt">{{$student->firstName}} {{$student->lastName}}</a></div>
+                <span style="vertical-align: middle">
+                    <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" style="float: right; margin-top:10px"class="new-btn edit-button" role="button" aria-pressed="true">Start Survey</a>
+                    @if($att)
+                        {{Form::label('present'.$i.'', 'Present', array('class' => 'class-page-form-label'))}}
+                        {{Form::radio('attend['.$i.']', '1',$student->attendance->where('classes_id', $cla->id)->first()->attend == 1, array('id'=>'present'.$i.'', 'class' => 'class-page-form-radio'))}}
+                        {{Form::label('absent'.$i.'', 'Absent', array('class' => 'class-page-form-label'))}}
+                        {{Form::radio('attend['.$i.']', '0',$student->attendance->where('classes_id', $cla->id)->first()->attend == 0, array('id'=>'absent'.$i.'', 'class' => 'class-page-form-radio'))}}
+                    @else
+                        {{Form::label('present'.$i.'', 'Present', array('class' => 'class-page-form-label'))}}
+                        {{Form::radio('attend['.$i.']', '1', false, array('id'=>'present'.$i.'', 'class' => 'class-page-form-radio'))}}
+                        {{Form::label('absent'.$i.'', 'Absent', array('class' => 'class-page-form-label'))}}
+                        {{Form::radio('attend['.$i.']', '0', false, array('id'=>'absent'.$i.'', 'class' => 'class-page-form-radio'))}}
+                    @endif
                 </span>
         </div>
         <input type="hidden" name="stu[]" value="<?php echo $student->id; ?>"/>
