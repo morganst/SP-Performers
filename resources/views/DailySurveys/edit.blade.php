@@ -99,10 +99,10 @@
         </table>
         <br>
                 {{Form::hidden('_method', 'PUT')}}
-                {{Form::submit('Submit',['class' => 'button'])}}
+                {{Form::submit('Submit',['class' => 'form-control-right new-btn primary-button'])}}
                 
-                <a href="/dailysurvey/{{$stu->id}}" class="button">Back</a>
-                <input style="float:right;" type="button" class="button" onclick="myFunction()" value="Reset">
+                <a href="/dailysurvey/{{$stu->id}}" class="form-control-right button">Back</a>
+                <input style="float:right;" type="button" class="form-control-right button" onclick="myFunction()" value="Reset">
                 {!! Form::close() !!}
         <br>
     </div>

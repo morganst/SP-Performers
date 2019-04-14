@@ -156,8 +156,9 @@ h1.hidden {
 input[type="radio"] {
     -ms-transform: scale(1.5); /* IE 9 */
     -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
-    transform: scale(2.5);
-    margin: 10px;
+    transform: scale(1.5);
+    margin: 5px;
+    vertical-align: middle;
 }
 .div-center{
     margin: auto;
@@ -187,7 +188,7 @@ input[type="radio"] {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .class-layout-left{
@@ -341,6 +342,7 @@ label {
 .dashboard-note {
     opacity: 1;
     transition: opacity 0.6s; /* 600ms to fade out */
+    width: 80%;
 }
 .dashboard-note .severe {
     color: #ffffff;
@@ -363,7 +365,7 @@ label {
 .dashboard-note .severe-note-card
 {
     padding: 10px;
-    background-color: #ff0000;
+    background-color: #d83939;
     border-color: #ebccd1;
     color: white;
     margin-bottom: 15px;
@@ -380,7 +382,7 @@ label {
 .dashboard-note .incident-note-card
 {
     padding: 10px;
-    background-color:  #ff2f2fb7;
+    background-color:  #df2727b7;
     border-color: #ebccd1;
     color: white;
     margin-bottom: 15px;
@@ -414,6 +416,10 @@ label {
 @media screen and (max-width: 600px) {
     .student {
         width: 50%;
+    }
+    .dashboard-note
+    {
+        width: 100%;
     }
 }
 
@@ -578,12 +584,11 @@ label {
 }
 
 .live-container{
-    text-align: center;
-    width: 80%;
-    padding: 2px 15px;
-    margin: auto;
+    text-align: left;
+    padding: 10px;
     background-color: lightblue;/* COLOR */
-    border-radius: 25px;
+    border-radius: 15px;
+    padding-bottom: 30px;
 }
 
 /* .center {
@@ -605,3 +610,20 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.class-page-form-label
+{
+    color: white;
+    vertical-align: middle;
+}
+
+.daily-survey-table-row
+{
+    border: white;
+}
+
+.daily-survey-table-row-label
+{
+    width:33%;
+}
+
