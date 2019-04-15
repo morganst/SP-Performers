@@ -92,9 +92,10 @@
         </div>
         </form>
         <div class="form-row-inline-md">
-                {!!Form::open(['action' => ['InstructorController@destroy', $user->id], 'method' => 'POST'])!!}
+                {!!Form::open(['action' => ['InstructorController@destroy', $user->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()'])!!}
                     {{Form::hidden('_method', 'DELETE')}}
                     {{Form::submit('Delete Instructor', ['class' => 'form-control-right new-btn error-button', 'role' => 'button', 'style' => 'padding-top: 10px'])}}
                 {!!Form::close()!!}
         </div>
 @endsection
+

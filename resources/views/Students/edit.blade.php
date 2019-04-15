@@ -49,7 +49,7 @@
     {!! Form::close() !!}
 
         <div class="form-row-inline-md">
-        {!!Form::open(['action' => ['StudentController@destroy', $stu->id], 'method' => 'POST'])!!}
+        {!!Form::open(['action' => ['StudentController@destroy', $stu->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()'])!!}
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete Student', ['class' => 'form-control-right new-btn error-button', 'role' => 'button', 'style' => 'padding-top: 10px'])}}
         {!!Form::close()!!}

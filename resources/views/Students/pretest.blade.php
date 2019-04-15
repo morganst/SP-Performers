@@ -91,13 +91,13 @@
                     <td>How likely would you be to use an art form as a way of expressing life’s difficulties? 1=Not at all likely, 5=Extremely likely</td>
                     <td>{{ $pretests->Q20 }} </td>
                 </tr>
-            <table>
+            </table>
 
             <small>Created : {{$pretests->created_at}}</small>
             @endforeach
         
         <div class="text-right">
-            <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
+            <a href="/students/{{$stu->id}}" class="button" role="button" aria-pressed="true">Back</a>
             <a href="/pretest/{{$stu->id}}/edit" class="button" role="button" aria-pressed="true">Edit</a>
         </div>
 

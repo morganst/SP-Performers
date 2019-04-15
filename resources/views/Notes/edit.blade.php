@@ -52,7 +52,7 @@ $var="Type"; $var2=$notes->student()->first();
     {!! Form::close() !!}
 
     <div class="form-row-inline-md">
-        {!!Form::open(['action' => ['NotesController@destroy', $notes->NId], 'method' => 'POST', 'class' => 'btn btn-danger', 'style' => 'padding: 0'])!!}
+        {!!Form::open(['action' => ['NotesController@destroy', $notes->NId], 'method' => 'POST', 'class' => 'btn btn-danger', 'style' => 'padding: 0', 'onsubmit' => 'return ConfirmDelete()'])!!}
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete', ['class' => 'form-control-right new-btn error-button', 'role' => 'button', 'style' => 'padding-top: 10px'])}}
         {!!Form::close()!!}

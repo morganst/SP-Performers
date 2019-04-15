@@ -241,7 +241,7 @@
                 <a href="{{ URL::previous() }}" class="form-control-right button">Cancel</a>
         </form>
     {!! Form::close() !!}
-            {!!Form::open(['action' => ['PretestController@destroy', $student->id], 'method' => 'POST'])!!}
+            {!!Form::open(['action' => ['PretestController@destroy', $student->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete Pretest', ['class' => 'form-control-left new-btn error-button', 'role' => 'button', 'style' => 'padding-top: 10px'])}}
             {!!Form::close()!!}    

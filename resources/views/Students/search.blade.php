@@ -36,18 +36,5 @@
     @endif
 
             <a href="/" class="button" role="button" aria-pressed="true">Back</a>
-
-    <script>
-
-        function ConfirmDelete()
-        {
-        var del = confirm("Are you sure you want to delete?");
-        if (del)
-          return true;
-        else
-          return false;
-        }
-
-      </script>
 @endsection
 
