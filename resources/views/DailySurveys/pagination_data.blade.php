@@ -8,7 +8,7 @@
         <td bgcolor="FF3F3F">Absent</td>
     @endif
     <td>{{date("m-d-Y", strtotime($row->date))}}</td>
-    <td>{!!Form::open(['action' => ['AttendanceController@destroy', $row->id], 'method' => 'POST', 'style' => 'padding: 0'])!!}
+    <td>{!!Form::open(['action' => ['AttendanceController@destroy', $row->id], 'method' => 'POST', 'style' => 'padding: 0', 'onsubmit' => 'return ConfirmDelete()'])!!}
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete', ['class' => 'new-btn error-button', 'role' => 'button'])}}
         {!!Form::close()!!}</td>

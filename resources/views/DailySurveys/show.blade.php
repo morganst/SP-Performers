@@ -56,6 +56,18 @@
                 @else Hurt
                 @endif</td>
             </tr>
+<<<<<<< HEAD
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;display:inline-flex"><a href="/dailysurvey/{{$survey->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
+                        {!!Form::open(['action' => ['DailySurveyController@destroy', $survey->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()'])!!}
+                        {{Form::hidden('_method', 'DELETE')}}
+                        {{Form::submit('Delete', ['class' => 'new-btn error-button', 'role' => 'button'])}}
+                        {!!Form::close()!!}</td>
+            </tr>
+=======
+>>>>>>> d49b61ffd3c86df6a3c79ec9c9c5a7923431a881
             </table>
                 {!!Form::open(['action' => ['DailySurveyController@destroy', $survey->id], 'method' => 'POST'])!!}
                 {{Form::hidden('_method', 'DELETE')}}

@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>{{$student->firstName}} {{$student->lastName}}</h1>
-    <p>Please edit the Post-test form</p>
+    <p>Please edit the posttest form</p>
 
     {!! Form::open(['action' => ['PosttestController@update', $student->id], 'method' => 'POST']) !!}
         <form>
@@ -237,9 +237,8 @@
                 <a href="{{ URL::previous() }}" class="form-control-right button">Cancel</a>
         </form>
     {!! Form::close()!!}
-            {!!Form::open(['action' => ['PretestController@destroy', $student->id], 'method' => 'POST'])!!}
+            {!!Form::open(['action' => ['PosttestController@destroy', $student->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete Posttest', ['class' => 'form-control-left new-btn error-button', 'role' => 'button', 'style' => 'padding-top: 10px'])}}
             {!!Form::close()!!}
-    
 @endsection
