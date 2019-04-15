@@ -43,7 +43,7 @@
                       </table>
                       <br>
                   </div>
-                  <a href="/classes" class="button" style="float:right">back</a>
+                  <a href="/classes" class="button" style="float:right">Back</a>
                   <br>
                   <input type="hidden" name="hidden_page" id="hidden_page" value="1" />
                   <input type="hidden" name="hidden_column_name" id="hidden_column_name" value="id" />

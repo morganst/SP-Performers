@@ -32,6 +32,4 @@
         </div>
 
         <script src="{{ URL::asset('js/app.js') }}" type="text/javascript"></script>
-        <div>ASLKDJFLKSJJ DFLKJFS</div>
-
 @endsection

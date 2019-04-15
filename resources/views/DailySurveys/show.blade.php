@@ -11,38 +11,32 @@
         <div class="live-container">
             <p>Date Taken: {{date("m-d-Y", strtotime($survey->date))}}</p>
             <p>Class: {{DB::table('classes')->where('id', $dailySurvey[0]->ClassID)->value('name')}}</p>
-            <table width=100% style="float:center">
+            <table width=100% style="float:center; padding-bottom: 20px;">
             <tr>
                 <th colspan="3">Responses</th>
             </tr>
             <tr>
-                <td width=50% style="text-align:right;"><b>Q1 - Rate your mood before class started: </b></td>
-                <td></td>
-                <td width=50% style="text-align:left;">&nbsp; {{$survey->Q1}}</td>
+                <td><b>Rate your mood before class started: </b></td>
+                <td style="text-align:left;">&nbsp; {{$survey->Q1}}</td>
             </tr>
             <tr>
-                <td style="text-align:right;"><b>Q2 - Rate your mood during classtime: </b></td>
-                <td></td>
+                <td><b>Rate your mood during classtime: </b></td>
                 <td style="text-align:left;">&nbsp; {{$survey->Q2}}</td>
             </tr>
             <tr>
-                <td style="text-align:right;"><b>Q3 - Rate your mood now that class is over: </b></td>
-                <td></td>
+                <td><b>Rate your mood now that class is over: </b></td>
                 <td style="text-align:left;">&nbsp; {{$survey->Q3}}</td>
             </tr>
             <tr>
-                <td style="text-align:right;"><b>Q4 - Did you experience an breakthrough? </b></td>
-                <td></td>
+                <td><b>Did you experience an breakthrough? </b></td>
                 <td style="text-align:left;">@if($survey->Q4 == 0)&nbsp; Yes @else &nbsp; No @endif</td>
             </tr>
            <tr>
-                <td style="text-align:right;"><b>Q5 - Did you experience an Incident? </b></td>
-                <td></td>
+                <td><b>Did you experience an Incident? </b></td>
                 <td style="text-align:left;">@if($survey->Q5 == 0)&nbsp; Yes @else &nbsp; No @endif</td>
             </tr>
             <tr width=25%>
-                <td style="text-align:right;"><b>Mood: </b></td>
-                <td></td>
+                <td><b>Mood: </b></td>
                 <td style="text-align:left;">&nbsp;
                 @if($survey->mood == 1) Happy
                 @elseif($survey->mood == 2) Proud
@@ -62,6 +56,7 @@
                 @else Hurt
                 @endif</td>
             </tr>
+<<<<<<< HEAD
             <tr>
                 <td></td>
                 <td></td>
@@ -71,13 +66,22 @@
                         {{Form::submit('Delete', ['class' => 'new-btn error-button', 'role' => 'button'])}}
                         {!!Form::close()!!}</td>
             </tr>
+=======
+>>>>>>> d49b61ffd3c86df6a3c79ec9c9c5a7923431a881
             </table>
+                {!!Form::open(['action' => ['DailySurveyController@destroy', $survey->id], 'method' => 'POST'])!!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete', ['class' => 'form-control-right new-btn error-button', 'role' => 'button'])}}
+                {!!Form::close()!!}
+                <a href="/dailysurvey/{{$survey->id}}/edit" class="form-control-right new-btn edit-button" role="button">Edit</a>
+
+            <br />
         </div>
-        <br>
+        <br />
     @endforeach
     {!! $dailySurvey->links() !!}
 @else
     <p>No Surveys Taken</p>
 @endif
-    <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true" style="float:right;">Back</a>
+    <a href="{{ URL::previous() }}" class="form-control-right button" role="button" aria-pressed="true" style="float:right;">Back</a>
 @endsection

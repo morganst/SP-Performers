@@ -143,7 +143,7 @@
     @endforeach
 
         <div>
-            <a class="button" style="float:right;" href="/notes" role="button">View All</a>
+            <a class="new-btn primary-button" style="float:right;" href="/notes" role="button">View All</a>
         </div>
     @endif
     {{-- For admin --}}
@@ -180,7 +180,7 @@
         @endif
         @endforeach
         <div>
-            <a class="button" style="float:right;" href="/notes" role="button">View All</a>
+            <a class="new-btn primary-button" style="float: right" href="/notes" role="button">View All</a>
         </div>
     @endif
 

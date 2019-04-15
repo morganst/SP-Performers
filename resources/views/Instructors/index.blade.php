@@ -8,11 +8,10 @@
     @endif
     <h1>Instructor Index</h1>
     <h3>Total Instructors: {{count($count)}}</h3>
-    <div style="padding-bottom: 1em">Here you can view and edit instructors
     @if(Auth::user()->role==1)
-        <span style="float:right"><a href="instructors/create" class="button">Add New</a></span>
+        <div class="new-btn primary-button"><a href="instructors/create">Add New</a></div>
     @endif
-    </div>
+
     <hr>
     <form class="form-inline my-2 my-md-2 nav" role="search" method="get" action="{{url("/searchInstructors")}}">
             <div class="input-group">
