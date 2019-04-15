@@ -38,12 +38,7 @@ class Posttest extends Migration
             $table->integer('Q19');
             $table->integer('Q20');
             $table->integer('Q21');
-            $table->integer('Q22');
-            $table->integer('Q23');
-            $table->integer('Q24');
-            $table->integer('Q25');
-            $table->integer('Q26');
-            $table->string('Q27');
+            $table->string('Q22');
         });
     }
 

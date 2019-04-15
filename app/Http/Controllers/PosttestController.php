@@ -37,11 +37,6 @@ class PosttestController extends Controller
             'As a result of this program, I can: Trust others more', 
             'As a result of this program, I can: Better develop friendships', 
             'As a result of this program, I can: Use art as a tool to express my feelings', 
-            'As a result of this program, I can: Better express my feelings', 
-            'As a result of this program, I can: More comfortably talk about my past', 
-            'As a result of this program, I can: Trust others more', 
-            'As a result of this program, I can: Better develop friendships', 
-            'As a result of this program, I can: Use art as a tool to express my feelings', 
             'What other benefits have you gained from this program?'
         ];
         $rank = [
@@ -104,11 +99,6 @@ class PosttestController extends Controller
             'Q20' => 'required',
             'Q21' => 'required',
             'Q22' => 'required',
-            'Q23' => 'required',
-            'Q24' => 'required',
-            'Q25' => 'required',
-            'Q26' => 'required',
-            'Q27' => 'required'
         ]);
 
         $posttest = new Posttest;
@@ -138,12 +128,7 @@ class PosttestController extends Controller
         $posttest->Q19 = (int)$request->input('Q19');
         $posttest->Q20 = (int)$request->input('Q20');
         $posttest->Q21 = (int)$request->input('Q21');
-        $posttest->Q22 = (int)$request->input('Q22');
-        $posttest->Q23 = (int)$request->input('Q23');
-        $posttest->Q24 = (int)$request->input('Q24');
-        $posttest->Q25 = (int)$request->input('Q25');
-        $posttest->Q26 = (int)$request->input('Q26');
-        $posttest->Q27 = $request->input('Q27');
+        $posttest->Q22 = $request->input('Q22');
 
         $student->posttest()->save($posttest);
 
@@ -170,11 +155,6 @@ class PosttestController extends Controller
             'When I am emotional, I feel comfortable turning to someone I know for help', 
             'I am part of a community that I can express myself in?', 
             'I enjoy spending time with talented people', 
-            'As a result of this program, I can: Better express my feelings', 
-            'As a result of this program, I can: More comfortably talk about my past', 
-            'As a result of this program, I can: Trust others more', 
-            'As a result of this program, I can: Better develop friendships', 
-            'As a result of this program, I can: Use art as a tool to express my feelings', 
             'As a result of this program, I can: Better express my feelings', 
             'As a result of this program, I can: More comfortably talk about my past', 
             'As a result of this program, I can: Trust others more', 
@@ -240,11 +220,6 @@ class PosttestController extends Controller
             'Q20' => 'required',
             'Q21' => 'required',
             'Q22' => 'required',
-            'Q23' => 'required',
-            'Q24' => 'required',
-            'Q25' => 'required',
-            'Q26' => 'required',
-            'Q27' => 'required'
         ]);
 
         $posttest = Posttest::where('student_id', '=', $id)->first();
@@ -269,12 +244,7 @@ class PosttestController extends Controller
         $posttest->Q19 = (int)$request->input('Q19');
         $posttest->Q20 = (int)$request->input('Q20');
         $posttest->Q21 = (int)$request->input('Q21');
-        $posttest->Q22 = (int)$request->input('Q22');
-        $posttest->Q23 = (int)$request->input('Q23');
-        $posttest->Q24 = (int)$request->input('Q24');
-        $posttest->Q25 = (int)$request->input('Q25');
-        $posttest->Q26 = (int)$request->input('Q26');
-        $posttest->Q27 = $request->input('Q27');
+        $posttest->Q22 = $request->input('Q22');
        
         $posttest->save();
 

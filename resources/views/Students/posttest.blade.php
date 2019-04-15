@@ -92,28 +92,8 @@
                     <td>{{ $posttests->Q21 }} </td>
                 </tr>
                 <tr>
-                    <td>As a result of this program, I can: Better express my feelings 1=Strongly disagree, 5=Strongly agree</td>
-                    <td>{{ $posttests->Q22 }} </td>
-                </tr>
-                <tr>
-                    <td>As a result of this program, I can: More comfortably talk about my past 1=Strongly disagree, 5=Strongly agree</td>
-                    <td>{{ $posttests->Q23 }} </td>
-                </tr>
-                <tr>
-                    <td>As a result of this program, I can: Trust others more 1=Strongly disagree, 5=Strongly agree</td>
-                    <td>{{ $posttests->Q24 }} </td>
-                </tr>
-                <tr>
-                    <td>As a result of this program, I can: Better develop friendships 1=Strongly disagree, 5=Strongly agree</td>
-                    <td>{{ $posttests->Q25 }} </td>
-                </tr>
-                <tr>
-                    <td>As a result of this program, I can: Use art as a tool to express my feelings 1=Strongly disagree, 5=Strongly agree</td>
-                    <td>{{ $posttests->Q26 }} </td>
-                </tr>
-                <tr>
                     <td>What other benefits have you gained from this program?</td>
-                    <td>{{ $posttests->Q27 }} </td>
+                    <td>{{ $posttests->Q22 }} </td>
                 </tr>
             <table>
             <small>Created : {{$posttests->created_at}}</small>

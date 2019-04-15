@@ -229,59 +229,9 @@
             </tr>
                 &nbsp;
             <tr>
-                <td>{!! Form::label('Q22', $questions[21], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::label('Q22', $rank[21], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::radio('Q22', '1')  !!}</td>
-                <td>{!! Form::radio('Q22', '2')  !!}</td>
-                <td>{!! Form::radio('Q22', '3')  !!}</td>
-                <td>{!! Form::radio('Q22', '4')  !!}</td>
-                <td>{!! Form::radio('Q22', '5')  !!}</td>          
-            </tr>
-                &nbsp;
-            <tr>
-                <td>{!! Form::label('Q23', $questions[22], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::label('Q23', $rank[22], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::radio('Q23', '1')  !!}</td>
-                <td>{!! Form::radio('Q23', '2')  !!}</td>
-                <td>{!! Form::radio('Q23', '3')  !!}</td>
-                <td>{!! Form::radio('Q23', '4')  !!}</td>
-                <td>{!! Form::radio('Q23', '5')  !!}</td>       
-            </tr>
-                &nbsp;
-            <tr>
-                <td>{!! Form::label('Q24', $questions[23], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::label('Q24', $rank[23], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::radio('Q24', '1')  !!}</td>
-                <td>{!! Form::radio('Q24', '2')  !!}</td>
-                <td>{!! Form::radio('Q24', '3')  !!}</td>
-                <td>{!! Form::radio('Q24', '4')  !!}</td>
-                <td>{!! Form::radio('Q24', '5')  !!}</td>        
-            </tr>
-                &nbsp;
-            <tr>
-                <td>{!! Form::label('Q25', $questions[24], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::label('Q25', $rank[24], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::radio('Q25', '1')  !!}</td>
-                <td>{!! Form::radio('Q25', '2')  !!}</td>
-                <td>{!! Form::radio('Q25', '3')  !!}</td>
-                <td>{!! Form::radio('Q25', '4')  !!}</td>
-                <td>{!! Form::radio('Q25', '5')  !!}</td>         
-            </tr>
-                &nbsp;
-            <tr>
-                <td>{!! Form::label('Q26', $questions[25], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::label('Q26', $rank[25], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{!! Form::radio('Q26', '1')  !!}</td>
-                <td>{!! Form::radio('Q26', '2')  !!}</td>
-                <td>{!! Form::radio('Q26', '3')  !!}</td>
-                <td>{!! Form::radio('Q26', '4')  !!}</td>
-                <td>{!! Form::radio('Q26', '5')  !!}</td>        
-            </tr>
-                &nbsp;
-            <tr>
                 </table>
-                <td>{!! Form::label('Q27', $questions[26], ['class' => 'col-lg-2 control-label'] )  !!}</td>
-                <td>{{ Form::textarea('Q27', '', ['class' => 'form-control-text', 'placeholder' => 'Write benefits here'])}}</td>        
+                <td>{!! Form::label('22', $questions[21], ['class' => 'col-lg-2 control-label'] )  !!}</td>
+                <td>{{ Form::textarea('Q22', '', ['class' => 'form-control-text', 'placeholder' => 'Write benefits here'])}}</td>        
             </tr>
                 &nbsp;
         
