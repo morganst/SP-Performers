@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+<style>
+    table tr td
+    {
+        padding: 10px;
+        margin: 5px;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
 @section('content')
     <h2>{{$stu->firstName}} {{$stu->lastName}}</h2>
     <div class="">Students Posttest Information:</div>
@@ -115,21 +122,14 @@
                     <td>What other benefits have you gained from this program?</td>
                     <td>{{ $posttests->Q27 }} </td>
                 </tr>
-            <table>
+            </table>
             <small>Created : {{$posttests->created_at}}</small>
             @endforeach
         
         <div class="text-right">
-            <a href="{{ URL::previous() }}" class="button" role="button" aria-pressed="true">Back</a>
+            <a href="/students/{{$stu->id}}" class="button" role="button" aria-pressed="true">Back</a>
             <a href="/posttest/{{$stu->id}}/edit" class="button" role="button" aria-pressed="true">Edit</a>
         </div>
 
-<style>
-    table tr td
-    {
-        padding: 10px;
-        margin: 5px;
-        border-bottom: 1px solid #ccc;
-    }
-</style>
+
 @endsection

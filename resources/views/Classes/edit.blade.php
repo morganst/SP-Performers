@@ -40,7 +40,7 @@
     {!! Form::close() !!}
 
     <div class="form-row-inline-md">
-        {!!Form::open(['action' => ['ClassController@destroy', $cla->id], 'method' => 'POST'])!!}
+        {!!Form::open(['action' => ['ClassController@destroy', $cla->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()'])!!}
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete Class', ['class' => 'form-control-right new-btn error-button', 'role' => 'button', 'style' => 'padding-top: 10px'])}}
         {!!Form::close()!!}
