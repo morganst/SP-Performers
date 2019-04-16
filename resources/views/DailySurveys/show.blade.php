@@ -37,7 +37,7 @@
             </tr>
             <tr width=25%>
                 <td><b>Mood: </b></td>
-                <td style="text-align:left;">&nbsp;
+                <td style="text-align:left; width:25%">&nbsp;
                 @if($survey->mood == 1) Happy
                 @elseif($survey->mood == 2) Proud
                 @elseif($survey->mood == 3) Peaceful
@@ -56,18 +56,6 @@
                 @else Hurt
                 @endif</td>
             </tr>
-<<<<<<< HEAD
-            <tr>
-                <td></td>
-                <td></td>
-                <td style="text-align:right;display:inline-flex"><a href="/dailysurvey/{{$survey->id}}/edit" class="new-btn edit-button" role="button">Edit</a>
-                        {!!Form::open(['action' => ['DailySurveyController@destroy', $survey->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()'])!!}
-                        {{Form::hidden('_method', 'DELETE')}}
-                        {{Form::submit('Delete', ['class' => 'new-btn error-button', 'role' => 'button'])}}
-                        {!!Form::close()!!}</td>
-            </tr>
-=======
->>>>>>> d49b61ffd3c86df6a3c79ec9c9c5a7923431a881
             </table>
                 {!!Form::open(['action' => ['DailySurveyController@destroy', $survey->id], 'method' => 'POST'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
@@ -83,5 +71,5 @@
 @else
     <p>No Surveys Taken</p>
 @endif
-    <a href="{{ URL::previous() }}" class="form-control-right button" role="button" aria-pressed="true" style="float:right;">Back</a>
+    <a href="/students" class="form-control-right button" role="button" aria-pressed="true" style="float:right;">Back</a>
 @endsection

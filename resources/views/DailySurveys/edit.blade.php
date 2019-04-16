@@ -100,12 +100,12 @@
         <br>
                 {{Form::hidden('_method', 'PUT')}}
                 {{Form::submit('Submit',['class' => 'form-control-right new-btn primary-button'])}}
-                
-                <a href="/dailysurvey/{{$stu->id}}" class="form-control-right button">Back</a>
                 <input style="float:right;" type="button" class="form-control-right button" onclick="myFunction()" value="Reset">
                 {!! Form::close() !!}
         <br>
     </div>
+    <br>
+    <a href="/dailysurvey/{{$stu->id}}" class="form-control-right button" role="button" aria-pressed="true" style="float:right;">Back</a>
     <script>
             function myFunction() {
                      document.getElementById("myForm").reset();
