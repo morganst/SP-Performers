@@ -33,6 +33,7 @@
                 <div><a href="/students/{{$student->id}}" style="color: white; width:100%;border-bottom: 1px solid white; font-size: 16pt">{{$student->firstName}} {{$student->lastName}}</a></div>
                 <span style="vertical-align: middle">
                     <a href="/dailysurvey/create/{{$cla->id}}/{{$student->id}}" style="float: right; margin-top:10px"class="new-btn edit-button" role="button" aria-pressed="true">Start Survey</a>
+                    <br>
                     @if($att)
                         {{Form::label('present'.$i.'', 'Present', array('class' => 'class-page-form-label'))}}
                         {{Form::radio('attend['.$i.']', '1',$student->attendance->where('classes_id', $cla->id)->first()->attend == 1, array('id'=>'present'.$i.'', 'class' => 'class-page-form-radio'))}}
