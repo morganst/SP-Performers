@@ -23,7 +23,7 @@
                     @if($note['Type'] === "Severe Incident" && $note['Hide'] != 'Yes')
                     <div class="severe-note-card">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                        <a href="/notes/{{$note->SID}}" class="severe-note">
+                        <a style="color:white" href="/notes/{{$note->SID}}" class="severe-note">
                             <span class="severe">
                                 <strong>{{$note['Type']}}!</strong>
                             </span>
@@ -52,7 +52,7 @@
                     @if($note['Type'] === "Severe Incident" && $note['Hide'] != 'Yes')
                     <div class="severe-note-card">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                        <a href="/notes/{{$note->SID}}" class="severe-note">
+                        <a style="color:white" href="/notes/{{$note->SID}}" class="severe-note">
                             <span class="severe">
                                 <strong>{{$note['Type']}}!</strong>
                             </span>
