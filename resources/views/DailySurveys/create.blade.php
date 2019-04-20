@@ -21,6 +21,15 @@
     <div style="float:right;">{{Form::date('date', $survey->date)}}</div><br><br>
     <table style="width:100%;">
     <tr>
+        <td></td>
+        <td></td>
+        <td>&nbsp <b>1</b></td>
+        <td>&nbsp <b>2</b></td>
+        <td>&nbsp <b>3</b></td>
+        <td>&nbsp <b>4</b></td>
+        <td>&nbsp <b>5</b></td>
+    </tr>
+    <tr>
         <td>{!! Form::label('Q1', 'Rate your mood before class started.')  !!}</td>
         <td>{!! Form::label('Q1', '1=Very Negative, 5=Very Positive')  !!}</td>
         <td>{!! Form::radio('Q1', '1', $survey->Q1 == '1')  !!}</td>
@@ -115,6 +124,15 @@
     {{ Form::hidden('StudentID', $lookupID)}}
  <div style="float:right;">{{Form::date('date', \Carbon\Carbon::now('America/New_York'))}}</div><br>
             <table style="width:100%">
+            <tr>
+                <td></td>
+                <td></td>
+                <td>&nbsp <b>1</b></td>
+                <td>&nbsp <b>2</b></td>
+                <td>&nbsp <b>3</b></td>
+                <td>&nbsp <b>4</b></td>
+                <td>&nbsp <b>5</b></td>
+            </tr>
             <tr>
                 <td>{!! Form::label('Q1', 'Rate your mood before class started.')  !!}</td>
                 <td>{!! Form::label('Q1', '1=Very Negative, 5=Very Positive')  !!}</td>
