@@ -4,7 +4,7 @@
     <tr>
         <td>{{$row->fullName}}</td>
         @if(count($cla->student)<$cla->limit)
-        <td style="display: block; margin: auto; width: 110px">
+        <td style="display: block;width: 110px">
             {!!Form::open(['action' => ['ClassController@attachStudent', $cla->id, $row->id], 'method' => 'POST', 'class' => ''])!!}
                     {{Form::submit('Add to Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
             {!!Form::close()!!}

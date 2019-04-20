@@ -3,7 +3,7 @@
 @if(!in_array($user->id,$array))    
     <tr>
         <td>{{$user->firstName}} {{$user->lastName}}</td>
-        <td style="display: block; margin: auto; width: 110px">
+        <td style="display: block; width: 110px">
                 {!!Form::open(['action' => ['ClassController@attachUser', $cla->id, $user->id], 'method' => 'POST', 'class' => ''])!!}
                 {{Form::submit('Add to Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
                 {!!Form::close()!!}

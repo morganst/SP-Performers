@@ -33,7 +33,7 @@
                 @foreach($cla->student as $student)
                 <tr>
                         <td>{{$student->fullName}}</td>
-                        <td style="display: block; margin: auto; width: 150px">{!!Form::open(['action' => ['ClassController@detachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
+                        <td style="display: block;  width: 150px">{!!Form::open(['action' => ['ClassController@detachStudent', $cla->id, $student->id], 'method' => 'POST', 'class' => ''])!!}
                                     {{Form::submit('Remove from Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
                         {!!Form::close()!!}</td>
                 </tr>

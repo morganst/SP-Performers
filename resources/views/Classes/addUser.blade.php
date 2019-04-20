@@ -33,7 +33,7 @@
                 @foreach($cla->user as $user)
                 <tr>
                         <td>{{$user->firstName}} {{$user->lastName}}</td>
-                        <td style="display: block; margin: auto; width: 150px">
+                        <td style="display: block; width: 150px">
                                 {!!Form::open(['action' => ['ClassController@detachUser', $cla->id, $user->id], 'method' => 'POST', 'class' => ''])!!}
                                 {{Form::submit('Remove from Class', ['class' => 'form-control-right button', 'style' => 'height: 30px; padding: 5px'])}}
                         {!!Form::close()!!}

@@ -14,7 +14,7 @@
             <h3>Student Notes:</h3>
             <input type="text" name="serach" id="serach" class="form-control" placeholder="Search"/>
             <br><br>
-            <table style='border-spacing:0px'>
+            <table style='border-spacing:0px' width='100%'>
                   <thead>
                         <tr>
                         <th  class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
