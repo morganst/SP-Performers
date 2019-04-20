@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
       <head>
-            <title>Student Attendance</title>
+            <title>Student Notes</title>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       </head>
@@ -17,7 +17,7 @@
             <table style='border-spacing:0px'>
                   <thead>
                         <tr>
-                        <th width="15%" class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
+                        <th width="20%" class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
                         <th width="20%" class="sorting" data-sorting_type="desc" data-column_name="Instructor" style="cursor: pointer">Created By<span id="instructor_icon"></span></th>
                         <th width="20%">Student</th>
                         <th width="15%" class="sorting" data-sorting_type="desc" data-column_name="Class" style="cursor: pointer">Class<span id="class_icon"></span></th>
