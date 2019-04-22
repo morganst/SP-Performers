@@ -64260,7 +64260,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__["Radar"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "weekly-survey-graph"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_2__["Radar"], {
         data: {
           labels: ["Happy", "Empowered", "Sad", "Scared", "Angry"],
           datasets: [{
@@ -64270,8 +64272,7 @@ function (_Component) {
             data: this.getData() //data: [5,5,5,5,5]
 
           }]
-        },
-        height: 60
+        }
       }));
     }
   }]);
