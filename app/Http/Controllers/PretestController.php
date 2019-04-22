@@ -77,7 +77,7 @@ class PretestController extends Controller
         $student->pretest()->save($pretest);
 
 
-        return redirect('/students')->with('success', 'Pretest completed!');
+        return redirect("/students/$pretest->student_id")->with('success', 'Pretest completed!');
     }
 
     public function edit($id)
@@ -135,7 +135,7 @@ class PretestController extends Controller
        
         $pretest->save();
 
-        return redirect('/students')->with('success', 'Pretest Updated!');
+        return redirect("/students/$id")->with('success', 'Pretest Updated!');
     }
 
     public function destroy($id)
