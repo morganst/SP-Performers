@@ -133,7 +133,7 @@ class PosttestController extends Controller
         $student->posttest()->save($posttest);
 
 
-        return redirect('/students')->with('success', 'Post-Test completed!');
+        return redirect("/students/$posttest->student_id")->with('success', 'Post-Test completed!');
     }
 
     public function edit($id)
@@ -248,7 +248,7 @@ class PosttestController extends Controller
        
         $posttest->save();
 
-        return redirect('/students')->with('success', 'Student Updated!');
+        return redirect("/students/$id")->with('success', 'Post-Test Updated!');
     }
 
     public function destroy($id)

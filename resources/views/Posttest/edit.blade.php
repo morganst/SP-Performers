@@ -228,10 +228,11 @@
                 <td>{!! Form::radio('Q21', '5', $student->posttest['Q21'] == 5)!!}</td>          
             </tr>
                 &nbsp;
+            </table>
                 <td>{!! Form::label('Q22', $questions[21], ['class' => 'col-lg-2 control-label'] )  !!}</td>
                 <td>{{ Form::textarea('Q22', $student->posttest['Q22'], ['class' => 'form-control-text', 'placeholder' => 'Write benefits here'])}}</td>        
             </tr>
-        </table>
+        
                 {{Form::hidden('_method', 'PUT')}}
                 {{Form::submit('Save', ['class' => 'form-control-right new-btn primary-button', 'style' => 'width: 75px; height: 41px;'])}}
                 <a href="{{ URL::previous() }}" class="form-control-right button">Cancel</a>
