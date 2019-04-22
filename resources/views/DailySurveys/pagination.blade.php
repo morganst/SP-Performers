@@ -23,9 +23,9 @@
             <br><br>
             <table width="100%">
                   <thead>
-                        <tr>
+                        <tr style="text-align: center;">
                         <th width="30%">Name</th>
-                        <th width="25%" class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer">Attend <span id="attend_icon"></span></th>
+                        <th width="20%" class="sorting" data-sorting_type="desc" data-column_name="attend" style="cursor: pointer; text-align: center;">Attend <span id="attend_icon"></span></th>
                         <th width="25%" class="sorting" data-sorting_type="desc" data-column_name="date" style="cursor: pointer">Date <span id="date_icon"></span></th>
                         <th width="20%">Remove</th>
                         </tr>
