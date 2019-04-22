@@ -52,7 +52,7 @@
         else
             $class = "severe-note-search";
     @endphp
-            <tr class="{{$class}}">
+            <tr style="text-align: center;" class="{{$class}}">
                 <td>{{$note->Type}}!</td>
                 <td>{{$note->Instructor}}</td>
                 <td>{{$note->student["fullName"]}}</td>
@@ -61,7 +61,7 @@
                 <td><a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a></td>
             </tr>
             <tr class="{{$class}}">
-                <td colspan="6">{{$note->Text}}</td>
+                <td style="padding-left: 25px;padding-bottom:10px;" colspan="6">{{$note->Text}}</td>
             </tr>
             <tr>
                 <td><br></td>
