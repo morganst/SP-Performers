@@ -16,13 +16,13 @@
             <br><br>
             <table style='border-spacing:0px' width='100%'>
                   <thead>
-                        <tr>
-                        <th  class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
-                        <th  class="sorting" data-sorting_type="desc" data-column_name="Instructor" style="cursor: pointer">Created By<span id="instructor_icon"></span></th>
-                        <th >Student</th>
-                        <th class="sorting" data-sorting_type="desc" data-column_name="Class" style="cursor: pointer">Class<span id="class_icon"></span></th>
-                        <th  class="sorting" data-sorting_type="desc" data-column_name="created_at" style="cursor: pointer">Date<span id="date_icon"></span></th>
-                        <th >Edit</th>
+                        <tr style="text-align: center;">
+                        <th width="10%" class="sorting" data-sorting_type="desc" data-column_name="Type" style="cursor: pointer">Type<span id="type_icon"></span></th>
+                        <th width="10%" class="sorting" data-sorting_type="desc" data-column_name="Instructor" style="cursor: pointer">Created By<span id="instructor_icon"></span></th>
+                        <th width="10%">Student</th>
+                        <th width="10%" class="sorting" data-sorting_type="desc" data-column_name="Class" style="cursor: pointer">Class<span id="class_icon"></span></th>
+                        <th width="10%" class="sorting" data-sorting_type="desc" data-column_name="created_at" style="cursor: pointer">Date<span id="date_icon"></span></th>
+                        <th width="10%">Edit</th>
                         <tr>
                         <tr>
                               <td><br></td>

@@ -52,16 +52,16 @@
         else
             $class = "severe-note-search";
     @endphp
-            <tr class="{{$class}}">
-                <td>{{$note->Type}}!</td>
+            <tr style="text-align: center;" class="{{$class}}">
+                <td style="border-top-left-radius: 25px;">{{$note->Type}}!</td>
                 <td>{{$note->Instructor}}</td>
                 <td>{{$note->student["fullName"]}}</td>
                 <td>{{$note->Class}}</td>       
                 <td>{{$note['created_at']->toFormattedDateString()}}</td>
-                <td><a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a></td>
+                <td style="border-top-right-radius: 25px;"><a href="/notes/{{$note->NId}}/edit" class="new-btn clear-button" role="button">Edit</a></td>
             </tr>
             <tr class="{{$class}}">
-                <td colspan="6">{{$note->Text}}</td>
+                <td style="padding-left: 25px;padding-bottom:10px;border-bottom-right-radius: 25px;border-bottom-left-radius: 25px;" colspan="6">{{$note->Text}}</td>
             </tr>
             <tr>
                 <td><br></td>
