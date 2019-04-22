@@ -112,7 +112,5 @@
     @else
         <p>No classes found</p>
     @endif
-    <div id="react-render2"></div>
-    <script src="{{ URL::asset('js/app.js') }}" type="text/javascript"></script>
 
 @endsection

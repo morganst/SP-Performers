@@ -19,8 +19,6 @@ export default class Graph extends Component {
         fetch('/api/survey').then(response=> {
             return response.json();
         }).then(survey => this.setState({survey}))
-
-       console.log("here");
     }
 
     getData()
