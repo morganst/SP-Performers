@@ -47,6 +47,7 @@
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <img class="center" src="{{asset('images\logo.png')}}" height="50" width="70">
     <a href="/"><span class="sm-text fas fa-home"></span> Home</a> 
     @Auth
     <a href="/classes"><span class="sm-text fas fa-bell"></span> Classes</a> 
@@ -57,7 +58,10 @@
     <a href="/logout"><span class="sm-text fas fa-sign-out-alt"></span> Logout</a>
     @endAuth
 </div>
-<span style="font-size:50px;cursor:pointer;margin-left:10px;" onclick="openNav()">&#9776;</span>
+<div>
+<span style="font-size:50px;cursor:pointer;margin-left:10px;display:inline-block" onclick="openNav()">&#9776;</span>
+<span style="display: inline-block;margin-left:60px"><img src="{{asset('images\tpaprogram.png')}}" height="100" width="210"></span>
+</div>
 
 <script>
     function openNav() {
