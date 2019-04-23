@@ -47,7 +47,7 @@
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <img class="center" src="{{asset('images\logo.png')}}" height="50" width="70">
+    <img style="margin-left: 20%" src="{{asset('images\logo.png')}}" height="50" width="70">
     <a href="/"><span class="sm-text fas fa-home"></span> Home</a> 
     @Auth
     <a href="/classes"><span class="sm-text fas fa-bell"></span> Classes</a> 
