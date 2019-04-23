@@ -11,7 +11,9 @@
     <div style="padding-bottom: 1em">Here you can view and edit students</div> 
     <div>
     <span><a href="/students/past" class="button">Previous Students</a></span>
+    @if(Auth::user()->role==1)
     <span style="float:right"><a href="/students/create" class="button">Add New</a></span>
+    @endif
     </div>
     <hr>
     <form class="form-inline my-2 my-md-2 nav" role="search" method="get" action="{{url("/searchStudent")}}">
@@ -33,8 +35,8 @@
                         &nbsp;
                     </div>
                         <a class="new-btn edit-button" href="/students/{{$student->id}}/edit" style="float: right;margin-right:10px" role="button">Edit</a>
-                        <a class="w3-button w3-block w3-dark-grey" href="/dailysurvey/{{$student->id}}" role="button">View Daily Surveys</a>
                     @endif
+                    <a class="w3-button w3-block w3-dark-grey" href="/dailysurvey/{{$student->id}}" role="button">View Daily Surveys</a>
                     <a class="w3-button w3-block w3-dark-grey" href="/notes/createnew/{{$student->id}}" role="button">Add Note</a>
                     <a class="w3-button w3-block w3-blue" href="/students/{{$student->id}}" role="button">View Student</a>
                 </div>
