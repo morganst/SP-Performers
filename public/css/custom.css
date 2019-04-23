@@ -625,3 +625,8 @@ body {
     width:33%;
 }
 
+.weekly-survey-graph
+{
+    width: 80%;
+    margin-left: 10%;
+}

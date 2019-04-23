@@ -19,8 +19,6 @@ export default class Graph extends Component {
         fetch('/api/survey').then(response=> {
             return response.json();
         }).then(survey => this.setState({survey}))
-
-       console.log("here");
     }
 
     getData()
@@ -98,7 +96,7 @@ export default class Graph extends Component {
 
     render()
     {
-        return<div>
+        return<div class="weekly-survey-graph">
             <Radar data = {{
                 labels: ["Happy", "Empowered", "Sad", "Scared", "Angry"],
                     datasets:
@@ -109,7 +107,7 @@ export default class Graph extends Component {
                         data: this.getData(),
                         //data: [5,5,5,5,5]
                     }]}}
-            height={60} />
+             />
         </div>
     }
 }
